@@ -7,6 +7,7 @@ import javafx.scene.Group;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.CycleMethod;
 import javafx.scene.paint.LinearGradient;
@@ -18,7 +19,7 @@ import javafx.util.Duration;
 import com.fxexperience.javafx.animation.*;
 
 
-public class KBS extends HBox {
+public class KBS extends Pane {
     private String oprSystem;
     private boolean visible = false;
     protected int kbsTimesUsed = 0;
@@ -70,6 +71,7 @@ public class KBS extends HBox {
         this.setUserData(functionality);
         this.setId(functionality);
         this.functionality = functionality;
+        this.icon = new ImageView( new Image(iconPath));
         backgroundRect = new Rectangle(170, 50, Color.LIGHTGREY);
 
         this.content = new HBox(5);
@@ -78,7 +80,7 @@ public class KBS extends HBox {
         this.shortcut = new Text(shortcut);
         this.shortcut.setFont(new Font(30));
 
-        content.getChildren().addAll(this.shortcut);
+        content.getChildren().addAll(this.icon, this.shortcut);
 
 
         this.getChildren().addAll(backgroundRect, content);

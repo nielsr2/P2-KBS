@@ -25,18 +25,20 @@ public class KBSManager extends FlowPane {
         this.setStyle("-fx-border-color: black");
         this.setAlignment(BOTTOM_RIGHT);
         this.getChildren().addAll(
-                new KBS("Ctrl + B", "bold", "bold.png"),
-                new KBS("Ctrl + Fuck", "italic", "italic.png"),
-                new KBS("Ctrl + Fuck", "strikethrough", "strikethrough.png"),
-                new KBS("Ctrl + Fuck", "underline", "underline.png"),
-                new KBS("Ctrl + Fuck", "alignRight", "align-right.png"),
-                new KBS("Ctrl + Fuck", "alignLeft", "align-left.png"),
-                new KBS("Ctrl + Fuck", "alignCenter", "align-center.png"),
-                new KBS("Ctrl + Fuck", "alignJustify", "align-justify.png"),
-                new KBS("Ctrl + Fuck", "image", "asdfasfd")
+                new KBS("Ctrl + B", "bold", "org/fxmisc/richtext/demo/richtext/bold.png"),
+                new KBS("Ctrl + I", "italic", "org/fxmisc/richtext/demo/richtext/italic.png"),
+                new KBS("Ctrl + Fuck", "strikethrough", "org/fxmisc/richtext/demo/richtext/strikethrough.png"),
+                new KBS("Ctrl + Fuck", "underline", "org/fxmisc/richtext/demo/richtext/underline.png"),
+                new KBS("Ctrl + Fuck", "alignRight", "org/fxmisc/richtext/demo/richtext/align-right.png"),
+                new KBS("Ctrl + Fuck", "alignLeft", "org/fxmisc/richtext/demo/richtext/align-left.png"),
+                new KBS("Ctrl + Fuck", "alignCenter", "org/fxmisc/richtext/demo/richtext/align-center.png"),
+                new KBS("Ctrl + Fuck", "alignJustify", "org/fxmisc/richtext/demo/richtext/align-justify.png")
+                //new KBS("Ctrl + Fuck", "image", "asdfasfd")
         );
         this.getKBSbyFunction("bold").setVisible(true); // TODO 123 : MAKE A FUNCTION FOR THIS INSIDE KBS, THAT TOGGLES THESE TWO FUNCTION ()
         this.getKBSbyFunction("bold").setManaged(true);
+        this.getKBSbyFunction("italic").setVisible(true); // TODO 123 : MAKE A FUNCTION FOR THIS INSIDE KBS, THAT TOGGLES THESE TWO FUNCTION ()
+        this.getKBSbyFunction("italic").setManaged(true);
     }
 
     void AddButtonOrFunctionAsKBS(Button buttonObjectToMaybeReturn,
