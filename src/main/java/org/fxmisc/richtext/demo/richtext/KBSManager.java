@@ -18,22 +18,27 @@ import static javafx.geometry.Pos.BOTTOM_RIGHT;
 
 
 public class KBSManager extends FlowPane {
-    KBS[] kbsArray = new KBS[20];
     KBSManager() {
-        for (int i = 0; i < kbsArray.length; i++) {
-        }
-        kbsArray[0] = new KBS("Ctrl + X", "bold", "asdfasfd");
-        kbsArray[1] = new KBS("Ctrl + 2", "cut", "asdfasd");
         this.setOrientation(VERTICAL);
         this.setPadding(new Insets(5, 5, 5, 5));
         this.setVgap(5);
         this.setStyle("-fx-border-color: black");
         this.setAlignment(BOTTOM_RIGHT);
-        this.getChildren().addAll(kbsArray[0], kbsArray[1]);
-        kbsArray[0].shortcut = new Text("LOL");
-        System.out.println(this.getKBSbyFunction("bold"));
-        KBS k = (KBS)this.getKBSbyFunction("bold");
-        k.KBSused();
+        this.getChildren().addAll(
+                new KBS("Ctrl + B", "bold", "org/fxmisc/richtext/demo/richtext/bold.png"),
+                new KBS("Ctrl + I", "italic", "org/fxmisc/richtext/demo/richtext/italic.png"),
+                new KBS("Ctrl + Fuck", "strikethrough", "org/fxmisc/richtext/demo/richtext/strikethrough.png"),
+                new KBS("Ctrl + Fuck", "underline", "org/fxmisc/richtext/demo/richtext/underline.png"),
+                new KBS("Ctrl + Fuck", "alignRight", "org/fxmisc/richtext/demo/richtext/align-right.png"),
+                new KBS("Ctrl + Fuck", "alignLeft", "org/fxmisc/richtext/demo/richtext/align-left.png"),
+                new KBS("Ctrl + Fuck", "alignCenter", "org/fxmisc/richtext/demo/richtext/align-center.png"),
+                new KBS("Ctrl + Fuck", "alignJustify", "org/fxmisc/richtext/demo/richtext/align-justify.png")
+                //new KBS("Ctrl + Fuck", "image", "asdfasfd")
+        );
+        this.getKBSbyFunction("bold").setVisible(true); // TODO 123 : Kristinn will MAKE A FUNCTION FOR THIS INSIDE KBS, THAT TOGGLES THESE TWO FUNCTION ()
+        this.getKBSbyFunction("bold").setManaged(true);
+        this.getKBSbyFunction("italic").setVisible(true); // TODO 123 : MAKE A FUNCTION FOR THIS INSIDE KBS, THAT TOGGLES THESE TWO FUNCTION ()
+        this.getKBSbyFunction("italic").setManaged(true);
     }
 
     void AddButtonOrFunctionAsKBS(Button buttonObjectToMaybeReturn,
@@ -41,17 +46,17 @@ public class KBSManager extends FlowPane {
                                   String ToolbarImage) {
     }
 
-    ;
 
-    private Node getKBSbyFunction(Object data) {
+    public KBS getKBSbyFunction(Object data) {
         for (Node n : this.getChildren()) {
             if (data.equals(n.getUserData())) {
-                return n;
+                return (KBS) n;
             }
         }
         return null;
+    }
 
-    };
+    ;
 }
 //    void getKBS(String functionality) {
 //        ObservableList<Node> workingCollection = FXCollections.observableArrayList(
