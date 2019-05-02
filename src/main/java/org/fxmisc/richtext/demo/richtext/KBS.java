@@ -15,6 +15,8 @@ import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.util.Duration;
+import com.fxexperience.javafx.animation.*;
+
 
 public class KBS extends HBox {
     private String oprSystem;
@@ -32,6 +34,8 @@ public class KBS extends HBox {
     Text shortcut;
 
     KBS() {
+        this.setVisible(false);
+        this.setManaged(false);
     }
     KBS(String shortcut, String iconPath) {
 
@@ -61,6 +65,7 @@ public class KBS extends HBox {
     }
     HBox content;
     KBS(String shortcut, String functionality, String iconPath) {
+        this();
         // initial rectangle
         this.setUserData(functionality);
         this.setId(functionality);
@@ -132,8 +137,22 @@ public class KBS extends HBox {
 
         this.backgroundRect.setFill(lgColor);
     }
+// TODO 123: DO IT HERE
+    void setVisibility(){
 
+    }
 
+    void anim() {
+        FadeInDownBigTransition Anim = new FadeInDownBigTransition(this);
+//                Anim.setOnFinished(new EventHandler<ActionEvent>() {
+//                    @Override
+//                    public void handle(ActionEvent event) {
+//                        new TadaTransition(OUR).play();
+//                    }
+//                });
+//                Anim.play();
+//
+    }
     public FadeTransition fade(double opacityEnd, double time) {
 
         double opacityStart = this.opacity;

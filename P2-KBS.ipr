@@ -126,6 +126,13 @@
     <mapping directory="$PROJECT_DIR$" vcs="Git" />
   </component>
   <component name="libraryTable">
+    <library name="FXExperience">
+      <CLASSES>
+        <root url="jar://$PROJECT_DIR$/../FXExperience.jar!/" />
+      </CLASSES>
+      <JAVADOC />
+      <SOURCES />
+    </library>
     <library name="lib">
       <CLASSES>
         <root url="jar://$PROJECT_DIR$/lib/undofx-2.1.0.jar!/" />
