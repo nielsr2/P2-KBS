@@ -113,9 +113,21 @@ public class KBS extends HBox {
     /**
      * methods for each gradient color gradient
      */
-    //    TODO 1
-    public void setColor(Color color1, Color color2) {
-        Stop[] stopsColor = new Stop[]{new Stop(0, color1), new Stop(1, color2)};
+
+    //Function for setting color and setting linear gradient
+    public void setColor(Color colorLeft, Color colorRight) {
+        Stop[] stopsColor = new Stop[]{new Stop(0, colorRight), new Stop(1, colorLeft)};
+        LinearGradient lgColor = new LinearGradient(1, 0, 0, 0, true, CycleMethod.NO_CYCLE, stopsColor);
+
+        this.backgroundRect.setFill(lgColor);
+    }
+
+    //Function for setting color with linear gradient and setting opacity
+    public void setColor(Color color, double opacity) {
+        Color colorLeft = new Color(color.getRed(), color.getGreen(), color.getBlue(), opacity/2);
+        Color colorRight = new Color(color.getRed(), color.getGreen(), color.getBlue(), opacity);
+
+        Stop[] stopsColor = new Stop[]{new Stop(0, colorRight), new Stop(1, colorLeft)};
         LinearGradient lgColor = new LinearGradient(1, 0, 0, 0, true, CycleMethod.NO_CYCLE, stopsColor);
 
         this.backgroundRect.setFill(lgColor);
