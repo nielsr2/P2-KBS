@@ -26,8 +26,15 @@ public class KBSManager extends FlowPane {
         this.setAlignment(BOTTOM_RIGHT);
         this.getChildren().addAll(
                 new KBS("Ctrl + X", "bold", "asdfasfd"),
-                new KBS("Ctrl + Fuck", "fuck", "asdfasfd")
-        );
+                new KBS("Ctrl + Fuck", "italic", "asdfasfd"),
+                new KBS("Ctrl + Fuck", "strikethrough", "asdfasfd"),
+                new KBS("Ctrl + Fuck", "underline", "asdfasfd"),
+                new KBS("Ctrl + Fuck", "alignRight", "asdfasfd"),
+                new KBS("Ctrl + Fuck", "alignLeft", "asdfasfd"),
+                new KBS("Ctrl + Fuck", "alignCenter", "asdfasfd"),
+                new KBS("Ctrl + Fuck", "alignJustify", "asdfasfd"),
+                new KBS("Ctrl + Fuck", "image", "asdfasfd")
+                );
         this.getKBSbyFunction("bold").shortcut = new Text("LOL");
         System.out.println(this.getKBSbyFunction("bold"));
 //        KBS k = (KBS)this.getKBSbyFunction("bold");
@@ -44,11 +51,13 @@ public class KBSManager extends FlowPane {
     public KBS getKBSbyFunction(Object data) {
         for (Node n : this.getChildren()) {
             if (data.equals(n.getUserData())) {
-                return (KBS)n;
+                return (KBS) n;
             }
         }
         return null;
-    };
+    }
+
+    ;
 }
 //    void getKBS(String functionality) {
 //        ObservableList<Node> workingCollection = FXCollections.observableArrayList(
