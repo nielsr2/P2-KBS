@@ -34,11 +34,7 @@ public class KBSManager extends FlowPane {
                 new KBS("Ctrl + Fuck", "alignCenter", "align-center.png"),
                 new KBS("Ctrl + Fuck", "alignJustify", "align-justify.png"),
                 new KBS("Ctrl + Fuck", "image", "asdfasfd")
-                );
-        this.getKBSbyFunction("bold").shortcut = new Text("LOL");
-        System.out.println(this.getKBSbyFunction("bold"));
-//        KBS k = (KBS)this.getKBSbyFunction("bold");
-//        k.KBSused();
+        );
         this.getKBSbyFunction("bold").setVisible(true); // TODO 123 : MAKE A FUNCTION FOR THIS INSIDE KBS, THAT TOGGLES THESE TWO FUNCTION ()
         this.getKBSbyFunction("bold").setManaged(true);
     }
@@ -48,7 +44,6 @@ public class KBSManager extends FlowPane {
                                   String ToolbarImage) {
     }
 
-    ;
 
     public KBS getKBSbyFunction(Object data) {
         for (Node n : this.getChildren()) {
