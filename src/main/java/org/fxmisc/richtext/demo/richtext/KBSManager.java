@@ -33,7 +33,7 @@ public class KBSManager extends FlowPane {
         kbsArray[0].shortcut = new Text("LOL");
         System.out.println(this.getKBSbyFunction("bold"));
         KBS k = (KBS)this.getKBSbyFunction("bold");
-        k.KBSused();
+//        k.KBSused();
     }
 
     void AddButtonOrFunctionAsKBS(Button buttonObjectToMaybeReturn,
@@ -43,10 +43,10 @@ public class KBSManager extends FlowPane {
 
     ;
 
-    private Node getKBSbyFunction(Object data) {
+    public KBS getKBSbyFunction(Object data) {
         for (Node n : this.getChildren()) {
             if (data.equals(n.getUserData())) {
-                return n;
+                return (KBS)n;
             }
         }
         return null;

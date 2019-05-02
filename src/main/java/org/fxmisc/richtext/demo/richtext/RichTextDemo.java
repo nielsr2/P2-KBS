@@ -105,7 +105,8 @@ public class RichTextDemo extends Application {
 //        boldBtn
         KeyCombination kc = new KeyCodeCombination(KeyCode.B, KeyCombination.SHORTCUT_DOWN);
         Mnemonic mn = new Mnemonic(boldBtn, kc);
-        Runnable rn = () -> this.toggleBold();
+        Runnable rn = () -> this.ourToggleBold();
+
 //      *********************************************************************************************************
         // TODO DO THE SAME FOR THE STUFF BELOW: SEE ANOTHER TODO FOR WHERE YOU put it
 
@@ -320,8 +321,13 @@ public class RichTextDemo extends Application {
     }
 
 KBSManager km = new KBSManager();
-
-
+    //      ************************************************************************************
+//     OUR FUNCTIONS TO BE CALLED;
+    void ourToggleBold(){
+        this.toggleBold();
+        km.getKBSbyFunction("bold").KBSused();
+    }
+    //      ************************************************************************************
     private Node createNode(StyledSegment<Either<String, LinkedImage>, TextStyle> seg,
                             BiConsumer<? super TextExt, TextStyle> applyStyle) {
         return seg.getSegment().unify(
