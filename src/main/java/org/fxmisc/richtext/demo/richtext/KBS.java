@@ -32,6 +32,8 @@ public class KBS extends HBox {
     Text shortcut;
 
     KBS() {
+        this.setVisible(false);
+        this.setManaged(false);
     }
     KBS(String shortcut, String iconPath) {
 
@@ -61,6 +63,7 @@ public class KBS extends HBox {
     }
     HBox content;
     KBS(String shortcut, String functionality, String iconPath) {
+        this();
         // initial rectangle
         this.setUserData(functionality);
         this.setId(functionality);
@@ -132,7 +135,10 @@ public class KBS extends HBox {
 
         this.backgroundRect.setFill(lgColor);
     }
+// TODO 123: DO IT HERE
+    void toggleVisibility(){
 
+    }
 
     public FadeTransition fade(double opacityEnd, double time) {
 
