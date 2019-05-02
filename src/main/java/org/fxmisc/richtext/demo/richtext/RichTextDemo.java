@@ -9,10 +9,7 @@ package org.fxmisc.richtext.demo.richtext;
 import javafx.application.Application;
 import javafx.beans.binding.BooleanBinding;
 import javafx.collections.FXCollections;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.geometry.Orientation;
-import javafx.scene.Group;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
@@ -20,6 +17,7 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyCodeCombination;
 import javafx.scene.input.KeyCombination;
 import javafx.scene.input.Mnemonic;
+import javafx.scene.layout.Pane;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
@@ -42,7 +40,8 @@ import java.util.Optional;
 import java.util.function.BiConsumer;
 import java.util.function.Function;
 
-import static org.fxmisc.richtext.model.TwoDimensional.Bias.*;
+import static org.fxmisc.richtext.model.TwoDimensional.Bias.Backward;
+import static org.fxmisc.richtext.model.TwoDimensional.Bias.Forward;
 
 public class RichTextDemo extends Application {
 
@@ -79,6 +78,8 @@ public class RichTextDemo extends Application {
 
     private final SuspendableNo updatingToolbar = new SuspendableNo();
 
+    OverlayPane overlayPane = new OverlayPane();
+
     @Override
     public void start(Stage primaryStage) {
         mainStage = primaryStage;
@@ -104,7 +105,7 @@ public class RichTextDemo extends Application {
 //     BOLD BUTTON  *********************************************************************************************************           BOLD BUTTON
         Button boldBtn = createButton("bold", this::toggleBold, "Bold");
         boldBtn.setOnMouseClicked((event) -> { // TODO MAKE MORE OF THESE FOR EACH BUTTONS
-            km.getKBSbyFunction("bold").toolbarPressed();
+            overlayPane.km.getKBSbyFunction("bold").toolbarPressed();
         });
 //        boldBtn
         KeyCombination kcBold = new KeyCodeCombination(KeyCode.B, KeyCombination.SHORTCUT_DOWN);
@@ -343,13 +344,16 @@ public class RichTextDemo extends Application {
 
         VirtualizedScrollPane<GenericStyledArea<ParStyle, Either<String, LinkedImage>, TextStyle>> vsPane = new VirtualizedScrollPane<>(area);
         VBox vbox = new VBox();
+        vbox.setPrefSize(Settings.WINDOW_WIDTH, Settings.WINDOW_HEIGHT);
         VBox.setVgrow(vsPane, Priority.ALWAYS);
         vbox.getChildren().addAll(toolBar1, toolBar2, vsPane);
 
 //        DOING SOME ADDING WPA VBOX & KBMANAGER TO A GROUP
-        Group root = new Group();
-        root.getChildren().addAll(km, vbox);
-        Scene scene = new Scene(root, 600, 400);
+        Pane root = new Pane();
+        root.setPrefSize(Settings.WINDOW_WIDTH, Settings.WINDOW_HEIGHT);
+        root.getChildren().addAll(vbox, overlayPane);
+
+        Scene scene = new Scene(root, Settings.WINDOW_WIDTH, Settings.WINDOW_HEIGHT);
         scene.getStylesheets().add(RichTextDemo.class.getResource("rich-text.css").toExternalForm());
 
 //      TODO  OH, MNEMONICS BEING ADDed HERE.
@@ -380,10 +384,8 @@ public class RichTextDemo extends Application {
         primaryStage.show();
     }
 
-    KBSManager km = new KBSManager();
-
     void ourBoldFunction() { // TODO MAKE MORE OF DIS
-        km.getKBSbyFunction("bold").shortcutUsed();
+        overlayPane.km.getKBSbyFunction("bold").shortcutUsed();
         this.toggleBold();
     }
 

@@ -1,29 +1,25 @@
 package org.fxmisc.richtext.demo.richtext;
 
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
-import javafx.scene.Group;
-import javafx.scene.Node;
-import javafx.scene.layout.FlowPane;
-
-
 import javafx.geometry.Insets;
-import javafx.scene.text.Text;
+import javafx.scene.Node;
+import javafx.scene.layout.VBox;
 
 import java.awt.*;
-import java.util.ArrayList;
 
-import static javafx.geometry.Orientation.VERTICAL;
-import static javafx.geometry.Pos.BOTTOM_RIGHT;
+import static javafx.geometry.Pos.BOTTOM_CENTER;
 
 
-public class KBSManager extends FlowPane {
+public class KBSManager extends VBox {
     KBSManager() {
-        this.setOrientation(VERTICAL);
+        setMaxSize(Settings.WINDOW_WIDTH, Settings.WINDOW_HEIGHT);
+
+
+        //this.setOrientation(VERTICAL);
         this.setPadding(new Insets(5, 5, 5, 5));
-        this.setVgap(5);
+        this.setSpacing(5);
+        //this.set(5);
         this.setStyle("-fx-border-color: black");
-        this.setAlignment(BOTTOM_RIGHT);
+        this.setAlignment(BOTTOM_CENTER);
         this.getChildren().addAll(
                 new KBS("Ctrl + B", "bold", "org/fxmisc/richtext/demo/richtext/bold.png"),
                 new KBS("Ctrl + I", "italic", "org/fxmisc/richtext/demo/richtext/italic.png"),
