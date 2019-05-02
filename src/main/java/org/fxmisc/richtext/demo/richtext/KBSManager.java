@@ -18,22 +18,20 @@ import static javafx.geometry.Pos.BOTTOM_RIGHT;
 
 
 public class KBSManager extends FlowPane {
-    KBS[] kbsArray = new KBS[20];
     KBSManager() {
-        for (int i = 0; i < kbsArray.length; i++) {
-        }
-        kbsArray[0] = new KBS("Ctrl + X", "bold", "asdfasfd");
-        kbsArray[1] = new KBS("Ctrl + 2", "cut", "asdfasd");
         this.setOrientation(VERTICAL);
         this.setPadding(new Insets(5, 5, 5, 5));
         this.setVgap(5);
         this.setStyle("-fx-border-color: black");
         this.setAlignment(BOTTOM_RIGHT);
-        this.getChildren().addAll(kbsArray[0], kbsArray[1]);
-        kbsArray[0].shortcut = new Text("LOL");
+        this.getChildren().addAll(
+                new KBS("Ctrl + X", "bold", "asdfasfd"),
+                new KBS("Ctrl + Fuck", "fuck", "asdfasfd")
+        );
+        this.getKBSbyFunction("bold").shortcut = new Text("LOL");
         System.out.println(this.getKBSbyFunction("bold"));
-        KBS k = (KBS)this.getKBSbyFunction("bold");
-        k.KBSused();
+//        KBS k = (KBS)this.getKBSbyFunction("bold");
+//        k.KBSused();
     }
 
     void AddButtonOrFunctionAsKBS(Button buttonObjectToMaybeReturn,
@@ -43,14 +41,13 @@ public class KBSManager extends FlowPane {
 
     ;
 
-    private Node getKBSbyFunction(Object data) {
+    public KBS getKBSbyFunction(Object data) {
         for (Node n : this.getChildren()) {
             if (data.equals(n.getUserData())) {
-                return n;
+                return (KBS)n;
             }
         }
         return null;
-
     };
 }
 //    void getKBS(String functionality) {
