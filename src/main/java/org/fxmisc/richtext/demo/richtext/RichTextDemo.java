@@ -9,6 +9,8 @@ package org.fxmisc.richtext.demo.richtext;
 import javafx.application.Application;
 import javafx.beans.binding.BooleanBinding;
 import javafx.collections.FXCollections;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.geometry.Orientation;
 import javafx.scene.Group;
 import javafx.scene.Node;
@@ -99,9 +101,11 @@ public class RichTextDemo extends Application {
         Button pasteBtn = createButton("paste", area::paste, "Paste");
 
 
-
 //     BOLD BUTTON  *********************************************************************************************************           BOLD BUTTON
         Button boldBtn = createButton("bold", this::toggleBold, "Bold");
+        boldBtn.setOnMouseClicked((event) -> { // TODO MAKE MORE OF THESE FOR EACH BUTTONS
+            km.getKBSbyFunction("bold").toolbarPressed();
+        });
 //        boldBtn
         KeyCombination kcBold = new KeyCodeCombination(KeyCode.B, KeyCombination.SHORTCUT_DOWN);
         Mnemonic mnBold = new Mnemonic(boldBtn, kcBold);
@@ -376,9 +380,9 @@ public class RichTextDemo extends Application {
         primaryStage.show();
     }
 
-KBSManager km = new KBSManager();
+    KBSManager km = new KBSManager();
 
-    void ourBoldFunction(){
+    void ourBoldFunction() { // TODO MAKE MORE OF DIS
         km.getKBSbyFunction("bold").shortcutUsed();
         this.toggleBold();
     }
