@@ -9,6 +9,8 @@ package org.fxmisc.richtext.demo.richtext;
 import javafx.application.Application;
 import javafx.beans.binding.BooleanBinding;
 import javafx.collections.FXCollections;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.geometry.Orientation;
 import javafx.scene.Group;
 import javafx.scene.Node;
@@ -99,9 +101,11 @@ public class RichTextDemo extends Application {
         Button pasteBtn = createButton("paste", area::paste, "Paste");
 
 
-
 //     BOLD BUTTON  *********************************************************************************************************           BOLD BUTTON
         Button boldBtn = createButton("bold", this::toggleBold, "Bold");
+        boldBtn.setOnMouseClicked((event) -> { // TODO MAKE MORE OF THESE FOR EACH BUTTONS
+            km.getKBSbyFunction("bold").toolbarPressed();
+        });
 //        boldBtn
         KeyCombination kcBold = new KeyCodeCombination(KeyCode.B, KeyCombination.SHORTCUT_DOWN);
         Mnemonic mnBold = new Mnemonic(boldBtn, kcBold);
@@ -115,16 +119,19 @@ public class RichTextDemo extends Application {
         KeyCombination kcItalic = new KeyCodeCombination(KeyCode.I, KeyCombination.SHORTCUT_DOWN);
         Mnemonic mnItalic = new Mnemonic(italicBtn, kcItalic);
         Runnable rnItalic = () -> this.toggleItalic();
+
         ////////////////// UNDERLINE BUTTON /////////////////////////
         Button underlineBtn = createButton("underline", this::toggleUnderline, "Underline");
         KeyCombination kcUnderline = new KeyCodeCombination(KeyCode.U, KeyCombination.SHORTCUT_DOWN);
         Mnemonic mnUnderline = new Mnemonic(underlineBtn, kcUnderline);
         Runnable rnUnderline = () -> this.toggleUnderline();
+
         ///////////////// STRIKE THROUGH BUTTON ////////////////////
         Button strikeBtn = createButton("strikethrough", this::toggleStrikethrough, "Strike Trough");
         KeyCombination kcStrike = new KeyCodeCombination(KeyCode.X, KeyCombination.SHORTCUT_DOWN, KeyCombination.SHIFT_DOWN);
         Mnemonic mnStrike = new Mnemonic(strikeBtn, kcStrike);
         Runnable rnStrike = () -> this.toggleStrikethrough();
+
         //////////////// INSERT IMAGE BUTTON //////////////////////
         Button insertImageBtn = createButton("insertimage", this::insertImage, "Insert Image");
         KeyCombination kcInsertImage = new KeyCodeCombination(KeyCode.N, KeyCombination.SHORTCUT_DOWN, KeyCombination.SHIFT_DOWN);
@@ -132,10 +139,32 @@ public class RichTextDemo extends Application {
         Runnable rnInsertImage = () -> this.insertImage();
 
         ToggleGroup alignmentGrp = new ToggleGroup();
+
+        /////////////// ALIGN LEFT BUTTON ////////////////////////
         ToggleButton alignLeftBtn = createToggleButton(alignmentGrp, "align-left", this::alignLeft, "Align left");
+        KeyCombination kcAlignLeft = new KeyCodeCombination(KeyCode.OPEN_BRACKET, KeyCombination.SHORTCUT_DOWN);
+        Mnemonic mnAlignLeft = new Mnemonic(alignLeftBtn, kcAlignLeft);
+        Runnable rnAlignLeft = () -> this.alignLeft();
+
+        ////////////// ALIGN CENTER BUTTON //////////////////////
         ToggleButton alignCenterBtn = createToggleButton(alignmentGrp, "align-center", this::alignCenter, "Align center");
+        KeyCombination kcAlignCenter = new KeyCodeCombination(KeyCode.BACK_SLASH, KeyCombination.SHORTCUT_DOWN);
+        Mnemonic mnAlignCenter = new Mnemonic(alignCenterBtn, kcAlignCenter);
+        Runnable rnAlignCenter = () -> this.alignCenter();
+
+        ///////////// ALIGN RIGHT BUTTON ///////////////////////
         ToggleButton alignRightBtn = createToggleButton(alignmentGrp, "align-right", this::alignRight, "Align right");
+        KeyCombination kcAlignRight = new KeyCodeCombination(KeyCode.CLOSE_BRACKET, KeyCombination.SHORTCUT_DOWN);
+        Mnemonic mnAlignRight = new Mnemonic(alignRightBtn, kcAlignLeft);
+        Runnable rnAlignRight = () -> this.alignRight();
+
+        //////////// ALIGN JUSTIFY /////////////////////////
         ToggleButton alignJustifyBtn = createToggleButton(alignmentGrp, "align-justify", this::alignJustify, "Justify");
+        KeyCombination kcAlignJustify = new KeyCodeCombination(KeyCode.BACK_SLASH, KeyCombination.SHORTCUT_DOWN, KeyCombination.ALT_DOWN);
+        Mnemonic mnAlignJustify = new Mnemonic(alignJustifyBtn, kcAlignJustify);
+        Runnable rnAlignJustify = () -> this.alignJustify();
+
+
         ColorPicker paragraphBackgroundPicker = new ColorPicker();
 
 
@@ -333,6 +362,15 @@ public class RichTextDemo extends Application {
         scene.getAccelerators().put(kcUnderline, rnUnderline);
         scene.addMnemonic(mnStrike);
         scene.getAccelerators().put(kcStrike, rnStrike);
+        scene.addMnemonic(mnAlignLeft);
+        scene.getAccelerators().put(kcAlignLeft, rnAlignLeft);
+        scene.addMnemonic(mnAlignCenter);
+        scene.getAccelerators().put(kcAlignCenter, rnAlignCenter);
+        scene.addMnemonic(mnAlignRight);
+        scene.getAccelerators().put(kcAlignRight, rnAlignRight);
+        scene.addMnemonic(mnAlignJustify);
+        scene.getAccelerators().put(kcAlignJustify, rnAlignJustify);
+
 
 //      ************************************************************************************
 //        scene
@@ -342,9 +380,9 @@ public class RichTextDemo extends Application {
         primaryStage.show();
     }
 
-KBSManager km = new KBSManager();
+    KBSManager km = new KBSManager();
 
-    void ourBoldFunction(){
+    void ourBoldFunction() { // TODO MAKE MORE OF DIS
         km.getKBSbyFunction("bold").shortcutUsed();
         this.toggleBold();
     }
