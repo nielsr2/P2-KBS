@@ -31,25 +31,8 @@ public class KBS extends HBox {
     ImageView icon;
     Text shortcut;
 
-    /**
-     * colors for the gradient
-     */
-    // http://www.java2s.com/Tutorials/Java/JavaFX/0110__JavaFX_Gradient_Color.htm
-
-    Color grColorGrey1 = new Color(0.5, 0.5, 0.5, 0.30);
-    Color grColorGrey2 = new Color(0.7, 0.7, 0.7, 0.15);
-
-    Color grColorRed1 = new Color(0.5, 0, 0, 0.70);
-    Color grColorRed2 = new Color(0.5, 0, 0, 0.30);
-
-    Color grColorYellow1 = new Color(0.9, 0.7, 0, 0.70);
-    Color grColorYellow2 = new Color(0.9, 0.7, 0, 0.30);
-
-    Color grColorGreen1 = new Color(0.2, 0.6, 0, 0.70);
-    Color grColorGreen2 = new Color(0.2, 0.6, 0, 0.30);
-
-//    TODO 1 ARE ALL THESE COLORS AND FUNCTIONS NECESSARY? WHAT ABOUT ONE FUNCTION WITH PARAMS FOR COLOR AND OPACITY?
-
+    KBS() {
+    }
     KBS(String shortcut, String iconPath) {
 
         // initial rectangle
@@ -84,13 +67,13 @@ public class KBS extends HBox {
         this.functionality = functionality;
         backgroundRect = new Rectangle(170, 50, Color.LIGHTGREY);
 
-        content = new HBox(5);
-        content.setPadding(new Insets(5, 5, 5, 5));
+        this.content = new HBox(5);
+        this.content.setPadding(new Insets(5, 5, 5, 5));
 
         this.shortcut = new Text(shortcut);
         this.shortcut.setFont(new Font(30));
 
-        content.getChildren().addAll( this.shortcut);
+        content.getChildren().addAll(this.shortcut);
 
 
         this.getChildren().addAll(backgroundRect, content);
@@ -99,13 +82,25 @@ public class KBS extends HBox {
             System.out.println("test");
         });
     }
-    KBS(){}
+    /**
+     * colors for the gradient
+     */
+    // http://www.java2s.com/Tutorials/Java/JavaFX/0110__JavaFX_Gradient_Color.htm
+
+    Color grColorGrey1 = new Color(0.5, 0.5, 0.5, 0.30);
+    Color grColorGrey2 = new Color(0.7, 0.7, 0.7, 0.15);
+    Color grColorRed1 = new Color(0.5, 0, 0, 0.70);
+    Color grColorRed2 = new Color(0.5, 0, 0, 0.30);
+    Color grColorYellow1 = new Color(0.9, 0.7, 0, 0.70);
+    Color grColorYellow2 = new Color(0.9, 0.7, 0, 0.30);
+    Color grColorGreen1 = new Color(0.2, 0.6, 0, 0.70);
+    Color grColorGreen2 = new Color(0.2, 0.6, 0, 0.30);
 // TODO CAN WE MAYBE JUST CALL THE FUNCTION USE FOR THIS PARAM, INSIDE KBSMANAGER
 //    KBS(String oprSystem) {
 //        this.oprSystem = oprSystem;
 //    }
 
-    public void KBSused() {
+    public void shortcutUsed() {
         this.kbsTimesUsed++;
         this.tbTimesClicked++;
         System.out.println(this.kbsTimesUsed + " " + this.tbTimesClicked);
@@ -115,14 +110,12 @@ public class KBS extends HBox {
      * methods for each gradient color gradient
      */
     //    TODO 1
-
     public void setColor(Color color1, Color color2) {
         Stop[] stopsColor = new Stop[]{new Stop(0, color1), new Stop(1, color2)};
         LinearGradient lgColor = new LinearGradient(1, 0, 0, 0, true, CycleMethod.NO_CYCLE, stopsColor);
 
         this.backgroundRect.setFill(lgColor);
     }
-
 
 
     public FadeTransition fade(double opacityEnd, double time) {
