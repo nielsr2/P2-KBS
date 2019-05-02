@@ -103,18 +103,34 @@ public class RichTextDemo extends Application {
 //     BOLD BUTTON  *********************************************************************************************************           BOLD BUTTON
         Button boldBtn = createButton("bold", this::toggleBold, "Bold");
 //        boldBtn
-        KeyCombination kc = new KeyCodeCombination(KeyCode.B, KeyCombination.SHORTCUT_DOWN);
-        Mnemonic mn = new Mnemonic(boldBtn, kc);
-        Runnable rn = () -> this.toggleBold();
+        KeyCombination kcBold = new KeyCodeCombination(KeyCode.B, KeyCombination.SHORTCUT_DOWN);
+        Mnemonic mnBold = new Mnemonic(boldBtn, kcBold);
+        Runnable rnBold = () -> this.toggleBold();
 //      *********************************************************************************************************
         // TODO DO THE SAME FOR THE STUFF BELOW: SEE ANOTHER TODO FOR WHERE YOU put it
 
 
-
+        ///////////////// ITALIC BUTTON /////////////////////////////
         Button italicBtn = createButton("italic", this::toggleItalic, "Italic");
+        KeyCombination kcItalic = new KeyCodeCombination(KeyCode.I, KeyCombination.SHORTCUT_DOWN);
+        Mnemonic mnItalic = new Mnemonic(italicBtn, kcItalic);
+        Runnable rnItalic = () -> this.toggleItalic();
+        ////////////////// UNDERLINE BUTTON /////////////////////////
         Button underlineBtn = createButton("underline", this::toggleUnderline, "Underline");
+        KeyCombination kcUnderline = new KeyCodeCombination(KeyCode.U, KeyCombination.SHORTCUT_DOWN);
+        Mnemonic mnUnderline = new Mnemonic(underlineBtn, kcUnderline);
+        Runnable rnUnderline = () -> this.toggleUnderline();
+        ///////////////// STRIKE THROUGH BUTTON ////////////////////
         Button strikeBtn = createButton("strikethrough", this::toggleStrikethrough, "Strike Trough");
+        KeyCombination kcStrike = new KeyCodeCombination(KeyCode.X, KeyCombination.SHORTCUT_DOWN, KeyCombination.SHIFT_DOWN);
+        Mnemonic mnStrike = new Mnemonic(strikeBtn, kcStrike);
+        Runnable rnStrike = () -> this.toggleStrikethrough();
+        //////////////// INSERT IMAGE BUTTON //////////////////////
         Button insertImageBtn = createButton("insertimage", this::insertImage, "Insert Image");
+        KeyCombination kcInsertImage = new KeyCodeCombination(KeyCode.N, KeyCombination.SHORTCUT_DOWN, KeyCombination.SHIFT_DOWN);
+        Mnemonic mnInsertImage = new Mnemonic(insertImageBtn, kcInsertImage);
+        Runnable rnInsertImage = () -> this.insertImage();
+
         ToggleGroup alignmentGrp = new ToggleGroup();
         ToggleButton alignLeftBtn = createToggleButton(alignmentGrp, "align-left", this::alignLeft, "Align left");
         ToggleButton alignCenterBtn = createToggleButton(alignmentGrp, "align-center", this::alignCenter, "Align center");
@@ -309,8 +325,15 @@ public class RichTextDemo extends Application {
 
 //      TODO  OH, MNEMONICS BEING ADDed HERE.
 //      ************************************************************************************
-        scene.addMnemonic(mn);
-        scene.getAccelerators().put(kc, rn);
+        scene.addMnemonic(mnBold);
+        scene.getAccelerators().put(kcBold, rnBold);
+        scene.addMnemonic(mnItalic);
+        scene.getAccelerators().put(kcItalic, rnItalic);
+        scene.addMnemonic(mnUnderline);
+        scene.getAccelerators().put(kcUnderline, rnUnderline);
+        scene.addMnemonic(mnStrike);
+        scene.getAccelerators().put(kcStrike, rnStrike);
+
 //      ************************************************************************************
 //        scene
         primaryStage.setScene(scene);
