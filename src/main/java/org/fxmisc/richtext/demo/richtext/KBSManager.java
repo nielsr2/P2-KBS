@@ -25,14 +25,14 @@ public class KBSManager extends FlowPane {
         this.setStyle("-fx-border-color: black");
         this.setAlignment(BOTTOM_RIGHT);
         this.getChildren().addAll(
-                new KBS("Ctrl + X", "bold", "asdfasfd"),
-                new KBS("Ctrl + Fuck", "italic", "asdfasfd"),
-                new KBS("Ctrl + Fuck", "strikethrough", "asdfasfd"),
-                new KBS("Ctrl + Fuck", "underline", "asdfasfd"),
-                new KBS("Ctrl + Fuck", "alignRight", "asdfasfd"),
-                new KBS("Ctrl + Fuck", "alignLeft", "asdfasfd"),
-                new KBS("Ctrl + Fuck", "alignCenter", "asdfasfd"),
-                new KBS("Ctrl + Fuck", "alignJustify", "asdfasfd"),
+                new KBS("Ctrl + B", "bold", "bold.png"),
+                new KBS("Ctrl + Fuck", "italic", "italic.png"),
+                new KBS("Ctrl + Fuck", "strikethrough", "strikethrough.png"),
+                new KBS("Ctrl + Fuck", "underline", "underline.png"),
+                new KBS("Ctrl + Fuck", "alignRight", "align-right.png"),
+                new KBS("Ctrl + Fuck", "alignLeft", "align-left.png"),
+                new KBS("Ctrl + Fuck", "alignCenter", "align-center.png"),
+                new KBS("Ctrl + Fuck", "alignJustify", "align-justify.png"),
                 new KBS("Ctrl + Fuck", "image", "asdfasfd")
                 );
         this.getKBSbyFunction("bold").shortcut = new Text("LOL");
