@@ -102,8 +102,12 @@ public class KBS extends HBox {
 
     public void shortcutUsed() {
         this.kbsTimesUsed++;
+
+        System.out.println(this.functionality + " KBS used : " + this.kbsTimesUsed );
+    }
+    public void toolbarPressed() {
         this.tbTimesClicked++;
-        System.out.println(this.kbsTimesUsed + " " + this.tbTimesClicked);
+        System.out.println(this.functionality + " toolbar used : " + this.tbTimesClicked );
     }
 
     /**
