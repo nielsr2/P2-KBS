@@ -138,12 +138,29 @@ public class RichTextDemo extends Application {
 
         /////////////// ALIGN LEFT BUTTON ////////////////////////
         ToggleButton alignLeftBtn = createToggleButton(alignmentGrp, "align-left", this::alignLeft, "Align left");
-        KeyCombination kcAlignLeft = new KeyCodeCombination(KeyCode., KeyCombination.SHORTCUT_DOWN);
-        Mnemonic mnBold = new Mnemonic(boldBtn, kcBold);
-        Runnable rnBold = () -> this.toggleBold();
+        KeyCombination kcAlignLeft = new KeyCodeCombination(KeyCode.OPEN_BRACKET, KeyCombination.SHORTCUT_DOWN);
+        Mnemonic mnAlignLeft = new Mnemonic(alignLeftBtn, kcAlignLeft);
+        Runnable rnAlignLeft = () -> this.alignLeft();
+
+        ////////////// ALIGN CENTER BUTTON //////////////////////
         ToggleButton alignCenterBtn = createToggleButton(alignmentGrp, "align-center", this::alignCenter, "Align center");
+        KeyCombination kcAlignCenter = new KeyCodeCombination(KeyCode.BACK_SLASH, KeyCombination.SHORTCUT_DOWN);
+        Mnemonic mnAlignCenter = new Mnemonic(alignCenterBtn, kcAlignCenter);
+        Runnable rnAlignCenter = () -> this.alignCenter();
+
+        ///////////// ALIGN RIGHT BUTTON ///////////////////////
         ToggleButton alignRightBtn = createToggleButton(alignmentGrp, "align-right", this::alignRight, "Align right");
+        KeyCombination kcAlignRight = new KeyCodeCombination(KeyCode.CLOSE_BRACKET, KeyCombination.SHORTCUT_DOWN);
+        Mnemonic mnAlignRight = new Mnemonic(alignRightBtn, kcAlignLeft);
+        Runnable rnAlignRight = () -> this.alignRight();
+
+        //////////// ALIGN JUSTIFY /////////////////////////
         ToggleButton alignJustifyBtn = createToggleButton(alignmentGrp, "align-justify", this::alignJustify, "Justify");
+        KeyCombination kcAlignJustify = new KeyCodeCombination(KeyCode.BACK_SLASH, KeyCombination.SHORTCUT_DOWN, KeyCombination.ALT_DOWN);
+        Mnemonic mnAlignJustify = new Mnemonic(alignJustifyBtn, kcAlignJustify);
+        Runnable rnAlignJustify = () -> this.alignJustify();
+
+
         ColorPicker paragraphBackgroundPicker = new ColorPicker();
 
 
@@ -341,6 +358,15 @@ public class RichTextDemo extends Application {
         scene.getAccelerators().put(kcUnderline, rnUnderline);
         scene.addMnemonic(mnStrike);
         scene.getAccelerators().put(kcStrike, rnStrike);
+        scene.addMnemonic(mnAlignLeft);
+        scene.getAccelerators().put(kcAlignLeft, rnAlignLeft);
+        scene.addMnemonic(mnAlignCenter);
+        scene.getAccelerators().put(kcAlignCenter, rnAlignCenter);
+        scene.addMnemonic(mnAlignRight);
+        scene.getAccelerators().put(kcAlignRight, rnAlignRight);
+        scene.addMnemonic(mnAlignJustify);
+        scene.getAccelerators().put(kcAlignJustify, rnAlignJustify);
+
 
 //      ************************************************************************************
 //        scene
