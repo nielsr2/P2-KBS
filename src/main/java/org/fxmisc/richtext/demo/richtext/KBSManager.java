@@ -39,6 +39,8 @@ public class KBSManager extends FlowPane {
         System.out.println(this.getKBSbyFunction("bold"));
 //        KBS k = (KBS)this.getKBSbyFunction("bold");
 //        k.KBSused();
+        this.getKBSbyFunction("bold").setVisible(true); // TODO 123 : MAKE A FUNCTION FOR THIS INSIDE KBS, THAT TOGGLES THESE TWO FUNCTION ()
+        this.getKBSbyFunction("bold").setManaged(true);
     }
 
     void AddButtonOrFunctionAsKBS(Button buttonObjectToMaybeReturn,
