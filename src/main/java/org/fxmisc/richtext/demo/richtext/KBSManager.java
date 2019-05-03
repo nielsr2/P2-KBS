@@ -4,9 +4,9 @@ import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.scene.Node;
 import javafx.scene.layout.VBox;
+
 import java.awt.*;
 import java.awt.event.MouseEvent;
-
 
 import static javafx.geometry.Pos.BOTTOM_CENTER;
 
@@ -17,6 +17,7 @@ public class KBSManager extends VBox {
     KBSManager() {
         setMaxSize(Settings.WINDOW_WIDTH, Settings.WINDOW_HEIGHT);
 
+
         //this.setOrientation(VERTICAL);
         this.setPadding(new Insets(5, 5, 5, 5));
         this.setSpacing(5);
@@ -24,27 +25,23 @@ public class KBSManager extends VBox {
         this.setStyle("-fx-border-color: black");
         this.setAlignment(BOTTOM_CENTER);
         this.getChildren().addAll(
-
                 new KBS("Ctrl + B", "bold", "org/fxmisc/richtext/demo/richtext/BiconHR.png"),
                 new KBS("Ctrl + I", "italic", "org/fxmisc/richtext/demo/richtext/IiconHR.png"),
-                new KBS("Ctrl + Fuck", "strikethrough", "org/fxmisc/richtext/demo/richtext/SiconHR.png"),
-                new KBS("Ctrl + Fuck", "underline", "org/fxmisc/richtext/demo/richtext/UiconHR.png"),
-                new KBS("Ctrl + Fuck", "alignRight", "org/fxmisc/richtext/demo/richtext/ARiconHR.png"),
-                new KBS("Ctrl + Fuck", "alignLeft", "org/fxmisc/richtext/demo/richtext/ALiconHR.png"),
-                new KBS("Ctrl + Fuck", "alignCenter", "org/fxmisc/richtext/demo/richtext/ACiconHR.png"),
-                new KBS("Ctrl + Fuck", "alignJustify", "org/fxmisc/richtext/demo/richtext/AJiconHR.png")
+                new KBS("Ctrl + U", "underline", "org/fxmisc/richtext/demo/richtext/UiconHR.png"),
+                new KBS("Ctrl + Shift + X", "strikethrough", "org/fxmisc/richtext/demo/richtext/SiconHR.png"),
+                new KBS("Ctrl + Shift + N","insertimage","org/fxmisc/richtext/demo/richtext/insertimage.png" ), //Missing Icon
+                new KBS("Ctrl + {", "align-right", "org/fxmisc/richtext/demo/richtext/ARiconHR.png"),
+                new KBS("Ctrl + |", "align-center", "org/fxmisc/richtext/demo/richtext/ACiconHR.png"),
+                new KBS("Ctrl + }", "align-left", "org/fxmisc/richtext/demo/richtext/ALiconHR.png"),
+                new KBS("Ctrl + Alt + |", "align-justify", "org/fxmisc/richtext/demo/richtext/AJiconHR.png")
                 //new KBS("Ctrl + Fuck", "image", "asdfasfd")
         );
-        this.getKBSbyFunction("bold").setVisible(true); // TODO 123 : Kristinn will MAKE A FUNCTION FOR THIS INSIDE KBS, THAT TOGGLES THESE TWO FUNCTION ()
-        this.getKBSbyFunction("bold").setManaged(true);
-        this.getKBSbyFunction("italic").setVisible(true); // TODO 123 : MAKE A FUNCTION FOR THIS INSIDE KBS, THAT TOGGLES THESE TWO FUNCTION ()
-        this.getKBSbyFunction("italic").setManaged(true);
         this.getKBSbyFunction("bold").anim();
         this.setUpHovers();
 
-        this.getKBSbyFunction("bold").setVisibility(true);
-        this.getKBSbyFunction("italic").setVisibility(true);
-        this.getKBSbyFunction("strikethrough").setVisibility(true);
+        this.getKBSbyFunction("bold").show(true);
+        this.getKBSbyFunction("italic").show(true);
+        this.getKBSbyFunction("strikethrough").show(true);
     }
 
     void AddButtonOrFunctionAsKBS(Button buttonObjectToMaybeReturn,
@@ -69,10 +66,11 @@ public class KBSManager extends VBox {
 //        });
         this.setOnMouseEntered((e -> {
             System.out.println("ENTER");
-            //this.setOpacity();
+            this.setOpacity(1.);                // TODO, CAN WE CALL ANIMATIONS HERE INSTEAD, SO IT'S SMOOTH AND NOT SUDDEN ANIMATION?
         }));
         this.setOnMouseExited((e -> {
             System.out.println("EXIT");
+            this.setOpacity(0.2);
         }));
     }
 //        this.setOnMouseExited(new EventHandler<MouseEvent>
