@@ -4,7 +4,6 @@
     -fx-background-position: center;
     -fx-background-repeat: no-repeat;
 }
-
 .button.loadfile { -fx-background-image: url(loadfile.png); } /*Need Icon*/
 .button.savefile { -fx-background-image: url(savefile.png); } /*Need Icon*/
 .button.undo { -fx-background-image: url(undo.png); } /*Need Icon*/

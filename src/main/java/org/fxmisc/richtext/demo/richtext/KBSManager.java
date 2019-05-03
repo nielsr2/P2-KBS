@@ -32,23 +32,19 @@ public class KBSManager extends VBox {
         this.setStyle("-fx-border-color: black");
         this.setAlignment(BOTTOM_CENTER);
         this.getChildren().addAll(
-                new KBS("Ctrl + B", "bold", "org/fxmisc/richtext/demo/richtext/bold.png"),
-                new KBS("Ctrl + I", "italic", "org/fxmisc/richtext/demo/richtext/italic.png"),
-                new KBS("Ctrl + U", "underline", "org/fxmisc/richtext/demo/richtext/underline.png"),
-                new KBS("Ctrl + Shift + X", "strikethrough", "org/fxmisc/richtext/demo/richtext/strikethrough.png"),
-                new KBS("Ctrl + Shift + N","insertimage","org/fxmisc/richtext/demo/richtext/insertimage.png" ),
-                new KBS("Ctrl + {", "align-right", "org/fxmisc/richtext/demo/richtext/align-right.png"),
-                new KBS("Ctrl + |", "align-center", "org/fxmisc/richtext/demo/richtext/align-center.png"),
-                new KBS("Ctrl + }", "align-left", "org/fxmisc/richtext/demo/richtext/align-left.png"),
-                new KBS("Ctrl + Alt + |", "align-justify", "org/fxmisc/richtext/demo/richtext/align-justify.png")
+                new KBS("Ctrl + B", "bold", "org/fxmisc/richtext/demo/richtext/BiconHR.png"),
+                new KBS("Ctrl + I", "italic", "org/fxmisc/richtext/demo/richtext/IiconHR.png"),
+                new KBS("Ctrl + U", "underline", "org/fxmisc/richtext/demo/richtext/UiconHR.png"),
+                new KBS("Ctrl + Shift + X", "strikethrough", "org/fxmisc/richtext/demo/richtext/SiconHR.png"),
+                new KBS("Ctrl + Shift + N","insertimage","org/fxmisc/richtext/demo/richtext/insertimage.png" ), //Missing Icon
+                new KBS("Ctrl + {", "align-right", "org/fxmisc/richtext/demo/richtext/ARiconHR.png"),
+                new KBS("Ctrl + |", "align-center", "org/fxmisc/richtext/demo/richtext/ACiconHR.png"),
+                new KBS("Ctrl + }", "align-left", "org/fxmisc/richtext/demo/richtext/ALiconHR.png"),
+                new KBS("Ctrl + Alt + |", "align-justify", "org/fxmisc/richtext/demo/richtext/AJiconHR.png")
                 //new KBS("Ctrl + Fuck", "image", "asdfasfd")
         );
         this.getKBSbyFunction("bold").anim();
         this.setUpHovers();
-
-        this.getKBSbyFunction("bold").show(true);
-        this.getKBSbyFunction("italic").show(true);
-        this.getKBSbyFunction("strikethrough").show(true);
     }
 
     void AddButtonOrFunctionAsKBS(Button buttonObjectToMaybeReturn,
