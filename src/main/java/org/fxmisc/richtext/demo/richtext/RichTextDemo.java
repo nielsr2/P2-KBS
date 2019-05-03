@@ -407,7 +407,7 @@ public class RichTextDemo extends Application {
     }
 
     void ourBoldFunction() {
-        System.out.println(this.overlayPane);
+        System.out.println(area.selectionProperty());
         this.overlayPane.giveKM().getKBSbyFunction("bold").shortcutUsed();
         this.toggleBold();
     }
