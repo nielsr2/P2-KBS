@@ -42,9 +42,9 @@ public class KBSManager extends VBox {
         this.getKBSbyFunction("bold").anim();
         this.setUpHovers();
 
-        this.getKBSbyFunction("bold").setVisibility(true);
-        this.getKBSbyFunction("italic").setVisibility(true);
-        this.getKBSbyFunction("strikethrough").setVisibility(true);
+        this.getKBSbyFunction("bold").show(true);
+        this.getKBSbyFunction("italic").show(true);
+        this.getKBSbyFunction("strikethrough").show(true);
     }
 
     void AddButtonOrFunctionAsKBS(Button buttonObjectToMaybeReturn,
