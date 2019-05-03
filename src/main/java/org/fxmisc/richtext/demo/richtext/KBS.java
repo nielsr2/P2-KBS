@@ -89,6 +89,7 @@ public class KBS extends Pane {
         this.setOnMouseMoved(event -> {
             System.out.println("test");
         });
+        this.anim();
     }
     /**
      * colors for the gradient
@@ -141,9 +142,23 @@ public class KBS extends Pane {
         this.backgroundRect.setFill(lgColor);
     }
 
-    void show(boolean show){
-        this.setVisible(show);
-        this.setManaged(show);
+    public void show(){
+        this.setVisible(true);
+        this.setManaged(true);
+    }
+
+    public void hide() {
+        KBS k = this;
+        System.out.println("Hi there! Now I'm hidden!");
+        BounceOutRightTransition Anim = new BounceOutRightTransition(k);
+        Anim.setOnFinished(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                k.setVisible(false);
+                k.setManaged(false);
+            }
+        });
+        Anim.play();
     }
 
     void anim() {               // TODO, Kristitinn will, so hey this is an animation first triggers an animation after this KBS has been clicked, and another animation following the end of the first
@@ -152,15 +167,7 @@ public class KBS extends Pane {
         System.out.println("Animation triggered!");
         KBS k = this;
         this.setOnMousePressed((e -> {
-            System.out.println("Hi there! You clicked me!");
-            FadeInDownBigTransition Anim = new FadeInDownBigTransition(k);
-            Anim.setOnFinished(new EventHandler<ActionEvent>() {
-                @Override
-                public void handle(ActionEvent event) {
-                    new TadaTransition(k).play();
-                }
-            });
-            Anim.play();
+            this.hide();
         }));
 //
     }

@@ -35,12 +35,12 @@ public class KBSManager extends VBox {
                 new KBS("Ctrl + Fuck", "alignJustify", "org/fxmisc/richtext/demo/richtext/align-justify.png")
                 //new KBS("Ctrl + Fuck", "image", "asdfasfd")
         );
-        this.getKBSbyFunction("bold").anim();
+        this.getKBSbyFunction("italic").anim();
         this.setUpHovers();
 
-        this.getKBSbyFunction("bold").show(true);
-        this.getKBSbyFunction("italic").show(true);
-        this.getKBSbyFunction("strikethrough").show(true);
+        this.getKBSbyFunction("bold").show();
+        this.getKBSbyFunction("italic").show();
+        this.getKBSbyFunction("strikethrough").show();
     }
 
     void AddButtonOrFunctionAsKBS(Button buttonObjectToMaybeReturn,
@@ -65,7 +65,7 @@ public class KBSManager extends VBox {
 //        });
         this.setOnMouseEntered((e -> {
             System.out.println("ENTER");
-            this.setOpacity();
+            this.setOpacity(1);
         }));
         this.setOnMouseExited((e -> {
             System.out.println("EXIT");
