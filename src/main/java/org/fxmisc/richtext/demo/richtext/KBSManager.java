@@ -44,7 +44,6 @@ public class KBSManager extends VBox {
                 new KBS(modifier + " + Alt + |", "align-justify", "org/fxmisc/richtext/demo/richtext/AJiconHR.png")
                 //new KBS("Ctrl + Fuck", "image", "asdfasfd")
         );
-        this.getKBSbyFunction("bold").anim();
         this.setUpHovers();
     }
 
