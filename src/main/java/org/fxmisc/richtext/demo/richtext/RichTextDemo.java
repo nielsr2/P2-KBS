@@ -118,7 +118,7 @@ public class RichTextDemo extends Application {
         ///////////////// ITALIC BUTTON /////////////////////////////
         Button italicBtn = createButton("italic", this::toggleItalic, "Italic");
         italicBtn.setOnMouseClicked((event) -> {
-            km.getKBSbyFunction("italic").toolbarPressed();
+            overlayPane.km.getKBSbyFunction("italic").toolbarPressed();
         });
         KeyCombination kcItalic = new KeyCodeCombination(KeyCode.I, KeyCombination.SHORTCUT_DOWN);
         Mnemonic mnItalic = new Mnemonic(italicBtn, kcItalic);
@@ -127,7 +127,7 @@ public class RichTextDemo extends Application {
         ////////////////// UNDERLINE BUTTON /////////////////////////
         Button underlineBtn = createButton("underline", this::toggleUnderline, "Underline");
         underlineBtn.setOnMouseClicked((event) -> {
-            km.getKBSbyFunction("underline").toolbarPressed();
+            overlayPane.km.getKBSbyFunction("underline").toolbarPressed();
         });
         KeyCombination kcUnderline = new KeyCodeCombination(KeyCode.U, KeyCombination.SHORTCUT_DOWN);
         Mnemonic mnUnderline = new Mnemonic(underlineBtn, kcUnderline);
@@ -136,7 +136,7 @@ public class RichTextDemo extends Application {
         ///////////////// STRIKE THROUGH BUTTON ////////////////////
         Button strikeBtn = createButton("strikethrough", this::toggleStrikethrough, "Strike Trough");
         strikeBtn.setOnMouseClicked((event) -> {
-            km.getKBSbyFunction("strikethrough").toolbarPressed();
+            overlayPane.km.getKBSbyFunction("strikethrough").toolbarPressed();
         });
         KeyCombination kcStrike = new KeyCodeCombination(KeyCode.X, KeyCombination.SHORTCUT_DOWN, KeyCombination.SHIFT_DOWN);
         Mnemonic mnStrike = new Mnemonic(strikeBtn, kcStrike);
@@ -145,7 +145,7 @@ public class RichTextDemo extends Application {
         //////////////// INSERT IMAGE BUTTON //////////////////////
         Button insertImageBtn = createButton("insertimage", this::insertImage, "Insert Image");
         insertImageBtn.setOnMouseClicked((event) -> {
-            km.getKBSbyFunction("insertimage").toolbarPressed();
+            overlayPane.km.getKBSbyFunction("insertimage").toolbarPressed();
         });
         KeyCombination kcInsertImage = new KeyCodeCombination(KeyCode.N, KeyCombination.SHORTCUT_DOWN, KeyCombination.SHIFT_DOWN);
         Mnemonic mnInsertImage = new Mnemonic(insertImageBtn, kcInsertImage);
@@ -156,7 +156,7 @@ public class RichTextDemo extends Application {
         /////////////// ALIGN LEFT BUTTON ////////////////////////
         ToggleButton alignLeftBtn = createToggleButton(alignmentGrp, "align-left", this::alignLeft, "Align left");
         alignLeftBtn.setOnMouseClicked((event) -> {
-            km.getKBSbyFunction("align-left").toolbarPressed();
+            overlayPane.km.getKBSbyFunction("align-left").toolbarPressed();
         });
         KeyCombination kcAlignLeft = new KeyCodeCombination(KeyCode.OPEN_BRACKET, KeyCombination.SHORTCUT_DOWN);
         Mnemonic mnAlignLeft = new Mnemonic(alignLeftBtn, kcAlignLeft);
@@ -165,7 +165,7 @@ public class RichTextDemo extends Application {
         ////////////// ALIGN CENTER BUTTON //////////////////////
         ToggleButton alignCenterBtn = createToggleButton(alignmentGrp, "align-center", this::alignCenter, "Align center");
         alignCenterBtn.setOnMouseClicked((event) -> {
-            km.getKBSbyFunction("align-center").toolbarPressed();
+            overlayPane.km.getKBSbyFunction("align-center").toolbarPressed();
         });
         KeyCombination kcAlignCenter = new KeyCodeCombination(KeyCode.BACK_SLASH, KeyCombination.SHORTCUT_DOWN);
         Mnemonic mnAlignCenter = new Mnemonic(alignCenterBtn, kcAlignCenter);
@@ -174,7 +174,7 @@ public class RichTextDemo extends Application {
         ///////////// ALIGN RIGHT BUTTON ///////////////////////
         ToggleButton alignRightBtn = createToggleButton(alignmentGrp, "align-right", this::alignRight, "Align right");
         alignRightBtn.setOnMouseClicked((event) -> {
-            km.getKBSbyFunction("align-right").toolbarPressed();
+            overlayPane.km.getKBSbyFunction("align-right").toolbarPressed();
         });
         KeyCombination kcAlignRight = new KeyCodeCombination(KeyCode.CLOSE_BRACKET, KeyCombination.SHORTCUT_DOWN);
         Mnemonic mnAlignRight = new Mnemonic(alignRightBtn, kcAlignLeft);
@@ -183,7 +183,7 @@ public class RichTextDemo extends Application {
         //////////// ALIGN JUSTIFY /////////////////////////
         ToggleButton alignJustifyBtn = createToggleButton(alignmentGrp, "align-justify", this::alignJustify, "Justify");
         alignJustifyBtn.setOnMouseClicked((event) -> {
-            km.getKBSbyFunction("align-justify").toolbarPressed();
+            overlayPane.km.getKBSbyFunction("align-justify").toolbarPressed();
         });
         KeyCombination kcAlignJustify = new KeyCodeCombination(KeyCode.BACK_SLASH, KeyCombination.SHORTCUT_DOWN, KeyCombination.ALT_DOWN);
         Mnemonic mnAlignJustify = new Mnemonic(alignJustifyBtn, kcAlignJustify);
@@ -415,42 +415,42 @@ public class RichTextDemo extends Application {
     }
 
     void ourItalicFunction() {
-        km.getKBSbyFunction("italic").shortcutUsed();
+        this.overlayPane.giveKM().getKBSbyFunction("italic").shortcutUsed();
         this.toggleItalic();
     }
 
     void ourUnderlineFunction() {
-        km.getKBSbyFunction("underline").shortcutUsed();
+        this.overlayPane.giveKM().getKBSbyFunction("underline").shortcutUsed();
         this.toggleUnderline();
     }
 
     void ourStrikeFunction() {
-        km.getKBSbyFunction("strikethrough").shortcutUsed();
+        this.overlayPane.giveKM().getKBSbyFunction("strikethrough").shortcutUsed();
         this.toggleStrikethrough();
     }
 
     void ourInsertImageFunction() {
-        km.getKBSbyFunction("insert-image").shortcutUsed();
+        this.overlayPane.giveKM().getKBSbyFunction("insert-image").shortcutUsed();
         this.insertImage();
     }
 
     void ourAlignLeftFunction() {
-        km.getKBSbyFunction("align-left").shortcutUsed();
+        this.overlayPane.giveKM().getKBSbyFunction("align-left").shortcutUsed();
         this.alignLeft();
     }
 
     void ourAlignCenterFunction() {
-        km.getKBSbyFunction("align-center").shortcutUsed();
+        this.overlayPane.giveKM().getKBSbyFunction("align-center").shortcutUsed();
         this.alignCenter();
     }
 
     void ourAlignRightFunction() {
-        km.getKBSbyFunction("align-right").shortcutUsed();
+        this.overlayPane.giveKM().getKBSbyFunction("align-right").shortcutUsed();
         this.alignRight();
     }
 
     void  ourAlignJustifyFunction() {
-        km.getKBSbyFunction("align-justify").shortcutUsed();
+        this.overlayPane.giveKM().getKBSbyFunction("align-justify").shortcutUsed();
         this.alignJustify();
     }
 
