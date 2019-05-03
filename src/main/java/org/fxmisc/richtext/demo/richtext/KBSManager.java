@@ -69,10 +69,11 @@ public class KBSManager extends VBox {
 //        });
         this.setOnMouseEntered((e -> {
             System.out.println("ENTER");
-            this.setOpacity();
+            this.setOpacity(1.);                // TODO, CAN WE CALL ANIMATIONS HERE INSTEAD, SO IT'S SMOOTH AND NOT SUDDEN ANIMATION?
         }));
         this.setOnMouseExited((e -> {
             System.out.println("EXIT");
+            this.setOpacity(0.2);
         }));
     }
 //        this.setOnMouseExited(new EventHandler<MouseEvent>
