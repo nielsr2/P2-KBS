@@ -113,10 +113,12 @@ public class KBS extends Pane {
         this.kbsTimesUsed++;
 
         System.out.println(this.functionality + " KBS used : " + this.kbsTimesUsed );
+        this.hide();
     }
     public void toolbarPressed() {
         this.tbTimesClicked++;
         System.out.println(this.functionality + " toolbar used : " + this.tbTimesClicked );
+        this.show();
     }
 
     /**
@@ -143,6 +145,9 @@ public class KBS extends Pane {
     }
 
     public void show(){
+        KBS k = this;
+        FadeInUpTransition Anim = new FadeInUpTransition(k);
+        Anim.play();
         this.setVisible(true);
         this.setManaged(true);
     }
