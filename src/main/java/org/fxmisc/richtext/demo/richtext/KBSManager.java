@@ -27,20 +27,21 @@ public class KBSManager extends VBox {
         this.getChildren().addAll(
                 new KBS("Ctrl + B", "bold", "org/fxmisc/richtext/demo/richtext/bold.png"),
                 new KBS("Ctrl + I", "italic", "org/fxmisc/richtext/demo/richtext/italic.png"),
-                new KBS("Ctrl + Fuck", "strikethrough", "org/fxmisc/richtext/demo/richtext/strikethrough.png"),
-                new KBS("Ctrl + Fuck", "underline", "org/fxmisc/richtext/demo/richtext/underline.png"),
-                new KBS("Ctrl + Fuck", "alignRight", "org/fxmisc/richtext/demo/richtext/align-right.png"),
-                new KBS("Ctrl + Fuck", "alignLeft", "org/fxmisc/richtext/demo/richtext/align-left.png"),
-                new KBS("Ctrl + Fuck", "alignCenter", "org/fxmisc/richtext/demo/richtext/align-center.png"),
-                new KBS("Ctrl + Fuck", "alignJustify", "org/fxmisc/richtext/demo/richtext/align-justify.png")
+                new KBS("Ctrl + U", "underline", "org/fxmisc/richtext/demo/richtext/underline.png"),
+                new KBS("Ctrl + Shift + X", "strikethrough", "org/fxmisc/richtext/demo/richtext/strikethrough.png"),
+                new KBS("Ctrl + Shift + N","insertimage","org/fxmisc/richtext/demo/richtext/insertimage.png" ),
+                new KBS("Ctrl + {", "align-right", "org/fxmisc/richtext/demo/richtext/align-right.png"),
+                new KBS("Ctrl + |", "align-center", "org/fxmisc/richtext/demo/richtext/align-center.png"),
+                new KBS("Ctrl + }", "align-left", "org/fxmisc/richtext/demo/richtext/align-left.png"),
+                new KBS("Ctrl + Alt + |", "align-justify", "org/fxmisc/richtext/demo/richtext/align-justify.png")
                 //new KBS("Ctrl + Fuck", "image", "asdfasfd")
         );
-        this.getKBSbyFunction("italic").anim();
+        this.getKBSbyFunction("bold").anim();
         this.setUpHovers();
 
-        this.getKBSbyFunction("bold").show();
-        this.getKBSbyFunction("italic").show();
-        this.getKBSbyFunction("strikethrough").show();
+        this.getKBSbyFunction("bold").show(true);
+        this.getKBSbyFunction("italic").show(true);
+        this.getKBSbyFunction("strikethrough").show(true);
     }
 
     void AddButtonOrFunctionAsKBS(Button buttonObjectToMaybeReturn,
@@ -65,10 +66,11 @@ public class KBSManager extends VBox {
 //        });
         this.setOnMouseEntered((e -> {
             System.out.println("ENTER");
-            this.setOpacity(1);
+            this.setOpacity(1.);                // TODO, CAN WE CALL ANIMATIONS HERE INSTEAD, SO IT'S SMOOTH AND NOT SUDDEN ANIMATION?
         }));
         this.setOnMouseExited((e -> {
             System.out.println("EXIT");
+            this.setOpacity(0.2);
         }));
     }
 //        this.setOnMouseExited(new EventHandler<MouseEvent>
