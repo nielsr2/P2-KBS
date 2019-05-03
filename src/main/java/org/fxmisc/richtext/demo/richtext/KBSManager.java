@@ -18,7 +18,11 @@ import java.util.TimerTask;
 import static javafx.geometry.Pos.BOTTOM_CENTER;
 
 // TODO add 'previously used shortcuts' that appears when some thing in here is hovered?
-// TODO make a log of session? (KBSused,ToolbarPressed etc.)
+// TODO make a log of session? (KBSused,ToolbarPressed etc.) probably want a timelime + sum up statistic
+// TODO *GENERAL THING*Can we say "you'll be when working 500% more effienct" percentage efficiency ( if we think only of 'actions performed' when using software, then KBS are clearly many %'s faster.
+// TODO MAKE A SETTINGS WINDOW FOR STUFF LIKE THE ANIMATIONS, FOCUS OPACITY ETC
+// TODO CHECK USER SCREEN VIDS, TO SEE FOR HOW LONGER THEIR CURSOR IS NEAR TOOLBAR ICON?
+// TODO MAKE SELECTION KNOW WHEN USING CMD + SHIFT + ARROW
 public class KBSManager extends VBox {
     boolean focus = true;
     //TODO create a timer
