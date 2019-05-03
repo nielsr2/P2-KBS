@@ -1,5 +1,8 @@
 package org.fxmisc.richtext.demo.richtext;
 
+import javafx.beans.binding.BooleanBinding;
+import javafx.beans.property.BooleanProperty;
+import javafx.beans.property.BooleanPropertyBase;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.scene.Node;
@@ -13,7 +16,11 @@ import static javafx.geometry.Pos.BOTTOM_CENTER;
 
 public class KBSManager extends VBox {
     boolean focus = true;
-
+    void show(boolean show){
+        this.setVisible(show);
+        this.setManaged(show);
+    }
+    public BooleanBinding test;
     KBSManager() {
         setMaxSize(Settings.WINDOW_WIDTH, Settings.WINDOW_HEIGHT);
 
