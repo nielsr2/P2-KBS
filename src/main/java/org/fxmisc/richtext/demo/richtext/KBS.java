@@ -22,6 +22,7 @@ import com.fxexperience.javafx.animation.*;
 public class KBS extends Pane {
     private String oprSystem;
     private boolean visible = false;
+    private boolean managed = false;
     protected int kbsTimesUsed = 0;
     String functionality;
     protected int tbTimesClicked = 0;
@@ -140,8 +141,9 @@ public class KBS extends Pane {
         this.backgroundRect.setFill(lgColor);
     }
 // TODO 123: DO IT HERE
-    void setVisibility(){
-
+    void setVisibility(boolean visibility){
+        this.setVisible(visibility);
+        this.setManaged(visibility);
     }
 
     void anim() {
