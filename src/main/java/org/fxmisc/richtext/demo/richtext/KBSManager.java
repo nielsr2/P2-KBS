@@ -68,7 +68,7 @@ public class KBSManager extends VBox {
 //        });
         this.setOnMouseEntered((e -> {
             System.out.println("ENTER");
-            this.setOpacity(1.);                // TODO, CAN WE CALL ANIMATIONS HERE INSTEAD, SO IT'S SMOOTH AND NOT SUDDEN ANIMATION?
+            this.setOpacity(1.);                // TODO, Kristinn CAN CALL ANIMATIONS HERE INSTEAD, SO IT'S SMOOTH AND NOT SUDDEN ANIMATION?
         }));
         this.setOnMouseExited((e -> {
             System.out.println("EXIT");
