@@ -23,7 +23,7 @@ public class KBSManager extends VBox {
             modifier = "Ctrl";
         }
         else {
-            modifier = "Cmd";
+            modifier = "⌘";
         }
 
         //this.setOrientation(VERTICAL);
