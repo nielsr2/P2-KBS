@@ -84,7 +84,6 @@ public class KBS extends Pane {
         this.setOnMouseMoved(event -> {
             System.out.println("test");
         });
-        this.anim();
     }
     /**
      * colors for the gradient
@@ -167,16 +166,6 @@ public class KBS extends Pane {
         Anim.play();
     }
 
-    void anim() {               // TODO, Kristitinn will, so hey this is an animation first triggers an animation after this KBS has been clicked, and another animation following the end of the first
-        // https://github.com/fxexperience/code/tree/master/FXExperienceControls/src/com/fxexperience/javafx/animation
-        // these are the animations we use. look at them and get creative applying them, or follow their design to make own animations
-        System.out.println("Animation triggered!");
-        KBS k = this;
-        this.setOnMousePressed((e -> {
-            this.hide();
-        }));
-//
-    }
     public FadeTransition fade(double opacityEnd, double time) {
 
         double opacityStart = this.opacity;
