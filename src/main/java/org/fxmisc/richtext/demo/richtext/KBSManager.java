@@ -7,6 +7,8 @@ import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.scene.Node;
 import javafx.scene.layout.VBox;
+import javafx.animation.FadeTransition;
+import javafx.util.Duration;
 
 import java.awt.*;
 import java.awt.event.MouseEvent;
@@ -68,14 +70,31 @@ public class KBSManager extends VBox {
 //        });
         this.setOnMouseEntered((e -> {
             System.out.println("ENTER");
-            this.setOpacity(1.);                // TODO, Kristinn CAN CALL ANIMATIONS HERE INSTEAD, SO IT'S SMOOTH AND NOT SUDDEN ANIMATION?
+            this.fade(1, 0.2);
         }));
         this.setOnMouseExited((e -> {
             System.out.println("EXIT");
-            this.setOpacity(0.2);
+            this.fade(0.2, 0.2);
         }));
     }
-//        this.setOnMouseExited(new EventHandler<MouseEvent>
+
+    public FadeTransition fade(double opacityEnd, double time) {
+
+        double opacityStart = this.getOpacity();
+
+        FadeTransition fade = new FadeTransition(Duration.seconds(time), this);
+        fade.setFromValue(opacityStart);
+        fade.setToValue(opacityEnd);
+        //fade.setCycleCount(Timeline.INDEFINITE);
+        //fade.setAutoReverse(true);
+        fade.play(); //start animation
+
+        return fade;
+
+        //this.setOnMousePressed(e -> System.out.println("adasfdf"));
+
+
+    }//        this.setOnMouseExited(new EventHandler<MouseEvent>
 //                () {
 //
 //            @Override
