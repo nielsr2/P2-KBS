@@ -2,6 +2,8 @@ package org.fxmisc.richtext.demo.richtext;
 
 
 import javafx.animation.FadeTransition;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.scene.Group;
 import javafx.scene.image.Image;
@@ -61,9 +63,7 @@ public class KBS extends Pane {
 
         this.getChildren().addAll(backgroundRect, content);
         //.fade(0.1,2).play();
-        this.setOnMouseMoved(event -> {
-            System.out.println("test");
-        });
+
     }
     HBox content;
     KBS(String shortcut, String functionality, String iconPath) {
@@ -72,7 +72,7 @@ public class KBS extends Pane {
         this.setUserData(functionality);
         this.setId(functionality);
         this.functionality = functionality;
-        this.icon = new ImageView( new Image(iconPath));
+        this.icon = new ImageView( new Image(iconPath)); // TODO SOMEBODY SET A BORDER ON THE ICON
         backgroundRect = new Rectangle(170, 50, Color.LIGHTGREY);
 
         this.content = new HBox(5);
@@ -146,15 +146,22 @@ public class KBS extends Pane {
         this.setManaged(visibility);
     }
 
-    void anim() {
-        FadeInDownBigTransition Anim = new FadeInDownBigTransition(this);
-//                Anim.setOnFinished(new EventHandler<ActionEvent>() {
-//                    @Override
-//                    public void handle(ActionEvent event) {
-//                        new TadaTransition(OUR).play();
-//                    }
-//                });
-//                Anim.play();
+    void anim() {               // TODO, so hey this is an animation first triggers an animation after this KBS has been clicked, and another animation following the end of the first
+        // https://github.com/fxexperience/code/tree/master/FXExperienceControls/src/com/fxexperience/javafx/animation
+        // these are the animations we use. look at them and get creative applying them, or follow their design to make own animations
+        System.out.println("Animation triggered!");
+        KBS k = this;
+        this.setOnMousePressed((e -> {
+            System.out.println("Hi there! You clicked me!");
+            FadeInDownBigTransition Anim = new FadeInDownBigTransition(k);
+            Anim.setOnFinished(new EventHandler<ActionEvent>() {
+                @Override
+                public void handle(ActionEvent event) {
+                    new TadaTransition(k).play();
+                }
+            });
+            Anim.play();
+        }));
 //
     }
     public FadeTransition fade(double opacityEnd, double time) {

@@ -1,15 +1,19 @@
 package org.fxmisc.richtext.demo.richtext;
 
+import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.scene.Node;
 import javafx.scene.layout.VBox;
 
 import java.awt.*;
+import java.awt.event.MouseEvent;
 
 import static javafx.geometry.Pos.BOTTOM_CENTER;
 
 
 public class KBSManager extends VBox {
+    boolean focus = true;
+
     KBSManager() {
         setMaxSize(Settings.WINDOW_WIDTH, Settings.WINDOW_HEIGHT);
 
@@ -31,6 +35,13 @@ public class KBSManager extends VBox {
                 new KBS("Ctrl + Fuck", "alignJustify", "org/fxmisc/richtext/demo/richtext/align-justify.png")
                 //new KBS("Ctrl + Fuck", "image", "asdfasfd")
         );
+        this.getKBSbyFunction("bold").setVisible(true); // TODO 123 : Kristinn will MAKE A FUNCTION FOR THIS INSIDE KBS, THAT TOGGLES THESE TWO FUNCTION ()
+        this.getKBSbyFunction("bold").setManaged(true);
+        this.getKBSbyFunction("italic").setVisible(true); // TODO 123 : MAKE A FUNCTION FOR THIS INSIDE KBS, THAT TOGGLES THESE TWO FUNCTION ()
+        this.getKBSbyFunction("italic").setManaged(true);
+        this.getKBSbyFunction("bold").anim();
+        this.setUpHovers();
+
         this.getKBSbyFunction("bold").setVisibility(true);
         this.getKBSbyFunction("italic").setVisibility(true);
         this.getKBSbyFunction("strikethrough").setVisibility(true);
@@ -51,7 +62,27 @@ public class KBSManager extends VBox {
         return null;
     }
 
-    ;
+    public void setUpHovers() {
+//        this.setOnMouseMoved(event -> {
+//            System.out.println(event.getSceneX() + " " + event.getSceneY());
+////            System.out.println();
+//        });
+        this.setOnMouseEntered((e -> {
+            System.out.println("ENTER");
+            this.setOpacity();
+        }));
+        this.setOnMouseExited((e -> {
+            System.out.println("EXIT");
+        }));
+    }
+//        this.setOnMouseExited(new EventHandler<MouseEvent>
+//                () {
+//
+//            @Override
+//            public void handle(MouseEvent) {
+//                System.out.println("EXIT");
+//            }
+//        });
 }
 //    void getKBS(String functionality) {
 //        ObservableList<Node> workingCollection = FXCollections.observableArrayList(
