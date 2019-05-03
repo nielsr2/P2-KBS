@@ -22,7 +22,8 @@ public class KBSManager extends VBox {
     //TODO create a timer
 
     public void callingFunctionOnTimer() {
-        int secondsPassed = 5000;
+        int delay = 5000;
+        int period = 5000;
         Timer timer = new Timer();
         timer.schedule(new TimerTask() {
             @Override
@@ -30,7 +31,7 @@ public class KBSManager extends VBox {
                 //write what should happen here
                 System.out.println("time had passed");
             }
-        }, secondsPassed);
+        }, delay,period);
     }
 
 
@@ -41,7 +42,7 @@ public class KBSManager extends VBox {
     public BooleanBinding test;
     KBSManager() {
         setMaxSize(Settings.WINDOW_WIDTH, Settings.WINDOW_HEIGHT);
-
+        callingFunctionOnTimer();
 
         //this.setOrientation(VERTICAL);
         this.setPadding(new Insets(5, 5, 5, 5));
