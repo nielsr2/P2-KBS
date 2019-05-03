@@ -10,7 +10,6 @@ import javafx.application.Application;
 import javafx.beans.binding.BooleanBinding;
 import javafx.collections.FXCollections;
 import javafx.geometry.Orientation;
-import javafx.scene.Group;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
@@ -18,6 +17,7 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyCodeCombination;
 import javafx.scene.input.KeyCombination;
 import javafx.scene.input.Mnemonic;
+import javafx.scene.layout.Pane;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
@@ -40,7 +40,8 @@ import java.util.Optional;
 import java.util.function.BiConsumer;
 import java.util.function.Function;
 
-import static org.fxmisc.richtext.model.TwoDimensional.Bias.*;
+import static org.fxmisc.richtext.model.TwoDimensional.Bias.Backward;
+import static org.fxmisc.richtext.model.TwoDimensional.Bias.Forward;
 
 public class RichTextDemo extends Application {
 
@@ -77,6 +78,8 @@ public class RichTextDemo extends Application {
 
     private final SuspendableNo updatingToolbar = new SuspendableNo();
 
+    OverlayPane overlayPane = new OverlayPane();
+
     @Override
     public void start(Stage primaryStage) {
         mainStage = primaryStage;
@@ -99,43 +102,92 @@ public class RichTextDemo extends Application {
         Button pasteBtn = createButton("paste", area::paste, "Paste");
 
 
-
 //     BOLD BUTTON  *********************************************************************************************************           BOLD BUTTON
         Button boldBtn = createButton("bold", this::toggleBold, "Bold");
+        boldBtn.setOnMouseClicked((event) -> {
+            overlayPane.km.getKBSbyFunction("bold").toolbarPressed();
+        });
 //        boldBtn
         KeyCombination kcBold = new KeyCodeCombination(KeyCode.B, KeyCombination.SHORTCUT_DOWN);
         Mnemonic mnBold = new Mnemonic(boldBtn, kcBold);
-        Runnable rnBold = () -> ourBoldFunction(); //this.toggleBold();
+        Runnable rnBold = () -> this.ourBoldFunction(); //this.toggleBold();
 //      *********************************************************************************************************
-        // TODO DO THE SAME FOR THE STUFF BELOW: SEE ANOTHER TODO FOR WHERE YOU put it
-
 
         ///////////////// ITALIC BUTTON /////////////////////////////
         Button italicBtn = createButton("italic", this::toggleItalic, "Italic");
+        italicBtn.setOnMouseClicked((event) -> {
+            overlayPane.km.getKBSbyFunction("italic").toolbarPressed();
+        });
         KeyCombination kcItalic = new KeyCodeCombination(KeyCode.I, KeyCombination.SHORTCUT_DOWN);
         Mnemonic mnItalic = new Mnemonic(italicBtn, kcItalic);
-        Runnable rnItalic = () -> this.toggleItalic();
+        Runnable rnItalic = () -> ourItalicFunction(); //this.toggleItalic
+
         ////////////////// UNDERLINE BUTTON /////////////////////////
         Button underlineBtn = createButton("underline", this::toggleUnderline, "Underline");
+        underlineBtn.setOnMouseClicked((event) -> {
+            overlayPane.km.getKBSbyFunction("underline").toolbarPressed();
+        });
         KeyCombination kcUnderline = new KeyCodeCombination(KeyCode.U, KeyCombination.SHORTCUT_DOWN);
         Mnemonic mnUnderline = new Mnemonic(underlineBtn, kcUnderline);
-        Runnable rnUnderline = () -> this.toggleUnderline();
+        Runnable rnUnderline = () -> ourUnderlineFunction();//this.toggleUnderline();
+
         ///////////////// STRIKE THROUGH BUTTON ////////////////////
         Button strikeBtn = createButton("strikethrough", this::toggleStrikethrough, "Strike Trough");
+        strikeBtn.setOnMouseClicked((event) -> {
+            overlayPane.km.getKBSbyFunction("strikethrough").toolbarPressed();
+        });
         KeyCombination kcStrike = new KeyCodeCombination(KeyCode.X, KeyCombination.SHORTCUT_DOWN, KeyCombination.SHIFT_DOWN);
         Mnemonic mnStrike = new Mnemonic(strikeBtn, kcStrike);
-        Runnable rnStrike = () -> this.toggleStrikethrough();
+        Runnable rnStrike = () -> ourStrikeFunction();//this.toggleStrikethrough();
+
         //////////////// INSERT IMAGE BUTTON //////////////////////
         Button insertImageBtn = createButton("insertimage", this::insertImage, "Insert Image");
+        insertImageBtn.setOnMouseClicked((event) -> {
+            overlayPane.km.getKBSbyFunction("insertimage").toolbarPressed();
+        });
         KeyCombination kcInsertImage = new KeyCodeCombination(KeyCode.N, KeyCombination.SHORTCUT_DOWN, KeyCombination.SHIFT_DOWN);
         Mnemonic mnInsertImage = new Mnemonic(insertImageBtn, kcInsertImage);
-        Runnable rnInsertImage = () -> this.insertImage();
+        Runnable rnInsertImage = () -> ourInsertImageFunction();//this.insertImage();
 
         ToggleGroup alignmentGrp = new ToggleGroup();
+
+        /////////////// ALIGN LEFT BUTTON ////////////////////////
         ToggleButton alignLeftBtn = createToggleButton(alignmentGrp, "align-left", this::alignLeft, "Align left");
+        alignLeftBtn.setOnMouseClicked((event) -> {
+            overlayPane.km.getKBSbyFunction("align-left").toolbarPressed();
+        });
+        KeyCombination kcAlignLeft = new KeyCodeCombination(KeyCode.OPEN_BRACKET, KeyCombination.SHORTCUT_DOWN);
+        Mnemonic mnAlignLeft = new Mnemonic(alignLeftBtn, kcAlignLeft);
+        Runnable rnAlignLeft = () -> ourAlignLeftFunction();//this.alignLeft();
+
+        ////////////// ALIGN CENTER BUTTON //////////////////////
         ToggleButton alignCenterBtn = createToggleButton(alignmentGrp, "align-center", this::alignCenter, "Align center");
+        alignCenterBtn.setOnMouseClicked((event) -> {
+            overlayPane.km.getKBSbyFunction("align-center").toolbarPressed();
+        });
+        KeyCombination kcAlignCenter = new KeyCodeCombination(KeyCode.BACK_SLASH, KeyCombination.SHORTCUT_DOWN);
+        Mnemonic mnAlignCenter = new Mnemonic(alignCenterBtn, kcAlignCenter);
+        Runnable rnAlignCenter = () -> ourAlignCenterFunction();//this.alignCenter();
+
+        ///////////// ALIGN RIGHT BUTTON ///////////////////////
         ToggleButton alignRightBtn = createToggleButton(alignmentGrp, "align-right", this::alignRight, "Align right");
+        alignRightBtn.setOnMouseClicked((event) -> {
+            overlayPane.km.getKBSbyFunction("align-right").toolbarPressed();
+        });
+        KeyCombination kcAlignRight = new KeyCodeCombination(KeyCode.CLOSE_BRACKET, KeyCombination.SHORTCUT_DOWN);
+        Mnemonic mnAlignRight = new Mnemonic(alignRightBtn, kcAlignLeft);
+        Runnable rnAlignRight = () -> ourAlignRightFunction();//this.alignRight();
+
+        //////////// ALIGN JUSTIFY /////////////////////////
         ToggleButton alignJustifyBtn = createToggleButton(alignmentGrp, "align-justify", this::alignJustify, "Justify");
+        alignJustifyBtn.setOnMouseClicked((event) -> {
+            overlayPane.km.getKBSbyFunction("align-justify").toolbarPressed();
+        });
+        KeyCombination kcAlignJustify = new KeyCodeCombination(KeyCode.BACK_SLASH, KeyCombination.SHORTCUT_DOWN, KeyCombination.ALT_DOWN);
+        Mnemonic mnAlignJustify = new Mnemonic(alignJustifyBtn, kcAlignJustify);
+        Runnable rnAlignJustify = () -> ourAlignJustifyFunction();//this.alignJustify();
+
+
         ColorPicker paragraphBackgroundPicker = new ColorPicker();
 
 
@@ -314,16 +366,19 @@ public class RichTextDemo extends Application {
 
         VirtualizedScrollPane<GenericStyledArea<ParStyle, Either<String, LinkedImage>, TextStyle>> vsPane = new VirtualizedScrollPane<>(area);
         VBox vbox = new VBox();
+        vbox.setPrefSize(Settings.WINDOW_WIDTH, Settings.WINDOW_HEIGHT);
         VBox.setVgrow(vsPane, Priority.ALWAYS);
         vbox.getChildren().addAll(toolBar1, toolBar2, vsPane);
 
 //        DOING SOME ADDING WPA VBOX & KBMANAGER TO A GROUP
-        Group root = new Group();
-        root.getChildren().addAll(km, vbox);
-        Scene scene = new Scene(root, 600, 400);
+        Pane root = new Pane();
+        root.setPrefSize(Settings.WINDOW_WIDTH, Settings.WINDOW_HEIGHT);
+        root.getChildren().addAll(vbox, overlayPane);
+
+        Scene scene = new Scene(root, Settings.WINDOW_WIDTH, Settings.WINDOW_HEIGHT);
         scene.getStylesheets().add(RichTextDemo.class.getResource("rich-text.css").toExternalForm());
 
-//      TODO  OH, MNEMONICS BEING ADDed HERE.
+//
 //      ************************************************************************************
         scene.addMnemonic(mnBold);
         scene.getAccelerators().put(kcBold, rnBold);
@@ -333,6 +388,15 @@ public class RichTextDemo extends Application {
         scene.getAccelerators().put(kcUnderline, rnUnderline);
         scene.addMnemonic(mnStrike);
         scene.getAccelerators().put(kcStrike, rnStrike);
+        scene.addMnemonic(mnAlignLeft);
+        scene.getAccelerators().put(kcAlignLeft, rnAlignLeft);
+        scene.addMnemonic(mnAlignCenter);
+        scene.getAccelerators().put(kcAlignCenter, rnAlignCenter);
+        scene.addMnemonic(mnAlignRight);
+        scene.getAccelerators().put(kcAlignRight, rnAlignRight);
+        scene.addMnemonic(mnAlignJustify);
+        scene.getAccelerators().put(kcAlignJustify, rnAlignJustify);
+
 
 //      ************************************************************************************
 //        scene
@@ -342,11 +406,50 @@ public class RichTextDemo extends Application {
         primaryStage.show();
     }
 
-KBSManager km = new KBSManager();
-
-    void ourBoldFunction(){
-        km.getKBSbyFunction("bold").shortcutUsed();
+    void ourBoldFunction() {
+        System.out.println(area.selectionProperty());
+        this.overlayPane.giveKM().getKBSbyFunction("bold").shortcutUsed();
         this.toggleBold();
+    }
+
+    void ourItalicFunction() {
+        this.overlayPane.giveKM().getKBSbyFunction("italic").shortcutUsed();
+        this.toggleItalic();
+    }
+
+    void ourUnderlineFunction() {
+        this.overlayPane.giveKM().getKBSbyFunction("underline").shortcutUsed();
+        this.toggleUnderline();
+    }
+
+    void ourStrikeFunction() {
+        this.overlayPane.giveKM().getKBSbyFunction("strikethrough").shortcutUsed();
+        this.toggleStrikethrough();
+    }
+
+    void ourInsertImageFunction() {
+        this.overlayPane.giveKM().getKBSbyFunction("insert-image").shortcutUsed();
+        this.insertImage();
+    }
+
+    void ourAlignLeftFunction() {
+        this.overlayPane.giveKM().getKBSbyFunction("align-left").shortcutUsed();
+        this.alignLeft();
+    }
+
+    void ourAlignCenterFunction() {
+        this.overlayPane.giveKM().getKBSbyFunction("align-center").shortcutUsed();
+        this.alignCenter();
+    }
+
+    void ourAlignRightFunction() {
+        this.overlayPane.giveKM().getKBSbyFunction("align-right").shortcutUsed();
+        this.alignRight();
+    }
+
+    void  ourAlignJustifyFunction() {
+        this.overlayPane.giveKM().getKBSbyFunction("align-justify").shortcutUsed();
+        this.alignJustify();
     }
 
     private Node createNode(StyledSegment<Either<String, LinkedImage>, TextStyle> seg,

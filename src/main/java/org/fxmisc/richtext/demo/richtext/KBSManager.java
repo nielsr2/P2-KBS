@@ -1,37 +1,43 @@
 package org.fxmisc.richtext.demo.richtext;
 
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
-import javafx.scene.Group;
-import javafx.scene.Node;
-import javafx.scene.layout.FlowPane;
-
-
+import javafx.event.EventHandler;
 import javafx.geometry.Insets;
-import javafx.scene.text.Text;
+import javafx.scene.Node;
+import javafx.scene.layout.VBox;
 
 import java.awt.*;
-import java.util.ArrayList;
+import java.awt.event.MouseEvent;
 
-import static javafx.geometry.Orientation.VERTICAL;
-import static javafx.geometry.Pos.BOTTOM_RIGHT;
+import static javafx.geometry.Pos.BOTTOM_CENTER;
 
 
-public class KBSManager extends FlowPane {
+public class KBSManager extends VBox {
+    boolean focus = true;
+
     KBSManager() {
-        this.setOrientation(VERTICAL);
+        setMaxSize(Settings.WINDOW_WIDTH, Settings.WINDOW_HEIGHT);
+
+
+        //this.setOrientation(VERTICAL);
         this.setPadding(new Insets(5, 5, 5, 5));
-        this.setVgap(5);
+        this.setSpacing(5);
+        //this.set(5);
         this.setStyle("-fx-border-color: black");
-        this.setAlignment(BOTTOM_RIGHT);
+        this.setAlignment(BOTTOM_CENTER);
         this.getChildren().addAll(
-                new KBS("Ctrl + X", "bold", "asdfasfd"),
-                new KBS("Ctrl + Fuck", "fuck", "asdfasfd")
+                new KBS("Ctrl + B", "bold", "org/fxmisc/richtext/demo/richtext/BiconHR.png"),
+                new KBS("Ctrl + I", "italic", "org/fxmisc/richtext/demo/richtext/IiconHR.png"),
+                new KBS("Ctrl + U", "underline", "org/fxmisc/richtext/demo/richtext/UiconHR.png"),
+                new KBS("Ctrl + Shift + X", "strikethrough", "org/fxmisc/richtext/demo/richtext/SiconHR.png"),
+                new KBS("Ctrl + Shift + N","insertimage","org/fxmisc/richtext/demo/richtext/insertimage.png" ), //Missing Icon
+                new KBS("Ctrl + {", "align-right", "org/fxmisc/richtext/demo/richtext/ARiconHR.png"),
+                new KBS("Ctrl + |", "align-center", "org/fxmisc/richtext/demo/richtext/ACiconHR.png"),
+                new KBS("Ctrl + }", "align-left", "org/fxmisc/richtext/demo/richtext/ALiconHR.png"),
+                new KBS("Ctrl + Alt + |", "align-justify", "org/fxmisc/richtext/demo/richtext/AJiconHR.png")
+                //new KBS("Ctrl + Fuck", "image", "asdfasfd")
         );
-        this.getKBSbyFunction("bold").shortcut = new Text("LOL");
-        System.out.println(this.getKBSbyFunction("bold"));
-//        KBS k = (KBS)this.getKBSbyFunction("bold");
-//        k.KBSused();
+        this.getKBSbyFunction("bold").anim();
+        this.setUpHovers();
     }
 
     void AddButtonOrFunctionAsKBS(Button buttonObjectToMaybeReturn,
@@ -39,16 +45,38 @@ public class KBSManager extends FlowPane {
                                   String ToolbarImage) {
     }
 
-    ;
 
     public KBS getKBSbyFunction(Object data) {
         for (Node n : this.getChildren()) {
             if (data.equals(n.getUserData())) {
-                return (KBS)n;
+                return (KBS) n;
             }
         }
         return null;
-    };
+    }
+
+    public void setUpHovers() {
+//        this.setOnMouseMoved(event -> {
+//            System.out.println(event.getSceneX() + " " + event.getSceneY());
+////            System.out.println();
+//        });
+        this.setOnMouseEntered((e -> {
+            System.out.println("ENTER");
+            this.setOpacity(1.);                // TODO, CAN WE CALL ANIMATIONS HERE INSTEAD, SO IT'S SMOOTH AND NOT SUDDEN ANIMATION?
+        }));
+        this.setOnMouseExited((e -> {
+            System.out.println("EXIT");
+            this.setOpacity(0.2);
+        }));
+    }
+//        this.setOnMouseExited(new EventHandler<MouseEvent>
+//                () {
+//
+//            @Override
+//            public void handle(MouseEvent) {
+//                System.out.println("EXIT");
+//            }
+//        });
 }
 //    void getKBS(String functionality) {
 //        ObservableList<Node> workingCollection = FXCollections.observableArrayList(
