@@ -1,42 +1,40 @@
 package org.fxmisc.richtext.demo.richtext;
 
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
-import javafx.scene.Group;
-import javafx.scene.Node;
-import javafx.scene.layout.FlowPane;
-
-
 import javafx.geometry.Insets;
-import javafx.scene.text.Text;
+import javafx.scene.Node;
+import javafx.scene.layout.VBox;
 
 import java.awt.*;
-import java.util.ArrayList;
 
-import static javafx.geometry.Orientation.VERTICAL;
-import static javafx.geometry.Pos.BOTTOM_RIGHT;
+import static javafx.geometry.Pos.BOTTOM_CENTER;
 
 
-public class KBSManager extends FlowPane {
+public class KBSManager extends VBox {
     KBSManager() {
-        this.setOrientation(VERTICAL);
+        setMaxSize(Settings.WINDOW_WIDTH, Settings.WINDOW_HEIGHT);
+
+
+        //this.setOrientation(VERTICAL);
         this.setPadding(new Insets(5, 5, 5, 5));
-        this.setVgap(5);
+        this.setSpacing(5);
+        //this.set(5);
         this.setStyle("-fx-border-color: black");
-        this.setAlignment(BOTTOM_RIGHT);
+        this.setAlignment(BOTTOM_CENTER);
         this.getChildren().addAll(
-                new KBS("Ctrl + X", "bold", "asdfasfd"),
-                new KBS("Ctrl + Fuck", "italic", "asdfasfd"),
-                new KBS("Ctrl + Fuck", "strikethrough", "asdfasfd"),
-                new KBS("Ctrl + Fuck", "underline", "asdfasfd"),
-                new KBS("Ctrl + Fuck", "alignRight", "asdfasfd"),
-                new KBS("Ctrl + Fuck", "alignLeft", "asdfasfd"),
-                new KBS("Ctrl + Fuck", "alignCenter", "asdfasfd"),
-                new KBS("Ctrl + Fuck", "alignJustify", "asdfasfd"),
-                new KBS("Ctrl + Fuck", "image", "asdfasfd")
+                new KBS("Ctrl + B", "bold", "org/fxmisc/richtext/demo/richtext/bold.png"),
+                new KBS("Ctrl + I", "italic", "org/fxmisc/richtext/demo/richtext/italic.png"),
+                new KBS("Ctrl + Fuck", "strikethrough", "org/fxmisc/richtext/demo/richtext/strikethrough.png"),
+                new KBS("Ctrl + Fuck", "underline", "org/fxmisc/richtext/demo/richtext/underline.png"),
+                new KBS("Ctrl + Fuck", "alignRight", "org/fxmisc/richtext/demo/richtext/align-right.png"),
+                new KBS("Ctrl + Fuck", "alignLeft", "org/fxmisc/richtext/demo/richtext/align-left.png"),
+                new KBS("Ctrl + Fuck", "alignCenter", "org/fxmisc/richtext/demo/richtext/align-center.png"),
+                new KBS("Ctrl + Fuck", "alignJustify", "org/fxmisc/richtext/demo/richtext/align-justify.png")
+                //new KBS("Ctrl + Fuck", "image", "asdfasfd")
         );
-        this.getKBSbyFunction("bold").setVisible(true); // TODO 123 : MAKE A FUNCTION FOR THIS INSIDE KBS, THAT TOGGLES THESE TWO FUNCTION ()
+        this.getKBSbyFunction("bold").setVisible(true); // TODO 123 : Kristinn will MAKE A FUNCTION FOR THIS INSIDE KBS, THAT TOGGLES THESE TWO FUNCTION ()
         this.getKBSbyFunction("bold").setManaged(true);
+        this.getKBSbyFunction("italic").setVisible(true); // TODO 123 : MAKE A FUNCTION FOR THIS INSIDE KBS, THAT TOGGLES THESE TWO FUNCTION ()
+        this.getKBSbyFunction("italic").setManaged(true);
     }
 
     void AddButtonOrFunctionAsKBS(Button buttonObjectToMaybeReturn,
