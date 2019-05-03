@@ -75,7 +75,7 @@ public class KBS extends Pane {
 
         this.content = new HBox(5);
         this.content.setPadding(new Insets(5, 5, 5, 5));
-
+        //TODO make text in ctrl+shift+sth fit into box
         this.shortcut = new Text(shortcut);
         this.shortcut.setFont(new Font(30));
 

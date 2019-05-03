@@ -12,12 +12,28 @@ import javafx.util.Duration;
 
 import java.awt.*;
 import java.awt.event.MouseEvent;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import static javafx.geometry.Pos.BOTTOM_CENTER;
 
-
 public class KBSManager extends VBox {
     boolean focus = true;
+    //TODO create a timer
+
+    public void callingFunctionOnTimer() {
+        int secondsPassed = 5000;
+        Timer timer = new Timer();
+        timer.schedule(new TimerTask() {
+            @Override
+            public void run() {
+                //write what should happen here
+                System.out.println("time had passed");
+            }
+        }, secondsPassed);
+    }
+
+
     void show(boolean show){
         this.setVisible(show);
         this.setManaged(show);
