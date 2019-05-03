@@ -83,7 +83,7 @@ public class KBS extends Pane {
         this.getChildren().addAll(backgroundRect, content);
         //.fade(0.1,2).play();
         this.setOnMouseMoved(event -> {
-            System.out.println("test");
+            System.out.println(oprSystem);
         });
         this.anim();
     }
@@ -101,8 +101,8 @@ public class KBS extends Pane {
     Color grColorGreen1 = new Color(0.2, 0.6, 0, 0.70);
     Color grColorGreen2 = new Color(0.2, 0.6, 0, 0.30);
 // TODO CAN WE MAYBE JUST CALL THE FUNCTION USE FOR THIS PARAM, INSIDE KBSMANAGER
-//    KBS(String oprSystem) {
-//        this.oprSystem = oprSystem;
+    KBS(String oprSystem) {
+        this.oprSystem = System.getProperty("os.name");
 //    }
 
     public void shortcutUsed() {
