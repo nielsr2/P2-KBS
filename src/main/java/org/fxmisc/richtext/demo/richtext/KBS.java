@@ -24,8 +24,7 @@ import javafx.util.Duration;
 
 public class KBS extends Pane {
     private String oprSystem;
-    private boolean visible = false;
-    private boolean managed = false;
+    private boolean isHidden = true;
     protected int kbsTimesUsed = 0;
     String functionality;
     protected int tbTimesClicked = 0;
@@ -109,12 +108,18 @@ public class KBS extends Pane {
         this.kbsTimesUsed++;
 
         System.out.println(this.functionality + " KBS used : " + this.kbsTimesUsed );
-        this.hide();
+        if(this.isHidden == false) {
+            this.hide();
+            this.isHidden = true;
+        }
     }
     public void toolbarPressed() {
         this.tbTimesClicked++;
         System.out.println(this.functionality + " toolbar used : " + this.tbTimesClicked );
-        this.show();
+        if(this.isHidden == true) {
+            this.show();
+            this.isHidden = false;
+        }
     }
 
     /**
