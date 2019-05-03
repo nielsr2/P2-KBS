@@ -70,12 +70,12 @@ public class KBS extends Pane {
         this.setUserData(functionality);
         this.setId(functionality);
         this.functionality = functionality;
-        icon = new ImageView(new Image(iconPath, 40, 40, true, true)); // TODO SOMEBODY SET A BORDER ON THE ICON
+        icon = new ImageView(new Image(iconPath, 40, 40 ,true, true)); // TODO SOMEBODY SET A BORDER ON THE ICON
         backgroundRect = new Rectangle(170, 50, Color.LIGHTGREY);
 
         this.content = new HBox(5);
         this.content.setPadding(new Insets(5, 5, 5, 5));
-
+        //TODO make text in ctrl+shift+sth fit into box
         this.shortcut = new Text(shortcut);
         this.shortcut.setFont(new Font(30));
 
@@ -102,11 +102,13 @@ public class KBS extends Pane {
     Color grColorYellow2 = new Color(0.9, 0.7, 0, 0.30);
     Color grColorGreen1 = new Color(0.2, 0.6, 0, 0.70);
     Color grColorGreen2 = new Color(0.2, 0.6, 0, 0.30);
+// TODO CAN WE MAYBE JUST CALL THE FUNCTION USE FOR THIS PARAM, INSIDE KBSMANAGER
+//    KBS(String oprSystem) {
+//        this.oprSystem = oprSystem;
+//    }
 
-    // TODO CAN WE MAYBE JUST CALL THE FUNCTION USE FOR THIS PARAM, INSIDE KBSMANAGER
-
-        public void shortcutUsed () {
-            this.kbsTimesUsed++;
+    public void shortcutUsed() {
+        this.kbsTimesUsed++;
 
         System.out.println(this.functionality + " KBS used : " + this.kbsTimesUsed );
         if(this.isHidden == false) {
@@ -125,36 +127,36 @@ public class KBS extends Pane {
         }
     }
 
-        /**
-         * methods for each gradient color gradient
-         */
+    /**
+     * methods for each gradient color gradient
+     */
 
-        //Function for setting color and setting linear gradient
-        public void setColor (Color colorLeft, Color colorRight){
-            Stop[] stopsColor = new Stop[]{new Stop(0, colorRight), new Stop(1, colorLeft)};
-            LinearGradient lgColor = new LinearGradient(1, 0, 0, 0, true, CycleMethod.NO_CYCLE, stopsColor);
+    //Function for setting color and setting linear gradient
+    public void setColor(Color colorLeft, Color colorRight) {
+        Stop[] stopsColor = new Stop[]{new Stop(0, colorRight), new Stop(1, colorLeft)};
+        LinearGradient lgColor = new LinearGradient(1, 0, 0, 0, true, CycleMethod.NO_CYCLE, stopsColor);
 
-            this.backgroundRect.setFill(lgColor);
-        }
+        this.backgroundRect.setFill(lgColor);
+    }
 
-        //Function for setting color with linear gradient and setting opacity
-        public void setColor (Color color,double opacity){
-            Color colorLeft = new Color(color.getRed(), color.getGreen(), color.getBlue(), opacity / 2);
-            Color colorRight = new Color(color.getRed(), color.getGreen(), color.getBlue(), opacity);
+    //Function for setting color with linear gradient and setting opacity
+    public void setColor(Color color, double opacity) {
+        Color colorLeft = new Color(color.getRed(), color.getGreen(), color.getBlue(), opacity/2);
+        Color colorRight = new Color(color.getRed(), color.getGreen(), color.getBlue(), opacity);
 
-            Stop[] stopsColor = new Stop[]{new Stop(0, colorRight), new Stop(1, colorLeft)};
-            LinearGradient lgColor = new LinearGradient(1, 0, 0, 0, true, CycleMethod.NO_CYCLE, stopsColor);
+        Stop[] stopsColor = new Stop[]{new Stop(0, colorRight), new Stop(1, colorLeft)};
+        LinearGradient lgColor = new LinearGradient(1, 0, 0, 0, true, CycleMethod.NO_CYCLE, stopsColor);
 
-            this.backgroundRect.setFill(lgColor);
-        }
+        this.backgroundRect.setFill(lgColor);
+    }
 
-        public void show () {
-            KBS k = this;
-            FadeInUpTransition Anim = new FadeInUpTransition(k);
-            Anim.play();
-            this.setVisible(true);
-            this.setManaged(true);
-        }
+    public void show(){
+        KBS k = this;
+        FadeInUpTransition Anim = new FadeInUpTransition(k);
+        Anim.play();
+        this.setVisible(true);
+        this.setManaged(true);
+    }
 
     public void hide() {
         KBS k = this;
@@ -177,24 +179,24 @@ public class KBS extends Pane {
         Anim.play();
     }
 
-        public FadeTransition fade ( double opacityEnd, double time){
+    public FadeTransition fade(double opacityEnd, double time) {
 
-            double opacityStart = this.opacity;
-
-
-            FadeTransition fade = new FadeTransition(Duration.seconds(time), this);
-            fade.setFromValue(opacityStart);
-            fade.setToValue(opacityEnd);
-            //fade.setCycleCount(Timeline.INDEFINITE);
-            //fade.setAutoReverse(true);
-            fade.play(); //start animation
-
-            return fade;
-
-            //this.setOnMousePressed(e -> System.out.println("adasfdf"));
+        double opacityStart = this.opacity;
 
 
-        }
+        FadeTransition fade = new FadeTransition(Duration.seconds(time), this);
+        fade.setFromValue(opacityStart);
+        fade.setToValue(opacityEnd);
+        //fade.setCycleCount(Timeline.INDEFINITE);
+        //fade.setAutoReverse(true);
+        fade.play(); //start animation
+
+        return fade;
+
+        //this.setOnMousePressed(e -> System.out.println("adasfdf"));
 
 
     }
+
+
+}
