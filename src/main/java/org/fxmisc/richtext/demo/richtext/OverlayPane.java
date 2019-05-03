@@ -9,7 +9,12 @@ public class OverlayPane extends BorderPane {
     OverlayPane() {
         this.setPrefSize(Settings.WINDOW_WIDTH, Settings.WINDOW_HEIGHT);
 //        this.setMouseTransparent(true);
-        KBSManager km = new KBSManager();
+        km = new KBSManager();
+        this.setId("overlayPane");
         this.setRight(km);
     }
+    KBSManager giveKM(){
+        return this.km;
+    }
+
 }

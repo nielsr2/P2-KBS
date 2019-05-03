@@ -110,7 +110,7 @@ public class RichTextDemo extends Application {
 //        boldBtn
         KeyCombination kcBold = new KeyCodeCombination(KeyCode.B, KeyCombination.SHORTCUT_DOWN);
         Mnemonic mnBold = new Mnemonic(boldBtn, kcBold);
-        Runnable rnBold = () -> ourBoldFunction(); //this.toggleBold();
+        Runnable rnBold = () -> this.ourBoldFunction(); //this.toggleBold();
 //      *********************************************************************************************************
         // TODO DO THE SAME FOR THE STUFF BELOW: SEE ANOTHER TODO FOR WHERE YOU put it
 
@@ -385,7 +385,8 @@ public class RichTextDemo extends Application {
     }
 
     void ourBoldFunction() { // TODO MAKE MORE OF DIS
-        overlayPane.km.getKBSbyFunction("bold").shortcutUsed();
+        System.out.println(this.overlayPane);
+        this.overlayPane.giveKM().getKBSbyFunction("bold").shortcutUsed();
         this.toggleBold();
     }
 
