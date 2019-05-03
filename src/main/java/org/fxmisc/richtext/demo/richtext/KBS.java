@@ -3,6 +3,7 @@ package org.fxmisc.richtext.demo.richtext;
 
 import com.fxexperience.javafx.animation.BounceOutRightTransition;
 import com.fxexperience.javafx.animation.FadeInUpTransition;
+import com.fxexperience.javafx.animation.ShakeTransition;
 import javafx.animation.FadeTransition;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -69,12 +70,12 @@ public class KBS extends Pane {
         this.setUserData(functionality);
         this.setId(functionality);
         this.functionality = functionality;
-        icon = new ImageView(new Image(iconPath, 40, 40, true, true)); // TODO SOMEBODY SET A BORDER ON THE ICON
+        icon = new ImageView(new Image(iconPath, 40, 40 ,true, true)); // TODO SOMEBODY SET A BORDER ON THE ICON
         backgroundRect = new Rectangle(170, 50, Color.LIGHTGREY);
 
         this.content = new HBox(5);
         this.content.setPadding(new Insets(5, 5, 5, 5));
-
+        //TODO make text in ctrl+shift+sth fit into box
         this.shortcut = new Text(shortcut);
         this.shortcut.setFont(new Font(30));
 
@@ -86,7 +87,6 @@ public class KBS extends Pane {
         this.setOnMouseMoved(event -> {
             System.out.println(oprSystem);
         });
-        this.anim();
     }
 
     /**
@@ -103,103 +103,96 @@ public class KBS extends Pane {
     Color grColorGreen1 = new Color(0.2, 0.6, 0, 0.70);
     Color grColorGreen2 = new Color(0.2, 0.6, 0, 0.30);
 
-    // TODO CAN WE MAYBE JUST CALL THE FUNCTION USE FOR THIS PARAM, INSIDE KBSMANAGER
-    KBS(String oprSystem) {
-        this.oprSystem = System.getProperty("os.name");
+    public void shortcutUsed() {
+        this.kbsTimesUsed++;
+
+        System.out.println(this.functionality + " KBS used : " + this.kbsTimesUsed );
+        if(this.isHidden == false) {
+            this.hide();
+            this.isHidden = true;
+        }
+    }
+    public void toolbarPressed() {
+        this.tbTimesClicked++;
+        System.out.println(this.functionality + " toolbar used : " + this.tbTimesClicked );
+        if(this.isHidden == true) {
+            this.show();
+            this.isHidden = false;
+        } else {
+            this.seekAttention();
+        }
     }
 
-        public void shortcutUsed () {
-            this.kbsTimesUsed++;
+    /**
+     * methods for each gradient color gradient
+     */
 
-            System.out.println(this.functionality + " KBS used : " + this.kbsTimesUsed);
-            if (this.isHidden == false) {
-                this.hide();
-                this.isHidden = true;
+    //Function for setting color and setting linear gradient
+    public void setColor(Color colorLeft, Color colorRight) {
+        Stop[] stopsColor = new Stop[]{new Stop(0, colorRight), new Stop(1, colorLeft)};
+        LinearGradient lgColor = new LinearGradient(1, 0, 0, 0, true, CycleMethod.NO_CYCLE, stopsColor);
+
+        this.backgroundRect.setFill(lgColor);
+    }
+
+    //Function for setting color with linear gradient and setting opacity
+    public void setColor(Color color, double opacity) {
+        Color colorLeft = new Color(color.getRed(), color.getGreen(), color.getBlue(), opacity/2);
+        Color colorRight = new Color(color.getRed(), color.getGreen(), color.getBlue(), opacity);
+
+        Stop[] stopsColor = new Stop[]{new Stop(0, colorRight), new Stop(1, colorLeft)};
+        LinearGradient lgColor = new LinearGradient(1, 0, 0, 0, true, CycleMethod.NO_CYCLE, stopsColor);
+
+        this.backgroundRect.setFill(lgColor);
+    }
+
+    public void show(){
+        KBS k = this;
+        FadeInUpTransition Anim = new FadeInUpTransition(k);
+        Anim.play();
+        this.setVisible(true);
+        this.setManaged(true);
+    }
+
+    public void hide() {
+        KBS k = this;
+        System.out.println("Hi there! Now I'm hidden!");
+        BounceOutRightTransition Anim = new BounceOutRightTransition(k);
+        Anim.setOnFinished(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                k.setVisible(false);
+                k.setManaged(false);
             }
-        }
-        public void toolbarPressed () {
-            this.tbTimesClicked++;
-            System.out.println(this.functionality + " toolbar used : " + this.tbTimesClicked);
-            if (this.isHidden == true) {
-                this.show();
-                this.isHidden = false;
-            }
-        }
+        });
+        Anim.play();
+    }
 
-        /**
-         * methods for each gradient color gradient
-         */
+    public void seekAttention(){
+        KBS k = this;
+        System.out.println("C'mon! You stupid!");
+        ShakeTransition Anim = new ShakeTransition(k);
+        Anim.play();
+    }
 
-        //Function for setting color and setting linear gradient
-        public void setColor (Color colorLeft, Color colorRight){
-            Stop[] stopsColor = new Stop[]{new Stop(0, colorRight), new Stop(1, colorLeft)};
-            LinearGradient lgColor = new LinearGradient(1, 0, 0, 0, true, CycleMethod.NO_CYCLE, stopsColor);
+    public FadeTransition fade(double opacityEnd, double time) {
 
-            this.backgroundRect.setFill(lgColor);
-        }
-
-        //Function for setting color with linear gradient and setting opacity
-        public void setColor (Color color,double opacity){
-            Color colorLeft = new Color(color.getRed(), color.getGreen(), color.getBlue(), opacity / 2);
-            Color colorRight = new Color(color.getRed(), color.getGreen(), color.getBlue(), opacity);
-
-            Stop[] stopsColor = new Stop[]{new Stop(0, colorRight), new Stop(1, colorLeft)};
-            LinearGradient lgColor = new LinearGradient(1, 0, 0, 0, true, CycleMethod.NO_CYCLE, stopsColor);
-
-            this.backgroundRect.setFill(lgColor);
-        }
-
-        public void show () {
-            KBS k = this;
-            FadeInUpTransition Anim = new FadeInUpTransition(k);
-            Anim.play();
-            this.setVisible(true);
-            this.setManaged(true);
-        }
-
-        public void hide () {
-            KBS k = this;
-            System.out.println("Hi there! Now I'm hidden!");
-            BounceOutRightTransition Anim = new BounceOutRightTransition(k);
-            Anim.setOnFinished(new EventHandler<ActionEvent>() {
-                @Override
-                public void handle(ActionEvent event) {
-                    k.setVisible(false);
-                    k.setManaged(false);
-                }
-            });
-            Anim.play();
-        }
-
-        void anim ()
-        {               // TODO, Kristitinn will, so hey this is an animation first triggers an animation after this KBS has been clicked, and another animation following the end of the first
-            // https://github.com/fxexperience/code/tree/master/FXExperienceControls/src/com/fxexperience/javafx/animation
-            // these are the animations we use. look at them and get creative applying them, or follow their design to make own animations
-            System.out.println("Animation triggered!");
-            KBS k = this;
-            this.setOnMousePressed((e -> {
-                this.hide();
-            }));
-//
-        }
-        public FadeTransition fade ( double opacityEnd, double time){
-
-            double opacityStart = this.opacity;
+        double opacityStart = this.opacity;
 
 
-            FadeTransition fade = new FadeTransition(Duration.seconds(time), this);
-            fade.setFromValue(opacityStart);
-            fade.setToValue(opacityEnd);
-            //fade.setCycleCount(Timeline.INDEFINITE);
-            //fade.setAutoReverse(true);
-            fade.play(); //start animation
+        FadeTransition fade = new FadeTransition(Duration.seconds(time), this);
+        fade.setFromValue(opacityStart);
+        fade.setToValue(opacityEnd);
+        //fade.setCycleCount(Timeline.INDEFINITE);
+        //fade.setAutoReverse(true);
+        fade.play(); //start animation
 
-            return fade;
+        return fade;
 
-            //this.setOnMousePressed(e -> System.out.println("adasfdf"));
-
-
-        }
+        //this.setOnMousePressed(e -> System.out.println("adasfdf"));
 
 
     }
+
+
+}

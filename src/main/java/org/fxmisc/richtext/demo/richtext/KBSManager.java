@@ -7,9 +7,13 @@ import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.scene.Node;
 import javafx.scene.layout.VBox;
+import javafx.animation.FadeTransition;
+import javafx.util.Duration;
 
 import java.awt.*;
 import java.awt.event.MouseEvent;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import static javafx.geometry.Pos.BOTTOM_CENTER;
 
@@ -17,6 +21,23 @@ import static javafx.geometry.Pos.BOTTOM_CENTER;
 // TODO make a log of session? (KBSused,ToolbarPressed etc.)
 public class KBSManager extends VBox {
     boolean focus = true;
+    //TODO create a timer
+
+    public void callingFunctionOnTimer() {
+        int delay = 5000;
+        int period = 5000;
+        Timer timer = new Timer();
+        timer.schedule(new TimerTask() {
+            @Override
+            public void run() {
+                //write what should happen here
+                System.out.println("time had passed");
+            }
+        }, delay,period);
+    }
+    private String oprSystem = System.getProperty("os.name");
+
+
     void show(boolean show){
         this.setVisible(show);
         this.setManaged(show);
@@ -25,7 +46,14 @@ public class KBSManager extends VBox {
 
     KBSManager() {
         setMaxSize(Settings.WINDOW_WIDTH, Settings.WINDOW_HEIGHT);
-
+        System.out.println(this.oprSystem);
+        String modifier;
+        if (oprSystem.contains("Windows")) {
+            modifier = "Ctrl";
+        }
+        else {
+            modifier = "⌘";
+        }
 
         //this.setOrientation(VERTICAL);
         this.setPadding(new Insets(5, 5, 5, 5));
@@ -34,18 +62,17 @@ public class KBSManager extends VBox {
         this.setStyle("-fx-border-color: black");
         this.setAlignment(BOTTOM_CENTER);
         this.getChildren().addAll(
-                new KBS("Ctrl + B", "bold", "org/fxmisc/richtext/demo/richtext/BiconHR.png"),
-                new KBS("Ctrl + I", "italic", "org/fxmisc/richtext/demo/richtext/IiconHR.png"),
-                new KBS("Ctrl + U", "underline", "org/fxmisc/richtext/demo/richtext/UiconHR.png"),
-                new KBS("Ctrl + Shift + X", "strikethrough", "org/fxmisc/richtext/demo/richtext/SiconHR.png"),
-                new KBS("Ctrl + Shift + N","insertimage","org/fxmisc/richtext/demo/richtext/insertimage.png" ), //Missing Icon
-                new KBS("Ctrl + {", "align-right", "org/fxmisc/richtext/demo/richtext/ARiconHR.png"),
-                new KBS("Ctrl + |", "align-center", "org/fxmisc/richtext/demo/richtext/ACiconHR.png"),
-                new KBS("Ctrl + }", "align-left", "org/fxmisc/richtext/demo/richtext/ALiconHR.png"),
-                new KBS("Ctrl + Alt + |", "align-justify", "org/fxmisc/richtext/demo/richtext/AJiconHR.png")
+                new KBS(modifier + " + B", "bold", "org/fxmisc/richtext/demo/richtext/BiconHR.png"),
+                new KBS(modifier + " + I", "italic", "org/fxmisc/richtext/demo/richtext/IiconHR.png"),
+                new KBS(modifier + " + U", "underline", "org/fxmisc/richtext/demo/richtext/UiconHR.png"),
+                new KBS(modifier + " + Shift + X", "strikethrough", "org/fxmisc/richtext/demo/richtext/SiconHR.png"),
+                new KBS(modifier + " + Shift + N", "insertimage", "org/fxmisc/richtext/demo/richtext/insertimage.png"), //Missing Icon
+                new KBS(modifier + " + {", "align-right", "org/fxmisc/richtext/demo/richtext/ARiconHR.png"),
+                new KBS(modifier + " + |", "align-center", "org/fxmisc/richtext/demo/richtext/ACiconHR.png"),
+                new KBS(modifier + " + }", "align-left", "org/fxmisc/richtext/demo/richtext/ALiconHR.png"),
+                new KBS(modifier + " + Alt + |", "align-justify", "org/fxmisc/richtext/demo/richtext/AJiconHR.png")
                 //new KBS("Ctrl + Fuck", "image", "asdfasfd")
         );
-        this.getKBSbyFunction("bold").anim();
         this.setUpHovers();
     }
 
@@ -71,14 +98,31 @@ public class KBSManager extends VBox {
 //        });
         this.setOnMouseEntered((e -> {
             System.out.println("ENTER");
-            this.setOpacity(1.);                // TODO, CAN WE CALL ANIMATIONS HERE INSTEAD, SO IT'S SMOOTH AND NOT SUDDEN ANIMATION?
+            this.fade(1, 0.2);
         }));
         this.setOnMouseExited((e -> {
             System.out.println("EXIT");
-            this.setOpacity(0.2);
+            this.fade(0.2, 0.2);
         }));
     }
-//        this.setOnMouseExited(new EventHandler<MouseEvent>
+
+    public FadeTransition fade(double opacityEnd, double time) {
+
+        double opacityStart = this.getOpacity();
+
+        FadeTransition fade = new FadeTransition(Duration.seconds(time), this);
+        fade.setFromValue(opacityStart);
+        fade.setToValue(opacityEnd);
+        //fade.setCycleCount(Timeline.INDEFINITE);
+        //fade.setAutoReverse(true);
+        fade.play(); //start animation
+
+        return fade;
+
+        //this.setOnMousePressed(e -> System.out.println("adasfdf"));
+
+
+    }//        this.setOnMouseExited(new EventHandler<MouseEvent>
 //                () {
 //
 //            @Override
