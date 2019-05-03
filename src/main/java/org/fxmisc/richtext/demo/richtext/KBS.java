@@ -146,7 +146,7 @@ public class KBS extends Pane {
         this.setManaged(visibility);
     }
 
-    void anim() {               // TODO, so hey this is an animation first triggers an animation after this KBS has been clicked, and another animation following the end of the first
+    void anim() {               // TODO, Kristitinn will, so hey this is an animation first triggers an animation after this KBS has been clicked, and another animation following the end of the first
         // https://github.com/fxexperience/code/tree/master/FXExperienceControls/src/com/fxexperience/javafx/animation
         // these are the animations we use. look at them and get creative applying them, or follow their design to make own animations
         System.out.println("Animation triggered!");
