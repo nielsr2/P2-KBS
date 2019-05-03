@@ -21,7 +21,6 @@ import javafx.scene.text.Text;
 import javafx.util.Duration;
 
 
-
 public class KBS extends Pane {
     private String oprSystem;
     private boolean isHidden = true;
@@ -41,6 +40,7 @@ public class KBS extends Pane {
         this.setVisible(false);
         this.setManaged(false);
     }
+
     KBS(String shortcut, String iconPath) {
 
         // initial rectangle
@@ -60,7 +60,9 @@ public class KBS extends Pane {
         //.fade(0.1,2).play();
 
     }
+
     HBox content;
+
     KBS(String shortcut, String functionality, String iconPath) {
         this();
         // initial rectangle
@@ -82,9 +84,10 @@ public class KBS extends Pane {
         this.getChildren().addAll(backgroundRect, content);
         //.fade(0.1,2).play();
         this.setOnMouseMoved(event -> {
-            System.out.println("test");
+            System.out.println(oprSystem);
         });
     }
+
     /**
      * colors for the gradient
      */
