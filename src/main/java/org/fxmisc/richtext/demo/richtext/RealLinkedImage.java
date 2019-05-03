@@ -2,6 +2,7 @@ package org.fxmisc.richtext.demo.richtext;
 
 import java.io.File;
 
+import javafx.animation.FadeTransition;
 import javafx.scene.Node;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;

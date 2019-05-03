@@ -1,11 +1,12 @@
 package org.fxmisc.richtext.demo.richtext;
 
 
+import com.fxexperience.javafx.animation.BounceOutRightTransition;
+import com.fxexperience.javafx.animation.FadeInUpTransition;
 import javafx.animation.FadeTransition;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
-import javafx.scene.Group;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
@@ -18,13 +19,11 @@ import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.util.Duration;
-import com.fxexperience.javafx.animation.*;
 
 
 public class KBS extends Pane {
     private String oprSystem;
-    private boolean visible = false;
-    private boolean managed = false;
+    private boolean isHidden = true;
     protected int kbsTimesUsed = 0;
     String functionality;
     protected int tbTimesClicked = 0;
@@ -41,6 +40,7 @@ public class KBS extends Pane {
         this.setVisible(false);
         this.setManaged(false);
     }
+
     KBS(String shortcut, String iconPath) {
 
         // initial rectangle
@@ -48,13 +48,8 @@ public class KBS extends Pane {
 
         HBox content = new HBox(5);
         content.setPadding(new Insets(5, 5, 5, 5));
-
         icon = new ImageView(new Image(iconPath));
-        icon.setFitWidth(40);
-        icon.setPreserveRatio(true);
-        icon.setSmooth(true);
         icon.setCache(true);
-
         this.shortcut = new Text(shortcut);
         this.shortcut.setFont(new Font(30));
 
@@ -65,14 +60,16 @@ public class KBS extends Pane {
         //.fade(0.1,2).play();
 
     }
+
     HBox content;
+
     KBS(String shortcut, String functionality, String iconPath) {
         this();
         // initial rectangle
         this.setUserData(functionality);
         this.setId(functionality);
         this.functionality = functionality;
-        this.icon = new ImageView( new Image(iconPath)); // TODO SOMEBODY SET A BORDER ON THE ICON
+        icon = new ImageView(new Image(iconPath, 40, 40 ,true, true)); // TODO SOMEBODY SET A BORDER ON THE ICON
         backgroundRect = new Rectangle(170, 50, Color.LIGHTGREY);
 
         this.content = new HBox(5);
@@ -87,9 +84,10 @@ public class KBS extends Pane {
         this.getChildren().addAll(backgroundRect, content);
         //.fade(0.1,2).play();
         this.setOnMouseMoved(event -> {
-            System.out.println("test");
+            System.out.println(oprSystem);
         });
     }
+
     /**
      * colors for the gradient
      */
@@ -112,10 +110,18 @@ public class KBS extends Pane {
         this.kbsTimesUsed++;
 
         System.out.println(this.functionality + " KBS used : " + this.kbsTimesUsed );
+        if(this.isHidden == false) {
+            this.hide();
+            this.isHidden = true;
+        }
     }
     public void toolbarPressed() {
         this.tbTimesClicked++;
         System.out.println(this.functionality + " toolbar used : " + this.tbTimesClicked );
+        if(this.isHidden == true) {
+            this.show();
+            this.isHidden = false;
+        }
     }
 
     /**
@@ -141,29 +147,28 @@ public class KBS extends Pane {
         this.backgroundRect.setFill(lgColor);
     }
 
-    void show(boolean show){
-        this.setVisible(show);
-        this.setManaged(show);
+    public void show(){
+        KBS k = this;
+        FadeInUpTransition Anim = new FadeInUpTransition(k);
+        Anim.play();
+        this.setVisible(true);
+        this.setManaged(true);
     }
 
-    void anim() {               // TODO, Kristitinn will, so hey this is an animation first triggers an animation after this KBS has been clicked, and another animation following the end of the first
-        // https://github.com/fxexperience/code/tree/master/FXExperienceControls/src/com/fxexperience/javafx/animation
-        // these are the animations we use. look at them and get creative applying them, or follow their design to make own animations
-        System.out.println("Animation triggered!");
+    public void hide() {
         KBS k = this;
-        this.setOnMousePressed((e -> {
-            System.out.println("Hi there! You clicked me!");
-            FadeInDownBigTransition Anim = new FadeInDownBigTransition(k);
-            Anim.setOnFinished(new EventHandler<ActionEvent>() {
-                @Override
-                public void handle(ActionEvent event) {
-                    new TadaTransition(k).play();
-                }
-            });
-            Anim.play();
-        }));
-//
+        System.out.println("Hi there! Now I'm hidden!");
+        BounceOutRightTransition Anim = new BounceOutRightTransition(k);
+        Anim.setOnFinished(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                k.setVisible(false);
+                k.setManaged(false);
+            }
+        });
+        Anim.play();
     }
+
     public FadeTransition fade(double opacityEnd, double time) {
 
         double opacityStart = this.opacity;

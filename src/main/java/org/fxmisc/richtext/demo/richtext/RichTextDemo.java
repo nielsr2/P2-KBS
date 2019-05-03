@@ -227,6 +227,7 @@ public class RichTextDemo extends Application {
         cutBtn.disableProperty().bind(selectionEmpty);
         copyBtn.disableProperty().bind(selectionEmpty);
 
+
         area.beingUpdatedProperty().addListener((o, old, beingUpdated) -> {
             if (!beingUpdated) {
                 boolean bold, italic, underline, strike;
@@ -369,7 +370,11 @@ public class RichTextDemo extends Application {
         vbox.setPrefSize(Settings.WINDOW_WIDTH, Settings.WINDOW_HEIGHT);
         VBox.setVgrow(vsPane, Priority.ALWAYS);
         vbox.getChildren().addAll(toolBar1, toolBar2, vsPane);
-
+// *****************************
+        area.setOnMouseReleased((e -> {
+            System.out.println("Boolean" + selectionEmpty); // TODO, MAKE THIS CONNECTED TO KBSMANAGER, SO THEY ALL SHOW WHEN SELECTIONEMPTY IS FALSE ( PROLLY WANNA SWITCH AROUND THAT LOGIC)
+        }));
+        // *****************************
 //        DOING SOME ADDING WPA VBOX & KBMANAGER TO A GROUP
         Pane root = new Pane();
         root.setPrefSize(Settings.WINDOW_WIDTH, Settings.WINDOW_HEIGHT);
@@ -379,6 +384,7 @@ public class RichTextDemo extends Application {
         scene.getStylesheets().add(RichTextDemo.class.getResource("rich-text.css").toExternalForm());
 
 //
+
 //      ************************************************************************************
         scene.addMnemonic(mnBold);
         scene.getAccelerators().put(kcBold, rnBold);
@@ -407,7 +413,7 @@ public class RichTextDemo extends Application {
     }
 
     void ourBoldFunction() {
-        System.out.println(this.overlayPane);
+//        System.out.println(selectionEmpty);
         this.overlayPane.giveKM().getKBSbyFunction("bold").shortcutUsed();
         this.toggleBold();
     }
@@ -447,7 +453,7 @@ public class RichTextDemo extends Application {
         this.alignRight();
     }
 
-    void  ourAlignJustifyFunction() {
+    void ourAlignJustifyFunction() {
         this.overlayPane.giveKM().getKBSbyFunction("align-justify").shortcutUsed();
         this.alignJustify();
     }
