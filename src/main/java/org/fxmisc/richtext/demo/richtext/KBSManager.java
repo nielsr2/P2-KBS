@@ -17,6 +17,7 @@ import java.util.TimerTask;
 
 import static javafx.geometry.Pos.BOTTOM_CENTER;
 
+
 public class KBSManager extends VBox {
     boolean focus = true;
     //TODO create a timer
@@ -33,6 +34,7 @@ public class KBSManager extends VBox {
             }
         }, delay,period);
     }
+    private String oprSystem = System.getProperty("os.name");
 
 
     void show(boolean show){
@@ -42,7 +44,14 @@ public class KBSManager extends VBox {
     public BooleanBinding test;
     KBSManager() {
         setMaxSize(Settings.WINDOW_WIDTH, Settings.WINDOW_HEIGHT);
-        callingFunctionOnTimer();
+        System.out.println(this.oprSystem);
+        String modifier;
+        if (oprSystem.contains("Windows")) {
+            modifier = "Ctrl";
+        }
+        else {
+            modifier = "⌘";
+        }
 
         //this.setOrientation(VERTICAL);
         this.setPadding(new Insets(5, 5, 5, 5));
@@ -51,15 +60,15 @@ public class KBSManager extends VBox {
         this.setStyle("-fx-border-color: black");
         this.setAlignment(BOTTOM_CENTER);
         this.getChildren().addAll(
-                new KBS("Ctrl + B", "bold", "org/fxmisc/richtext/demo/richtext/BiconHR.png"),
-                new KBS("Ctrl + I", "italic", "org/fxmisc/richtext/demo/richtext/IiconHR.png"),
-                new KBS("Ctrl + U", "underline", "org/fxmisc/richtext/demo/richtext/UiconHR.png"),
-                new KBS("Ctrl + Shift + X", "strikethrough", "org/fxmisc/richtext/demo/richtext/SiconHR.png"),
-                new KBS("Ctrl + Shift + N","insertimage","org/fxmisc/richtext/demo/richtext/insertimage.png" ), //Missing Icon
-                new KBS("Ctrl + {", "align-right", "org/fxmisc/richtext/demo/richtext/ARiconHR.png"),
-                new KBS("Ctrl + |", "align-center", "org/fxmisc/richtext/demo/richtext/ACiconHR.png"),
-                new KBS("Ctrl + }", "align-left", "org/fxmisc/richtext/demo/richtext/ALiconHR.png"),
-                new KBS("Ctrl + Alt + |", "align-justify", "org/fxmisc/richtext/demo/richtext/AJiconHR.png")
+                new KBS(modifier + " + B", "bold", "org/fxmisc/richtext/demo/richtext/BiconHR.png"),
+                new KBS(modifier + " + I", "italic", "org/fxmisc/richtext/demo/richtext/IiconHR.png"),
+                new KBS(modifier + " + U", "underline", "org/fxmisc/richtext/demo/richtext/UiconHR.png"),
+                new KBS(modifier + " + Shift + X", "strikethrough", "org/fxmisc/richtext/demo/richtext/SiconHR.png"),
+                new KBS(modifier + " + Shift + N", "insertimage", "org/fxmisc/richtext/demo/richtext/insertimage.png"), //Missing Icon
+                new KBS(modifier + " + {", "align-right", "org/fxmisc/richtext/demo/richtext/ARiconHR.png"),
+                new KBS(modifier + " + |", "align-center", "org/fxmisc/richtext/demo/richtext/ACiconHR.png"),
+                new KBS(modifier + " + }", "align-left", "org/fxmisc/richtext/demo/richtext/ALiconHR.png"),
+                new KBS(modifier + " + Alt + |", "align-justify", "org/fxmisc/richtext/demo/richtext/AJiconHR.png")
                 //new KBS("Ctrl + Fuck", "image", "asdfasfd")
         );
         this.setUpHovers();
