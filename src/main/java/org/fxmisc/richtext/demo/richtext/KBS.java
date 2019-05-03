@@ -1,11 +1,12 @@
 package org.fxmisc.richtext.demo.richtext;
 
 
+import com.fxexperience.javafx.animation.FadeInDownBigTransition;
+import com.fxexperience.javafx.animation.TadaTransition;
 import javafx.animation.FadeTransition;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
-import javafx.scene.Group;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
@@ -18,7 +19,7 @@ import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.util.Duration;
-import com.fxexperience.javafx.animation.*;
+
 
 
 public class KBS extends Pane {
@@ -48,13 +49,8 @@ public class KBS extends Pane {
 
         HBox content = new HBox(5);
         content.setPadding(new Insets(5, 5, 5, 5));
-
         icon = new ImageView(new Image(iconPath));
-        icon.setFitWidth(40);
-        icon.setPreserveRatio(true);
-        icon.setSmooth(true);
         icon.setCache(true);
-
         this.shortcut = new Text(shortcut);
         this.shortcut.setFont(new Font(30));
 
@@ -72,7 +68,7 @@ public class KBS extends Pane {
         this.setUserData(functionality);
         this.setId(functionality);
         this.functionality = functionality;
-        this.icon = new ImageView( new Image(iconPath)); // TODO SOMEBODY SET A BORDER ON THE ICON
+        icon = new ImageView(new Image(iconPath, 40, 40 ,true, true)); // TODO SOMEBODY SET A BORDER ON THE ICON
         backgroundRect = new Rectangle(170, 50, Color.LIGHTGREY);
 
         this.content = new HBox(5);

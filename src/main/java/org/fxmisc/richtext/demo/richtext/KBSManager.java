@@ -4,9 +4,9 @@ import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.scene.Node;
 import javafx.scene.layout.VBox;
-
 import java.awt.*;
 import java.awt.event.MouseEvent;
+
 
 import static javafx.geometry.Pos.BOTTOM_CENTER;
 
@@ -17,7 +17,6 @@ public class KBSManager extends VBox {
     KBSManager() {
         setMaxSize(Settings.WINDOW_WIDTH, Settings.WINDOW_HEIGHT);
 
-
         //this.setOrientation(VERTICAL);
         this.setPadding(new Insets(5, 5, 5, 5));
         this.setSpacing(5);
@@ -25,14 +24,15 @@ public class KBSManager extends VBox {
         this.setStyle("-fx-border-color: black");
         this.setAlignment(BOTTOM_CENTER);
         this.getChildren().addAll(
-                new KBS("Ctrl + B", "bold", "org/fxmisc/richtext/demo/richtext/bold.png"),
-                new KBS("Ctrl + I", "italic", "org/fxmisc/richtext/demo/richtext/italic.png"),
-                new KBS("Ctrl + Fuck", "strikethrough", "org/fxmisc/richtext/demo/richtext/strikethrough.png"),
-                new KBS("Ctrl + Fuck", "underline", "org/fxmisc/richtext/demo/richtext/underline.png"),
-                new KBS("Ctrl + Fuck", "alignRight", "org/fxmisc/richtext/demo/richtext/align-right.png"),
-                new KBS("Ctrl + Fuck", "alignLeft", "org/fxmisc/richtext/demo/richtext/align-left.png"),
-                new KBS("Ctrl + Fuck", "alignCenter", "org/fxmisc/richtext/demo/richtext/align-center.png"),
-                new KBS("Ctrl + Fuck", "alignJustify", "org/fxmisc/richtext/demo/richtext/align-justify.png")
+
+                new KBS("Ctrl + B", "bold", "org/fxmisc/richtext/demo/richtext/BiconHR.png"),
+                new KBS("Ctrl + I", "italic", "org/fxmisc/richtext/demo/richtext/IiconHR.png"),
+                new KBS("Ctrl + Fuck", "strikethrough", "org/fxmisc/richtext/demo/richtext/SiconHR.png"),
+                new KBS("Ctrl + Fuck", "underline", "org/fxmisc/richtext/demo/richtext/UiconHR.png"),
+                new KBS("Ctrl + Fuck", "alignRight", "org/fxmisc/richtext/demo/richtext/ARiconHR.png"),
+                new KBS("Ctrl + Fuck", "alignLeft", "org/fxmisc/richtext/demo/richtext/ALiconHR.png"),
+                new KBS("Ctrl + Fuck", "alignCenter", "org/fxmisc/richtext/demo/richtext/ACiconHR.png"),
+                new KBS("Ctrl + Fuck", "alignJustify", "org/fxmisc/richtext/demo/richtext/AJiconHR.png")
                 //new KBS("Ctrl + Fuck", "image", "asdfasfd")
         );
         this.getKBSbyFunction("bold").setVisible(true); // TODO 123 : Kristinn will MAKE A FUNCTION FOR THIS INSIDE KBS, THAT TOGGLES THESE TWO FUNCTION ()
@@ -69,7 +69,7 @@ public class KBSManager extends VBox {
 //        });
         this.setOnMouseEntered((e -> {
             System.out.println("ENTER");
-            this.setOpacity();
+            //this.setOpacity();
         }));
         this.setOnMouseExited((e -> {
             System.out.println("EXIT");
