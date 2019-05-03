@@ -104,7 +104,7 @@ public class RichTextDemo extends Application {
 
 //     BOLD BUTTON  *********************************************************************************************************           BOLD BUTTON
         Button boldBtn = createButton("bold", this::toggleBold, "Bold");
-        boldBtn.setOnMouseClicked((event) -> { // TODO MAKE MORE OF THESE FOR EACH BUTTONS
+        boldBtn.setOnMouseClicked((event) -> {
             overlayPane.km.getKBSbyFunction("bold").toolbarPressed();
         });
 //        boldBtn
@@ -112,8 +112,6 @@ public class RichTextDemo extends Application {
         Mnemonic mnBold = new Mnemonic(boldBtn, kcBold);
         Runnable rnBold = () -> this.ourBoldFunction(); //this.toggleBold();
 //      *********************************************************************************************************
-        // TODO DO THE SAME FOR THE STUFF BELOW: SEE ANOTHER TODO FOR WHERE YOU put it
-
 
         ///////////////// ITALIC BUTTON /////////////////////////////
         Button italicBtn = createButton("italic", this::toggleItalic, "Italic");
@@ -380,7 +378,7 @@ public class RichTextDemo extends Application {
         Scene scene = new Scene(root, Settings.WINDOW_WIDTH, Settings.WINDOW_HEIGHT);
         scene.getStylesheets().add(RichTextDemo.class.getResource("rich-text.css").toExternalForm());
 
-//      TODO  OH, MNEMONICS BEING ADDed HERE.
+//
 //      ************************************************************************************
         scene.addMnemonic(mnBold);
         scene.getAccelerators().put(kcBold, rnBold);
@@ -408,7 +406,7 @@ public class RichTextDemo extends Application {
         primaryStage.show();
     }
 
-    void ourBoldFunction() { // TODO MAKE MORE OF DIS
+    void ourBoldFunction() {
         System.out.println(this.overlayPane);
         this.overlayPane.giveKM().getKBSbyFunction("bold").shortcutUsed();
         this.toggleBold();
