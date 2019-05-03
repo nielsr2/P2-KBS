@@ -3,6 +3,7 @@ package org.fxmisc.richtext.demo.richtext;
 
 import com.fxexperience.javafx.animation.BounceOutRightTransition;
 import com.fxexperience.javafx.animation.FadeInUpTransition;
+import com.fxexperience.javafx.animation.ShakeTransition;
 import javafx.animation.FadeTransition;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -121,6 +122,8 @@ public class KBS extends Pane {
         if(this.isHidden == true) {
             this.show();
             this.isHidden = false;
+        } else {
+            this.seekAttention();
         }
     }
 
@@ -166,6 +169,13 @@ public class KBS extends Pane {
                 k.setManaged(false);
             }
         });
+        Anim.play();
+    }
+
+    public void seekAttention(){
+        KBS k = this;
+        System.out.println("C'mon! You stupid!");
+        ShakeTransition Anim = new ShakeTransition(k);
         Anim.play();
     }
 
