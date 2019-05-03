@@ -35,10 +35,6 @@ public class KBSManager extends VBox {
                 new KBS("Ctrl + Fuck", "alignJustify", "org/fxmisc/richtext/demo/richtext/align-justify.png")
                 //new KBS("Ctrl + Fuck", "image", "asdfasfd")
         );
-        this.getKBSbyFunction("bold").setVisible(true); // TODO 123 : Kristinn will MAKE A FUNCTION FOR THIS INSIDE KBS, THAT TOGGLES THESE TWO FUNCTION ()
-        this.getKBSbyFunction("bold").setManaged(true);
-        this.getKBSbyFunction("italic").setVisible(true); // TODO 123 : MAKE A FUNCTION FOR THIS INSIDE KBS, THAT TOGGLES THESE TWO FUNCTION ()
-        this.getKBSbyFunction("italic").setManaged(true);
         this.getKBSbyFunction("bold").anim();
         this.setUpHovers();
 
