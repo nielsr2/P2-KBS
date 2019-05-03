@@ -140,7 +140,7 @@ public class KBS extends Pane {
 
         this.backgroundRect.setFill(lgColor);
     }
-// TODO 123: DO IT HERE
+
     void setVisibility(boolean visibility){
         this.setVisible(visibility);
         this.setManaged(visibility);
