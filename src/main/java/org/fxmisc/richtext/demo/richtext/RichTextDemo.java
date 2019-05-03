@@ -372,7 +372,7 @@ public class RichTextDemo extends Application {
         vbox.getChildren().addAll(toolBar1, toolBar2, vsPane);
 // *****************************
         area.setOnMouseReleased((e -> {
-            System.out.println("Boolean" + selectionEmpty); // TODO, MAKE THIS CONNECTED TO KBSMANAGER, SO THEY ALL SHOW WHEN SELECTIONEMPTY IS FALSE ( PROLLY WANNA SWITCH AROUND THAT LOGIC)
+            System.out.println("Boolean" + selectionEmpty); // TODO, Kristinn will MAKE THIS CONNECTED TO KBSMANAGER, SO THEY ALL SHOW WHEN SELECTIONEMPTY IS FALSE ( PROLLY WANNA SWITCH AROUND THAT LOGIC)
         }));
         // *****************************
 //        DOING SOME ADDING WPA VBOX & KBMANAGER TO A GROUP
