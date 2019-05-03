@@ -13,7 +13,8 @@ import java.awt.event.MouseEvent;
 
 import static javafx.geometry.Pos.BOTTOM_CENTER;
 
-
+// TODO add 'previously used shortcuts' that appears when some thing in here is hovered?
+// TODO make a log of session? (KBSused,ToolbarPressed etc.)
 public class KBSManager extends VBox {
     boolean focus = true;
     void show(boolean show){
@@ -21,6 +22,7 @@ public class KBSManager extends VBox {
         this.setManaged(show);
     }
     public BooleanBinding test;
+
     KBSManager() {
         setMaxSize(Settings.WINDOW_WIDTH, Settings.WINDOW_HEIGHT);
 

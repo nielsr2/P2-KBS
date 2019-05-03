@@ -505,7 +505,11 @@ public class RichTextDemo extends Application {
     private void toggleBold() {
         updateStyleInSelection(spans -> TextStyle.bold(!spans.styleStream().allMatch(style -> style.bold.orElse(false))));
     }
-
+//********************
+    private void toggledBold2() {
+        updateStyleInSelection(spans -> TextStyle.bold(!spans.styleStream().allMatch(style -> style.bold.orElse(false))));
+    }
+    //********************
     private void toggleItalic() {
         updateStyleInSelection(spans -> TextStyle.italic(!spans.styleStream().allMatch(style -> style.italic.orElse(false))));
     }
@@ -629,6 +633,11 @@ public class RichTextDemo extends Application {
             TextStyle mixin = mixinGetter.apply(styles);
             StyleSpans<TextStyle> newStyles = styles.mapStyles(style -> style.updateWith(mixin));
             area.setStyleSpans(selection.getStart(), newStyles);
+        }
+        else {
+           // TODO NIELS I TIHNK IT'S HERES
+            System.out.println("nibs");
+//            area.se
         }
     }
 
