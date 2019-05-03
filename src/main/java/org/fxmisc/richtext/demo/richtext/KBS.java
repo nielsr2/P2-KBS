@@ -102,10 +102,6 @@ public class KBS extends Pane {
     Color grColorYellow2 = new Color(0.9, 0.7, 0, 0.30);
     Color grColorGreen1 = new Color(0.2, 0.6, 0, 0.70);
     Color grColorGreen2 = new Color(0.2, 0.6, 0, 0.30);
-// TODO CAN WE MAYBE JUST CALL THE FUNCTION USE FOR THIS PARAM, INSIDE KBSMANAGER
-//    KBS(String oprSystem) {
-//        this.oprSystem = oprSystem;
-//    }
 
     public void shortcutUsed() {
         this.kbsTimesUsed++;
