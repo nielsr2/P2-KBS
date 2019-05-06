@@ -1,18 +1,56 @@
 package org.fxmisc.richtext.demo.richtext;
 
+import javafx.animation.FadeTransition;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.scene.Node;
 import javafx.scene.layout.VBox;
+import javafx.util.Duration;
+
 import java.awt.*;
 import java.awt.event.MouseEvent;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import static javafx.geometry.Pos.BOTTOM_CENTER;
 
+// TODO add 'previously used shortcuts' that appears when some thing in here is hovered?
+// TODO make a log of session? (KBSused,ToolbarPressed etc.) probably want a timelime + sum up statistic
+// TODO *GENERAL THING*Can we say "you'll be when working 500% more effienct" percentage efficiency ( if we think only of 'actions performed' when using software, then KBS are clearly many %'s faster.
+// TODO MAKE A SETTINGS WINDOW FOR STUFF LIKE THE ANIMATIONS, FOCUS OPACITY ETC
+// TODO CHECK USER TESTING SCREENCAPS, TO SEE FOR HOW LONGER THEIR CURSOR IS NEAR TOOLBAR ICON?
+// TODO MAKE SELECTION KNOW WHEN USING CMD + SHIFT + ARROW
+// TODO make KBS into a mananagable list
+// TODO make KBS shortcut fit into box
+// TODO remove justify button + unneeded color button
+// TODO MAKE THE WINDOW SCALABLE AND MAKE KBS' FIT
+// change the shortcuts into single key KBS
 
+// make KBS list
 public class KBSManager extends VBox {
     boolean focus = true;
+    //TODO create a timer
+
+    public void callingFunctionOnTimer() {
+        int delay = 5000;
+        int period = 5000;
+        Timer timer = new Timer();
+        timer.schedule(new TimerTask() {
+            @Override
+            public void run() {
+                //write what should happen here
+                System.out.println("time had passed");
+            }
+        }, delay,period);
+    }
     private String oprSystem = System.getProperty("os.name");
+
+
+    void show(boolean show){
+        this.setVisible(show);
+        this.setManaged(show);
+    }
+    //public BooleanBinding test;
 
     KBSManager() {
         setMaxSize(Settings.WINDOW_WIDTH, Settings.WINDOW_HEIGHT);
@@ -81,7 +119,24 @@ public class KBSManager extends VBox {
             this.setOpacity(0.2);
         }));
     }
-//        this.setOnMouseExited(new EventHandler<MouseEvent>
+
+    public FadeTransition fade(double opacityEnd, double time) {
+
+        double opacityStart = this.getOpacity();
+
+        FadeTransition fade = new FadeTransition(Duration.seconds(time), this);
+        fade.setFromValue(opacityStart);
+        fade.setToValue(opacityEnd);
+        //fade.setCycleCount(Timeline.INDEFINITE);
+        //fade.setAutoReverse(true);
+        fade.play(); //start animation
+
+        return fade;
+
+        //this.setOnMousePressed(e -> System.out.println("adasfdf"));
+
+
+    }//        this.setOnMouseExited(new EventHandler<MouseEvent>
 //                () {
 //
 //            @Override
