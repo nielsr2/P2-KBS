@@ -70,7 +70,7 @@ public class KBSManager extends VBox {
                 new KBS(modifier + " + I", "italic", "org/fxmisc/richtext/demo/richtext/IiconHR.png"),
                 new KBS(modifier + " + U", "underline", "org/fxmisc/richtext/demo/richtext/UiconHR.png"),
                 new KBS(modifier + " + Shift + X", "strikethrough", "org/fxmisc/richtext/demo/richtext/SiconHR.png"),
-                new KBS(modifier + " + Shift + N", "insertimage", "org/fxmisc/richtext/demo/richtext/insertimage.png"), //Missing Icon
+                new KBS(modifier + " + Shift + N", "insertimage", "org/fxmisc/richtext/demo/richtext/AddImageIconHR.png"),
                 new KBS(modifier + " + {", "align-right", "org/fxmisc/richtext/demo/richtext/ARiconHR.png"),
                 new KBS(modifier + " + |", "align-center", "org/fxmisc/richtext/demo/richtext/ACiconHR.png"),
                 new KBS(modifier + " + }", "align-left", "org/fxmisc/richtext/demo/richtext/ALiconHR.png"),
