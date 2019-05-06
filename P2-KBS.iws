@@ -3,9 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="5bd1bdc2-647e-4fd3-b621-35a1c82e4a4d" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/P2-KBS.iws" beforeDir="false" afterPath="$PROJECT_DIR$/P2-KBS.iws" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/fxmisc/richtext/demo/richtext/KBSManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/fxmisc/richtext/demo/richtext/KBSManager.java" afterDir="false" />
     </list>
-    <list id="dce1eb78-d154-406a-95db-062b407bb3b7" name="nono" comment="">
+    <list id="dce1eb78-d154-406a-95db-062b407bb3b7" name="nono" comment="nono">
       <change afterPath="$PROJECT_DIR$/P2-KBS.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/P2-KBS.ipr" beforeDir="false" afterPath="$PROJECT_DIR$/P2-KBS.ipr" afterDir="false" />
     </list>
@@ -25,31 +24,12 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/org/fxmisc/richtext/demo/richtext/RichTextDemo.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="345">
-              <caret line="182" column="44" selection-start-line="182" selection-start-column="44" selection-end-line="182" selection-end-column="44" />
+            <state relative-caret-position="-3">
+              <caret line="370" column="47" lean-forward="true" selection-start-line="370" selection-start-column="47" selection-end-line="370" selection-end-column="47" />
               <folding>
-                <element signature="method#createNode#0;class#RichTextDemo#0" />
-                <element signature="method#createButton#1;class#RichTextDemo#0" />
-                <element signature="method#createToggleButton#0;class#RichTextDemo#0" />
-                <element signature="method#toggleBold#0;class#RichTextDemo#0" />
-                <element signature="method#toggleItalic#0;class#RichTextDemo#0" />
-                <element signature="method#toggleUnderline#0;class#RichTextDemo#0" />
-                <element signature="method#toggleStrikethrough#0;class#RichTextDemo#0" />
-                <element signature="method#loadDocument#0;class#RichTextDemo#0" />
-                <element signature="method#load#0;class#RichTextDemo#0" />
-                <element signature="method#saveDocument#0;class#RichTextDemo#0" />
-                <element signature="method#save#0;class#RichTextDemo#0" />
-                <element signature="docComment;method#insertImage#0;class#RichTextDemo#0" />
-                <element signature="method#insertImage#0;class#RichTextDemo#0" />
-                <element signature="method#updateStyleInSelection#0;class#RichTextDemo#0" />
-                <element signature="method#updateStyleInSelection#1;class#RichTextDemo#0" />
-                <element signature="method#updateParagraphStyleInSelection#0;class#RichTextDemo#0" />
-                <element signature="method#updateParagraphStyleInSelection#1;class#RichTextDemo#0" />
-                <element signature="method#updateFontSize#0;class#RichTextDemo#0" />
-                <element signature="method#updateFontFamily#0;class#RichTextDemo#0" />
-                <element signature="method#updateTextColor#0;class#RichTextDemo#0" />
-                <element signature="method#updateBackgroundColor#0;class#RichTextDemo#0" />
-                <element signature="method#updateParagraphBackground#0;class#RichTextDemo#0" />
+                <element signature="imports" expanded="true" />
+                <element signature="e#11700#11701#0" expanded="true" />
+                <element signature="e#11775#11776#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -58,8 +38,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/org/fxmisc/richtext/demo/hyperlink/HyperlinkDemo.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="113">
-              <caret line="18" column="13" selection-start-line="18" selection-start-column="13" selection-end-line="18" selection-end-column="13" />
+            <state>
+              <caret column="3" selection-start-column="3" selection-end-column="3" />
             </state>
           </provider>
         </entry>
@@ -68,16 +48,10 @@
         <entry file="file://$PROJECT_DIR$/src/main/java/org/fxmisc/richtext/demo/richtext/OverlayPane.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="225">
-              <caret line="15" lean-forward="true" selection-start-line="15" selection-end-line="15" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/org/fxmisc/richtext/demo/richtext/Settings.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="75">
-              <caret line="5" column="35" selection-start-line="5" selection-start-column="35" selection-end-line="5" selection-end-column="35" />
+              <caret line="18" column="34" selection-start-line="18" selection-start-column="34" selection-end-line="18" selection-end-column="34" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -85,11 +59,10 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/org/fxmisc/richtext/demo/richtext/KBS.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="334">
-              <caret line="158" column="55" lean-forward="true" selection-start-line="158" selection-start-column="55" selection-end-line="158" selection-end-column="55" />
+            <state relative-caret-position="313">
+              <caret line="43" column="49" selection-start-line="43" selection-start-column="49" selection-end-line="43" selection-end-column="49" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#5673#5674#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -98,8 +71,11 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/org/fxmisc/richtext/demo/richtext/KBSManager.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="488">
-              <caret line="75" column="31" selection-start-line="75" selection-start-column="31" selection-end-line="75" selection-end-column="31" />
+            <state relative-caret-position="169">
+              <caret line="23" column="28" lean-forward="true" selection-start-line="23" selection-start-column="8" selection-end-line="23" selection-end-column="28" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -115,16 +91,36 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>km</find>
-      <find>WINDOW_WIDTH</find>
-      <find>settings</find>
+      <find>selec</find>
+      <find>boolean</find>
+      <find>todo</find>
       <find>overlay</find>
-      <find>setting</find>
-      <find>1200</find>
-      <find>setMouseTransparent</find>
-      <find>anim</find>
-      <find>test</find>
+      <find>km</find>
+      <find>overlayPane</find>
+      <find>overlaypane</find>
+      <find>select</find>
+      <find>area.sele</find>
+      <find>cut</find>
+      <find>cutBtn</find>
+      <find>disableProperty</find>
       <find>opacity</find>
+      <find>bold</find>
+      <find>selectionEmpty</find>
+      <find>selected</find>
+      <find>bind</find>
+      <find>selectionProperty</find>
+      <find>selection</find>
+      <find>mnBold</find>
+      <find>rnBold</find>
+      <find>updateStyleInSelection</find>
+      <find>toggleBold</find>
+      <find>spans</find>
+      <find>getStyleSpans</find>
+      <find>s</find>
+      <find>style</find>
+      <find>area</find>
+      <find>styleStream</find>
+      <find>over</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -139,8 +135,8 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/src/main/java/org/fxmisc/richtext/demo/richtext/Settings.java" />
-        <option value="$PROJECT_DIR$/src/main/java/org/fxmisc/richtext/demo/richtext/RichTextDemo.java" />
         <option value="$PROJECT_DIR$/src/main/java/org/fxmisc/richtext/demo/richtext/OverlayPane.java" />
+        <option value="$PROJECT_DIR$/src/main/java/org/fxmisc/richtext/demo/richtext/RichTextDemo.java" />
         <option value="$PROJECT_DIR$/src/main/java/org/fxmisc/richtext/demo/richtext/KBS.java" />
         <option value="$PROJECT_DIR$/src/main/java/org/fxmisc/richtext/demo/richtext/KBSManager.java" />
       </list>
@@ -170,78 +166,15 @@
     </treeState>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="840" />
     <option name="y" value="22" />
-    <option name="width" value="840" />
-    <option name="height" value="1028" />
+    <option name="width" value="1260" />
+    <option name="height" value="772" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
-    <panes>
-      <pane id="PackagesPane" />
-      <pane id="ProjectPane">
-        <subPane>
-          <expand>
-            <path>
-              <item name="P2-KBS" type="b2602c69:ProjectViewProjectNode" />
-              <item name="P2-KBS" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="P2-KBS" type="b2602c69:ProjectViewProjectNode" />
-              <item name="P2-KBS" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="P2-KBS" type="b2602c69:ProjectViewProjectNode" />
-              <item name="P2-KBS" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="P2-KBS" type="b2602c69:ProjectViewProjectNode" />
-              <item name="P2-KBS" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="P2-KBS" type="b2602c69:ProjectViewProjectNode" />
-              <item name="P2-KBS" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="demo" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="P2-KBS" type="b2602c69:ProjectViewProjectNode" />
-              <item name="P2-KBS" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="demo" type="462c0819:PsiDirectoryNode" />
-              <item name="hyperlink" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="P2-KBS" type="b2602c69:ProjectViewProjectNode" />
-              <item name="P2-KBS" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="demo" type="462c0819:PsiDirectoryNode" />
-              <item name="richtext" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="P2-KBS" type="b2602c69:ProjectViewProjectNode" />
-              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
-      </pane>
-      <pane id="Scope" />
-    </panes>
+    <panes />
   </component>
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
@@ -249,6 +182,7 @@
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.2" />
+    <property name="restartRequiresConfirmation" value="false" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -349,7 +283,77 @@
       <option name="project" value="LOCAL" />
       <updated>1556875721339</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="made fade in fade out on mouse enter/exit">
+      <created>1556876010164</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1556876010164</updated>
+    </task>
+    <task id="LOCAL-00003" summary="made mikkels overlaypane actually">
+      <created>1556877347260</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1556877347260</updated>
+    </task>
+    <task id="LOCAL-00004" summary="todo for dear old mikz">
+      <created>1556879514153</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1556879514153</updated>
+    </task>
+    <task id="LOCAL-00005" summary="nielz fixed mikkels overlaypane mouse issues">
+      <created>1556880627401</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1556880627401</updated>
+    </task>
+    <task id="LOCAL-00006" summary="made selection function + todo">
+      <created>1556884810686</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1556884810687</updated>
+    </task>
+    <task id="LOCAL-00007" summary="tasks">
+      <created>1556898454651</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1556898454651</updated>
+    </task>
+    <task id="LOCAL-00008" summary="todos">
+      <created>1556926110147</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1556926110147</updated>
+    </task>
+    <task id="LOCAL-00009" summary="todos">
+      <created>1557129887594</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1557129887594</updated>
+    </task>
+    <task id="LOCAL-00010" summary="todos">
+      <created>1557129983651</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1557129983651</updated>
+    </task>
+    <task id="LOCAL-00011" summary="todos">
+      <created>1557130264476</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1557130264476</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TodoView">
@@ -365,7 +369,8 @@
     <frame x="0" y="22" width="1680" height="1028" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.10561661" />
+      <window_info id="simpleUML" />
+      <window_info content_ui="combo" id="Project" order="0" weight="0.18192919" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Capture Tool" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -374,11 +379,11 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.32905984" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.47008547" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info active="true" anchor="bottom" id="TODO" order="6" visible="true" weight="0.32905984" />
+      <window_info anchor="bottom" id="TODO" order="6" weight="0.32905984" />
       <window_info anchor="bottom" id="Terminal" order="7" />
       <window_info anchor="bottom" id="Event Log" order="8" side_tool="true" />
       <window_info anchor="bottom" id="Version Control" order="9" weight="0.32905984" />
@@ -424,7 +429,26 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Put image and shortcut inside box" />
     <MESSAGE value="made animations work" />
-    <option name="LAST_COMMIT_MESSAGE" value="made animations work" />
+    <MESSAGE value="made fade in fade out on mouse enter/exit" />
+    <MESSAGE value="made mikkels overlaypane actually" />
+    <MESSAGE value="todo for dear old mikz" />
+    <MESSAGE value="nielz fixed mikkels overlaypane mouse issues" />
+    <MESSAGE value="made selection function + todo" />
+    <MESSAGE value="tasks" />
+    <MESSAGE value="todos" />
+    <option name="LAST_COMMIT_MESSAGE" value="todos" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/org/fxmisc/richtext/demo/richtext/RichTextDemo.java</url>
+          <line>45</line>
+          <properties />
+          <option name="timeStamp" value="5" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/pom.xml">
@@ -467,71 +491,57 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/org/fxmisc/richtext/demo/richtext/Settings.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="5" column="35" selection-start-line="5" selection-start-column="35" selection-end-line="5" selection-end-column="35" />
+        <state relative-caret-position="105">
+          <caret line="7" column="1" selection-start-line="7" selection-start-column="1" selection-end-line="7" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/fxmisc/richtext/demo/richtext/RichTextDemo.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-3">
+          <caret line="370" column="47" lean-forward="true" selection-start-line="370" selection-start-column="47" selection-end-line="370" selection-end-column="47" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#11700#11701#0" expanded="true" />
+            <element signature="e#11775#11776#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/fxmisc/richtext/demo/hyperlink/HyperlinkDemo.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="3" selection-start-column="3" selection-end-column="3" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/org/fxmisc/richtext/demo/richtext/OverlayPane.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="225">
-          <caret line="15" lean-forward="true" selection-start-line="15" selection-end-line="15" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/fxmisc/richtext/demo/hyperlink/HyperlinkDemo.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="113">
-          <caret line="18" column="13" selection-start-line="18" selection-start-column="13" selection-end-line="18" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/fxmisc/richtext/demo/richtext/RichTextDemo.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="345">
-          <caret line="182" column="44" selection-start-line="182" selection-start-column="44" selection-end-line="182" selection-end-column="44" />
+          <caret line="18" column="34" selection-start-line="18" selection-start-column="34" selection-end-line="18" selection-end-column="34" />
           <folding>
-            <element signature="method#createNode#0;class#RichTextDemo#0" />
-            <element signature="method#createButton#1;class#RichTextDemo#0" />
-            <element signature="method#createToggleButton#0;class#RichTextDemo#0" />
-            <element signature="method#toggleBold#0;class#RichTextDemo#0" />
-            <element signature="method#toggleItalic#0;class#RichTextDemo#0" />
-            <element signature="method#toggleUnderline#0;class#RichTextDemo#0" />
-            <element signature="method#toggleStrikethrough#0;class#RichTextDemo#0" />
-            <element signature="method#loadDocument#0;class#RichTextDemo#0" />
-            <element signature="method#load#0;class#RichTextDemo#0" />
-            <element signature="method#saveDocument#0;class#RichTextDemo#0" />
-            <element signature="method#save#0;class#RichTextDemo#0" />
-            <element signature="docComment;method#insertImage#0;class#RichTextDemo#0" />
-            <element signature="method#insertImage#0;class#RichTextDemo#0" />
-            <element signature="method#updateStyleInSelection#0;class#RichTextDemo#0" />
-            <element signature="method#updateStyleInSelection#1;class#RichTextDemo#0" />
-            <element signature="method#updateParagraphStyleInSelection#0;class#RichTextDemo#0" />
-            <element signature="method#updateParagraphStyleInSelection#1;class#RichTextDemo#0" />
-            <element signature="method#updateFontSize#0;class#RichTextDemo#0" />
-            <element signature="method#updateFontFamily#0;class#RichTextDemo#0" />
-            <element signature="method#updateTextColor#0;class#RichTextDemo#0" />
-            <element signature="method#updateBackgroundColor#0;class#RichTextDemo#0" />
-            <element signature="method#updateParagraphBackground#0;class#RichTextDemo#0" />
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/org/fxmisc/richtext/demo/richtext/KBS.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="334">
-          <caret line="158" column="55" lean-forward="true" selection-start-line="158" selection-start-column="55" selection-end-line="158" selection-end-column="55" />
+        <state relative-caret-position="313">
+          <caret line="43" column="49" selection-start-line="43" selection-start-column="49" selection-end-line="43" selection-end-column="49" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#5673#5674#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/org/fxmisc/richtext/demo/richtext/KBSManager.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="488">
-          <caret line="75" column="31" selection-start-line="75" selection-start-column="31" selection-end-line="75" selection-end-column="31" />
+        <state relative-caret-position="169">
+          <caret line="23" column="28" lean-forward="true" selection-start-line="23" selection-start-column="8" selection-end-line="23" selection-end-column="28" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -620,5 +630,55 @@
         </settings>
       </state>
     </states>
+  </component>
+  <component name="simpleUML.UMLToolWindowPlugin">
+    <General>
+      <option name="birdViewUpdateDelay" value="2000" />
+      <option name="defaultFileLocation" value="file://$PROJECT_DIR$/.." />
+    </General>
+    <Classdiagram>
+      <option name="diagramTitleFont" value="SansSerif,1,12" />
+      <option name="diagramFont" value="SansSerif,0,10" />
+      <option name="defaultFieldsExpanded" value="false" />
+      <option name="defaultContructorsExpanded" value="false" />
+      <option name="defaultMethodsExpanded" value="false" />
+      <option name="showParameters" value="true" />
+      <option name="showTooltip" value="true" />
+      <option name="showReturnValues" value="true" />
+      <option name="longModifier" value="true" />
+      <option name="implementsBehaviour" value="1" />
+      <option name="extendsBehaviour" value="1" />
+      <option name="compartmentBehaviour" value="1" />
+      <option name="interfaceBackgroundColor" value="-6494306" />
+      <option name="abstractClassBackgroundColor" value="-1580132" />
+      <option name="classBackgroundColor" value="-6508057" />
+      <option name="diagramBackgroundColor" value="-1" />
+      <option name="useAntialiasedConnectors" value="true" />
+      <option name="quickSourceLinkColor" value="-16776961" />
+      <option name="quickDiagramLinkColor" value="-8454144" />
+      <option name="drawDecorations" value="false" />
+      <option name="hideFieldList" value="" />
+      <option name="showFieldList" value="" />
+      <option name="hideConstructorList" value="" />
+      <option name="showConstructorList" value="" />
+      <option name="hideMethodList" value="" />
+      <option name="showMethodList" value="" />
+      <option name="minimumFigureSize" value="0,0" />
+    </Classdiagram>
+    <Dependencydiagram>
+      <option name="diagramTitleFont" value="SansSerif,1,12" />
+      <option name="diagramFont" value="SansSerif,0,10" />
+      <option name="diagramBackgroundColor" value="-1" />
+      <option name="useAntialiasedConnectors" value="true" />
+      <option name="packageNameCompressionLevel" value="0" />
+    </Dependencydiagram>
+    <Packagediagram>
+      <option name="diagramTitleFont" value="SansSerif,0,12" />
+      <option name="diagramFont" value="SansSerif,0,10" />
+      <option name="packageBackgroundColor" value="-4144960" />
+      <option name="diagramBackgroundColor" value="-1" />
+      <option name="useAntialiasedConnectors" value="true" />
+      <option name="packageNameCompressionLevel" value="2" />
+    </Packagediagram>
   </component>
 </project>
