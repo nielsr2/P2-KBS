@@ -24,6 +24,7 @@ import javafx.util.Duration;
 public class KBS extends Pane {
     private String oprSystem;
     private boolean isHidden = true;
+    private boolean isPinned = false;
     protected int kbsTimesUsed = 0;
     String functionality;
     protected int tbTimesClicked = 0;
@@ -40,7 +41,7 @@ public class KBS extends Pane {
         this.setVisible(false);
         this.setManaged(false);
     }
-    // TODO add 'pin' and 'forget 'functionality'
+
     KBS(String shortcut, String iconPath) {
 
         // initial rectangle
@@ -69,7 +70,7 @@ public class KBS extends Pane {
         this.setUserData(functionality);
         this.setId(functionality);
         this.functionality = functionality;
-        icon = new ImageView(new Image(iconPath, 40, 40 ,true, true)); // TODO SOMEBODY SET A BORDER ON THE ICON
+        icon = new ImageView(new Image(iconPath, 40, 40 ,true, true));
         backgroundRect = new Rectangle(170, 50, Color.LIGHTGREY);
 
         this.content = new HBox(5);
@@ -106,7 +107,7 @@ public class KBS extends Pane {
         this.kbsTimesUsed++;
 
         System.out.println(this.functionality + " KBS used : " + this.kbsTimesUsed );
-        if(this.isHidden == false) {
+        if(this.isHidden == false && this.isPinned == false) {
             this.hide();
             this.isHidden = true;
         }
@@ -165,6 +166,18 @@ public class KBS extends Pane {
             }
         });
         Anim.play();
+    }
+
+    public void pin(boolean isPinned) {
+        this.isPinned = isPinned;
+        if (isPinned == true) {
+            System.out.println("Hi there! Now I'm pinned");
+        } else {
+            System.out.println("Hi there! Now I'm unpinned");
+        }
+    }
+
+    public void forget() {
     }
 
     public void seekAttention(){
