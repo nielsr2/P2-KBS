@@ -25,6 +25,7 @@ import javafx.util.Duration;
 public class KBS extends Pane {
     private String oprSystem;
     private boolean isHidden = true;
+    private boolean isPinned = false;
     protected int kbsTimesUsed = 0;
     String functionality;
     protected int tbTimesClicked = 0;
@@ -41,7 +42,7 @@ public class KBS extends Pane {
         this.setVisible(false);
         this.setManaged(false);
     }
-    // TODO Kristinn will add 'pin' and 'forget 'functionality'
+
     KBS(String shortcut, String iconPath) {
 
         // initial rectangle
@@ -107,7 +108,7 @@ public class KBS extends Pane {
         this.kbsTimesUsed++;
 
         System.out.println(this.functionality + " KBS used : " + this.kbsTimesUsed );
-        if(this.isHidden == false) {
+        if(this.isHidden == false && this.isPinned == false) {
             this.hide();
             this.isHidden = true;
         }
@@ -166,6 +167,16 @@ public class KBS extends Pane {
             }
         });
         Anim.play();
+    }
+
+    public void pin() {
+        this.isPinned = true;
+        System.out.println("Hi there! Now I'm pinned");
+    }
+
+    public void forget() {
+        this.isPinned = false;
+        System.out.println("Hi there! Now I'm forgotten");
     }
 
     public void seekAttention(){
