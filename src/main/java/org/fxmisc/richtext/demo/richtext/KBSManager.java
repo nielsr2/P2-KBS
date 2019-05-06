@@ -25,8 +25,9 @@ import static javafx.geometry.Pos.BOTTOM_CENTER;
 // TODO MAKE SELECTION KNOW WHEN USING CMD + SHIFT + ARROW
 // TODO make KBS into a mananagable list
 // TODO make KBS shortcut fit into box
- // TODO remove justify button + unneeded color button
+// TODO remove justify button + unneeded color button
 // TODO MAKE THE WINDOW SCALABLE AND MAKE KBS' FIT
+// change the shortcuts into single key KBS
 
 // make KBS list
 public class KBSManager extends VBox {
