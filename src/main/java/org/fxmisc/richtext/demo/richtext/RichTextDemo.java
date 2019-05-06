@@ -337,7 +337,6 @@ public class RichTextDemo extends Application {
                     } else {
                         sizeCombo.getSelectionModel().clearSelection();
                     }
-
                     if (fontFamily != null) {
                         familyCombo.getSelectionModel().select(fontFamily);
                     } else {
@@ -372,7 +371,11 @@ public class RichTextDemo extends Application {
         vbox.getChildren().addAll(toolBar1, toolBar2, vsPane);
 // *****************************
         area.setOnMouseReleased((e -> {
-            System.out.println("Boolean" + selectionEmpty); // TODO, Kristinn will MAKE THIS CONNECTED TO KBSMANAGER, SO THEY ALL SHOW WHEN SELECTIONEMPTY IS FALSE ( PROLLY WANNA SWITCH AROUND THAT LOGIC)
+            boolean textHighlighted = !selectionEmpty.get(); // get, since selectionEmpty is a BooleanBinding, get is used to get the boolean value;
+            if (textHighlighted)
+                overlayPane.km.fade(1, 0.2);
+            else
+                overlayPane.km.fade(0.2, 0.2);
         }));
         // *****************************
 //        DOING SOME ADDING WPA VBOX & KBMANAGER TO A GROUP
@@ -505,10 +508,12 @@ public class RichTextDemo extends Application {
     private void toggleBold() {
         updateStyleInSelection(spans -> TextStyle.bold(!spans.styleStream().allMatch(style -> style.bold.orElse(false))));
     }
-//********************
+
+    //********************
     private void toggledBold2() {
         updateStyleInSelection(spans -> TextStyle.bold(!spans.styleStream().allMatch(style -> style.bold.orElse(false))));
     }
+
     //********************
     private void toggleItalic() {
         updateStyleInSelection(spans -> TextStyle.italic(!spans.styleStream().allMatch(style -> style.italic.orElse(false))));
@@ -633,10 +638,13 @@ public class RichTextDemo extends Application {
             TextStyle mixin = mixinGetter.apply(styles);
             StyleSpans<TextStyle> newStyles = styles.mapStyles(style -> style.updateWith(mixin));
             area.setStyleSpans(selection.getStart(), newStyles);
-        }
-        else {
-           // TODO NIELS I TIHNK IT'S HERES
-            System.out.println("nibs");
+        } else {
+//            StyleSpans<TextStyle> styles = area.getParagraphs();
+//            TextStyle mixin = mixinGetter.apply(styles);
+//            StyleSpans<TextStyle> newStyles = styles.mapStyles(style -> style.updateWith(mixin));
+//            area.setStyleSpans(selection.getStart(), newStyles);
+//           // TODO NIELS I TIHNK IT'S HERES
+//            System.out.println("nibs");
 //            area.se
         }
     }
