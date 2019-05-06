@@ -1,6 +1,5 @@
 package org.fxmisc.richtext.demo.richtext;
 
-
 import com.fxexperience.javafx.animation.BounceOutRightTransition;
 import com.fxexperience.javafx.animation.FadeInUpTransition;
 import com.fxexperience.javafx.animation.ShakeTransition;

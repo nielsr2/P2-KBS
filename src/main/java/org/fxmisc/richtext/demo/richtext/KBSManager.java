@@ -4,7 +4,6 @@ import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.scene.Node;
 import javafx.scene.layout.VBox;
-
 import java.awt.*;
 import java.awt.event.MouseEvent;
 
@@ -17,8 +16,9 @@ public class KBSManager extends VBox {
 
     KBSManager() {
         setMaxSize(Settings.WINDOW_WIDTH, Settings.WINDOW_HEIGHT);
-        System.out.println(this.oprSystem);
-        String modifier;
+        System.out.println(this.oprSystem); //Testing usage
+        String modifier; //Show shortcut, changes depending on operating system
+        //Changes the string modifier depending on the operating system.
         if (oprSystem.contains("Windows")) {
             modifier = "Ctrl";
         }
