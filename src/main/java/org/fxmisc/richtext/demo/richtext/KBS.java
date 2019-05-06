@@ -41,7 +41,7 @@ public class KBS extends Pane {
         this.setVisible(false);
         this.setManaged(false);
     }
-    // TODO add 'pin' and 'forget 'functionality'
+    // TODO Kristinn will add 'pin' and 'forget 'functionality'
     KBS(String shortcut, String iconPath) {
 
         // initial rectangle
