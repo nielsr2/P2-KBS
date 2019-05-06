@@ -26,6 +26,8 @@ import static javafx.geometry.Pos.BOTTOM_CENTER;
 // TODO make KBS into a mananagable list
 // TODO make KBS shortcut fit into box
  // TODO remove justify button + unneeded color button
+// TODO MAKE THE WINDOW SCALABLE AND MAKE KBS' FIT
+
 // make KBS list
 public class KBSManager extends VBox {
     boolean focus = true;
