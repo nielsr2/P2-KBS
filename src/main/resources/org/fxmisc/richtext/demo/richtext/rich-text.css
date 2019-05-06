@@ -4,8 +4,8 @@
     -fx-background-position: center;
     -fx-background-repeat: no-repeat;
 }
-.button.loadfile { -fx-background-image: url(LoadFileIcon.png); } /*Need Icon*/
-.button.savefile { -fx-background-image: url(SaveIcon.png); } /*Need Icon*/
+.button.loadfile { -fx-background-image: url(LoadFileIcon.png); }
+.button.savefile { -fx-background-image: url(SaveIcon.png); }
 .button.undo { -fx-background-image: url(UndoIcon.png); }
 .button.redo { -fx-background-image: url(RedoIcon.png); }
 .button.cut { -fx-background-image: url(cut.png); }
