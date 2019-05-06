@@ -169,14 +169,16 @@ public class KBS extends Pane {
         Anim.play();
     }
 
-    public void pin() {
-        this.isPinned = true;
-        System.out.println("Hi there! Now I'm pinned");
+    public void pin(boolean isPinned) {
+        this.isPinned = isPinned;
+        if (isPinned == true) {
+            System.out.println("Hi there! Now I'm pinned");
+        } else {
+            System.out.println("Hi there! Now I'm unpinned");
+        }
     }
 
     public void forget() {
-        this.isPinned = false;
-        System.out.println("Hi there! Now I'm forgotten");
     }
 
     public void seekAttention(){
