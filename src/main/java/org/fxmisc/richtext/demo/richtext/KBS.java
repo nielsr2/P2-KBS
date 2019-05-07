@@ -8,6 +8,7 @@ import javafx.animation.FadeTransition;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
@@ -40,40 +41,11 @@ public class KBS extends HBox {
     Text shortcut;
     Pane kbsPane = new Pane();
     ConvinceOMeter convinceOMeter = new ConvinceOMeter(2);
-
-
-
-    KBS() {
-        this.setVisible(false);
-        this.setManaged(false);
-    }
-
-//    KBS(String shortcut, String iconPath) {
-//
-//        // initial rectangle
-//        backgroundRect = new Rectangle(170, 50, Color.LIGHTGREY);
-//
-//        HBox content = new HBox(5);
-//        content.setPadding(new Insets(5, 5, 5, 5));
-//        icon = new ImageView(new Image(iconPath));
-//        icon.setCache(true);
-//        this.shortcut = new Text(shortcut);
-//        this.shortcut.setFont(new Font(30));
-//
-//        content.getChildren().addAll(icon, this.shortcut);
-//
-//
-//        this.getChildren().addAll(backgroundRect, content);
-//        //.fade(0.1,2).play();
-//
-//    }
-
     HBox content;
 
     KBS(String shortcut, String functionality, String iconPath) {
         this.setVisible(false);
         this.setManaged(false);
-
 
 
         // initial rectangle
@@ -84,6 +56,8 @@ public class KBS extends HBox {
         backgroundRect = new Rectangle(170, 50, Color.LIGHTGREY);
 
         this.content = new HBox(5);
+        this.setStyle("-fx-border-color: black");
+        this.setAlignment(Pos.CENTER_RIGHT);
         this.content.setPadding(new Insets(5, 5, 5, 5));
         //TODO make text in ctrl+shift+sth fit into box
         this.shortcut = new Text(shortcut);
@@ -127,6 +101,7 @@ public class KBS extends HBox {
             this.hide();
             this.isHidden = true;
         }
+
     }
     public void toolbarPressed() {
         this.tbTimesClickedTotal++;
@@ -139,6 +114,7 @@ public class KBS extends HBox {
         } else {
             this.seekAttention();
         }
+        this.manageConvinceOMeter();
     }
 
     /**
@@ -221,8 +197,27 @@ public class KBS extends HBox {
 
         //this.setOnMousePressed(e -> System.out.println("adasfdf"));
 
-
     }
+
+    public void manageConvinceOMeter(){
+        if(tbTimesClickedInstance == 2){
+            convinceOMeter.setVisible(true);
+            convinceOMeter.setManaged(true);
+            convinceOMeter.showText1();
+        }
+
+        else if(tbTimesClickedInstance == 5){
+            convinceOMeter.setVisible(true);
+            convinceOMeter.setManaged(true);
+            convinceOMeter.showText2();
+        }
+        else{
+            convinceOMeter.setVisible(false);
+            convinceOMeter.setManaged(false);
+        }
+    }
+
+
 
 
 }

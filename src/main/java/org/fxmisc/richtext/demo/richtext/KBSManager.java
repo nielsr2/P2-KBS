@@ -4,8 +4,12 @@ import javafx.beans.binding.BooleanBinding;
 import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.BooleanPropertyBase;
 import javafx.event.EventHandler;
+import javafx.geometry.HPos;
 import javafx.geometry.Insets;
+import javafx.geometry.Pos;
+import javafx.geometry.VPos;
 import javafx.scene.Node;
+import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.VBox;
 import javafx.animation.FadeTransition;
 import javafx.util.Duration;
@@ -15,7 +19,8 @@ import java.awt.event.MouseEvent;
 import java.util.Timer;
 import java.util.TimerTask;
 
-import static javafx.geometry.Pos.BOTTOM_CENTER;
+import static javafx.geometry.Orientation.VERTICAL;
+import static javafx.geometry.Pos.*;
 
 // TODO add 'previously used shortcuts' that appears when some thing in here is hovered?
 // TODO make a log of session? (KBSused,ToolbarPressed etc.) probably want a timelime + sum up statistic
@@ -31,6 +36,7 @@ import static javafx.geometry.Pos.BOTTOM_CENTER;
 
 // make KBS list
 public class KBSManager extends VBox {
+
     boolean focus = true;
 
     //TODO create a timer
@@ -81,10 +87,10 @@ public class KBSManager extends VBox {
         //this.setOrientation(VERTICAL);
         this.setPadding(new Insets(5, 5, 5, 5));
         this.setSpacing(5);
-        //this.set(5);
+
         this.setStyle("-fx-border-color: black");
-        this.setAlignment(BOTTOM_CENTER);
-        this.getChildren().addAll(
+        this.setAlignment(BOTTOM_RIGHT);
+                this.getChildren().addAll(
                 new KBS(modifier + " + B", "bold", "org/fxmisc/richtext/demo/richtext/BiconHR.png"),
                 new KBS(modifier + " + I", "italic", "org/fxmisc/richtext/demo/richtext/IiconHR.png"),
                 new KBS(modifier + " + U", "underline", "org/fxmisc/richtext/demo/richtext/UiconHR.png"),

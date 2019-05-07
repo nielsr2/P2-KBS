@@ -21,9 +21,13 @@ public class ConvinceOMeter extends Pane {
     private Text text = new Text(argument);
 
 
-    ConvinceOMeter(float timesSlower){
 
-        this.setVisible(true);
+    ConvinceOMeter(float timesSlower){
+      this.setVisible(false);
+      this.setManaged(false);
+
+
+
 
         this.timesSlower = timesSlower;
         backgroundRect = new Rectangle(170, 50, Color.LIGHTGREY);
@@ -47,8 +51,13 @@ public class ConvinceOMeter extends Pane {
     }
 
     public Text showText1(){
-        this.setVisible(true);
         text.setText( "You are " + this.timesSlower + " times slower by not using this shortcut");
+        return text;
+
+    }
+
+    public Text showText2(){
+        text.setText( "testing 123");
         return text;
 
     }
