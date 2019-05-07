@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="5bd1bdc2-647e-4fd3-b621-35a1c82e4a4d" name="Default Changelist" comment="" />
+    <list default="true" id="5bd1bdc2-647e-4fd3-b621-35a1c82e4a4d" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/P2-KBS.iws" beforeDir="false" afterPath="$PROJECT_DIR$/P2-KBS.iws" afterDir="false" />
+    </list>
     <list id="dce1eb78-d154-406a-95db-062b407bb3b7" name="nono" comment="nono" />
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -31,11 +33,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/org/fxmisc/richtext/demo/richtext/KBS.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="136">
-              <caret line="38" column="33" selection-start-line="38" selection-start-column="33" selection-end-line="38" selection-end-column="33" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+            <state relative-caret-position="102">
+              <caret line="15" column="36" selection-start-line="15" selection-start-column="36" selection-end-line="15" selection-end-column="36" />
             </state>
           </provider>
         </entry>
@@ -143,8 +142,8 @@
         <option value="$PROJECT_DIR$/src/main/java/org/fxmisc/richtext/demo/richtext/OverlayPane.java" />
         <option value="$PROJECT_DIR$/src/main/java/org/fxmisc/richtext/demo/richtext/RichTextDemo.java" />
         <option value="$PROJECT_DIR$/src/main/java/org/fxmisc/richtext/demo/richtext/ConvinceOMeter.java" />
-        <option value="$PROJECT_DIR$/src/main/java/org/fxmisc/richtext/demo/richtext/KBS.java" />
         <option value="$PROJECT_DIR$/src/main/java/org/fxmisc/richtext/demo/richtext/KBSManager.java" />
+        <option value="$PROJECT_DIR$/src/main/java/org/fxmisc/richtext/demo/richtext/KBS.java" />
       </list>
     </option>
   </component>
@@ -431,7 +430,14 @@
       <option name="project" value="LOCAL" />
       <updated>1557215980287</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="ConvinceOMeter fixed alignment">
+      <created>1557225964734</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1557225964734</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TodoView">
@@ -445,6 +451,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1295" height="735" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.23562753" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -456,7 +463,7 @@
       <window_info id="simpleUML" order="7" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.46932006" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.46932006" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -464,7 +471,7 @@
       <window_info anchor="bottom" id="Terminal" order="7" weight="0.3283582" />
       <window_info anchor="bottom" id="Event Log" order="8" side_tool="true" />
       <window_info anchor="bottom" id="Version Control" order="9" weight="0.3283582" />
-      <window_info active="true" anchor="bottom" id="Messages" order="10" visible="true" weight="0.3283582" />
+      <window_info anchor="bottom" id="Messages" order="10" weight="0.3283582" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -641,11 +648,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/org/fxmisc/richtext/demo/richtext/KBS.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="38" column="33" selection-start-line="38" selection-start-column="33" selection-end-line="38" selection-end-column="33" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state relative-caret-position="102">
+          <caret line="15" column="36" selection-start-line="15" selection-start-column="36" selection-end-line="15" selection-end-column="36" />
         </state>
       </provider>
     </entry>
