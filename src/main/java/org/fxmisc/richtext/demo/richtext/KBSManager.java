@@ -32,20 +32,31 @@ import static javafx.geometry.Pos.BOTTOM_CENTER;
 // make KBS list
 public class KBSManager extends VBox {
     boolean focus = true;
-    //TODO create a timer
 
+    //TODO create a timer
+    Timer timer = new Timer();
+    boolean movement = false;
     public void callingFunctionOnTimer() {
         int delay = 5000;
         int period = 5000;
-        Timer timer = new Timer();
+        movement = false;
         timer.schedule(new TimerTask() {
             @Override
             public void run() {
+                if (!movement){
+                    System.out.println("NO MOVEMENT DETECTED");
+                }
+                movement = false;
                 //write what should happen here
                 System.out.println("time had passed");
             }
-        }, delay,period);
+        }, delay, period);
     }
+
+    void  registerOnMovement() {
+
+    }
+
     private String oprSystem = System.getProperty("os.name");
 
 
@@ -56,6 +67,7 @@ public class KBSManager extends VBox {
     public BooleanBinding test;
 
     KBSManager() {
+        callingFunctionOnTimer();
         setMaxSize(Settings.WINDOW_WIDTH, Settings.WINDOW_HEIGHT);
         System.out.println(this.oprSystem);
         String modifier;
