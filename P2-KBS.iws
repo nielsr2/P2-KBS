@@ -4,10 +4,7 @@
     <list default="true" id="5bd1bdc2-647e-4fd3-b621-35a1c82e4a4d" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/P2-KBS.iws" beforeDir="false" afterPath="$PROJECT_DIR$/P2-KBS.iws" afterDir="false" />
     </list>
-    <list id="dce1eb78-d154-406a-95db-062b407bb3b7" name="nono" comment="nono">
-      <change afterPath="$PROJECT_DIR$/P2-KBS.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/P2-KBS.ipr" beforeDir="false" afterPath="$PROJECT_DIR$/P2-KBS.ipr" afterDir="false" />
-    </list>
+    <list id="dce1eb78-d154-406a-95db-062b407bb3b7" name="nono" comment="" />
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -24,33 +21,14 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/org/fxmisc/richtext/demo/richtext/RichTextDemo.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-3">
-              <caret line="370" column="47" lean-forward="true" selection-start-line="370" selection-start-column="47" selection-end-line="370" selection-end-column="47" />
+            <state relative-caret-position="5593">
+              <caret line="370" column="47" selection-start-line="370" selection-start-column="34" selection-end-line="370" selection-end-column="47" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#11700#11701#0" expanded="true" />
-                <element signature="e#11775#11776#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/org/fxmisc/richtext/demo/hyperlink/HyperlinkDemo.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret column="3" selection-start-column="3" selection-end-column="3" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/org/fxmisc/richtext/demo/richtext/OverlayPane.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="225">
-              <caret line="18" column="34" selection-start-line="18" selection-start-column="34" selection-end-line="18" selection-end-column="34" />
-              <folding>
-                <element signature="imports" expanded="true" />
+                <element signature="e#22805#23159#0" />
+                <element signature="e#23313#23777#0" />
+                <element signature="e#23783#24324#0" />
+                <element signature="e#24330#24486#0" />
               </folding>
             </state>
           </provider>
@@ -59,8 +37,17 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/org/fxmisc/richtext/demo/richtext/KBS.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="313">
-              <caret line="43" column="49" selection-start-line="43" selection-start-column="49" selection-end-line="43" selection-end-column="49" />
+            <state relative-caret-position="935">
+              <caret line="73" column="23" selection-start-line="73" selection-start-column="13" selection-end-line="73" selection-end-column="23" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/org/fxmisc/richtext/demo/richtext/ConvinceOMeter.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="510">
+              <caret line="54" selection-start-line="54" selection-end-line="54" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -68,14 +55,38 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/org/fxmisc/richtext/demo/richtext/Settings.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="136">
+              <caret line="8" selection-start-line="8" selection-end-line="8" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/org/fxmisc/richtext/demo/richtext/KBSManager.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="169">
-              <caret line="23" column="28" lean-forward="true" selection-start-line="23" selection-start-column="8" selection-end-line="23" selection-end-column="28" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+            <state relative-caret-position="646">
+              <caret line="53" column="23" selection-start-line="53" selection-start-column="13" selection-end-line="53" selection-end-column="23" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/org/fxmisc/richtext/demo/richtext/RealLinkedImage.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="170">
+              <caret line="15" column="13" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/org/fxmisc/richtext/demo/richtext/OverlayPane.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="170">
+              <caret line="13" column="33" selection-start-line="13" selection-start-column="33" selection-end-line="13" selection-end-column="33" />
             </state>
           </provider>
         </entry>
@@ -91,17 +102,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>selec</find>
-      <find>boolean</find>
-      <find>todo</find>
-      <find>overlay</find>
-      <find>km</find>
-      <find>overlayPane</find>
-      <find>overlaypane</find>
-      <find>select</find>
-      <find>area.sele</find>
-      <find>cut</find>
-      <find>cutBtn</find>
       <find>disableProperty</find>
       <find>opacity</find>
       <find>bold</find>
@@ -121,6 +121,17 @@
       <find>area</find>
       <find>styleStream</find>
       <find>over</find>
+      <find>toolbarPressed</find>
+      <find>tbTimesClicked</find>
+      <find>tbTimesClickedContext</find>
+      <find>rect</find>
+      <find>functionality</find>
+      <find>KBS</find>
+      <find>hide</find>
+      <find>isPinned</find>
+      <find>isVisible</find>
+      <find>setManaged</find>
+      <find>setVisible</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -137,8 +148,9 @@
         <option value="$PROJECT_DIR$/src/main/java/org/fxmisc/richtext/demo/richtext/Settings.java" />
         <option value="$PROJECT_DIR$/src/main/java/org/fxmisc/richtext/demo/richtext/OverlayPane.java" />
         <option value="$PROJECT_DIR$/src/main/java/org/fxmisc/richtext/demo/richtext/RichTextDemo.java" />
-        <option value="$PROJECT_DIR$/src/main/java/org/fxmisc/richtext/demo/richtext/KBS.java" />
         <option value="$PROJECT_DIR$/src/main/java/org/fxmisc/richtext/demo/richtext/KBSManager.java" />
+        <option value="$PROJECT_DIR$/src/main/java/org/fxmisc/richtext/demo/richtext/KBS.java" />
+        <option value="$PROJECT_DIR$/src/main/java/org/fxmisc/richtext/demo/richtext/ConvinceOMeter.java" />
       </list>
     </option>
   </component>
@@ -166,15 +178,71 @@
     </treeState>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="y" value="22" />
-    <option name="width" value="1260" />
-    <option name="height" value="772" />
+    <option name="x" value="948" />
+    <option name="width" value="981" />
+    <option name="height" value="1092" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
-    <panes />
+    <panes>
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="P2-KBS" type="b2602c69:ProjectViewProjectNode" />
+              <item name="P2-KBS" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="P2-KBS" type="b2602c69:ProjectViewProjectNode" />
+              <item name="P2-KBS" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="P2-KBS" type="b2602c69:ProjectViewProjectNode" />
+              <item name="P2-KBS" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="P2-KBS" type="b2602c69:ProjectViewProjectNode" />
+              <item name="P2-KBS" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="P2-KBS" type="b2602c69:ProjectViewProjectNode" />
+              <item name="P2-KBS" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="demo" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="P2-KBS" type="b2602c69:ProjectViewProjectNode" />
+              <item name="P2-KBS" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="demo" type="462c0819:PsiDirectoryNode" />
+              <item name="richtext" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="P2-KBS" type="b2602c69:ProjectViewProjectNode" />
+              <item name="P2-KBS" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
+    </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
@@ -199,7 +267,7 @@
   <component name="RunManager">
     <configuration name="RichTextDemo" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="org.fxmisc.richtext.demo.richtext.RichTextDemo" />
-      <module name="P2-KBS" />
+      <module name="RichTextFX-KBS" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="org.fxmisc.richtext.demo.richtext.*" />
@@ -259,6 +327,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.RichTextDemo" />
         <item itemvalue="Application.RichTextDemo" />
         <item itemvalue="Application.RichTextDemo" />
       </list>
@@ -353,7 +422,14 @@
       <option name="project" value="LOCAL" />
       <updated>1557130264476</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="ConvinceOMeter">
+      <created>1557152691144</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1557152691144</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TodoView">
@@ -366,25 +442,25 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="22" width="1680" height="1028" extended-state="6" />
+    <frame x="-7" y="-7" width="1295" height="735" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="simpleUML" />
-      <window_info content_ui="combo" id="Project" order="0" weight="0.18192919" />
+      <window_info content_ui="combo" id="Project" order="0" weight="0.23562753" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Capture Tool" order="2" />
       <window_info id="Image Layers" order="3" />
       <window_info id="Designer" order="4" />
       <window_info id="UI Designer" order="5" />
       <window_info id="Favorites" order="6" side_tool="true" />
+      <window_info id="simpleUML" order="7" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.47008547" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.46932006" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="6" weight="0.32905984" />
-      <window_info anchor="bottom" id="Terminal" order="7" />
+      <window_info anchor="bottom" id="TODO" order="6" weight="0.3283582" />
+      <window_info anchor="bottom" id="Terminal" order="7" weight="0.3283582" />
       <window_info anchor="bottom" id="Event Log" order="8" side_tool="true" />
       <window_info anchor="bottom" id="Version Control" order="9" weight="0.32905984" />
       <window_info anchor="bottom" id="Messages" order="10" weight="0.32905984" />
@@ -398,33 +474,66 @@
       <window_info anchor="right" id="Palette&#9;" order="7" />
     </layout>
     <layout-to-restore>
-      <window_info content_ui="combo" id="Project" order="0" weight="0.21545668" />
+      <window_info content_ui="combo" id="Project" order="0" weight="0.23562753" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Capture Tool" order="2" />
       <window_info id="Image Layers" order="3" />
       <window_info id="Designer" order="4" />
       <window_info id="UI Designer" order="5" />
       <window_info id="Favorites" order="6" side_tool="true" />
+      <window_info id="simpleUML" order="7" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.3290735" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.46932006" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Terminal" order="7" />
+      <window_info anchor="bottom" id="TODO" order="6" weight="0.3283582" />
+      <window_info anchor="bottom" id="Terminal" order="7" weight="0.3283582" />
       <window_info anchor="bottom" id="Event Log" order="8" side_tool="true" />
-      <window_info anchor="bottom" id="Version Control" order="9" weight="0.3290735" />
-      <window_info anchor="bottom" id="Messages" order="10" weight="0.3290735" />
+      <window_info anchor="bottom" id="Version Control" order="9" weight="0.32905984" />
+      <window_info anchor="bottom" id="Messages" order="10" weight="0.32905984" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="right" id="Palette" order="3" />
-      <window_info anchor="right" id="Maven" order="4" weight="0.32943013" />
+      <window_info anchor="right" id="Maven" order="4" weight="0.13858365" />
       <window_info anchor="right" id="Theme Preview" order="5" />
       <window_info anchor="right" id="Capture Analysis" order="6" />
       <window_info anchor="right" id="Palette&#9;" order="7" />
     </layout-to-restore>
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="RECENTLY_FILTERED_USER_GROUPS">
+                <collection />
+              </option>
+              <option name="RECENTLY_FILTERED_BRANCH_GROUPS">
+                <collection />
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="RECENT_FILTERS">
+      <map>
+        <entry key="Branch">
+          <value>
+            <list />
+          </value>
+        </entry>
+        <entry key="User">
+          <value>
+            <list />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Put image and shortcut inside box" />
@@ -436,19 +545,8 @@
     <MESSAGE value="made selection function + todo" />
     <MESSAGE value="tasks" />
     <MESSAGE value="todos" />
-    <option name="LAST_COMMIT_MESSAGE" value="todos" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/org/fxmisc/richtext/demo/richtext/RichTextDemo.java</url>
-          <line>45</line>
-          <properties />
-          <option name="timeStamp" value="5" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+    <MESSAGE value="ConvinceOMeter" />
+    <option name="LAST_COMMIT_MESSAGE" value="ConvinceOMeter" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/pom.xml">
@@ -477,37 +575,7 @@
     <entry file="file://$PROJECT_DIR$/src/main/resources/org/fxmisc/richtext/demo/richtext/bold.png">
       <provider selected="true" editor-type-id="images" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/README.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;MarkdownPreviewEditor]">
-        <state split_layout="SPLIT">
-          <first_editor relative-caret-position="192">
-            <caret line="19" column="18" selection-start-line="19" selection-start-column="18" selection-end-line="19" selection-end-column="18" />
-          </first_editor>
-          <second_editor>
-            <markdownNavigatorState />
-          </second_editor>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/fxmisc/richtext/demo/richtext/Settings.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="7" column="1" selection-start-line="7" selection-start-column="1" selection-end-line="7" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/fxmisc/richtext/demo/richtext/RichTextDemo.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-3">
-          <caret line="370" column="47" lean-forward="true" selection-start-line="370" selection-start-column="47" selection-end-line="370" selection-end-column="47" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#11700#11701#0" expanded="true" />
-            <element signature="e#11775#11776#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/README.md" />
     <entry file="file://$PROJECT_DIR$/src/main/java/org/fxmisc/richtext/demo/hyperlink/HyperlinkDemo.java">
       <provider selected="true" editor-type-id="text-editor">
         <state>
@@ -515,30 +583,59 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/fxmisc/richtext/demo/richtext/OverlayPane.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/fxmisc/richtext/demo/richtext/RichTextDemo.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="18" column="34" selection-start-line="18" selection-start-column="34" selection-end-line="18" selection-end-column="34" />
+        <state relative-caret-position="5593">
+          <caret line="370" column="47" selection-start-line="370" selection-start-column="34" selection-end-line="370" selection-end-column="47" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#22805#23159#0" />
+            <element signature="e#23313#23777#0" />
+            <element signature="e#23783#24324#0" />
+            <element signature="e#24330#24486#0" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/org/fxmisc/richtext/demo/richtext/KBS.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="313">
-          <caret line="43" column="49" selection-start-line="43" selection-start-column="49" selection-end-line="43" selection-end-column="49" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state relative-caret-position="935">
+          <caret line="73" column="23" selection-start-line="73" selection-start-column="13" selection-end-line="73" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/fxmisc/richtext/demo/richtext/Settings.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="8" selection-start-line="8" selection-end-line="8" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/org/fxmisc/richtext/demo/richtext/KBSManager.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="169">
-          <caret line="23" column="28" lean-forward="true" selection-start-line="23" selection-start-column="8" selection-end-line="23" selection-end-column="28" />
+        <state relative-caret-position="646">
+          <caret line="53" column="23" selection-start-line="53" selection-start-column="13" selection-end-line="53" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/fxmisc/richtext/demo/richtext/RealLinkedImage.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="15" column="13" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/fxmisc/richtext/demo/richtext/OverlayPane.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="13" column="33" selection-start-line="13" selection-start-column="33" selection-end-line="13" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/fxmisc/richtext/demo/richtext/ConvinceOMeter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="510">
+          <caret line="54" selection-start-line="54" selection-end-line="54" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

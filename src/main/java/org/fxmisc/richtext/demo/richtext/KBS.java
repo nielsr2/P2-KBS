@@ -22,13 +22,14 @@ import javafx.scene.text.Text;
 import javafx.util.Duration;
 
 
-public class KBS extends Pane {
+public class KBS extends HBox {
     private String oprSystem;
     private boolean isHidden = true;
     private boolean isPinned = false;
     protected int kbsTimesUsed = 0;
     String functionality;
-    protected int tbTimesClicked = 0;
+    protected int tbTimesClickedTotal = 0;
+    protected int tbTimesClickedInstance = 0; //times clicked since last time shortcut were used
     private int nrOnList;
     private boolean pinned;
     public int KBStype[] = new int[5];
@@ -37,36 +38,44 @@ public class KBS extends Pane {
     Rectangle backgroundRect;
     ImageView icon;
     Text shortcut;
+    Pane kbsPane = new Pane();
+    ConvinceOMeter convinceOMeter = new ConvinceOMeter(2);
+
+
 
     KBS() {
         this.setVisible(false);
         this.setManaged(false);
     }
 
-    KBS(String shortcut, String iconPath) {
-
-        // initial rectangle
-        backgroundRect = new Rectangle(170, 50, Color.LIGHTGREY);
-
-        HBox content = new HBox(5);
-        content.setPadding(new Insets(5, 5, 5, 5));
-        icon = new ImageView(new Image(iconPath));
-        icon.setCache(true);
-        this.shortcut = new Text(shortcut);
-        this.shortcut.setFont(new Font(30));
-
-        content.getChildren().addAll(icon, this.shortcut);
-
-
-        this.getChildren().addAll(backgroundRect, content);
-        //.fade(0.1,2).play();
-
-    }
+//    KBS(String shortcut, String iconPath) {
+//
+//        // initial rectangle
+//        backgroundRect = new Rectangle(170, 50, Color.LIGHTGREY);
+//
+//        HBox content = new HBox(5);
+//        content.setPadding(new Insets(5, 5, 5, 5));
+//        icon = new ImageView(new Image(iconPath));
+//        icon.setCache(true);
+//        this.shortcut = new Text(shortcut);
+//        this.shortcut.setFont(new Font(30));
+//
+//        content.getChildren().addAll(icon, this.shortcut);
+//
+//
+//        this.getChildren().addAll(backgroundRect, content);
+//        //.fade(0.1,2).play();
+//
+//    }
 
     HBox content;
 
     KBS(String shortcut, String functionality, String iconPath) {
-        this();
+        this.setVisible(false);
+        this.setManaged(false);
+
+
+
         // initial rectangle
         this.setUserData(functionality);
         this.setId(functionality);
@@ -83,7 +92,12 @@ public class KBS extends Pane {
         content.getChildren().addAll(this.icon, this.shortcut);
 
 
-        this.getChildren().addAll(backgroundRect, content);
+        kbsPane.getChildren().addAll(backgroundRect, content);
+
+        this.setSpacing(5);
+
+
+        this.getChildren().addAll(convinceOMeter,kbsPane);
         //.fade(0.1,2).play();
         this.setOnMouseMoved(event -> {
             System.out.println(oprSystem);
@@ -106,6 +120,7 @@ public class KBS extends Pane {
 
     public void shortcutUsed() {
         this.kbsTimesUsed++;
+        this.tbTimesClickedInstance = 0;
 
         System.out.println(this.functionality + " KBS used : " + this.kbsTimesUsed );
         if(this.isHidden == false && this.isPinned == false) {
@@ -114,8 +129,10 @@ public class KBS extends Pane {
         }
     }
     public void toolbarPressed() {
-        this.tbTimesClicked++;
-        System.out.println(this.functionality + " toolbar used : " + this.tbTimesClicked );
+        this.tbTimesClickedTotal++;
+        this.tbTimesClickedInstance++;
+        System.out.println(this.functionality + " toolbar used : " + this.tbTimesClickedTotal );
+        System.out.println(this.functionality + " toolbar used : " + this.tbTimesClickedInstance );
         if(this.isHidden == true) {
             this.show();
             this.isHidden = false;
