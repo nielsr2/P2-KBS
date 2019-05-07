@@ -1,12 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="5bd1bdc2-647e-4fd3-b621-35a1c82e4a4d" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/P2-KBS.iws" beforeDir="false" afterPath="$PROJECT_DIR$/P2-KBS.iws" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/fxmisc/richtext/demo/richtext/ConvinceOMeter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/fxmisc/richtext/demo/richtext/ConvinceOMeter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/fxmisc/richtext/demo/richtext/KBS.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/fxmisc/richtext/demo/richtext/KBS.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/fxmisc/richtext/demo/richtext/KBSManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/fxmisc/richtext/demo/richtext/KBSManager.java" afterDir="false" />
-    </list>
+    <list default="true" id="5bd1bdc2-647e-4fd3-b621-35a1c82e4a4d" name="Default Changelist" comment="" />
     <list id="dce1eb78-d154-406a-95db-062b407bb3b7" name="nono" comment="nono" />
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -24,8 +19,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/org/fxmisc/richtext/demo/richtext/RichTextDemo.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="6188">
-              <caret line="370" column="47" selection-start-line="370" selection-start-column="34" selection-end-line="370" selection-end-column="47" />
+            <state relative-caret-position="5661">
+              <caret line="374" column="39" selection-start-line="374" selection-start-column="39" selection-end-line="374" selection-end-column="39" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -36,17 +31,11 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/org/fxmisc/richtext/demo/richtext/KBS.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="238">
-              <caret line="56" column="35" lean-forward="true" selection-start-line="56" selection-start-column="35" selection-end-line="56" selection-end-column="35" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/org/fxmisc/richtext/demo/richtext/ConvinceOMeter.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-85">
-              <caret line="25" column="21" selection-start-line="25" selection-start-column="11" selection-end-line="25" selection-end-column="21" />
+            <state relative-caret-position="136">
+              <caret line="38" column="33" selection-start-line="38" selection-start-column="33" selection-end-line="38" selection-end-column="33" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -54,8 +43,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/org/fxmisc/richtext/demo/richtext/Settings.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="136">
-              <caret line="8" selection-start-line="8" selection-end-line="8" />
+            <state relative-caret-position="51">
+              <caret line="3" selection-start-line="3" selection-end-line="3" />
             </state>
           </provider>
         </entry>
@@ -63,17 +52,23 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/org/fxmisc/richtext/demo/richtext/KBSManager.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="119">
-              <caret line="94" column="39" selection-start-line="94" selection-start-column="39" selection-end-line="94" selection-end-column="39" />
+            <state relative-caret-position="255">
+              <caret line="30" column="10" selection-start-line="30" selection-start-column="10" selection-end-line="30" selection-end-column="10" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/org/fxmisc/richtext/demo/richtext/RealLinkedImage.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/org/fxmisc/richtext/demo/richtext/ConvinceOMeter.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="170">
-              <caret line="15" column="13" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
+            <state relative-caret-position="357">
+              <caret line="30" selection-start-line="30" selection-end-line="30" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -81,8 +76,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/org/fxmisc/richtext/demo/richtext/OverlayPane.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="170">
-              <caret line="13" column="33" selection-start-line="13" selection-start-column="33" selection-end-line="13" selection-end-column="33" />
+            <state relative-caret-position="340">
+              <caret line="25" selection-start-line="25" selection-end-line="25" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -450,7 +445,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1295" height="735" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.23562753" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -553,7 +547,8 @@
     <MESSAGE value="tasks" />
     <MESSAGE value="todos" />
     <MESSAGE value="ConvinceOMeter" />
-    <option name="LAST_COMMIT_MESSAGE" value="ConvinceOMeter" />
+    <MESSAGE value="ConvinceOMeter fixed alignment" />
+    <option name="LAST_COMMIT_MESSAGE" value="ConvinceOMeter fixed alignment" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/pom.xml">
@@ -592,8 +587,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/org/fxmisc/richtext/demo/richtext/RichTextDemo.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="6188">
-          <caret line="370" column="47" selection-start-line="370" selection-start-column="34" selection-end-line="370" selection-end-column="47" />
+        <state relative-caret-position="5661">
+          <caret line="374" column="39" selection-start-line="374" selection-start-column="39" selection-end-line="374" selection-end-column="39" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -602,8 +597,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/org/fxmisc/richtext/demo/richtext/Settings.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="8" selection-start-line="8" selection-end-line="8" />
+        <state relative-caret-position="51">
+          <caret line="3" selection-start-line="3" selection-end-line="3" />
         </state>
       </provider>
     </entry>
@@ -616,8 +611,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/org/fxmisc/richtext/demo/richtext/OverlayPane.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="13" column="33" selection-start-line="13" selection-start-column="33" selection-end-line="13" selection-end-column="33" />
+        <state relative-caret-position="340">
+          <caret line="25" selection-start-line="25" selection-end-line="25" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -626,22 +621,31 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/org/fxmisc/richtext/demo/richtext/ConvinceOMeter.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-85">
-          <caret line="25" column="21" selection-start-line="25" selection-start-column="11" selection-end-line="25" selection-end-column="21" />
+        <state relative-caret-position="357">
+          <caret line="30" selection-start-line="30" selection-end-line="30" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/org/fxmisc/richtext/demo/richtext/KBSManager.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="94" column="39" selection-start-line="94" selection-start-column="39" selection-end-line="94" selection-end-column="39" />
+        <state relative-caret-position="255">
+          <caret line="30" column="10" selection-start-line="30" selection-start-column="10" selection-end-line="30" selection-end-column="10" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/org/fxmisc/richtext/demo/richtext/KBS.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="56" column="35" lean-forward="true" selection-start-line="56" selection-start-column="35" selection-end-line="56" selection-end-column="35" />
+        <state relative-caret-position="136">
+          <caret line="38" column="33" selection-start-line="38" selection-start-column="33" selection-end-line="38" selection-end-column="33" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
