@@ -5,11 +5,15 @@ import com.fxexperience.javafx.animation.BounceOutRightTransition;
 import com.fxexperience.javafx.animation.FadeInUpTransition;
 import com.fxexperience.javafx.animation.ShakeTransition;
 import javafx.animation.FadeTransition;
+import javafx.animation.ParallelTransition;
+import javafx.animation.ScaleTransition;
+import javafx.animation.TranslateTransition;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
@@ -20,6 +24,7 @@ import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.util.Duration;
+import sun.tools.jstat.Scale;
 
 
 public class KBS extends Pane {
@@ -71,7 +76,7 @@ public class KBS extends Pane {
         this.setUserData(functionality);
         this.setId(functionality);
         this.functionality = functionality;
-        icon = new ImageView(new Image(iconPath, 40, 40 ,true, true));
+        icon = new ImageView(new Image(iconPath, 40, 40, true, true));
         backgroundRect = new Rectangle(170, 50, Color.LIGHTGREY);
 
         this.content = new HBox(5);
@@ -107,16 +112,17 @@ public class KBS extends Pane {
     public void shortcutUsed() {
         this.kbsTimesUsed++;
 
-        System.out.println(this.functionality + " KBS used : " + this.kbsTimesUsed );
-        if(this.isHidden == false && this.isPinned == false) {
+        System.out.println(this.functionality + " KBS used : " + this.kbsTimesUsed);
+        if (this.isHidden == false && this.isPinned == false) {
             this.hide();
             this.isHidden = true;
         }
     }
+
     public void toolbarPressed() {
         this.tbTimesClicked++;
-        System.out.println(this.functionality + " toolbar used : " + this.tbTimesClicked );
-        if(this.isHidden == true) {
+        System.out.println(this.functionality + " toolbar used : " + this.tbTimesClicked);
+        if (this.isHidden == true) {
             this.show();
             this.isHidden = false;
         } else {
@@ -138,7 +144,7 @@ public class KBS extends Pane {
 
     //Function for setting color with linear gradient and setting opacity
     public void setColor(Color color, double opacity) {
-        Color colorLeft = new Color(color.getRed(), color.getGreen(), color.getBlue(), opacity/2);
+        Color colorLeft = new Color(color.getRed(), color.getGreen(), color.getBlue(), opacity / 2);
         Color colorRight = new Color(color.getRed(), color.getGreen(), color.getBlue(), opacity);
 
         Stop[] stopsColor = new Stop[]{new Stop(0, colorRight), new Stop(1, colorLeft)};
@@ -147,7 +153,7 @@ public class KBS extends Pane {
         this.backgroundRect.setFill(lgColor);
     }
 
-    public void show(){
+    public void show() {
         KBS k = this;
         FadeInUpTransition Anim = new FadeInUpTransition(k);
         Anim.play();
@@ -181,11 +187,24 @@ public class KBS extends Pane {
     public void forget() {
     }
 
-    public void seekAttention(){
+    public void seekAttention() {
         KBS k = this;
         System.out.println("C'mon! You stupid!");
         ShakeTransition Anim = new ShakeTransition(k);
-        Anim.play();
+//        Anim.play();
+        grow(1.5,.8);
+    }
+
+    void grow(double size, double seconds) {
+        System.out.println("grow ran!!!!!");
+        TranslateTransition tt = new TranslateTransition(Duration.seconds(seconds), this);
+        tt.setToX((-1 * this.getHeight() * 2) * (size - 1));
+        tt.setToY((-1 * this.getWidth() / 4) * (size - 1));
+        ScaleTransition st = new ScaleTransition(Duration.seconds(seconds), this);
+        st.setToX(size);
+        st.setToY(size);
+        ParallelTransition pt = new ParallelTransition(tt, st);
+        pt.play();
     }
 
     public FadeTransition fade(double opacityEnd, double time) {
@@ -206,6 +225,8 @@ public class KBS extends Pane {
 
 
     }
+
+    float sizeMultiplier;
 
 
 }
