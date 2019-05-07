@@ -3,6 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="5bd1bdc2-647e-4fd3-b621-35a1c82e4a4d" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/P2-KBS.iws" beforeDir="false" afterPath="$PROJECT_DIR$/P2-KBS.iws" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/fxmisc/richtext/demo/richtext/ConvinceOMeter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/fxmisc/richtext/demo/richtext/ConvinceOMeter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/fxmisc/richtext/demo/richtext/KBS.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/fxmisc/richtext/demo/richtext/KBS.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/fxmisc/richtext/demo/richtext/KBSManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/fxmisc/richtext/demo/richtext/KBSManager.java" afterDir="false" />
     </list>
     <list id="dce1eb78-d154-406a-95db-062b407bb3b7" name="nono" comment="nono" />
     <ignored path="$PROJECT_DIR$/out/" />
@@ -21,25 +24,29 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/org/fxmisc/richtext/demo/richtext/RichTextDemo.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="5627">
-              <caret line="372" column="39" selection-start-line="372" selection-start-column="39" selection-end-line="372" selection-end-column="39" />
+            <state relative-caret-position="6188">
+              <caret line="370" column="47" selection-start-line="370" selection-start-column="34" selection-end-line="370" selection-end-column="47" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#11700#11701#0" expanded="true" />
-                <element signature="e#11775#11776#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/org/fxmisc/richtext/demo/richtext/KBS.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="119">
-              <caret line="25" column="29" selection-start-line="25" selection-start-column="29" selection-end-line="25" selection-end-column="29" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+            <state relative-caret-position="238">
+              <caret line="56" column="35" lean-forward="true" selection-start-line="56" selection-start-column="35" selection-end-line="56" selection-end-column="35" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/org/fxmisc/richtext/demo/richtext/ConvinceOMeter.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-85">
+              <caret line="25" column="21" selection-start-line="25" selection-start-column="11" selection-end-line="25" selection-end-column="21" />
             </state>
           </provider>
         </entry>
@@ -47,22 +54,26 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/org/fxmisc/richtext/demo/richtext/Settings.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="51">
-              <caret line="3" selection-start-line="3" selection-end-line="3" />
+            <state relative-caret-position="136">
+              <caret line="8" selection-start-line="8" selection-end-line="8" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/org/fxmisc/richtext/demo/richtext/KBSManager.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="221">
-              <caret line="28" column="46" selection-start-line="28" selection-start-column="46" selection-end-line="28" selection-end-column="46" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#1709#2055#0" expanded="true" />
-                <element signature="e#2054#2055#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="119">
+              <caret line="94" column="39" selection-start-line="94" selection-start-column="39" selection-end-line="94" selection-end-column="39" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/org/fxmisc/richtext/demo/richtext/RealLinkedImage.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="170">
+              <caret line="15" column="13" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
             </state>
           </provider>
         </entry>
@@ -70,8 +81,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/org/fxmisc/richtext/demo/richtext/OverlayPane.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="340">
-              <caret line="25" selection-start-line="25" selection-end-line="25" />
+            <state relative-caret-position="170">
+              <caret line="13" column="33" selection-start-line="13" selection-start-column="33" selection-end-line="13" selection-end-column="33" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -126,7 +137,7 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="Mikkel" />
+        <entry key="$PROJECT_DIR$" value="dev" />
       </map>
     </option>
   </component>
@@ -136,9 +147,9 @@
         <option value="$PROJECT_DIR$/src/main/java/org/fxmisc/richtext/demo/richtext/Settings.java" />
         <option value="$PROJECT_DIR$/src/main/java/org/fxmisc/richtext/demo/richtext/OverlayPane.java" />
         <option value="$PROJECT_DIR$/src/main/java/org/fxmisc/richtext/demo/richtext/RichTextDemo.java" />
-        <option value="$PROJECT_DIR$/src/main/java/org/fxmisc/richtext/demo/richtext/KBSManager.java" />
-        <option value="$PROJECT_DIR$/src/main/java/org/fxmisc/richtext/demo/richtext/KBS.java" />
         <option value="$PROJECT_DIR$/src/main/java/org/fxmisc/richtext/demo/richtext/ConvinceOMeter.java" />
+        <option value="$PROJECT_DIR$/src/main/java/org/fxmisc/richtext/demo/richtext/KBS.java" />
+        <option value="$PROJECT_DIR$/src/main/java/org/fxmisc/richtext/demo/richtext/KBSManager.java" />
       </list>
     </option>
   </component>
@@ -174,7 +185,63 @@
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
-    <panes />
+    <panes>
+      <pane id="Scope" />
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="P2-KBS" type="b2602c69:ProjectViewProjectNode" />
+              <item name="P2-KBS" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="P2-KBS" type="b2602c69:ProjectViewProjectNode" />
+              <item name="P2-KBS" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="P2-KBS" type="b2602c69:ProjectViewProjectNode" />
+              <item name="P2-KBS" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="P2-KBS" type="b2602c69:ProjectViewProjectNode" />
+              <item name="P2-KBS" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="P2-KBS" type="b2602c69:ProjectViewProjectNode" />
+              <item name="P2-KBS" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="demo" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="P2-KBS" type="b2602c69:ProjectViewProjectNode" />
+              <item name="P2-KBS" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="demo" type="462c0819:PsiDirectoryNode" />
+              <item name="richtext" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="P2-KBS" type="b2602c69:ProjectViewProjectNode" />
+              <item name="P2-KBS" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="PackagesPane" />
+    </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
@@ -259,6 +326,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.RichTextDemo" />
         <item itemvalue="Application.RichTextDemo" />
         <item itemvalue="Application.RichTextDemo" />
         <item itemvalue="Application.RichTextDemo" />
@@ -361,7 +429,14 @@
       <option name="project" value="LOCAL" />
       <updated>1557152691144</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="ConvinceOMeter">
+      <created>1557215980287</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1557215980287</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TodoView">
@@ -375,8 +450,9 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1295" height="735" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" weight="0.23562753" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.23562753" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Capture Tool" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -386,15 +462,15 @@
       <window_info id="simpleUML" order="7" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.46932006" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.46932006" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.3283582" />
       <window_info anchor="bottom" id="Terminal" order="7" weight="0.3283582" />
       <window_info anchor="bottom" id="Event Log" order="8" side_tool="true" />
-      <window_info anchor="bottom" id="Version Control" order="9" weight="0.32905984" />
-      <window_info anchor="bottom" id="Messages" order="10" weight="0.32905984" />
+      <window_info anchor="bottom" id="Version Control" order="9" weight="0.3283582" />
+      <window_info active="true" anchor="bottom" id="Messages" order="10" visible="true" weight="0.3283582" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -516,20 +592,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/org/fxmisc/richtext/demo/richtext/RichTextDemo.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="5627">
-          <caret line="372" column="39" selection-start-line="372" selection-start-column="39" selection-end-line="372" selection-end-column="39" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#11700#11701#0" expanded="true" />
-            <element signature="e#11775#11776#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/fxmisc/richtext/demo/richtext/KBS.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="25" column="29" selection-start-line="25" selection-start-column="29" selection-end-line="25" selection-end-column="29" />
+        <state relative-caret-position="6188">
+          <caret line="370" column="47" selection-start-line="370" selection-start-column="34" selection-end-line="370" selection-end-column="47" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -538,20 +602,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/org/fxmisc/richtext/demo/richtext/Settings.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="3" selection-start-line="3" selection-end-line="3" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/fxmisc/richtext/demo/richtext/KBSManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="28" column="46" selection-start-line="28" selection-start-column="46" selection-end-line="28" selection-end-column="46" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1709#2055#0" expanded="true" />
-            <element signature="e#2054#2055#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="136">
+          <caret line="8" selection-start-line="8" selection-end-line="8" />
         </state>
       </provider>
     </entry>
@@ -564,8 +616,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/org/fxmisc/richtext/demo/richtext/OverlayPane.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="25" selection-start-line="25" selection-end-line="25" />
+        <state relative-caret-position="170">
+          <caret line="13" column="33" selection-start-line="13" selection-start-column="33" selection-end-line="13" selection-end-column="33" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -574,11 +626,22 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/org/fxmisc/richtext/demo/richtext/ConvinceOMeter.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="510">
-          <caret line="54" selection-start-line="54" selection-end-line="54" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state relative-caret-position="-85">
+          <caret line="25" column="21" selection-start-line="25" selection-start-column="11" selection-end-line="25" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/fxmisc/richtext/demo/richtext/KBSManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="94" column="39" selection-start-line="94" selection-start-column="39" selection-end-line="94" selection-end-column="39" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/fxmisc/richtext/demo/richtext/KBS.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="56" column="35" lean-forward="true" selection-start-line="56" selection-start-column="35" selection-end-line="56" selection-end-column="35" />
         </state>
       </provider>
     </entry>
