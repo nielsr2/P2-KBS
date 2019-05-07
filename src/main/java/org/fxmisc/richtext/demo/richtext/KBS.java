@@ -21,19 +21,21 @@ import javafx.scene.paint.CycleMethod;
 import javafx.scene.paint.LinearGradient;
 import javafx.scene.paint.Stop;
 import javafx.scene.shape.Rectangle;
+import javafx.scene.shape.SVGPath;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.util.Duration;
 import sun.tools.jstat.Scale;
 
 
-public class KBS extends Pane {
+public class KBS extends HBox {
     private String oprSystem;
     private boolean isHidden = true;
     private boolean isPinned = false;
     protected int kbsTimesUsed = 0;
     String functionality;
-    protected int tbTimesClicked = 0;
+    protected int tbTimesClickedTotal = 0;
+    protected int tbTimesClickedInstance = 0; //times clicked since last time shortcut were used
     private int nrOnList;
     private boolean pinned;
     public int KBStype[] = new int[5];
@@ -42,42 +44,60 @@ public class KBS extends Pane {
     Rectangle backgroundRect;
     ImageView icon;
     Text shortcut;
+    Pane kbsPane = new Pane();
+    ConvinceOMeter convinceOMeter = new ConvinceOMeter(2);
+
+
 
     KBS() {
         this.setVisible(false);
         this.setManaged(false);
     }
 
-    KBS(String shortcut, String iconPath) {
-
-        // initial rectangle
-        backgroundRect = new Rectangle(170, 50, Color.LIGHTGREY);
-
-        HBox content = new HBox(5);
-        content.setPadding(new Insets(5, 5, 5, 5));
-        icon = new ImageView(new Image(iconPath));
-        icon.setCache(true);
-        this.shortcut = new Text(shortcut);
-        this.shortcut.setFont(new Font(30));
-
-        content.getChildren().addAll(icon, this.shortcut);
-
-
-        this.getChildren().addAll(backgroundRect, content);
-        //.fade(0.1,2).play();
-
-    }
+//    KBS(String shortcut, String iconPath) {
+//
+//        // initial rectangle
+//        backgroundRect = new Rectangle(170, 50, Color.LIGHTGREY);
+//
+//        HBox content = new HBox(5);
+//        content.setPadding(new Insets(5, 5, 5, 5));
+//        icon = new ImageView(new Image(iconPath));
+//        icon.setCache(true);
+//        this.shortcut = new Text(shortcut);
+//        this.shortcut.setFont(new Font(30));
+//
+//        content.getChildren().addAll(icon, this.shortcut);
+//
+//
+//        this.getChildren().addAll(backgroundRect, content);
+//        //.fade(0.1,2).play();
+//
+//    }
 
     HBox content;
 
     KBS(String shortcut, String functionality, String iconPath) {
-        this();
+        this.setVisible(false);
+        this.setManaged(false);
+
+
+
         // initial rectangle
         this.setUserData(functionality);
         this.setId(functionality);
         this.functionality = functionality;
-        icon = new ImageView(new Image(iconPath, 40, 40, true, true));
+        icon = new ImageView(new Image(iconPath, 40, 40 ,true, true));
         backgroundRect = new Rectangle(170, 50, Color.LIGHTGREY);
+
+
+        SVGPath svgPin = new SVGPath();
+        SVGPath svgClose = new SVGPath();
+        String path = "M6.78,1.96c0,0-1.23-2.25-0.35-1.77c1.29,0.69,2.79,1.7,3.66,2.34c0.86,0.63-1.55,0.32-1.55,0.32L6.82,5.79 c0,0,1.04,3.12,0.59,3.33c-0.53,0.25-2.3-1-2.68-1.3C4.67,7.76,4.57,7.78,4.52,7.85c0,0-2.59,3.51-2.73,3.37 c-0.14-0.14,2.1-3.77,2.1-3.77C3.93,7.39,3.91,7.3,3.84,7.26C3.53,7.09,1.83,6,1.79,5.31C1.75,4.57,5.02,4.56,5.02,4.56L6.78,1.96z";
+        svgPin.setContent(path);
+//TODO change the position (left upper corner)
+        String pathClose = "M5.66,4.78 9.6,0.85 10.52,1.77 6.57,5.7 10.52,9.64 9.61,10.53 5.68,6.6 1.74,10.53 0.82,9.61 4.78,5.67 0.84,1.71 1.74,0.81z";
+        //Setting the SVGPath in the form of string
+        svgClose.setContent(pathClose);
 
         this.content = new HBox(5);
         this.content.setPadding(new Insets(5, 5, 5, 5));
@@ -85,10 +105,15 @@ public class KBS extends Pane {
         this.shortcut = new Text(shortcut);
         this.shortcut.setFont(new Font(30));
 
-        content.getChildren().addAll(this.icon, this.shortcut);
+        content.getChildren().addAll(this.icon, this.shortcut,svgPin, svgClose);
 
 
-        this.getChildren().addAll(backgroundRect, content);
+        kbsPane.getChildren().addAll(backgroundRect, content);
+
+        this.setSpacing(5);
+
+
+        this.getChildren().addAll(convinceOMeter,kbsPane);
         //.fade(0.1,2).play();
         this.setOnMouseMoved(event -> {
             System.out.println(oprSystem);
@@ -111,18 +136,20 @@ public class KBS extends Pane {
 
     public void shortcutUsed() {
         this.kbsTimesUsed++;
+        this.tbTimesClickedInstance = 0;
 
-        System.out.println(this.functionality + " KBS used : " + this.kbsTimesUsed);
-        if (this.isHidden == false && this.isPinned == false) {
+        System.out.println(this.functionality + " KBS used : " + this.kbsTimesUsed );
+        if(this.isHidden == false && this.isPinned == false) {
             this.hide();
             this.isHidden = true;
         }
     }
-
     public void toolbarPressed() {
-        this.tbTimesClicked++;
-        System.out.println(this.functionality + " toolbar used : " + this.tbTimesClicked);
-        if (this.isHidden == true) {
+        this.tbTimesClickedTotal++;
+        this.tbTimesClickedInstance++;
+        System.out.println(this.functionality + " toolbar used : " + this.tbTimesClickedTotal );
+        System.out.println(this.functionality + " toolbar used : " + this.tbTimesClickedInstance );
+        if(this.isHidden == true) {
             this.show();
             this.isHidden = false;
         } else {
@@ -144,7 +171,7 @@ public class KBS extends Pane {
 
     //Function for setting color with linear gradient and setting opacity
     public void setColor(Color color, double opacity) {
-        Color colorLeft = new Color(color.getRed(), color.getGreen(), color.getBlue(), opacity / 2);
+        Color colorLeft = new Color(color.getRed(), color.getGreen(), color.getBlue(), opacity/2);
         Color colorRight = new Color(color.getRed(), color.getGreen(), color.getBlue(), opacity);
 
         Stop[] stopsColor = new Stop[]{new Stop(0, colorRight), new Stop(1, colorLeft)};
@@ -153,7 +180,7 @@ public class KBS extends Pane {
         this.backgroundRect.setFill(lgColor);
     }
 
-    public void show() {
+    public void show(){
         KBS k = this;
         FadeInUpTransition Anim = new FadeInUpTransition(k);
         Anim.play();
@@ -187,7 +214,7 @@ public class KBS extends Pane {
     public void forget() {
     }
 
-    public void seekAttention() {
+    public void seekAttention(){
         KBS k = this;
         System.out.println("C'mon! You stupid!");
         ShakeTransition Anim = new ShakeTransition(k);
@@ -225,8 +252,6 @@ public class KBS extends Pane {
 
 
     }
-
-    float sizeMultiplier;
 
 
 }
