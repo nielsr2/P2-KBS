@@ -114,7 +114,7 @@ public class RichTextDemo extends Application {
         boldBtn.setOnMouseClicked((event) -> {
             overlayPane.km.getKBSbyFunction("bold").toolbarPressed();
             overlayPane.km.klm.stopTimerForToolbar();
-            overlayPane.giveKM().getKBSbyFunction("bold").convinceOMeter.setTimeLost(overlayPane.km.klm.getTimesSlower());
+            overlayPane.giveKM().getKBSbyFunction("bold").convinceOMeter.setTimesSlower(overlayPane.km.klm.getTimesSlower());
         });
 //        boldBtn
         KeyCombination kcBold = new KeyCodeCombination(KeyCode.B, KeyCombination.SHORTCUT_DOWN);
@@ -127,7 +127,7 @@ public class RichTextDemo extends Application {
         italicBtn.setOnMouseClicked((event) -> {
             overlayPane.km.getKBSbyFunction("italic").toolbarPressed();
             overlayPane.km.klm.stopTimerForToolbar();
-            overlayPane.giveKM().getKBSbyFunction("italic").convinceOMeter.setTimeLost(overlayPane.km.klm.getTimesSlower());
+            overlayPane.giveKM().getKBSbyFunction("italic").convinceOMeter.setTimesSlower(overlayPane.km.klm.getTimesSlower());
         });
         KeyCombination kcItalic = new KeyCodeCombination(KeyCode.I, KeyCombination.SHORTCUT_DOWN);
         Mnemonic mnItalic = new Mnemonic(italicBtn, kcItalic);
@@ -138,7 +138,7 @@ public class RichTextDemo extends Application {
         underlineBtn.setOnMouseClicked((event) -> {
             overlayPane.km.getKBSbyFunction("underline").toolbarPressed();
             overlayPane.km.klm.stopTimerForToolbar();
-            overlayPane.giveKM().getKBSbyFunction("underline").convinceOMeter.setTimeLost(overlayPane.km.klm.getTimesSlower());
+            overlayPane.giveKM().getKBSbyFunction("underline").convinceOMeter.setTimesSlower(overlayPane.km.klm.getTimesSlower());
         });
         KeyCombination kcUnderline = new KeyCodeCombination(KeyCode.U, KeyCombination.SHORTCUT_DOWN);
         Mnemonic mnUnderline = new Mnemonic(underlineBtn, kcUnderline);
@@ -149,7 +149,7 @@ public class RichTextDemo extends Application {
         strikeBtn.setOnMouseClicked((event) -> {
             overlayPane.km.getKBSbyFunction("strikethrough").toolbarPressed();
             overlayPane.km.klm.stopTimerForToolbar();
-            overlayPane.giveKM().getKBSbyFunction("strikethrough").convinceOMeter.setTimeLost(overlayPane.km.klm.getTimesSlower());
+            overlayPane.giveKM().getKBSbyFunction("strikethrough").convinceOMeter.setTimesSlower(overlayPane.km.klm.getTimesSlower());
         });
         KeyCombination kcStrike = new KeyCodeCombination(KeyCode.X, KeyCombination.SHORTCUT_DOWN, KeyCombination.SHIFT_DOWN);
         Mnemonic mnStrike = new Mnemonic(strikeBtn, kcStrike);
@@ -160,7 +160,7 @@ public class RichTextDemo extends Application {
         insertImageBtn.setOnMouseClicked((event) -> {
             overlayPane.km.getKBSbyFunction("insertimage").toolbarPressed();
             overlayPane.km.klm.stopTimerForToolbar();
-            overlayPane.giveKM().getKBSbyFunction("insertimage").convinceOMeter.setTimeLost(overlayPane.km.klm.getTimesSlower());
+            overlayPane.giveKM().getKBSbyFunction("insertimage").convinceOMeter.setTimesSlower(overlayPane.km.klm.getTimesSlower());
         });
         KeyCombination kcInsertImage = new KeyCodeCombination(KeyCode.N, KeyCombination.SHORTCUT_DOWN, KeyCombination.SHIFT_DOWN);
         Mnemonic mnInsertImage = new Mnemonic(insertImageBtn, kcInsertImage);
@@ -173,7 +173,7 @@ public class RichTextDemo extends Application {
         alignLeftBtn.setOnMouseClicked((event) -> {
             overlayPane.km.getKBSbyFunction("align-left").toolbarPressed();
             overlayPane.km.klm.stopTimerForToolbar();
-            overlayPane.giveKM().getKBSbyFunction("align-left").convinceOMeter.setTimeLost(overlayPane.km.klm.getTimesSlower());
+            overlayPane.giveKM().getKBSbyFunction("align-left").convinceOMeter.setTimesSlower(overlayPane.km.klm.getTimesSlower());
         });
         KeyCombination kcAlignLeft = new KeyCodeCombination(KeyCode.OPEN_BRACKET, KeyCombination.SHORTCUT_DOWN);
         Mnemonic mnAlignLeft = new Mnemonic(alignLeftBtn, kcAlignLeft);
@@ -184,7 +184,7 @@ public class RichTextDemo extends Application {
         alignCenterBtn.setOnMouseClicked((event) -> {
             overlayPane.km.getKBSbyFunction("align-center").toolbarPressed();
             overlayPane.km.klm.stopTimerForToolbar();
-            overlayPane.giveKM().getKBSbyFunction("align-center").convinceOMeter.setTimeLost(overlayPane.km.klm.getTimesSlower());
+            overlayPane.giveKM().getKBSbyFunction("align-center").convinceOMeter.setTimesSlower(overlayPane.km.klm.getTimesSlower());
         });
         KeyCombination kcAlignCenter = new KeyCodeCombination(KeyCode.BACK_SLASH, KeyCombination.SHORTCUT_DOWN);
         Mnemonic mnAlignCenter = new Mnemonic(alignCenterBtn, kcAlignCenter);
@@ -195,7 +195,7 @@ public class RichTextDemo extends Application {
         alignRightBtn.setOnMouseClicked((event) -> {
             overlayPane.km.getKBSbyFunction("align-right").toolbarPressed();
             overlayPane.km.klm.stopTimerForToolbar();
-            overlayPane.giveKM().getKBSbyFunction("align-right").convinceOMeter.setTimeLost(overlayPane.km.klm.getTimesSlower());
+            overlayPane.giveKM().getKBSbyFunction("align-right").convinceOMeter.setTimesSlower(overlayPane.km.klm.getTimesSlower());
         });
         KeyCombination kcAlignRight = new KeyCodeCombination(KeyCode.CLOSE_BRACKET, KeyCombination.SHORTCUT_DOWN);
         Mnemonic mnAlignRight = new Mnemonic(alignRightBtn, kcAlignLeft);
@@ -206,7 +206,7 @@ public class RichTextDemo extends Application {
         alignJustifyBtn.setOnMouseClicked((event) -> {
             overlayPane.km.getKBSbyFunction("align-justify").toolbarPressed();
             overlayPane.km.klm.stopTimerForToolbar();
-            overlayPane.giveKM().getKBSbyFunction("align-justify").convinceOMeter.setTimeLost(overlayPane.km.klm.getTimesSlower());
+            overlayPane.giveKM().getKBSbyFunction("align-justify").convinceOMeter.setTimesSlower(overlayPane.km.klm.getTimesSlower());
         });
         KeyCombination kcAlignJustify = new KeyCodeCombination(KeyCode.BACK_SLASH, KeyCombination.SHORTCUT_DOWN, KeyCombination.ALT_DOWN);
         Mnemonic mnAlignJustify = new Mnemonic(alignJustifyBtn, kcAlignJustify);
