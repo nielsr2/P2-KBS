@@ -1,6 +1,7 @@
 package org.fxmisc.richtext.demo.richtext;
 
 import java.awt.*;
+
 import javafx.scene.control.Button;
 
 public class KLM {
@@ -11,6 +12,14 @@ public class KLM {
     private double b = 0.1; //press or release mouse button
     private double bb = 0.2; //click mouse button
     private double h = 0.4; //home hands to keyboard or mouse
+
+    private double startTimeToolbar;
+    private double stopTimeToolbar;
+    private double timeElapsedForToolbar;
+
+    private double startTimeShortcut;
+    private double stopTimeShortcut;
+    private double timeElapsedForShortcut;
 
     KLM() {
 
@@ -45,7 +54,41 @@ public class KLM {
 
     }
 
-     static double log(double base, double x) {
+
+
+    public void startTimerForToolbar() {
+        startTimeToolbar = System.nanoTime();
+    }
+
+    public void stopTimerForToolbar() {
+        stopTimeToolbar = System.nanoTime();
+        double time = stopTimeToolbar-startTimeToolbar;
+        this.timeElapsedForToolbar = time/1_000_000_000;
+        System.out.println("Timer has stopped: Time = " + getTimeElapsedForToolbar());
+        startTimeToolbar = System.nanoTime();
+    }
+
+    public double getTimeElapsedForToolbar() {
+        return this.timeElapsedForToolbar;
+    }
+
+    public void startTimerForShortcut() {
+        startTimeShortcut = System.nanoTime();
+    }
+
+    public void stopTimerForShortcut() {
+        stopTimeShortcut = System.nanoTime();
+        double time = stopTimeShortcut-startTimeShortcut;
+        this.timeElapsedForShortcut = time/1_000_000_000;
+        System.out.println("Timer has stopped: Time = " + getTimeElapsedForShortcut());
+        startTimeShortcut = System.nanoTime();
+    }
+
+    public double getTimeElapsedForShortcut() {
+        return this.timeElapsedForShortcut;
+    }
+
+    static double log(double base, double x) {
         return Math.log10(x)/Math.log10(base);
     }
 }
