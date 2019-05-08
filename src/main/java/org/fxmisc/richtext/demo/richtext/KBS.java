@@ -33,7 +33,13 @@ import java.awt.*;
 public class KBS extends HBox {
     private boolean isHidden = true;
     private boolean isPinned = false;// todo, general thing: place properties above the function the relate to. if it's used a lot of places, i would place it up here
-    protected int kbsTimesUsed = 0;
+    protected int kbsTimesUsedTotal = 0;
+
+    public void setKbsTimesUsedInstance(int kbsTimesUsedInstance) {
+        this.kbsTimesUsedInstance = kbsTimesUsedInstance;
+    }
+
+    protected int kbsTimesUsedInstance = 0;
     String functionality;
     protected int tbTimesClickedTotal = 0;
     protected int tbTimesClickedInstance = 0; //times clicked since last time shortcut were used
@@ -48,6 +54,7 @@ public class KBS extends HBox {
     Text shortcut;
     Pane kbsPane = new Pane();
     ConvinceOMeter convinceOMeter = new ConvinceOMeter(2);
+    RewardOMeter rewardOMeter = new RewardOMeter(5);
     HBox content;
 
     KBS(String shortcut, String functionality, String iconPath) {
@@ -109,9 +116,14 @@ public class KBS extends HBox {
     Color grColorGreen2 = new Color(0.2, 0.6, 0, 0.30);
 
     public void shortcutUsed() {
-        this.kbsTimesUsed++;
+        this.kbsTimesUsedTotal++;
+        this.kbsTimesUsedInstance++;
+        rewardOMeter.setKbsTimesUsedInstance(this.kbsTimesUsedInstance);
+        rewardOMeter.manageRewardOMeter();
+
         this.tbTimesClickedInstance = 0;
-        String kbsLog = Integer.toString(kbsTimesUsed);
+
+        String kbsLog = Integer.toString(kbsTimesUsedTotal);
         LOGGER.info(functionality + " KBS executed " + kbsLog); //Logs what KBS was used and the amount.
 
         if(this.isHidden == false && this.isPinned == false) {
@@ -123,6 +135,7 @@ public class KBS extends HBox {
     public void toolbarPressed() {
         this.tbTimesClickedTotal++;
         this.tbTimesClickedInstance++;
+        this.kbsTimesUsedInstance = 0;
         String tbLog = Integer.toString(tbTimesClickedTotal);
         LOGGER.info(functionality + " Toolbar clicked " + tbLog); //Logs what toolbar was clicked and the amount
         LOGGER.info(this.functionality + " clicked " + this.tbTimesClickedInstance + " times since last time shortcut were used"); //Logs amount until KBS used.
@@ -263,5 +276,11 @@ public class KBS extends HBox {
         this.buttonX = buttonX;
         this.buttonY = buttonY;
     }
+
+
+
+
+
+
 
 }
