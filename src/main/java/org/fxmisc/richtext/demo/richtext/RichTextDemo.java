@@ -82,6 +82,16 @@ public class RichTextDemo extends Application {
 
     OverlayPane overlayPane = new OverlayPane();
 
+    Button boldBtn;
+    Button italicBtn;
+    Button underlineBtn;
+    Button strikeBtn;
+    Button insertImageBtn;
+    ToggleButton alignLeftBtn;
+    ToggleButton alignCenterBtn;
+    ToggleButton alignRightBtn;
+    ToggleButton alignJustifyBtn;
+
     @Override
     public void start(Stage primaryStage) {
         mainStage = primaryStage;
@@ -105,7 +115,7 @@ public class RichTextDemo extends Application {
 
 
 //     BOLD BUTTON  *********************************************************************************************************           BOLD BUTTON
-        Button boldBtn = createButton("bold", this::toggleBold, "Bold");
+        boldBtn = createButton("bold", this::toggleBold, "Bold");
         boldBtn.setOnMouseClicked((event) -> {
             overlayPane.km.getKBSbyFunction("bold").toolbarPressed();
             overlayPane.km.klm.stopTimerForToolbar();
@@ -117,7 +127,7 @@ public class RichTextDemo extends Application {
 //      *********************************************************************************************************
 
         ///////////////// ITALIC BUTTON /////////////////////////////
-        Button italicBtn = createButton("italic", this::toggleItalic, "Italic");
+        italicBtn = createButton("italic", this::toggleItalic, "Italic");
         italicBtn.setOnMouseClicked((event) -> {
             overlayPane.km.getKBSbyFunction("italic").toolbarPressed();
             overlayPane.km.klm.stopTimerForToolbar();
@@ -127,7 +137,7 @@ public class RichTextDemo extends Application {
         Runnable rnItalic = () -> ourItalicFunction(); //this.toggleItalic
 
         ////////////////// UNDERLINE BUTTON /////////////////////////
-        Button underlineBtn = createButton("underline", this::toggleUnderline, "Underline");
+        underlineBtn = createButton("underline", this::toggleUnderline, "Underline");
         underlineBtn.setOnMouseClicked((event) -> {
             overlayPane.km.getKBSbyFunction("underline").toolbarPressed();
             overlayPane.km.klm.stopTimerForToolbar();
@@ -137,7 +147,7 @@ public class RichTextDemo extends Application {
         Runnable rnUnderline = () -> ourUnderlineFunction();//this.toggleUnderline();
 
         ///////////////// STRIKE THROUGH BUTTON ////////////////////
-        Button strikeBtn = createButton("strikethrough", this::toggleStrikethrough, "Strike Trough");
+        strikeBtn = createButton("strikethrough", this::toggleStrikethrough, "Strike Trough");
         strikeBtn.setOnMouseClicked((event) -> {
             overlayPane.km.getKBSbyFunction("strikethrough").toolbarPressed();
             overlayPane.km.klm.stopTimerForToolbar();
@@ -147,7 +157,7 @@ public class RichTextDemo extends Application {
         Runnable rnStrike = () -> ourStrikeFunction();//this.toggleStrikethrough();
 
         //////////////// INSERT IMAGE BUTTON //////////////////////
-        Button insertImageBtn = createButton("insertimage", this::insertImage, "Insert Image");
+        insertImageBtn = createButton("insertimage", this::insertImage, "Insert Image");
         insertImageBtn.setOnMouseClicked((event) -> {
             overlayPane.km.getKBSbyFunction("insertimage").toolbarPressed();
             overlayPane.km.klm.stopTimerForToolbar();
@@ -159,7 +169,7 @@ public class RichTextDemo extends Application {
         ToggleGroup alignmentGrp = new ToggleGroup();
 
         /////////////// ALIGN LEFT BUTTON ////////////////////////
-        ToggleButton alignLeftBtn = createToggleButton(alignmentGrp, "align-left", this::alignLeft, "Align left");
+        alignLeftBtn = createToggleButton(alignmentGrp, "align-left", this::alignLeft, "Align left");
         alignLeftBtn.setOnMouseClicked((event) -> {
             overlayPane.km.getKBSbyFunction("align-left").toolbarPressed();
             overlayPane.km.klm.stopTimerForToolbar();
@@ -169,7 +179,7 @@ public class RichTextDemo extends Application {
         Runnable rnAlignLeft = () -> ourAlignLeftFunction();//this.alignLeft();
 
         ////////////// ALIGN CENTER BUTTON //////////////////////
-        ToggleButton alignCenterBtn = createToggleButton(alignmentGrp, "align-center", this::alignCenter, "Align center");
+        alignCenterBtn = createToggleButton(alignmentGrp, "align-center", this::alignCenter, "Align center");
         alignCenterBtn.setOnMouseClicked((event) -> {
             overlayPane.km.getKBSbyFunction("align-center").toolbarPressed();
             overlayPane.km.klm.stopTimerForToolbar();
@@ -179,7 +189,7 @@ public class RichTextDemo extends Application {
         Runnable rnAlignCenter = () -> ourAlignCenterFunction();//this.alignCenter();
 
         ///////////// ALIGN RIGHT BUTTON ///////////////////////
-        ToggleButton alignRightBtn = createToggleButton(alignmentGrp, "align-right", this::alignRight, "Align right");
+        alignRightBtn = createToggleButton(alignmentGrp, "align-right", this::alignRight, "Align right");
         alignRightBtn.setOnMouseClicked((event) -> {
             overlayPane.km.getKBSbyFunction("align-right").toolbarPressed();
             overlayPane.km.klm.stopTimerForToolbar();
@@ -189,7 +199,7 @@ public class RichTextDemo extends Application {
         Runnable rnAlignRight = () -> ourAlignRightFunction();//this.alignRight();
 
         //////////// ALIGN JUSTIFY /////////////////////////
-        ToggleButton alignJustifyBtn = createToggleButton(alignmentGrp, "align-justify", this::alignJustify, "Justify");
+        alignJustifyBtn = createToggleButton(alignmentGrp, "align-justify", this::alignJustify, "Justify");
         alignJustifyBtn.setOnMouseClicked((event) -> {
             overlayPane.km.getKBSbyFunction("align-justify").toolbarPressed();
             overlayPane.km.klm.stopTimerForToolbar();
