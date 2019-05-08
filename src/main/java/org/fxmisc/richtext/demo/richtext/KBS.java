@@ -1,6 +1,5 @@
 package org.fxmisc.richtext.demo.richtext;
 
-
 import com.fxexperience.javafx.animation.BounceOutRightTransition;
 import com.fxexperience.javafx.animation.FadeInUpTransition;
 import com.fxexperience.javafx.animation.ShakeTransition;
@@ -26,20 +25,28 @@ import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.util.Duration;
 
+import java.util.logging.Logger;
+
 import java.awt.*;
 
 
 public class KBS extends HBox {
-    private String oprSystem;
     private boolean isHidden = true;
     private boolean isPinned = false;// todo, general thing: place properties above the function the relate to. if it's used a lot of places, i would place it up here
-    protected int kbsTimesUsed = 0;
+    protected int kbsTimesUsedTotal = 0;
+
+    public void setKbsTimesUsedInstance(int kbsTimesUsedInstance) {
+        this.kbsTimesUsedInstance = kbsTimesUsedInstance;
+    }
+
+    protected int kbsTimesUsedInstance = 0;
     String functionality;
     protected int tbTimesClickedTotal = 0;
     protected int tbTimesClickedInstance = 0; //times clicked since last time shortcut were used
     private int nrOnList;
     private boolean pinned;
     public int KBStype[] = new int[5];
+    private final static Logger LOGGER = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME); //Allows access for the logger
 
     private double opacity = 1;
     Rectangle backgroundRect;
@@ -47,6 +54,7 @@ public class KBS extends HBox {
     Text shortcut;
     Pane kbsPane = new Pane();
     ConvinceOMeter convinceOMeter = new ConvinceOMeter(2);
+    RewardOMeter rewardOMeter = new RewardOMeter(5);
     HBox content;
 
     KBS(String shortcut, String functionality, String iconPath) {
@@ -90,7 +98,6 @@ public class KBS extends HBox {
         this.getChildren().addAll(convinceOMeter, kbsPane);
         //.fade(0.1,2).play();
         this.setOnMouseMoved(event -> {
-            System.out.println(oprSystem);
         });
     }
 
@@ -109,23 +116,30 @@ public class KBS extends HBox {
     Color grColorGreen2 = new Color(0.2, 0.6, 0, 0.30);
 
     public void shortcutUsed() {
-        this.kbsTimesUsed++;
+        this.kbsTimesUsedTotal++;
+        this.kbsTimesUsedInstance++;
+        rewardOMeter.setKbsTimesUsedInstance(this.kbsTimesUsedInstance);
+        rewardOMeter.manageRewardOMeter();
+
         this.tbTimesClickedInstance = 0;
 
-        System.out.println(this.functionality + " KBS used : " + this.kbsTimesUsed);
-        if (this.isHidden == false && this.isPinned == false) {
+        String kbsLog = Integer.toString(kbsTimesUsedTotal);
+        LOGGER.info(functionality + " KBS executed " + kbsLog); //Logs what KBS was used and the amount.
+
+        if(this.isHidden == false && this.isPinned == false) {
             this.hide();
             this.isHidden = true;
         }
 
     }
-
     public void toolbarPressed() {
         this.tbTimesClickedTotal++;
         this.tbTimesClickedInstance++;
-        System.out.println(this.functionality + " toolbar used : " + this.tbTimesClickedTotal);
-        System.out.println(this.functionality + " toolbar used : " + this.tbTimesClickedInstance);
-        if (this.isHidden == true) {
+        this.kbsTimesUsedInstance = 0;
+        String tbLog = Integer.toString(tbTimesClickedTotal);
+        LOGGER.info(functionality + " Toolbar clicked " + tbLog); //Logs what toolbar was clicked and the amount
+        LOGGER.info(this.functionality + " clicked " + this.tbTimesClickedInstance + " times since last time shortcut were used"); //Logs amount until KBS used.
+        if(this.isHidden == true) {
             this.show();
             this.isHidden = false;
         } else {
@@ -180,7 +194,6 @@ public class KBS extends HBox {
             }
         });
         Anim.play();
-
     }
 
     public void pin(boolean isPinned) {
@@ -263,5 +276,11 @@ public class KBS extends HBox {
         this.buttonX = buttonX;
         this.buttonY = buttonY;
     }
+
+
+
+
+
+
 
 }

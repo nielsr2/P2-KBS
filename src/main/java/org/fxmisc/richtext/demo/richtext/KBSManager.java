@@ -1,8 +1,6 @@
 package org.fxmisc.richtext.demo.richtext;
 
-import javafx.beans.binding.BooleanBinding;
-import javafx.beans.property.BooleanProperty;
-import javafx.beans.property.BooleanPropertyBase;
+import javafx.animation.FadeTransition;
 import javafx.event.EventHandler;
 import javafx.geometry.HPos;
 import javafx.geometry.Insets;
@@ -11,14 +9,16 @@ import javafx.geometry.VPos;
 import javafx.scene.Node;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.VBox;
-import javafx.animation.FadeTransition;
 import javafx.util.Duration;
 
 import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.util.Timer;
 import java.util.TimerTask;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
+import static com.sun.xml.internal.ws.spi.db.BindingContextFactory.LOGGER;
 import static javafx.geometry.Orientation.VERTICAL;
 import static javafx.geometry.Pos.*;
 
@@ -38,6 +38,7 @@ import static javafx.geometry.Pos.*;
 public class KBSManager extends VBox {
 
     boolean focus = true;
+    private final static Logger LOGGER = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
     KLM klm = new KLM();
 
     //TODO create a timer
@@ -64,7 +65,6 @@ public class KBSManager extends VBox {
     void registerOnMovement() {
 
     }
-
     private String oprSystem = System.getProperty("os.name");
 
 
@@ -72,14 +72,14 @@ public class KBSManager extends VBox {
         this.setVisible(show);
         this.setManaged(show);
     }
-
-    public BooleanBinding test;
+    //public BooleanBinding test;
 
     KBSManager() {
         callingFunctionOnTimer();
         setMaxSize(Settings.WINDOW_WIDTH, Settings.WINDOW_HEIGHT);
-        System.out.println(this.oprSystem);
-        String modifier;
+        LOGGER.info("Operation system " + oprSystem); //Logs operation system
+        String modifier; //Show shortcut, changes depending on operating system
+        //Changes the string "modifier" depending on the operating system.
         if (oprSystem.contains("Windows")) {
             modifier = "Ctrl";
         } else {
@@ -104,7 +104,12 @@ public class KBSManager extends VBox {
                 new KBS(modifier + " + Alt + |", "align-justify", "org/fxmisc/richtext/demo/richtext/AJiconHR.png")
                 //new KBS("Ctrl + Fuck", "image", "asdfasfd")
         );
+        //this.getKBSbyFunction("bold").anim();
         this.setUpHovers();
+    }
+
+    KBSManager(String oprSystem) {
+        oprSystem = System.getProperty("os.name");
     }
 
     void AddButtonOrFunctionAsKBS(Button buttonObjectToMaybeReturn,
