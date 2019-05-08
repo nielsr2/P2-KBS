@@ -409,10 +409,18 @@ public class RichTextDemo extends Application {
             boolean textHighlighted = !selectionEmpty.get(); // get, since selectionEmpty is a BooleanBinding, get is used to get the boolean value;
             if (textHighlighted) {
 //                overlayPane.km.fade(1, 0.2);
-                overlayPane.km.klm.startTimerForToolbar();
+                overlayPane.km.klm.setTimerAllowance(true);
             } else {
 //                overlayPane.km.fade(0.2, 0.2);
                 overlayPane.km.klm.stopTimerForToolbar();
+            }
+
+        }));
+
+        area.setOnMouseMoved((e -> {
+            if (overlayPane.km.klm.getTimerAllowance() == true) {
+                overlayPane.km.klm.startTimerForToolbar();
+                overlayPane.km.klm.setTimerAllowance(false);
             }
         }));
 

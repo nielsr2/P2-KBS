@@ -24,6 +24,7 @@ public class KLM {
     private double startTimeShortcut;
     private double stopTimeShortcut;
     private double timeElapsedForShortcut;
+    private boolean timerAllowedToStart;
 
     KLM() {
 
@@ -122,6 +123,14 @@ public class KLM {
 
     public double getTimeSaved() {
         return this.timeElapsedForShortcut-this.getToolbarEstimate();
+    }
+
+    public void setTimerAllowance(boolean allowTimerToStart) {
+        this.timerAllowedToStart = allowTimerToStart;
+    }
+
+    public boolean getTimerAllowance() {
+        return this.timerAllowedToStart;
     }
 
     static double log(double base, double x) {
