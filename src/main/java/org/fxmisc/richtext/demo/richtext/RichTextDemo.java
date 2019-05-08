@@ -37,10 +37,9 @@ import org.reactfx.util.Tuple2;
 import java.io.*;
 import java.util.List;
 import java.util.Optional;
-import java.util.Timer;
-import java.util.TimerTask;
 import java.util.function.BiConsumer;
 import java.util.function.Function;
+import java.util.logging.Logger;
 
 import static org.fxmisc.richtext.model.TwoDimensional.Bias.Backward;
 import static org.fxmisc.richtext.model.TwoDimensional.Bias.Forward;
@@ -49,13 +48,22 @@ public class RichTextDemo extends Application {
 
     // the saved/loaded files and their format are arbitrary and may change across versions
     private static final String RTFX_FILE_EXTENSION = ".rtfx";
+    private final static Logger LOGGER = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
 
     public static void main(String[] args) {
         // The following properties are required on Linux for improved text rendering
         //System.setProperty("prism.lcdtext", "false");
         //System.setProperty("prism.text", "t2k");
+        //Tries to create a log file for data gathering if it fails it throws an IOException.
+        try {
+            MyLogger.setup();
+        } catch (IOException e) {
+            e.printStackTrace();
+            throw new RuntimeException("Problems with creating the log files");
+        }
         launch(args);
     }
+
 
     private final TextOps<String, TextStyle> styledTextOps = SegmentOps.styledTextOps();
     private final LinkedImageOps<TextStyle> linkedImageOps = new LinkedImageOps<>();

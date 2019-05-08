@@ -25,9 +25,10 @@ import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.util.Duration;
 
+import java.util.logging.Logger;
+
 
 public class KBS extends HBox {
-    private String oprSystem;
     private boolean isHidden = true;
     private boolean isPinned = false;
     protected int kbsTimesUsed = 0;
@@ -37,6 +38,7 @@ public class KBS extends HBox {
     private int nrOnList;
     private boolean pinned;
     public int KBStype[] = new int[5];
+    private final static Logger LOGGER = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME); //Allows access for the logger
 
     private double opacity = 1;
     Rectangle backgroundRect;
@@ -87,7 +89,6 @@ public class KBS extends HBox {
         this.getChildren().addAll(convinceOMeter,kbsPane);
         //.fade(0.1,2).play();
         this.setOnMouseMoved(event -> {
-            System.out.println(oprSystem);
         });
     }
 
@@ -108,8 +109,9 @@ public class KBS extends HBox {
     public void shortcutUsed() {
         this.kbsTimesUsed++;
         this.tbTimesClickedInstance = 0;
+        String kbsLog = Integer.toString(kbsTimesUsed);
+        LOGGER.info(functionality + " KBS executed " + kbsLog); //Logs what KBS was used and the amount.
 
-        System.out.println(this.functionality + " KBS used : " + this.kbsTimesUsed );
         if(this.isHidden == false && this.isPinned == false) {
             this.hide();
             this.isHidden = true;
@@ -119,8 +121,9 @@ public class KBS extends HBox {
     public void toolbarPressed() {
         this.tbTimesClickedTotal++;
         this.tbTimesClickedInstance++;
-        System.out.println(this.functionality + " toolbar used : " + this.tbTimesClickedTotal );
-        System.out.println(this.functionality + " toolbar used : " + this.tbTimesClickedInstance );
+        String tbLog = Integer.toString(tbTimesClickedTotal);
+        LOGGER.info(functionality + " Toolbar clicked " + tbLog); //Logs what toolbar was clicked and the amount
+        LOGGER.info(this.functionality + " clicked " + this.tbTimesClickedInstance + " times since last time shortcut were used"); //Logs amount until KBS used.
         if(this.isHidden == true) {
             this.show();
             this.isHidden = false;

@@ -15,7 +15,10 @@ import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.util.Timer;
 import java.util.TimerTask;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
+import static com.sun.xml.internal.ws.spi.db.BindingContextFactory.LOGGER;
 import static javafx.geometry.Orientation.VERTICAL;
 import static javafx.geometry.Pos.*;
 
@@ -35,6 +38,7 @@ import static javafx.geometry.Pos.*;
 public class KBSManager extends VBox {
 
     boolean focus = true;
+    private final static Logger LOGGER = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
 
     //TODO create a timer
     Timer timer = new Timer();
@@ -59,7 +63,6 @@ public class KBSManager extends VBox {
     void  registerOnMovement() {
 
     }
-
     private String oprSystem = System.getProperty("os.name");
 
 
@@ -72,7 +75,7 @@ public class KBSManager extends VBox {
     KBSManager() {
         callingFunctionOnTimer();
         setMaxSize(Settings.WINDOW_WIDTH, Settings.WINDOW_HEIGHT);
-        System.out.println(this.oprSystem); //Testing usage
+        LOGGER.info("Operation system " + oprSystem); //Logs operation system
         String modifier; //Show shortcut, changes depending on operating system
         //Changes the string modifier depending on the operating system.
         if (oprSystem.contains("Windows")) {
