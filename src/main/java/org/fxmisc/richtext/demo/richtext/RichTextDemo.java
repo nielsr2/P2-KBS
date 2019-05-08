@@ -37,6 +37,8 @@ import org.reactfx.util.Tuple2;
 import java.io.*;
 import java.util.List;
 import java.util.Optional;
+import java.util.Timer;
+import java.util.TimerTask;
 import java.util.function.BiConsumer;
 import java.util.function.Function;
 
@@ -337,7 +339,6 @@ public class RichTextDemo extends Application {
                     } else {
                         sizeCombo.getSelectionModel().clearSelection();
                     }
-
                     if (fontFamily != null) {
                         familyCombo.getSelectionModel().select(fontFamily);
                     } else {
@@ -372,8 +373,37 @@ public class RichTextDemo extends Application {
         vbox.getChildren().addAll(toolBar1, toolBar2, vsPane);
 // *****************************
         area.setOnMouseReleased((e -> {
-            System.out.println("Boolean" + selectionEmpty); // TODO, Kristinn will MAKE THIS CONNECTED TO KBSMANAGER, SO THEY ALL SHOW WHEN SELECTIONEMPTY IS FALSE ( PROLLY WANNA SWITCH AROUND THAT LOGIC)
+            boolean textHighlighted = !selectionEmpty.get(); // get, since selectionEmpty is a BooleanBinding, get is used to get the boolean value;
+            if (textHighlighted)
+                overlayPane.km.fade(1, 0.2);
+            else
+                overlayPane.km.fade(0.2, 0.2);
         }));
+
+
+//        area.setOnKeyReleased(e -> {
+//            if (e.isMetaDown() && e.getCode() == KeyCode.LEFT) {
+//                overlayPane.km.fade(1, 0.2);
+//                System.out.println("YESSS");
+//                Timer timer = new Timer();
+//                timer.schedule(new TimerTask() {
+//                    @Override
+//                    public void run() {
+//
+//                        overlayPane.km.fade(1, 0.2);
+//                    }
+//                }, 5000);
+//            }
+//        });
+        //        **************************** set TEXTHIGHLIGHTED
+        area.setOnKeyPressed(e -> {
+            if (e.isMetaDown()) {
+                if (e.getCode() == KeyCode.LEFT || e.getCode() == KeyCode.RIGHT) {
+                    System.out.println("NOPE");
+//                    overlayPane.km.fade(1, 0.2);
+                }
+            }
+        });
         // *****************************
 //        DOING SOME ADDING WPA VBOX & KBMANAGER TO A GROUP
         Pane root = new Pane();
@@ -505,10 +535,12 @@ public class RichTextDemo extends Application {
     private void toggleBold() {
         updateStyleInSelection(spans -> TextStyle.bold(!spans.styleStream().allMatch(style -> style.bold.orElse(false))));
     }
-//********************
+
+    //********************
     private void toggledBold2() {
         updateStyleInSelection(spans -> TextStyle.bold(!spans.styleStream().allMatch(style -> style.bold.orElse(false))));
     }
+
     //********************
     private void toggleItalic() {
         updateStyleInSelection(spans -> TextStyle.italic(!spans.styleStream().allMatch(style -> style.italic.orElse(false))));
@@ -628,15 +660,28 @@ public class RichTextDemo extends Application {
 
     private void updateStyleInSelection(Function<StyleSpans<TextStyle>, TextStyle> mixinGetter) {
         IndexRange selection = area.getSelection();
+        System.out.println("selection.getLength(): " + selection.getLength());
         if (selection.getLength() != 0) {
             StyleSpans<TextStyle> styles = area.getStyleSpans(selection);
             TextStyle mixin = mixinGetter.apply(styles);
             StyleSpans<TextStyle> newStyles = styles.mapStyles(style -> style.updateWith(mixin));
             area.setStyleSpans(selection.getStart(), newStyles);
-        }
-        else {
-           // TODO NIELS I TIHNK IT'S HERES
-            System.out.println("nibs");
+        } else if (selection.getLength() == 0) {
+//            System.out.println("nib testin");
+//            int p = area.getCurrentParagraph();
+//            int col = area.getCaretColumn();
+//            StyleSpans<TextStyle> styles = area.getStyleSpans(p);
+//            System.out.println(area.getStyleSpans(p));
+//            TextStyle style = area.getStyleAtPosition(p, col);
+//            TextStyle mixin = mixinGetter.apply(styles);
+//            StyleSpans<TextStyle> newStyles = styles.mapStyles(stylex -> style.updateWith(mixin));
+//            area.setStyleSpans(selection.getStart(), newStyles);
+//            StyleSpans<TextStyle> styles = area.getParagraphs();
+//            TextStyle mixin = mixinGetter.apply(styles);
+//            StyleSpans<TextStyle> newStyles = styles.mapStyles(style -> style.updateWith(mixin));
+//            area.setStyleSpans(selection.getStart(), newStyles);
+//           // TODO NIELS I TIHNK IT'S HERES
+//            System.out.println("nibs");
 //            area.se
         }
     }
