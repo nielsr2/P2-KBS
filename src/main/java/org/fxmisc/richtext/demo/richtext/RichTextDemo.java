@@ -15,6 +15,7 @@ import javafx.geometry.Orientation;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.control.Button;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyCodeCombination;
 import javafx.scene.input.KeyCombination;
@@ -36,6 +37,7 @@ import org.reactfx.SuspendableNo;
 import org.reactfx.util.Either;
 import org.reactfx.util.Tuple2;
 
+import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.io.*;
 import java.util.List;
@@ -68,6 +70,7 @@ public class RichTextDemo extends Application {
         }
         launch(args);
     }
+    PointerInfo startMouse, endMouse;
 
     Button boldBtn, italicBtn, underlineBtn, strikeBtn, insertImageBtn;
     ToggleButton alignLeftBtn, alignCenterBtn, alignRightBtn, alignJustifyBtn;
@@ -415,12 +418,16 @@ public class RichTextDemo extends Application {
             }
             overlayPane.km.klm.setTimerAllowance(true);
         }));
-
         area.setOnMouseMoved((e -> {
+            startMouse = MouseInfo.getPointerInfo();
             if (overlayPane.km.klm.getTimerAllowance() == true) {
-                overlayPane.km.klm.startTimerForToolbar();
-                overlayPane.km.klm.setTimerAllowance(false);
+                double distance = startMouse.getLocation().getX() - endMouse.getLocation().getX();
+                if (distance > 5 || distance < -5) {
+                    overlayPane.km.klm.startTimerForToolbar();
+                    overlayPane.km.klm.setTimerAllowance(false);
+                }
             }
+            endMouse = MouseInfo.getPointerInfo();
         }));
 
 
