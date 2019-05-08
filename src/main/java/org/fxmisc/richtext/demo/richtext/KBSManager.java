@@ -38,6 +38,7 @@ import static javafx.geometry.Pos.*;
 public class KBSManager extends VBox {
 
     boolean focus = true;
+    KLM klm = new KLM();
 
     //TODO create a timer
     Timer timer = new Timer();
