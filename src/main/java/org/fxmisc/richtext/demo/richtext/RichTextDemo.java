@@ -9,6 +9,8 @@ package org.fxmisc.richtext.demo.richtext;
 import javafx.application.Application;
 import javafx.beans.binding.BooleanBinding;
 import javafx.collections.FXCollections;
+import javafx.event.EventHandler;
+import javafx.geometry.Bounds;
 import javafx.geometry.Orientation;
 import javafx.scene.Node;
 import javafx.scene.Scene;
@@ -34,6 +36,7 @@ import org.reactfx.SuspendableNo;
 import org.reactfx.util.Either;
 import org.reactfx.util.Tuple2;
 
+import java.awt.event.MouseEvent;
 import java.io.*;
 import java.util.List;
 import java.util.Optional;
@@ -57,6 +60,7 @@ public class RichTextDemo extends Application {
         launch(args);
     }
 
+    Button boldBtn, italicBtn;
     private final TextOps<String, TextStyle> styledTextOps = SegmentOps.styledTextOps();
     private final LinkedImageOps<TextStyle> linkedImageOps = new LinkedImageOps<>();
 
@@ -105,7 +109,7 @@ public class RichTextDemo extends Application {
 
 
 //     BOLD BUTTON  *********************************************************************************************************           BOLD BUTTON
-        Button boldBtn = createButton("bold", this::toggleBold, "Bold");
+        boldBtn = createButton("bold", this::toggleBold, "Bold");
         boldBtn.setOnMouseClicked((event) -> {
             overlayPane.km.getKBSbyFunction("bold").toolbarPressed();
         });
@@ -116,7 +120,7 @@ public class RichTextDemo extends Application {
 //      *********************************************************************************************************
 
         ///////////////// ITALIC BUTTON /////////////////////////////
-        Button italicBtn = createButton("italic", this::toggleItalic, "Italic");
+        italicBtn = createButton("italic", this::toggleItalic, "Italic");
         italicBtn.setOnMouseClicked((event) -> {
             overlayPane.km.getKBSbyFunction("italic").toolbarPressed();
         });
@@ -374,10 +378,10 @@ public class RichTextDemo extends Application {
 // *****************************
         area.setOnMouseReleased((e -> {
             boolean textHighlighted = !selectionEmpty.get(); // get, since selectionEmpty is a BooleanBinding, get is used to get the boolean value;
-            if (textHighlighted)
-                overlayPane.km.fade(1, 0.2);
-            else
-                overlayPane.km.fade(0.2, 0.2);
+            if (textHighlighted) {//                overlayPane.km.fade(1, 0.2);
+            } else {
+//                overlayPane.km.fade(0.2, 0.2);
+            }
         }));
 
 
@@ -396,6 +400,7 @@ public class RichTextDemo extends Application {
 //            }
 //        });
         //        **************************** set TEXTHIGHLIGHTED
+
         area.setOnKeyPressed(e -> {
             if (e.isMetaDown()) {
                 if (e.getCode() == KeyCode.LEFT || e.getCode() == KeyCode.RIGHT) {
@@ -407,14 +412,32 @@ public class RichTextDemo extends Application {
         // *****************************
 //        DOING SOME ADDING WPA VBOX & KBMANAGER TO A GROUP
         Pane root = new Pane();
+
+        // ********************************************************************************************************************
+        //nielz work zone
+        toolBar2.setOnMouseMoved(event -> {
+            double mx = event.getSceneX();
+            double my = event.getSceneY();
+            overlayPane.km.parseMouse(mx, my);
+        });
+        toolBar1.setOnMouseMoved(event -> {
+            double mx = event.getSceneX();
+            double my = event.getSceneY();
+            overlayPane.km.parseMouse(mx, my);
+        });
+        root.setOnMouseMoved(event -> {
+            double mx = event.getSceneX();
+            double my = event.getSceneY();
+            overlayPane.km.parseMouse(mx, my);
+        });
+        // ********************************************************************************************************************
+//        *************************************************************************************************************************************************
         root.setPrefSize(Settings.WINDOW_WIDTH, Settings.WINDOW_HEIGHT);
         root.getChildren().addAll(vbox, overlayPane);
 
         Scene scene = new Scene(root, Settings.WINDOW_WIDTH, Settings.WINDOW_HEIGHT);
         scene.getStylesheets().add(RichTextDemo.class.getResource("rich-text.css").toExternalForm());
-
 //
-
 //      ************************************************************************************
         scene.addMnemonic(mnBold);
         scene.getAccelerators().put(kcBold, rnBold);
@@ -440,6 +463,7 @@ public class RichTextDemo extends Application {
         area.requestFocus();
         primaryStage.setTitle("Rich Text Demo");
         primaryStage.show();
+        this.initNielz();
     }
 
     void ourBoldFunction() {
@@ -738,4 +762,9 @@ public class RichTextDemo extends Application {
             updateParagraphStyleInSelection(ParStyle.backgroundColor(color));
         }
     }
-}
+
+    public void initNielz() {
+        this.overlayPane.km.getKBSbyFunction("bold").setButtonCoordinates(boldBtn.getLayoutX(), boldBtn.getLayoutY());
+        this.overlayPane.km.getKBSbyFunction("italic").setButtonCoordinates(italicBtn.getLayoutX(), italicBtn.getLayoutY());
+    }
+}å

@@ -20,7 +20,7 @@ public class OverlayPane extends BorderPane {
         this.setRight(km);
     }
     KBSManager giveKM(){
-        return this.km;
+        return this.km; // TODO i dont think this is neccessary anymore. check n delete?
     }
 
 }
