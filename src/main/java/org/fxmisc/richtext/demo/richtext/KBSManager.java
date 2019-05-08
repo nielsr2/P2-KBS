@@ -43,6 +43,7 @@ public class KBSManager extends VBox {
     //TODO create a timer
     Timer timer = new Timer();
     boolean movement = false;
+
     public void callingFunctionOnTimer() {
         int delay = 5000;
         int period = 5000;
@@ -50,7 +51,7 @@ public class KBSManager extends VBox {
         timer.schedule(new TimerTask() {
             @Override
             public void run() {
-                if (!movement){
+                if (!movement) {
                     System.out.println("NO MOVEMENT DETECTED");
                 }
                 movement = false;
@@ -60,17 +61,18 @@ public class KBSManager extends VBox {
         }, delay, period);
     }
 
-    void  registerOnMovement() {
+    void registerOnMovement() {
 
     }
 
     private String oprSystem = System.getProperty("os.name");
 
 
-    void show(boolean show){
+    void show(boolean show) {
         this.setVisible(show);
         this.setManaged(show);
     }
+
     public BooleanBinding test;
 
     KBSManager() {
@@ -80,8 +82,7 @@ public class KBSManager extends VBox {
         String modifier;
         if (oprSystem.contains("Windows")) {
             modifier = "Ctrl";
-        }
-        else {
+        } else {
             modifier = "⌘";
         }
 
@@ -91,7 +92,7 @@ public class KBSManager extends VBox {
 
         this.setStyle("-fx-border-color: black");
         this.setAlignment(BOTTOM_RIGHT);
-                this.getChildren().addAll(
+        this.getChildren().addAll(
                 new KBS(modifier + " + B", "bold", "org/fxmisc/richtext/demo/richtext/BiconHR.png"),
                 new KBS(modifier + " + I", "italic", "org/fxmisc/richtext/demo/richtext/IiconHR.png"),
                 new KBS(modifier + " + U", "underline", "org/fxmisc/richtext/demo/richtext/UiconHR.png"),
@@ -150,9 +151,26 @@ public class KBSManager extends VBox {
         return fade;
 
         //this.setOnMousePressed(e -> System.out.println("adasfdf"));
+    }
 
+    public void parseMouse(double x, double y) {
+        for (Node n : this.getChildren()) {
+            if (n.getClass().equals(KBS.class)) {
+                KBS k = ((KBS) n);
+                if (k.isShown) {
+                    double num = Math.sqrt(Math.pow(x - k.buttonX, 2) + Math.pow(y - k.buttonY, 2));
+                    double scaled = this.scaleFunc(num,0,200,1.3,0.2);
+                    k.setOpacity(scaled);
+                    System.out.println("DISTANCE to " + k.functionality + ": " + num + " SCALED: " + scaled);
+                }
+            }
+        }
+    }
+    double scaleFunc(double input, double in_min, double in_max, double out_min, double out_max) {
+        return out_min + ((input-in_min)/(in_max - in_min)) * (out_max - out_min);
+    };
 
-    }//        this.setOnMouseExited(new EventHandler<MouseEvent>
+//        this.setOnMouseExited(new EventHandler<MouseEvent>
 //                () {
 //
 //            @Override
