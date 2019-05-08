@@ -60,7 +60,8 @@ public class RichTextDemo extends Application {
         launch(args);
     }
 
-    Button boldBtn, italicBtn;
+    Button boldBtn, italicBtn, underlineBtn, strikeBtn, insertImageBtn;
+    ToggleButton alignLeftBtn, alignCenterBtn, alignRightBtn, alignJustifyBtn;
     private final TextOps<String, TextStyle> styledTextOps = SegmentOps.styledTextOps();
     private final LinkedImageOps<TextStyle> linkedImageOps = new LinkedImageOps<>();
 
@@ -85,16 +86,6 @@ public class RichTextDemo extends Application {
     private final SuspendableNo updatingToolbar = new SuspendableNo();
 
     OverlayPane overlayPane = new OverlayPane();
-
-    Button boldBtn;
-    Button italicBtn;
-    Button underlineBtn;
-    Button strikeBtn;
-    Button insertImageBtn;
-    ToggleButton alignLeftBtn;
-    ToggleButton alignCenterBtn;
-    ToggleButton alignRightBtn;
-    ToggleButton alignJustifyBtn;
 
     @Override
     public void start(Stage primaryStage) {
