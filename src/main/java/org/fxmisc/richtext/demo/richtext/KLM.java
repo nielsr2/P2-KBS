@@ -98,6 +98,10 @@ public class KLM {
         return this.timeElapsedForToolbar-this.getShortcutEstimate();
     }
 
+    public double getTimesSlower() {
+        return this.timeElapsedForToolbar/this.getShortcutEstimate();
+    }
+
     public void startTimerForShortcut() {
         startTimeShortcut = System.nanoTime();
     }

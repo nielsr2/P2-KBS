@@ -62,8 +62,8 @@ public class ConvinceOMeter extends Pane {
 
     }
 
-    public void setTimeLost(double timeLost) {
-        this.timeLost = timeLost;
+    public void setTimesSlower(double timesSlower) {
+        this.timeLost = timesSlower;
     }
 
 }
