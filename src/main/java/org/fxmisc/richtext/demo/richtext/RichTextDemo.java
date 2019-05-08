@@ -9,6 +9,8 @@ package org.fxmisc.richtext.demo.richtext;
 import javafx.application.Application;
 import javafx.beans.binding.BooleanBinding;
 import javafx.collections.FXCollections;
+import javafx.event.EventHandler;
+import javafx.geometry.Bounds;
 import javafx.geometry.Orientation;
 import javafx.scene.Node;
 import javafx.scene.Scene;
@@ -34,9 +36,12 @@ import org.reactfx.SuspendableNo;
 import org.reactfx.util.Either;
 import org.reactfx.util.Tuple2;
 
+import java.awt.event.MouseEvent;
 import java.io.*;
 import java.util.List;
 import java.util.Optional;
+import java.util.Timer;
+import java.util.TimerTask;
 import java.util.function.BiConsumer;
 import java.util.function.Function;
 import java.util.logging.Logger;
@@ -64,6 +69,8 @@ public class RichTextDemo extends Application {
         launch(args);
     }
 
+    Button boldBtn, italicBtn, underlineBtn, strikeBtn, insertImageBtn;
+    ToggleButton alignLeftBtn, alignCenterBtn, alignRightBtn, alignJustifyBtn;
 
     private final TextOps<String, TextStyle> styledTextOps = SegmentOps.styledTextOps();
     private final LinkedImageOps<TextStyle> linkedImageOps = new LinkedImageOps<>();
@@ -113,9 +120,11 @@ public class RichTextDemo extends Application {
 
 
 //     BOLD BUTTON  *********************************************************************************************************           BOLD BUTTON
-        Button boldBtn = createButton("bold", this::toggleBold, "Bold");
+        boldBtn = createButton("bold", this::toggleBold, "Bold");
         boldBtn.setOnMouseClicked((event) -> {
             overlayPane.km.getKBSbyFunction("bold").toolbarPressed();
+            overlayPane.km.klm.stopTimerForToolbar();
+            overlayPane.giveKM().getKBSbyFunction("bold").convinceOMeter.setTimeLost(overlayPane.km.klm.getTimeLost());
         });
 //        boldBtn
         KeyCombination kcBold = new KeyCodeCombination(KeyCode.B, KeyCombination.SHORTCUT_DOWN);
@@ -124,36 +133,44 @@ public class RichTextDemo extends Application {
 //      *********************************************************************************************************
 
         ///////////////// ITALIC BUTTON /////////////////////////////
-        Button italicBtn = createButton("italic", this::toggleItalic, "Italic");
+        italicBtn = createButton("italic", this::toggleItalic, "Italic");
         italicBtn.setOnMouseClicked((event) -> {
             overlayPane.km.getKBSbyFunction("italic").toolbarPressed();
+            overlayPane.km.klm.stopTimerForToolbar();
+            overlayPane.giveKM().getKBSbyFunction("italic").convinceOMeter.setTimeLost(overlayPane.km.klm.getTimeLost());
         });
         KeyCombination kcItalic = new KeyCodeCombination(KeyCode.I, KeyCombination.SHORTCUT_DOWN);
         Mnemonic mnItalic = new Mnemonic(italicBtn, kcItalic);
         Runnable rnItalic = () -> ourItalicFunction(); //this.toggleItalic
 
         ////////////////// UNDERLINE BUTTON /////////////////////////
-        Button underlineBtn = createButton("underline", this::toggleUnderline, "Underline");
+        underlineBtn = createButton("underline", this::toggleUnderline, "Underline");
         underlineBtn.setOnMouseClicked((event) -> {
             overlayPane.km.getKBSbyFunction("underline").toolbarPressed();
+            overlayPane.km.klm.stopTimerForToolbar();
+            overlayPane.giveKM().getKBSbyFunction("underline").convinceOMeter.setTimeLost(overlayPane.km.klm.getTimeLost());
         });
         KeyCombination kcUnderline = new KeyCodeCombination(KeyCode.U, KeyCombination.SHORTCUT_DOWN);
         Mnemonic mnUnderline = new Mnemonic(underlineBtn, kcUnderline);
         Runnable rnUnderline = () -> ourUnderlineFunction();//this.toggleUnderline();
 
         ///////////////// STRIKE THROUGH BUTTON ////////////////////
-        Button strikeBtn = createButton("strikethrough", this::toggleStrikethrough, "Strike Trough");
+        strikeBtn = createButton("strikethrough", this::toggleStrikethrough, "Strike Trough");
         strikeBtn.setOnMouseClicked((event) -> {
             overlayPane.km.getKBSbyFunction("strikethrough").toolbarPressed();
+            overlayPane.km.klm.stopTimerForToolbar();
+            overlayPane.giveKM().getKBSbyFunction("strikethrough").convinceOMeter.setTimeLost(overlayPane.km.klm.getTimeLost());
         });
         KeyCombination kcStrike = new KeyCodeCombination(KeyCode.X, KeyCombination.SHORTCUT_DOWN, KeyCombination.SHIFT_DOWN);
         Mnemonic mnStrike = new Mnemonic(strikeBtn, kcStrike);
         Runnable rnStrike = () -> ourStrikeFunction();//this.toggleStrikethrough();
 
         //////////////// INSERT IMAGE BUTTON //////////////////////
-        Button insertImageBtn = createButton("insertimage", this::insertImage, "Insert Image");
+        insertImageBtn = createButton("insertimage", this::insertImage, "Insert Image");
         insertImageBtn.setOnMouseClicked((event) -> {
             overlayPane.km.getKBSbyFunction("insertimage").toolbarPressed();
+            overlayPane.km.klm.stopTimerForToolbar();
+            overlayPane.giveKM().getKBSbyFunction("insertimage").convinceOMeter.setTimeLost(overlayPane.km.klm.getTimeLost());
         });
         KeyCombination kcInsertImage = new KeyCodeCombination(KeyCode.N, KeyCombination.SHORTCUT_DOWN, KeyCombination.SHIFT_DOWN);
         Mnemonic mnInsertImage = new Mnemonic(insertImageBtn, kcInsertImage);
@@ -162,36 +179,44 @@ public class RichTextDemo extends Application {
         ToggleGroup alignmentGrp = new ToggleGroup();
 
         /////////////// ALIGN LEFT BUTTON ////////////////////////
-        ToggleButton alignLeftBtn = createToggleButton(alignmentGrp, "align-left", this::alignLeft, "Align left");
+        alignLeftBtn = createToggleButton(alignmentGrp, "align-left", this::alignLeft, "Align left");
         alignLeftBtn.setOnMouseClicked((event) -> {
             overlayPane.km.getKBSbyFunction("align-left").toolbarPressed();
+            overlayPane.km.klm.stopTimerForToolbar();
+            overlayPane.giveKM().getKBSbyFunction("align-left").convinceOMeter.setTimeLost(overlayPane.km.klm.getTimeLost());
         });
         KeyCombination kcAlignLeft = new KeyCodeCombination(KeyCode.OPEN_BRACKET, KeyCombination.SHORTCUT_DOWN);
         Mnemonic mnAlignLeft = new Mnemonic(alignLeftBtn, kcAlignLeft);
         Runnable rnAlignLeft = () -> ourAlignLeftFunction();//this.alignLeft();
 
         ////////////// ALIGN CENTER BUTTON //////////////////////
-        ToggleButton alignCenterBtn = createToggleButton(alignmentGrp, "align-center", this::alignCenter, "Align center");
+        alignCenterBtn = createToggleButton(alignmentGrp, "align-center", this::alignCenter, "Align center");
         alignCenterBtn.setOnMouseClicked((event) -> {
             overlayPane.km.getKBSbyFunction("align-center").toolbarPressed();
+            overlayPane.km.klm.stopTimerForToolbar();
+            overlayPane.giveKM().getKBSbyFunction("align-center").convinceOMeter.setTimeLost(overlayPane.km.klm.getTimeLost());
         });
         KeyCombination kcAlignCenter = new KeyCodeCombination(KeyCode.BACK_SLASH, KeyCombination.SHORTCUT_DOWN);
         Mnemonic mnAlignCenter = new Mnemonic(alignCenterBtn, kcAlignCenter);
         Runnable rnAlignCenter = () -> ourAlignCenterFunction();//this.alignCenter();
 
         ///////////// ALIGN RIGHT BUTTON ///////////////////////
-        ToggleButton alignRightBtn = createToggleButton(alignmentGrp, "align-right", this::alignRight, "Align right");
+        alignRightBtn = createToggleButton(alignmentGrp, "align-right", this::alignRight, "Align right");
         alignRightBtn.setOnMouseClicked((event) -> {
             overlayPane.km.getKBSbyFunction("align-right").toolbarPressed();
+            overlayPane.km.klm.stopTimerForToolbar();
+            overlayPane.giveKM().getKBSbyFunction("align-right").convinceOMeter.setTimeLost(overlayPane.km.klm.getTimeLost());
         });
         KeyCombination kcAlignRight = new KeyCodeCombination(KeyCode.CLOSE_BRACKET, KeyCombination.SHORTCUT_DOWN);
         Mnemonic mnAlignRight = new Mnemonic(alignRightBtn, kcAlignLeft);
         Runnable rnAlignRight = () -> ourAlignRightFunction();//this.alignRight();
 
         //////////// ALIGN JUSTIFY /////////////////////////
-        ToggleButton alignJustifyBtn = createToggleButton(alignmentGrp, "align-justify", this::alignJustify, "Justify");
+        alignJustifyBtn = createToggleButton(alignmentGrp, "align-justify", this::alignJustify, "Justify");
         alignJustifyBtn.setOnMouseClicked((event) -> {
             overlayPane.km.getKBSbyFunction("align-justify").toolbarPressed();
+            overlayPane.km.klm.stopTimerForToolbar();
+            overlayPane.giveKM().getKBSbyFunction("align-justify").convinceOMeter.setTimeLost(overlayPane.km.klm.getTimeLost());
         });
         KeyCombination kcAlignJustify = new KeyCodeCombination(KeyCode.BACK_SLASH, KeyCombination.SHORTCUT_DOWN, KeyCombination.ALT_DOWN);
         Mnemonic mnAlignJustify = new Mnemonic(alignJustifyBtn, kcAlignJustify);
@@ -382,10 +407,13 @@ public class RichTextDemo extends Application {
 // *****************************
         area.setOnMouseReleased((e -> {
             boolean textHighlighted = !selectionEmpty.get(); // get, since selectionEmpty is a BooleanBinding, get is used to get the boolean value;
-            if (textHighlighted)
-                overlayPane.km.fade(1, 0.2);
-            else
-                overlayPane.km.fade(0.2, 0.2);
+            if (textHighlighted) {
+//                overlayPane.km.fade(1, 0.2);
+                overlayPane.km.klm.startTimerForToolbar();
+            } else {
+//                overlayPane.km.fade(0.2, 0.2);
+                overlayPane.km.klm.stopTimerForToolbar();
+            }
         }));
 
 
@@ -415,6 +443,26 @@ public class RichTextDemo extends Application {
         // *****************************
 //        DOING SOME ADDING WPA VBOX & KBMANAGER TO A GROUP
         Pane root = new Pane();
+
+        // ********************************************************************************************************************
+        //nielz work zone
+        toolBar2.setOnMouseMoved(event -> {
+            double mx = event.getSceneX();
+            double my = event.getSceneY();
+            overlayPane.km.parseMouse(mx, my);
+        });
+        toolBar1.setOnMouseMoved(event -> {
+            double mx = event.getSceneX();
+            double my = event.getSceneY();
+            overlayPane.km.parseMouse(mx, my);
+        });
+        root.setOnMouseMoved(event -> {
+            double mx = event.getSceneX();
+            double my = event.getSceneY();
+            overlayPane.km.parseMouse(mx, my);
+        });
+        // ********************************************************************************************************************
+//        *************************************************************************************************************************************************
         root.setPrefSize(Settings.WINDOW_WIDTH, Settings.WINDOW_HEIGHT);
         root.getChildren().addAll(vbox, overlayPane);
 
@@ -448,51 +496,79 @@ public class RichTextDemo extends Application {
         area.requestFocus();
         primaryStage.setTitle("Rich Text Demo");
         primaryStage.show();
+        this.initNielz();
     }
 
     void ourBoldFunction() {
 //        System.out.println(selectionEmpty);
         this.overlayPane.giveKM().getKBSbyFunction("bold").shortcutUsed();
+        overlayPane.km.klm.stopTimerForShortcut();
+        overlayPane.km.klm.setToolbarEstimate(boldBtn);
+        overlayPane.giveKM().getKBSbyFunction("bold").convinceOMeter.setTimeLost(overlayPane.km.klm.getTimeLost());
         this.toggleBold();
     }
 
     void ourItalicFunction() {
         this.overlayPane.giveKM().getKBSbyFunction("italic").shortcutUsed();
+        overlayPane.km.klm.stopTimerForShortcut();
+        overlayPane.km.klm.setToolbarEstimate(italicBtn);
+        this.overlayPane.giveKM().getKBSbyFunction("italic").convinceOMeter.setTimeLost(overlayPane.km.klm.getTimeLost());
         this.toggleItalic();
     }
 
     void ourUnderlineFunction() {
         this.overlayPane.giveKM().getKBSbyFunction("underline").shortcutUsed();
+        overlayPane.km.klm.stopTimerForShortcut();
+        overlayPane.km.klm.setToolbarEstimate(underlineBtn);
+        this.overlayPane.giveKM().getKBSbyFunction("underline").convinceOMeter.setTimeLost(overlayPane.km.klm.getTimeLost());
         this.toggleUnderline();
     }
 
     void ourStrikeFunction() {
         this.overlayPane.giveKM().getKBSbyFunction("strikethrough").shortcutUsed();
+        overlayPane.km.klm.stopTimerForShortcut();
+        overlayPane.km.klm.setToolbarEstimate(strikeBtn);
+        this.overlayPane.giveKM().getKBSbyFunction("strikethrough").convinceOMeter.setTimeLost(overlayPane.km.klm.getTimeLost());
         this.toggleStrikethrough();
     }
 
     void ourInsertImageFunction() {
         this.overlayPane.giveKM().getKBSbyFunction("insert-image").shortcutUsed();
+        overlayPane.km.klm.stopTimerForShortcut();
+        overlayPane.km.klm.setToolbarEstimate(insertImageBtn);
+        this.overlayPane.giveKM().getKBSbyFunction("insert-image").convinceOMeter.setTimeLost(overlayPane.km.klm.getTimeLost());
         this.insertImage();
     }
 
     void ourAlignLeftFunction() {
         this.overlayPane.giveKM().getKBSbyFunction("align-left").shortcutUsed();
+        overlayPane.km.klm.stopTimerForShortcut();
+        overlayPane.km.klm.setToolbarEstimate(alignLeftBtn);
+        this.overlayPane.giveKM().getKBSbyFunction("align-left").convinceOMeter.setTimeLost(overlayPane.km.klm.getTimeLost());
         this.alignLeft();
     }
 
     void ourAlignCenterFunction() {
         this.overlayPane.giveKM().getKBSbyFunction("align-center").shortcutUsed();
+        overlayPane.km.klm.stopTimerForShortcut();
+        overlayPane.km.klm.setToolbarEstimate(alignCenterBtn);
+        this.overlayPane.giveKM().getKBSbyFunction("align-center").convinceOMeter.setTimeLost(overlayPane.km.klm.getTimeLost());
         this.alignCenter();
     }
 
     void ourAlignRightFunction() {
         this.overlayPane.giveKM().getKBSbyFunction("align-right").shortcutUsed();
+        overlayPane.km.klm.stopTimerForShortcut();
+        overlayPane.km.klm.setToolbarEstimate(alignRightBtn);
+        this.overlayPane.giveKM().getKBSbyFunction("align-right").convinceOMeter.setTimeLost(overlayPane.km.klm.getTimeLost());
         this.alignRight();
     }
 
     void ourAlignJustifyFunction() {
         this.overlayPane.giveKM().getKBSbyFunction("align-justify").shortcutUsed();
+        this.overlayPane.km.klm.setToolbarEstimate(alignJustifyBtn);
+        this.overlayPane.km.klm.stopTimerForShortcut();
+        this.overlayPane.giveKM().getKBSbyFunction("align-justify").convinceOMeter.setTimeLost(overlayPane.km.klm.getTimeLost());
         this.alignJustify();
     }
 
@@ -745,5 +821,10 @@ public class RichTextDemo extends Application {
         if (!updatingToolbar.get()) {
             updateParagraphStyleInSelection(ParStyle.backgroundColor(color));
         }
+    }
+
+    public void initNielz() {
+        this.overlayPane.km.getKBSbyFunction("bold").setButtonCoordinates(boldBtn.getLayoutX(), boldBtn.getLayoutY());
+        this.overlayPane.km.getKBSbyFunction("italic").setButtonCoordinates(italicBtn.getLayoutX(), italicBtn.getLayoutY());
     }
 }
