@@ -15,7 +15,7 @@ public class ConvinceOMeter extends Pane {
 
     Rectangle backgroundRect;
 
-
+    private double timeLost;
     private float timesSlower;
     String argument;
     private Text text = new Text(argument);
@@ -51,7 +51,7 @@ public class ConvinceOMeter extends Pane {
     }
 
     public Text showText1(){
-        text.setText( "You are " + this.timesSlower + " times slower by not using this shortcut");
+        text.setText( "You are " + this.timeLost + " times slower by not using this shortcut");
         return text;
 
     }
@@ -62,6 +62,8 @@ public class ConvinceOMeter extends Pane {
 
     }
 
-
+    public void setTimeLost(double timeLost) {
+        this.timeLost = timeLost;
+    }
 
 }
