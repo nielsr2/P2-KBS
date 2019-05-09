@@ -17,7 +17,7 @@ public class OverlayPane extends BorderPane {
         this.setPadding(new Insets(80, 0, 0, 0));
         this.setStyle("-fx-border-color: black");
         this.setPickOnBounds(false);
-//        this.setMouseTransparent(true); // TODO MIKKEL, SO WITH THIS DISABLED, WE CANNOT CLICK TOOLBAR ICONS, WITH IT ENABLED WE CANNOT CLICK KBS'. U go make clever code. nielz fixed it
+        this.setMouseTransparent(true);
         km = new KBSManager();
         this.setId("overlayPane");
         this.setRight(km);
