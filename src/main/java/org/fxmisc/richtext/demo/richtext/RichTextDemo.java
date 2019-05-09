@@ -528,83 +528,83 @@ public class RichTextDemo extends Application {
     void ourBoldFunction() {
         System.out.println("void ourBoldFunction() called");
 //        System.out.println(selectionEmpty);
-        this.overlayPane.giveKM().getKBSbyFunction("bold").shortcutUsed();
         this.overlayPane.km.klm.stopTimerForShortcut();
         this.overlayPane.km.klm.setToolbarEstimate(boldBtn);
         this.overlayPane.km.klm.setTimerForShortcutAllowance(false);
         this.overlayPane.giveKM().getKBSbyFunction("bold").rewardOMeter.setTimesFaster(overlayPane.km.klm.getTimesFaster());
+        this.overlayPane.giveKM().getKBSbyFunction("bold").shortcutUsed();
         this.toggleBold();
     }
 
     void ourItalicFunction() {
-        this.overlayPane.giveKM().getKBSbyFunction("italic").shortcutUsed();
         this.overlayPane.km.klm.stopTimerForShortcut();
         this.overlayPane.km.klm.setToolbarEstimate(italicBtn);
         this.overlayPane.km.klm.setTimerForShortcutAllowance(false);
         this.overlayPane.giveKM().getKBSbyFunction("italic").rewardOMeter.setTimesFaster(overlayPane.km.klm.getTimesFaster());
+        this.overlayPane.giveKM().getKBSbyFunction("italic").shortcutUsed();
         this.toggleItalic();
     }
 
     void ourUnderlineFunction() {
-        this.overlayPane.giveKM().getKBSbyFunction("underline").shortcutUsed();
         this.overlayPane.km.klm.stopTimerForShortcut();
         this.overlayPane.km.klm.setToolbarEstimate(underlineBtn);
         this.overlayPane.km.klm.setTimerForShortcutAllowance(false);
         this.overlayPane.giveKM().getKBSbyFunction("underline").rewardOMeter.setTimesFaster(overlayPane.km.klm.getTimesFaster());
+        this.overlayPane.giveKM().getKBSbyFunction("underline").shortcutUsed();
         this.toggleUnderline();
     }
 
     void ourStrikeFunction() {
-        this.overlayPane.giveKM().getKBSbyFunction("strikethrough").shortcutUsed();
         this.overlayPane.km.klm.stopTimerForShortcut();
         this.overlayPane.km.klm.setToolbarEstimate(strikeBtn);
         this.overlayPane.km.klm.setTimerForShortcutAllowance(false);
         this.overlayPane.giveKM().getKBSbyFunction("strikethrough").rewardOMeter.setTimesFaster(overlayPane.km.klm.getTimesFaster());
+        this.overlayPane.giveKM().getKBSbyFunction("strikethrough").shortcutUsed();
         this.toggleStrikethrough();
     }
 
     void ourInsertImageFunction() {
-        this.overlayPane.giveKM().getKBSbyFunction("insert-image").shortcutUsed();
         this.overlayPane.km.klm.stopTimerForShortcut();
         this.overlayPane.km.klm.setToolbarEstimate(insertImageBtn);
         this.overlayPane.km.klm.setTimerForShortcutAllowance(false);
         this.overlayPane.giveKM().getKBSbyFunction("insert-image").rewardOMeter.setTimesFaster(overlayPane.km.klm.getTimesFaster());
+        this.overlayPane.giveKM().getKBSbyFunction("insert-image").shortcutUsed();
         this.insertImage();
     }
 
     void ourAlignLeftFunction() {
-        this.overlayPane.giveKM().getKBSbyFunction("align-left").shortcutUsed();
         this.overlayPane.km.klm.stopTimerForShortcut();
         this.overlayPane.km.klm.setToolbarEstimate(alignLeftBtn);
         this.overlayPane.km.klm.setTimerForShortcutAllowance(false);
         this.overlayPane.giveKM().getKBSbyFunction("align-left").rewardOMeter.setTimesFaster(overlayPane.km.klm.getTimesFaster());
+        this.overlayPane.giveKM().getKBSbyFunction("align-left").shortcutUsed();
         this.alignLeft();
     }
 
     void ourAlignCenterFunction() {
-        this.overlayPane.giveKM().getKBSbyFunction("align-center").shortcutUsed();
         this.overlayPane.km.klm.stopTimerForShortcut();
         this.overlayPane.km.klm.setToolbarEstimate(alignCenterBtn);
         this.overlayPane.km.klm.setTimerForShortcutAllowance(false);
         this.overlayPane.giveKM().getKBSbyFunction("align-center").rewardOMeter.setTimesFaster(overlayPane.km.klm.getTimesFaster());
+        this.overlayPane.giveKM().getKBSbyFunction("align-center").shortcutUsed();
         this.alignCenter();
     }
 
     void ourAlignRightFunction() {
-        this.overlayPane.giveKM().getKBSbyFunction("align-right").shortcutUsed();
         this.overlayPane.km.klm.stopTimerForShortcut();
         this.overlayPane.km.klm.setToolbarEstimate(alignRightBtn);
         this.overlayPane.km.klm.setTimerForShortcutAllowance(false);
         this.overlayPane.giveKM().getKBSbyFunction("align-right").rewardOMeter.setTimesFaster(overlayPane.km.klm.getTimesFaster());
+        this.overlayPane.giveKM().getKBSbyFunction("align-right").shortcutUsed();
         this.alignRight();
     }
 
     void ourAlignJustifyFunction() {
-        this.overlayPane.giveKM().getKBSbyFunction("align-justify").shortcutUsed();
         this.overlayPane.km.klm.stopTimerForShortcut();
         this.overlayPane.km.klm.setToolbarEstimate(alignJustifyBtn);
         this.overlayPane.km.klm.setTimerForShortcutAllowance(false);
         this.overlayPane.giveKM().getKBSbyFunction("align-justify").rewardOMeter.setTimesFaster(overlayPane.km.klm.getTimesFaster());
+        this.overlayPane.giveKM().getKBSbyFunction("align-justify").shortcutUsed();
         this.alignJustify();
     }
 
