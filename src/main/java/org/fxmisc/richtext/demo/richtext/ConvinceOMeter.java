@@ -1,19 +1,25 @@
 package org.fxmisc.richtext.demo.richtext;
 
 import javafx.geometry.Insets;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.Pane;
+import javafx.geometry.Pos;
+import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
-import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextFlow;
 
-public class ConvinceOMeter extends Pane {
+import java.math.BigDecimal;
+import java.math.RoundingMode;
+
+import static javafx.scene.paint.Color.DARKGRAY;
+import static javafx.scene.text.TextAlignment.CENTER;
+
+public class ConvinceOMeter extends StackPane {
 
     Rectangle backgroundRect;
+
+    int width = 170;
+    int height = 50;
 
     private double timesSlower;
     String argument;
@@ -22,26 +28,31 @@ public class ConvinceOMeter extends Pane {
 
 
     ConvinceOMeter(float timesSlower){
-      this.setVisible(false);
+
+
+        this.setVisible(false);
       this.setManaged(false);
+        this.setAlignment(Pos.CENTER);
+
 
 
 
 
         this.timesSlower = timesSlower;
-        backgroundRect = new Rectangle(170, 50, Color.LIGHTGREY);
-
-       /* HBox content = new HBox(5);
-        content.setPadding(new Insets(5, 5, 5, 5));
-
-
-
-        content.getChildren().addAll(icon, this.shortcut);*/
+        backgroundRect = new Rectangle(width, height, Color.LIGHTGREY);
+        backgroundRect.setArcHeight(100);
+        backgroundRect.setArcWidth(40);
+        backgroundRect.setStroke(DARKGRAY);
 
 
-//       this.text("You are " + this.timesSlower + " times slower by not using this shortcut" );
         this.showText1();
+
+
         TextFlow textFlow = new TextFlow(text);
+
+        textFlow.setPrefWidth(width);
+        textFlow.setTextAlignment(CENTER);
+        textFlow.setPadding(new Insets(7, 10, 7, 10));
 
         this.getChildren().addAll(backgroundRect, textFlow);
 
@@ -50,7 +61,11 @@ public class ConvinceOMeter extends Pane {
     }
 
     public Text showText1(){
-        text.setText( "You are " + this.timesSlower + " times slower by not using this shortcut");
+        text.setWrappingWidth(width);
+        String string = Double.toString(this.timesSlower);
+        Text timesSlower = new Text(string);
+
+        text.setText("You are " + string + " times slower by \n not using this shortcut");
         return text;
 
     }
@@ -62,7 +77,9 @@ public class ConvinceOMeter extends Pane {
     }
 
     public void setTimesSlower(double timesSlower) {
-        this.timesSlower = timesSlower;
+        BigDecimal bd = new BigDecimal(timesSlower).setScale(1, RoundingMode.HALF_UP);
+        double newInput = bd.doubleValue();
+        this.timesSlower = newInput;
     }
 
 }
