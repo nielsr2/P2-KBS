@@ -164,7 +164,7 @@ public class RichTextDemo extends Application {
             overlayPane.giveKM().getKBSbyFunction("strikethrough").convinceOMeter.setTimesSlower(overlayPane.km.klm.getTimesSlower());
             overlayPane.km.getKBSbyFunction("strikethrough").toolbarPressed();
         });
-        KeyCombination kcStrike = new KeyCodeCombination(KeyCode.X, KeyCombination.SHORTCUT_DOWN, KeyCombination.SHIFT_DOWN);
+        KeyCombination kcStrike = new KeyCodeCombination(KeyCode.T, KeyCombination.SHORTCUT_DOWN);
         Mnemonic mnStrike = new Mnemonic(strikeBtn, kcStrike);
         Runnable rnStrike = () -> ourStrikeFunction();//this.toggleStrikethrough();
 
@@ -175,7 +175,7 @@ public class RichTextDemo extends Application {
             overlayPane.giveKM().getKBSbyFunction("insertimage").convinceOMeter.setTimesSlower(overlayPane.km.klm.getTimesSlower());
             overlayPane.km.getKBSbyFunction("insertimage").toolbarPressed();
         });
-        KeyCombination kcInsertImage = new KeyCodeCombination(KeyCode.N, KeyCombination.SHORTCUT_DOWN, KeyCombination.SHIFT_DOWN);
+        KeyCombination kcInsertImage = new KeyCodeCombination(KeyCode.P, KeyCombination.SHORTCUT_DOWN);
         Mnemonic mnInsertImage = new Mnemonic(insertImageBtn, kcInsertImage);
         Runnable rnInsertImage = () -> ourInsertImageFunction();//this.insertImage();
 
@@ -188,7 +188,7 @@ public class RichTextDemo extends Application {
             overlayPane.giveKM().getKBSbyFunction("align-left").convinceOMeter.setTimesSlower(overlayPane.km.klm.getTimesSlower());
             overlayPane.km.getKBSbyFunction("align-left").toolbarPressed();
         });
-        KeyCombination kcAlignLeft = new KeyCodeCombination(KeyCode.OPEN_BRACKET, KeyCombination.SHORTCUT_DOWN);
+        KeyCombination kcAlignLeft = new KeyCodeCombination(KeyCode.L, KeyCombination.SHORTCUT_DOWN);
         Mnemonic mnAlignLeft = new Mnemonic(alignLeftBtn, kcAlignLeft);
         Runnable rnAlignLeft = () -> ourAlignLeftFunction();//this.alignLeft();
 
@@ -199,7 +199,7 @@ public class RichTextDemo extends Application {
             overlayPane.giveKM().getKBSbyFunction("align-center").convinceOMeter.setTimesSlower(overlayPane.km.klm.getTimesSlower());
             overlayPane.km.getKBSbyFunction("align-center").toolbarPressed();
         });
-        KeyCombination kcAlignCenter = new KeyCodeCombination(KeyCode.BACK_SLASH, KeyCombination.SHORTCUT_DOWN);
+        KeyCombination kcAlignCenter = new KeyCodeCombination(KeyCode.E, KeyCombination.SHORTCUT_DOWN);
         Mnemonic mnAlignCenter = new Mnemonic(alignCenterBtn, kcAlignCenter);
         Runnable rnAlignCenter = () -> ourAlignCenterFunction();//this.alignCenter();
 
@@ -210,7 +210,7 @@ public class RichTextDemo extends Application {
             overlayPane.giveKM().getKBSbyFunction("align-right").convinceOMeter.setTimesSlower(overlayPane.km.klm.getTimesSlower());
             overlayPane.km.getKBSbyFunction("align-right").toolbarPressed();
         });
-        KeyCombination kcAlignRight = new KeyCodeCombination(KeyCode.CLOSE_BRACKET, KeyCombination.SHORTCUT_DOWN);
+        KeyCombination kcAlignRight = new KeyCodeCombination(KeyCode.R, KeyCombination.SHORTCUT_DOWN);
         Mnemonic mnAlignRight = new Mnemonic(alignRightBtn, kcAlignLeft);
         Runnable rnAlignRight = () -> ourAlignRightFunction();//this.alignRight();
 
@@ -221,7 +221,7 @@ public class RichTextDemo extends Application {
             overlayPane.giveKM().getKBSbyFunction("align-justify").convinceOMeter.setTimesSlower(overlayPane.km.klm.getTimesSlower());
             overlayPane.km.getKBSbyFunction("align-justify").toolbarPressed();
         });
-        KeyCombination kcAlignJustify = new KeyCodeCombination(KeyCode.BACK_SLASH, KeyCombination.SHORTCUT_DOWN, KeyCombination.ALT_DOWN);
+        KeyCombination kcAlignJustify = new KeyCodeCombination(KeyCode.J, KeyCombination.SHORTCUT_DOWN);
         Mnemonic mnAlignJustify = new Mnemonic(alignJustifyBtn, kcAlignJustify);
         Runnable rnAlignJustify = () -> ourAlignJustifyFunction();//this.alignJustify();
 
