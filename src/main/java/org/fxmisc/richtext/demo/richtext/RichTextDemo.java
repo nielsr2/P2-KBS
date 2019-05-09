@@ -824,7 +824,9 @@ public class RichTextDemo extends Application {
     }
 
     public void initNielz() {
+        this.overlayPane.km.getKBSbyFunction("bold").buttonWidth = boldBtn.getWidth();
         this.overlayPane.km.getKBSbyFunction("bold").setButtonCoordinates(boldBtn.getLayoutX(), boldBtn.getLayoutY());
+
         this.overlayPane.km.getKBSbyFunction("italic").setButtonCoordinates(italicBtn.getLayoutX(), italicBtn.getLayoutY());
     }
 }

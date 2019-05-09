@@ -43,7 +43,7 @@ public class KBS extends HBox {
     private final static Logger LOGGER = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME); //Allows access for the logger
 
     private double opacity = 1;
-    Rectangle backgroundRect;
+    Rectangle backgroundRect, colorRect;
     ImageView icon;
     Text shortcut;
     Pane kbsPane = new Pane();
@@ -54,6 +54,8 @@ public class KBS extends HBox {
         this.setVisible(false);
         this.setManaged(false);
 
+//        Color grColorRed1 = new Color(0.5, 0, 0, 0.70);
+//        Color grColorRed2 = new Color(0.5, 0, 0, 0.30);
 
         // initial rectangle
         this.setUserData(functionality);
@@ -61,7 +63,8 @@ public class KBS extends HBox {
         this.functionality = functionality;
         icon = new ImageView(new Image(iconPath, 40, 40, true, true));
         backgroundRect = new Rectangle(170, 50, Color.LIGHTGREY);
-
+        colorRect = new Rectangle(170, 50, Color.RED);
+//        this.setColor(grColorRed1,1);
 
         SVGPath svgPin = new SVGPath();
         SVGPath svgClose = new SVGPath();
@@ -83,7 +86,7 @@ public class KBS extends HBox {
         content.getChildren().addAll(this.icon, this.shortcut, svgPin, svgClose);
 
 
-        kbsPane.getChildren().addAll(backgroundRect, content);
+        kbsPane.getChildren().addAll(backgroundRect, colorRect, content);
 
         this.setSpacing(5);
 
@@ -159,6 +162,7 @@ public class KBS extends HBox {
     }
 
     public boolean isShown = false;
+
     public void show() {
         isShown = true;
         FadeInUpTransition Anim = new FadeInUpTransition(this);
@@ -257,11 +261,13 @@ public class KBS extends HBox {
 
     double buttonX;
     double buttonY;
+    double buttonWidth;
     PointerInfo startMouse = MouseInfo.getPointerInfo();
+
     public void setButtonCoordinates(double buttonX, double buttonY) {
-        System.out.println(this.functionality + " x:" + buttonX + " y: "+  buttonY);
-        this.buttonX = buttonX;
-        this.buttonY = buttonY;
+        System.out.println(this.functionality + " x:" + buttonX + " y: " + buttonY);
+        this.buttonX = buttonX + buttonWidth/2;
+        this.buttonY = buttonY + buttonWidth/2;
     }
 
 }

@@ -1,5 +1,12 @@
 package org.fxmisc.richtext.demo.richtext;
 
+import com.fxexperience.javafx.animation.PulseTransition;
+import com.fxexperience.javafx.animation.ShakeTransition;
+import com.fxexperience.javafx.animation.SwingTransition;
+import com.fxexperience.javafx.animation.WobbleTransition;
+import javafx.beans.binding.BooleanBinding;
+import javafx.beans.property.BooleanProperty;
+import javafx.beans.property.BooleanPropertyBase;
 import javafx.animation.FadeTransition;
 import javafx.event.EventHandler;
 import javafx.geometry.HPos;
@@ -9,6 +16,7 @@ import javafx.geometry.VPos;
 import javafx.scene.Node;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.VBox;
+import javafx.animation.FadeTransition;
 import javafx.util.Duration;
 
 import java.awt.*;
@@ -38,7 +46,6 @@ import static javafx.geometry.Pos.*;
 public class KBSManager extends VBox {
 
     boolean focus = true;
-    private final static Logger LOGGER = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
     KLM klm = new KLM();
 
     //TODO create a timer
@@ -65,6 +72,7 @@ public class KBSManager extends VBox {
     void registerOnMovement() {
 
     }
+
     private String oprSystem = System.getProperty("os.name");
 
 
@@ -104,7 +112,6 @@ public class KBSManager extends VBox {
                 new KBS(modifier + " + Alt + |", "align-justify", "org/fxmisc/richtext/demo/richtext/AJiconHR.png")
                 //new KBS("Ctrl + Fuck", "image", "asdfasfd")
         );
-        //this.getKBSbyFunction("bold").anim();
         this.setUpHovers();
     }
 
@@ -164,8 +171,14 @@ public class KBSManager extends VBox {
                 KBS k = ((KBS) n);
                 if (k.isShown) {
                     double num = Math.sqrt(Math.pow(x - k.buttonX, 2) + Math.pow(y - k.buttonY, 2));
-                    double scaled = this.scaleFunc(num,0,200,1.3,0.2);
-                    k.setOpacity(scaled);
+                    double scaled = this.scaleFunc(num,0,200,0.4,0.2);
+                    k.colorRect.setOpacity(scaled);
+                    if (num < k.buttonWidth/2){
+                        SwingTransition pt = new SwingTransition(k);
+                        pt.play();
+                        k.colorRect.setOpacity(1.);
+                        System.out.println("FUCKME!!!!!FUCKME!!!!!FUCKME!!!!!FUCKME!!!!!FUCKME!!!!!FUCKME!!!!!FUCKME!!!!!FUCKME!!!!!");
+                     }
                     System.out.println("DISTANCE to " + k.functionality + ": " + num + " SCALED: " + scaled);
                 }
             }
