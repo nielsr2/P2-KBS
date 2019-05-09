@@ -531,7 +531,7 @@ public class RichTextDemo extends Application {
         this.overlayPane.giveKM().getKBSbyFunction("bold").shortcutUsed();
         this.overlayPane.km.klm.stopTimerForShortcut();
         this.overlayPane.km.klm.setToolbarEstimate(boldBtn);
-        this.overlayPane.km.klm.setTimerForToolbarAllowance(false);
+        this.overlayPane.km.klm.setTimerForShortcutAllowance(false);
         this.overlayPane.giveKM().getKBSbyFunction("bold").rewardOMeter.setTimesFaster(overlayPane.km.klm.getTimesFaster());
         this.toggleBold();
     }
@@ -540,7 +540,7 @@ public class RichTextDemo extends Application {
         this.overlayPane.giveKM().getKBSbyFunction("italic").shortcutUsed();
         this.overlayPane.km.klm.stopTimerForShortcut();
         this.overlayPane.km.klm.setToolbarEstimate(italicBtn);
-        this.overlayPane.km.klm.setTimerForToolbarAllowance(false);
+        this.overlayPane.km.klm.setTimerForShortcutAllowance(false);
         this.overlayPane.giveKM().getKBSbyFunction("italic").rewardOMeter.setTimesFaster(overlayPane.km.klm.getTimesFaster());
         this.toggleItalic();
     }
@@ -549,7 +549,7 @@ public class RichTextDemo extends Application {
         this.overlayPane.giveKM().getKBSbyFunction("underline").shortcutUsed();
         this.overlayPane.km.klm.stopTimerForShortcut();
         this.overlayPane.km.klm.setToolbarEstimate(underlineBtn);
-        this.overlayPane.km.klm.setTimerForToolbarAllowance(false);
+        this.overlayPane.km.klm.setTimerForShortcutAllowance(false);
         this.overlayPane.giveKM().getKBSbyFunction("underline").rewardOMeter.setTimesFaster(overlayPane.km.klm.getTimesFaster());
         this.toggleUnderline();
     }
@@ -558,7 +558,7 @@ public class RichTextDemo extends Application {
         this.overlayPane.giveKM().getKBSbyFunction("strikethrough").shortcutUsed();
         this.overlayPane.km.klm.stopTimerForShortcut();
         this.overlayPane.km.klm.setToolbarEstimate(strikeBtn);
-        this.overlayPane.km.klm.setTimerForToolbarAllowance(false);
+        this.overlayPane.km.klm.setTimerForShortcutAllowance(false);
         this.overlayPane.giveKM().getKBSbyFunction("strikethrough").rewardOMeter.setTimesFaster(overlayPane.km.klm.getTimesFaster());
         this.toggleStrikethrough();
     }
@@ -567,7 +567,7 @@ public class RichTextDemo extends Application {
         this.overlayPane.giveKM().getKBSbyFunction("insert-image").shortcutUsed();
         this.overlayPane.km.klm.stopTimerForShortcut();
         this.overlayPane.km.klm.setToolbarEstimate(insertImageBtn);
-        this.overlayPane.km.klm.setTimerForToolbarAllowance(false);
+        this.overlayPane.km.klm.setTimerForShortcutAllowance(false);
         this.overlayPane.giveKM().getKBSbyFunction("insert-image").rewardOMeter.setTimesFaster(overlayPane.km.klm.getTimesFaster());
         this.insertImage();
     }
@@ -576,7 +576,7 @@ public class RichTextDemo extends Application {
         this.overlayPane.giveKM().getKBSbyFunction("align-left").shortcutUsed();
         this.overlayPane.km.klm.stopTimerForShortcut();
         this.overlayPane.km.klm.setToolbarEstimate(alignLeftBtn);
-        this.overlayPane.km.klm.setTimerForToolbarAllowance(false);
+        this.overlayPane.km.klm.setTimerForShortcutAllowance(false);
         this.overlayPane.giveKM().getKBSbyFunction("align-left").rewardOMeter.setTimesFaster(overlayPane.km.klm.getTimesFaster());
         this.alignLeft();
     }
@@ -585,7 +585,7 @@ public class RichTextDemo extends Application {
         this.overlayPane.giveKM().getKBSbyFunction("align-center").shortcutUsed();
         this.overlayPane.km.klm.stopTimerForShortcut();
         this.overlayPane.km.klm.setToolbarEstimate(alignCenterBtn);
-        this.overlayPane.km.klm.setTimerForToolbarAllowance(false);
+        this.overlayPane.km.klm.setTimerForShortcutAllowance(false);
         this.overlayPane.giveKM().getKBSbyFunction("align-center").rewardOMeter.setTimesFaster(overlayPane.km.klm.getTimesFaster());
         this.alignCenter();
     }
@@ -594,7 +594,7 @@ public class RichTextDemo extends Application {
         this.overlayPane.giveKM().getKBSbyFunction("align-right").shortcutUsed();
         this.overlayPane.km.klm.stopTimerForShortcut();
         this.overlayPane.km.klm.setToolbarEstimate(alignRightBtn);
-        this.overlayPane.km.klm.setTimerForToolbarAllowance(false);
+        this.overlayPane.km.klm.setTimerForShortcutAllowance(false);
         this.overlayPane.giveKM().getKBSbyFunction("align-right").rewardOMeter.setTimesFaster(overlayPane.km.klm.getTimesFaster());
         this.alignRight();
     }
@@ -603,7 +603,7 @@ public class RichTextDemo extends Application {
         this.overlayPane.giveKM().getKBSbyFunction("align-justify").shortcutUsed();
         this.overlayPane.km.klm.stopTimerForShortcut();
         this.overlayPane.km.klm.setToolbarEstimate(alignJustifyBtn);
-        this.overlayPane.km.klm.setTimerForToolbarAllowance(false);
+        this.overlayPane.km.klm.setTimerForShortcutAllowance(false);
         this.overlayPane.giveKM().getKBSbyFunction("align-justify").rewardOMeter.setTimesFaster(overlayPane.km.klm.getTimesFaster());
         this.alignJustify();
     }
