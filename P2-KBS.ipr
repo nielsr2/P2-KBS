@@ -127,7 +127,7 @@
   <component name="libraryTable">
     <library name="FXExperience">
       <CLASSES>
-        <root url="jar://$PROJECT_DIR$/../../code/FXExperience.jar!/" />
+        <root url="jar://$USER_HOME$/Downloads/FXExperience.jar!/" />
       </CLASSES>
       <JAVADOC />
       <SOURCES />
