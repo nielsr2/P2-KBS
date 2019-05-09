@@ -416,15 +416,15 @@ public class RichTextDemo extends Application {
 //                overlayPane.km.fade(0.2, 0.2);
                 overlayPane.km.klm.stopTimerForToolbar();
             }
-            overlayPane.km.klm.setTimerAllowance(true);
+            overlayPane.km.klm.setTimerForToolbarAllowance(true);
         }));
         area.setOnMouseMoved((e -> {
             startMouse = MouseInfo.getPointerInfo();
-            if (overlayPane.km.klm.getTimerAllowance() == true) {
+            if (overlayPane.km.klm.getTimerForToolbarAllowance() == true) {
                 double distance = startMouse.getLocation().getX() - endMouse.getLocation().getX();
                 if (distance > 5 || distance < -5) {
                     overlayPane.km.klm.startTimerForToolbar();
-                    overlayPane.km.klm.setTimerAllowance(false);
+                    overlayPane.km.klm.setTimerForToolbarAllowance(false);
                 }
             }
             endMouse = MouseInfo.getPointerInfo();
@@ -453,6 +453,18 @@ public class RichTextDemo extends Application {
 //                    overlayPane.km.fade(1, 0.2);
                 }
             }
+        });
+        area.setOnKeyPressed(e -> {
+            if (e.isShortcutDown() && this.overlayPane.km.klm.getTimerForShortcutAllowance() == true) {
+                System.out.println("NOPE" + KeyCombination.SHORTCUT_DOWN);
+                this.overlayPane.km.klm.startTimerForShortcut();
+                this.overlayPane.km.klm.setTimerForShortcutAllowance(false);
+//                    overlayPane.km.fade(1, 0.2);
+            }
+        });
+        area.setOnKeyReleased(e -> {
+            System.out.println("Key released");
+            this.overlayPane.km.klm.setTimerForShortcutAllowance(true);
         });
         // *****************************
 //        DOING SOME ADDING WPA VBOX & KBMANAGER TO A GROUP
@@ -514,66 +526,85 @@ public class RichTextDemo extends Application {
     }
 
     void ourBoldFunction() {
+        System.out.println("void ourBoldFunction() called");
 //        System.out.println(selectionEmpty);
         this.overlayPane.giveKM().getKBSbyFunction("bold").shortcutUsed();
-        overlayPane.km.klm.stopTimerForShortcut();
-        overlayPane.km.klm.setToolbarEstimate(boldBtn);
+        this.overlayPane.km.klm.stopTimerForShortcut();
+        this.overlayPane.km.klm.setToolbarEstimate(boldBtn);
+        this.overlayPane.km.klm.setTimerForToolbarAllowance(false);
+        this.overlayPane.giveKM().getKBSbyFunction("bold").rewardOMeter.setTimesFaster(overlayPane.km.klm.getTimesFaster());
         this.toggleBold();
     }
 
     void ourItalicFunction() {
         this.overlayPane.giveKM().getKBSbyFunction("italic").shortcutUsed();
-        overlayPane.km.klm.stopTimerForShortcut();
-        overlayPane.km.klm.setToolbarEstimate(italicBtn);
+        this.overlayPane.km.klm.stopTimerForShortcut();
+        this.overlayPane.km.klm.setToolbarEstimate(italicBtn);
+        this.overlayPane.km.klm.setTimerForToolbarAllowance(false);
+        this.overlayPane.giveKM().getKBSbyFunction("italic").rewardOMeter.setTimesFaster(overlayPane.km.klm.getTimesFaster());
         this.toggleItalic();
     }
 
     void ourUnderlineFunction() {
         this.overlayPane.giveKM().getKBSbyFunction("underline").shortcutUsed();
-        overlayPane.km.klm.stopTimerForShortcut();
-        overlayPane.km.klm.setToolbarEstimate(underlineBtn);
+        this.overlayPane.km.klm.stopTimerForShortcut();
+        this.overlayPane.km.klm.setToolbarEstimate(underlineBtn);
+        this.overlayPane.km.klm.setTimerForToolbarAllowance(false);
+        this.overlayPane.giveKM().getKBSbyFunction("underline").rewardOMeter.setTimesFaster(overlayPane.km.klm.getTimesFaster());
         this.toggleUnderline();
     }
 
     void ourStrikeFunction() {
         this.overlayPane.giveKM().getKBSbyFunction("strikethrough").shortcutUsed();
-        overlayPane.km.klm.stopTimerForShortcut();
-        overlayPane.km.klm.setToolbarEstimate(strikeBtn);
+        this.overlayPane.km.klm.stopTimerForShortcut();
+        this.overlayPane.km.klm.setToolbarEstimate(strikeBtn);
+        this.overlayPane.km.klm.setTimerForToolbarAllowance(false);
+        this.overlayPane.giveKM().getKBSbyFunction("strikethrough").rewardOMeter.setTimesFaster(overlayPane.km.klm.getTimesFaster());
         this.toggleStrikethrough();
     }
 
     void ourInsertImageFunction() {
         this.overlayPane.giveKM().getKBSbyFunction("insert-image").shortcutUsed();
-        overlayPane.km.klm.stopTimerForShortcut();
-        overlayPane.km.klm.setToolbarEstimate(insertImageBtn);
+        this.overlayPane.km.klm.stopTimerForShortcut();
+        this.overlayPane.km.klm.setToolbarEstimate(insertImageBtn);
+        this.overlayPane.km.klm.setTimerForToolbarAllowance(false);
+        this.overlayPane.giveKM().getKBSbyFunction("insert-image").rewardOMeter.setTimesFaster(overlayPane.km.klm.getTimesFaster());
         this.insertImage();
     }
 
     void ourAlignLeftFunction() {
         this.overlayPane.giveKM().getKBSbyFunction("align-left").shortcutUsed();
-        overlayPane.km.klm.stopTimerForShortcut();
-        overlayPane.km.klm.setToolbarEstimate(alignLeftBtn);
+        this.overlayPane.km.klm.stopTimerForShortcut();
+        this.overlayPane.km.klm.setToolbarEstimate(alignLeftBtn);
+        this.overlayPane.km.klm.setTimerForToolbarAllowance(false);
+        this.overlayPane.giveKM().getKBSbyFunction("align-left").rewardOMeter.setTimesFaster(overlayPane.km.klm.getTimesFaster());
         this.alignLeft();
     }
 
     void ourAlignCenterFunction() {
         this.overlayPane.giveKM().getKBSbyFunction("align-center").shortcutUsed();
-        overlayPane.km.klm.stopTimerForShortcut();
-        overlayPane.km.klm.setToolbarEstimate(alignCenterBtn);
+        this.overlayPane.km.klm.stopTimerForShortcut();
+        this.overlayPane.km.klm.setToolbarEstimate(alignCenterBtn);
+        this.overlayPane.km.klm.setTimerForToolbarAllowance(false);
+        this.overlayPane.giveKM().getKBSbyFunction("align-center").rewardOMeter.setTimesFaster(overlayPane.km.klm.getTimesFaster());
         this.alignCenter();
     }
 
     void ourAlignRightFunction() {
         this.overlayPane.giveKM().getKBSbyFunction("align-right").shortcutUsed();
-        overlayPane.km.klm.stopTimerForShortcut();
-        overlayPane.km.klm.setToolbarEstimate(alignRightBtn);
+        this.overlayPane.km.klm.stopTimerForShortcut();
+        this.overlayPane.km.klm.setToolbarEstimate(alignRightBtn);
+        this.overlayPane.km.klm.setTimerForToolbarAllowance(false);
+        this.overlayPane.giveKM().getKBSbyFunction("align-right").rewardOMeter.setTimesFaster(overlayPane.km.klm.getTimesFaster());
         this.alignRight();
     }
 
     void ourAlignJustifyFunction() {
         this.overlayPane.giveKM().getKBSbyFunction("align-justify").shortcutUsed();
-        this.overlayPane.km.klm.setToolbarEstimate(alignJustifyBtn);
         this.overlayPane.km.klm.stopTimerForShortcut();
+        this.overlayPane.km.klm.setToolbarEstimate(alignJustifyBtn);
+        this.overlayPane.km.klm.setTimerForToolbarAllowance(false);
+        this.overlayPane.giveKM().getKBSbyFunction("align-justify").rewardOMeter.setTimesFaster(overlayPane.km.klm.getTimesFaster());
         this.alignJustify();
     }
 

@@ -20,6 +20,7 @@ import javafx.animation.FadeTransition;
 import javafx.util.Duration;
 
 import java.awt.*;
+import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
 import java.util.Timer;
 import java.util.TimerTask;

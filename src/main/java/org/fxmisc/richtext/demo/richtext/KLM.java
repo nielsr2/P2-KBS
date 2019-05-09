@@ -24,7 +24,9 @@ public class KLM {
     private double startTimeShortcut;
     private double stopTimeShortcut;
     private double timeElapsedForShortcut;
-    private boolean timerAllowedToStart;
+
+    private boolean timerForToolbarAllowedToStart;
+    private boolean timerForShortcutAllowedToStart = true;
 
     KLM() {
 
@@ -101,19 +103,26 @@ public class KLM {
     }
 
     public double getTimesSlower() {
-        System.out.println(this.timeElapsedForToolbar + " " + getGeneralShortcutEstimate() + " " + this.timeElapsedForToolbar/getGeneralShortcutEstimate());
         return this.timeElapsedForToolbar/getGeneralShortcutEstimate();
     }
 
     public void startTimerForShortcut() {
-        startTimeShortcut = System.nanoTime();
+        //if (this.timerForToolbarAllowedToStart) {
+            System.out.println("Timer for shortcut has STARTED");
+            startTimeShortcut = System.nanoTime();
+            System.out.println("start time is: " + startTimeShortcut/1_000_000_000);
+            this.timerForToolbarAllowedToStart = false;
+        //}
     }
 
     public void stopTimerForShortcut() {
         stopTimeShortcut = System.nanoTime();
         double time = stopTimeShortcut-startTimeShortcut;
         this.timeElapsedForShortcut = time/1_000_000_000;
-        System.out.println("Timer has stopped: Time = " + getTimeElapsedForShortcut());
+        System.out.println("Timer for shortcut has STOPPED" + "\n" + "Time is: " + timeElapsedForShortcut);
+        System.out.println("start time is: " + startTimeShortcut/1_000_000_000);
+        System.out.println("stop time is: " + stopTimeShortcut/1_000_000_000);
+
         startTimeShortcut = System.nanoTime();
     }
 
@@ -125,15 +134,30 @@ public class KLM {
         return this.timeElapsedForShortcut-this.getToolbarEstimate();
     }
 
-    public void setTimerAllowance(boolean allowTimerToStart) {
-        this.timerAllowedToStart = allowTimerToStart;
+    public double getTimesFaster() {
+        System.out.println("Shortcut real time: " + this.timeElapsedForShortcut);
+        System.out.println("Toolbar estimated time: " + this.toolbarEstimate);
+        System.out.println("Times faster: " + this.toolbarEstimate/this.timeElapsedForShortcut);
+        return this.toolbarEstimate/this.timeElapsedForShortcut;
     }
 
-    public boolean getTimerAllowance() {
-        return this.timerAllowedToStart;
+    public void setTimerForToolbarAllowance(boolean allowTimerForToolbarToStart) {
+        this.timerForToolbarAllowedToStart = allowTimerForToolbarToStart;
+    }
+
+    public boolean getTimerForToolbarAllowance() {
+        return this.timerForToolbarAllowedToStart;
     }
 
     static double log(double base, double x) {
         return Math.log10(x)/Math.log10(base);
+    }
+
+    public boolean getTimerForShortcutAllowance() {
+        return this.timerForShortcutAllowedToStart;
+    }
+
+    public void setTimerForShortcutAllowance(boolean allowTimerForShortcutToStart) {
+        this.timerForShortcutAllowedToStart = allowTimerForShortcutToStart;
     }
 }
