@@ -24,6 +24,7 @@ public class KLM {
     private double startTimeShortcut;
     private double stopTimeShortcut;
     private double timeElapsedForShortcut;
+    private boolean timerAllowedToStart;
 
     KLM() {
 
@@ -31,6 +32,10 @@ public class KLM {
 
     public double getGeneralShortcutEstimate() {
         return this.k*2;
+    }
+
+    public void setShortcutEstimate(int numberOfKeystrokes) {
+        this.shortcutEstimate = this.k*numberOfKeystrokes;
     }
 
     public double getShortcutEstimate() {
@@ -79,23 +84,25 @@ public class KLM {
 
     }
 
-    public void setShortcutEstimate(int numberOfKeystrokes) {
-        this.shortcutEstimate = this.k*numberOfKeystrokes;
-    }
-
     public void startTimerForToolbar() {
         startTimeToolbar = System.nanoTime();
+        System.out.println("timer has started");
     }
 
     public void stopTimerForToolbar() {
         stopTimeToolbar = System.nanoTime();
         double time = stopTimeToolbar-startTimeToolbar;
         this.timeElapsedForToolbar = time/1_000_000_000;
-        startTimeToolbar = System.nanoTime();
+        startTimerForToolbar();
     }
 
     public double getTimeLost() {
         return this.timeElapsedForToolbar-this.getShortcutEstimate();
+    }
+
+    public double getTimesSlower() {
+        System.out.println(this.timeElapsedForToolbar + " " + getGeneralShortcutEstimate() + " " + this.timeElapsedForToolbar/getGeneralShortcutEstimate());
+        return this.timeElapsedForToolbar/getGeneralShortcutEstimate();
     }
 
     public void startTimerForShortcut() {
@@ -116,6 +123,14 @@ public class KLM {
 
     public double getTimeSaved() {
         return this.timeElapsedForShortcut-this.getToolbarEstimate();
+    }
+
+    public void setTimerAllowance(boolean allowTimerToStart) {
+        this.timerAllowedToStart = allowTimerToStart;
+    }
+
+    public boolean getTimerAllowance() {
+        return this.timerAllowedToStart;
     }
 
     static double log(double base, double x) {
