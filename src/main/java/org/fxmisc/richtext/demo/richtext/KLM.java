@@ -118,7 +118,7 @@ public class KLM {
     public void stopTimerForShortcut() {
         stopTimeShortcut = System.nanoTime();
         double time = stopTimeShortcut-startTimeShortcut;
-        this.timeElapsedForShortcut = time/1_000_000_000;
+        this.timeElapsedForShortcut = time/1_000_000_000 + this.k;
         System.out.println("Timer for shortcut has STOPPED" + "\n" + "Time is: " + timeElapsedForShortcut);
         System.out.println("start time is: " + startTimeShortcut/1_000_000_000);
         System.out.println("stop time is: " + stopTimeShortcut/1_000_000_000);
