@@ -34,7 +34,7 @@ public class RewardOMeter extends Pane {
     }
 
     public void manageRewardOMeter() {
-        System.out.println(kbsTimesUsedInstance);
+        //System.out.println(kbsTimesUsedInstance);
         if (kbsTimesUsedInstance == 2) {
             this.setVisible(true);
             this.setManaged(true);

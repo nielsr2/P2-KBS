@@ -1,35 +1,18 @@
 package org.fxmisc.richtext.demo.richtext;
 
-import com.fxexperience.javafx.animation.PulseTransition;
-import com.fxexperience.javafx.animation.ShakeTransition;
 import com.fxexperience.javafx.animation.SwingTransition;
-import com.fxexperience.javafx.animation.WobbleTransition;
-import javafx.beans.binding.BooleanBinding;
-import javafx.beans.property.BooleanProperty;
-import javafx.beans.property.BooleanPropertyBase;
 import javafx.animation.FadeTransition;
-import javafx.event.EventHandler;
-import javafx.geometry.HPos;
 import javafx.geometry.Insets;
-import javafx.geometry.Pos;
-import javafx.geometry.VPos;
 import javafx.scene.Node;
-import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.VBox;
-import javafx.animation.FadeTransition;
 import javafx.util.Duration;
 
 import java.awt.*;
-import java.awt.event.KeyEvent;
-import java.awt.event.MouseEvent;
 import java.util.Timer;
 import java.util.TimerTask;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 import static com.sun.xml.internal.ws.spi.db.BindingContextFactory.LOGGER;
-import static javafx.geometry.Orientation.VERTICAL;
-import static javafx.geometry.Pos.*;
+import static javafx.geometry.Pos.BOTTOM_RIGHT;
 
 // TODO add 'previously used shortcuts' that appears when some thing in here is hovered?
 // TODO make a log of session? (KBSused,ToolbarPressed etc.) probably want a timelime + sum up statistic
@@ -61,11 +44,11 @@ public class KBSManager extends VBox {
             @Override
             public void run() {
                 if (!movement) {
-                    System.out.println("NO MOVEMENT DETECTED");
+                    //System.out.println("NO MOVEMENT DETECTED");
                 }
                 movement = false;
                 //write what should happen here
-                System.out.println("time had passed");
+                //System.out.println("time had passed");
             }
         }, delay, period);
     }
@@ -141,11 +124,11 @@ public class KBSManager extends VBox {
 ////            System.out.println();
 //        });
         this.setOnMouseEntered((e -> {
-            System.out.println("ENTER");
+            //System.out.println("ENTER");
             this.fade(1, 0.2);
         }));
         this.setOnMouseExited((e -> {
-            System.out.println("EXIT");
+            //System.out.println("EXIT");
             this.fade(0.2, 0.2);
         }));
     }
@@ -178,9 +161,9 @@ public class KBSManager extends VBox {
                         SwingTransition pt = new SwingTransition(k);
                         pt.play();
                         k.colorRect.setOpacity(1.);
-                        System.out.println("FUCKME!!!!!FUCKME!!!!!FUCKME!!!!!FUCKME!!!!!FUCKME!!!!!FUCKME!!!!!FUCKME!!!!!FUCKME!!!!!");
+                        //System.out.println("FUCKME!!!!!FUCKME!!!!!FUCKME!!!!!FUCKME!!!!!FUCKME!!!!!FUCKME!!!!!FUCKME!!!!!FUCKME!!!!!");
                      }
-                    System.out.println("DISTANCE to " + k.functionality + ": " + num + " SCALED: " + scaled);
+                    //System.out.println("DISTANCE to " + k.functionality + ": " + num + " SCALED: " + scaled);
                 }
             }
         }

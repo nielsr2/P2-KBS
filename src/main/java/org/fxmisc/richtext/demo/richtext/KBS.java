@@ -20,14 +20,12 @@ import javafx.scene.paint.CycleMethod;
 import javafx.scene.paint.LinearGradient;
 import javafx.scene.paint.Stop;
 import javafx.scene.shape.Rectangle;
-import javafx.scene.shape.SVGPath;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.util.Duration;
 
-import java.util.logging.Logger;
-
 import java.awt.*;
+import java.util.logging.Logger;
 
 
 public class KBS extends HBox {
@@ -187,7 +185,7 @@ public class KBS extends HBox {
     public void hide() {
         isShown = false;
         KBS k = this;
-        System.out.println("Hi there! Now I'm hidden!");
+        //System.out.println("Hi there! Now I'm hidden!");
         BounceOutRightTransition Anim = new BounceOutRightTransition(k);
         Anim.setOnFinished(new EventHandler<ActionEvent>() {
             @Override
@@ -203,9 +201,9 @@ public class KBS extends HBox {
     public void pin(boolean isPinned) {
         this.isPinned = isPinned;
         if (isPinned == true) {
-            System.out.println("Hi there! Now I'm pinned");
+            //System.out.println("Hi there! Now I'm pinned");
         } else {
-            System.out.println("Hi there! Now I'm unpinned");
+            //System.out.println("Hi there! Now I'm unpinned");
         }
     }
 
@@ -214,7 +212,7 @@ public class KBS extends HBox {
 
     public void seekAttention() {
         KBS k = this;
-        System.out.println("C'mon! You stupid!");
+        //System.out.println("C'mon! You stupid!");
         ShakeTransition Anim = new ShakeTransition(k);
 //        Anim.play();
         grow(1.5, .8);
@@ -228,7 +226,7 @@ public class KBS extends HBox {
     }
 
     void grow(double size, double seconds) {
-        System.out.println("grow ran!!!!!");
+        //System.out.println("grow ran!!!!!");
         TranslateTransition tt = new TranslateTransition(Duration.seconds(seconds), this);
         tt.setToX((-1 * this.getHeight() * 2) * (size - 1));
         tt.setToY((-1 * this.getWidth() / 4) * (size - 1));
@@ -258,15 +256,15 @@ public class KBS extends HBox {
     }
 
     public void manageConvinceOMeter() {
-        if (tbTimesClickedInstance == 2) {
+        if (tbTimesClickedInstance == 2 || tbTimesClickedInstance == 5) {
             convinceOMeter.setVisible(true);
             convinceOMeter.setManaged(true);
-            convinceOMeter.showText1();
-        } else if (tbTimesClickedInstance == 5) {
+            convinceOMeter.showText();
+        } /*else if (tbTimesClickedInstance == 5) {
             convinceOMeter.setVisible(true);
             convinceOMeter.setManaged(true);
             convinceOMeter.showText2();
-        } else {
+        } */ else {
             convinceOMeter.setVisible(false);
             convinceOMeter.setManaged(false);
         }
@@ -278,7 +276,7 @@ public class KBS extends HBox {
     PointerInfo startMouse = MouseInfo.getPointerInfo();
 
     public void setButtonCoordinates(double buttonX, double buttonY) {
-        System.out.println(this.functionality + " x:" + buttonX + " y: " + buttonY);
+        //System.out.println(this.functionality + " x:" + buttonX + " y: " + buttonY);
         this.buttonX = buttonX + buttonWidth/2;
         this.buttonY = buttonY + buttonWidth/2;
     }

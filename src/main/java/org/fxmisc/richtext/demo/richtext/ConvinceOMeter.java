@@ -22,59 +22,78 @@ public class ConvinceOMeter extends StackPane {
     int height = 50;
 
     private double timesSlower;
-    String argument;
-    private Text text = new Text(argument);
+    Text textStart = new Text("You are ");
+    Text textEnd = new Text(" times slower by \n not using this shortcut");
+    TextFlow textFlow;
+    private Text timesSlowerText = new Text();
+    private String timesSlowerString;
 
 
-
-    ConvinceOMeter(float timesSlower){
-
-
+    ConvinceOMeter(float timesSlower) {
+        this.timesSlower = timesSlower;
         this.setVisible(false);
-      this.setManaged(false);
+        this.setManaged(false);
         this.setAlignment(Pos.CENTER);
 
-
-
-
-
-        this.timesSlower = timesSlower;
-        backgroundRect = new Rectangle(width, height, Color.LIGHTGREY);
-        backgroundRect.setArcHeight(100);
-        backgroundRect.setArcWidth(40);
-        backgroundRect.setStroke(DARKGRAY);
-
-
-        this.showText1();
-
-
-        TextFlow textFlow = new TextFlow(text);
+        textFlow = new TextFlow(textStart, timesSlowerText, textEnd);
 
         textFlow.setPrefWidth(width);
         textFlow.setTextAlignment(CENTER);
         textFlow.setPadding(new Insets(7, 10, 7, 10));
 
+
+        backgroundRect = new Rectangle(width, height, Color.LIGHTGREY);
+        backgroundRect.setArcHeight(100);
+        backgroundRect.setArcWidth(40);
+        backgroundRect.setStroke(DARKGRAY);
+
+        this.getChildren().addAll(backgroundRect, textFlow);
+
+
+    }
+
+    public void showText() {
+
+        //textStart.setWrappingWidth(width);
+
+        timesSlowerString = Double.toString(this.timesSlower);
+        System.out.println(timesSlowerString);
+        timesSlowerText.setText(timesSlowerString);
+        timesSlowerText.setFill(Color.RED);
+
+
+        //this.getChildren().addAll(backgroundRect, textFlow);
+
+        //(System.out.println(timesSlower);
+
+        //text.setText("You are " + timesSlower.getText() + " times slower by \n not using this shortcut");
+
+
+    }
+
+    /*public TextFlow showText2() {
+        Text textStart = new Text("You are ");
+        Text textEnd = new Text(" times slower by \n not using this shortcut");
+
+        textStart.setWrappingWidth(width);
+        String string = Double.toString(this.timesSlower);
+        Text timesSlower = new Text(string);
+        timesSlower.setFill(Color.RED);
+
+        TextFlow textFlow = new TextFlow(textStart, timesSlower, textEnd);
+        textFlow.setPrefWidth(width);
+        textFlow.setTextAlignment(CENTER);
+        textFlow.setPadding(new Insets(7, 10, 7, 10));
+       // textFlow.setFont
+        this.textFlow = textFlow;
+
         this.getChildren().addAll(backgroundRect, textFlow);
 
 
 
-    }
+        return textFlow;
 
-    public Text showText1(){
-        text.setWrappingWidth(width);
-        String string = Double.toString(this.timesSlower);
-        Text timesSlower = new Text(string);
-
-        text.setText("You are " + string + " times slower by \n not using this shortcut");
-        return text;
-
-    }
-
-    public Text showText2(){
-        text.setText( "testing 123");
-        return text;
-
-    }
+    }*/
 
     public void setTimesSlower(double timesSlower) {
         BigDecimal bd = new BigDecimal(timesSlower).setScale(1, RoundingMode.HALF_UP);
