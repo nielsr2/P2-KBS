@@ -6,6 +6,9 @@ import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextFlow;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
+
 public class RewardOMeter extends Pane {
 
     private double timesFaster;
@@ -61,7 +64,9 @@ public class RewardOMeter extends Pane {
     }
 
     public void setTimesFaster(double timesFaster) {
-        this.timesFaster = timesFaster;
+        BigDecimal bd = new BigDecimal(timesFaster).setScale(1, RoundingMode.HALF_UP);
+        double newInput = bd.doubleValue();
+        this.timesFaster = newInput;
     }
 
     public double getTimesFaster() {
