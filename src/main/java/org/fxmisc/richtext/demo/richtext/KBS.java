@@ -258,7 +258,9 @@ public class KBS extends HBox {
     }
 
     public void manageConvinceOMeter() {
-        if (tbTimesClickedInstance == 2) {
+        int upperThreshold = 8;
+        double lowerThreshold = 1.5;
+        if (convinceOMeter.getTimesSlower() < upperThreshold && convinceOMeter.getTimesSlower() > lowerThreshold) {
             convinceOMeter.setVisible(true);
             convinceOMeter.setManaged(true);
             convinceOMeter.showText1();
