@@ -81,4 +81,8 @@ public class ConvinceOMeter extends StackPane {
         this.timesSlower = newInput;
     }
 
+    public double getTimesSlower() {
+        return this.timesSlower;
+    }
+
 }
