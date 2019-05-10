@@ -3,6 +3,7 @@ package org.fxmisc.richtext.demo.richtext;
 import com.fxexperience.javafx.animation.BounceOutRightTransition;
 import com.fxexperience.javafx.animation.FadeInUpTransition;
 import com.fxexperience.javafx.animation.ShakeTransition;
+import com.fxexperience.javafx.animation.SwingTransition;
 import javafx.animation.FadeTransition;
 import javafx.animation.ParallelTransition;
 import javafx.animation.ScaleTransition;
@@ -25,6 +26,8 @@ import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.util.Duration;
 
+import java.util.Timer;
+import java.util.TimerTask;
 import java.util.logging.Logger;
 
 import java.awt.*;
@@ -129,12 +132,13 @@ public class KBS extends HBox {
         String kbsLog = Integer.toString(kbsTimesUsedTotal);
         LOGGER.info(functionality + " KBS executed " + kbsLog); //Logs what KBS was used and the amount.
 
-        if(this.isHidden == false && this.isPinned == false) {
+        if (this.isHidden == false && this.isPinned == false) {
             this.hide();
             this.isHidden = true;
         }
 
     }
+
     public void toolbarPressed() {
         this.tbTimesClickedTotal++;
         this.tbTimesClickedInstance++;
@@ -142,7 +146,7 @@ public class KBS extends HBox {
         String tbLog = Integer.toString(tbTimesClickedTotal);
         LOGGER.info(functionality + " Toolbar clicked " + tbLog); //Logs what toolbar was clicked and the amount
         LOGGER.info(this.functionality + " clicked " + this.tbTimesClickedInstance + " times since last time shortcut were used"); //Logs amount until KBS used.
-        if(this.isHidden == true) {
+        if (this.isHidden == true) {
             this.show();
             this.isHidden = false;
         } else {
@@ -175,6 +179,7 @@ public class KBS extends HBox {
     }
 
     public boolean isShown = false;
+    boolean attentionLock = true;
 
     public void show() {
         isShown = true;
@@ -182,10 +187,12 @@ public class KBS extends HBox {
         Anim.play();
         this.setVisible(true);
         this.setManaged(true);
+        this.initialClickGate();
     }
 
     public void hide() {
         isShown = false;
+        this.attentionable = false;
         KBS k = this;
         System.out.println("Hi there! Now I'm hidden!");
         BounceOutRightTransition Anim = new BounceOutRightTransition(k);
@@ -275,18 +282,35 @@ public class KBS extends HBox {
     double buttonX;
     double buttonY;
     double buttonWidth;
-    PointerInfo startMouse = MouseInfo.getPointerInfo();
 
-    public void setButtonCoordinates(double buttonX, double buttonY) {
+    public void setButtonCoordinates(double buttonX, double buttonY, double buttonWidth) {
         System.out.println(this.functionality + " x:" + buttonX + " y: " + buttonY);
-        this.buttonX = buttonX + buttonWidth/2;
-        this.buttonY = buttonY + buttonWidth/2;
+        this.buttonX = buttonX + buttonWidth / 2;
+        this.buttonY = buttonY + buttonWidth / 2;
+        this.buttonWidth = buttonWidth;
     }
 
+    boolean didit, dothatcolorthing;
 
+    public void dontdoit() {
+        SwingTransition pt = new SwingTransition(this);
+        pt.play();
+        this.colorRect.setOpacity(1.);
+    }
 
+    boolean attentionable = false;
 
-
-
-
+    void initialClickGate() {
+        Timer timer = new Timer();
+        timer.schedule(new TimerTask() {
+            @Override
+            public void run() {
+                attentionable = true;
+                System.out.println("attentionable:" + attentionable);
+            }
+        }, 4000);
+    }
 }
+
+
+
