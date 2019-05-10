@@ -27,18 +27,17 @@ public class ConvinceOMeter extends StackPane {
 
 
 
-    ConvinceOMeter(float timesSlower){
+    ConvinceOMeter(){
 
 
         this.setVisible(false);
-      this.setManaged(false);
+        this.setManaged(false);
         this.setAlignment(Pos.CENTER);
 
 
 
 
 
-        this.timesSlower = timesSlower;
         backgroundRect = new Rectangle(width, height, Color.LIGHTGREY);
         backgroundRect.setArcHeight(100);
         backgroundRect.setArcWidth(40);
@@ -80,6 +79,10 @@ public class ConvinceOMeter extends StackPane {
         BigDecimal bd = new BigDecimal(timesSlower).setScale(1, RoundingMode.HALF_UP);
         double newInput = bd.doubleValue();
         this.timesSlower = newInput;
+    }
+
+    public double getTimesSlower() {
+        return this.timesSlower;
     }
 
 }

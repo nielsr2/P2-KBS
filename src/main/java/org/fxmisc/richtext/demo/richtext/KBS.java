@@ -56,8 +56,8 @@ public class KBS extends HBox {
     ImageView icon;
     Text shortcut;
     Pane kbsPane = new Pane();
-    ConvinceOMeter convinceOMeter = new ConvinceOMeter(2);
-    RewardOMeter rewardOMeter = new RewardOMeter(5);
+    ConvinceOMeter convinceOMeter = new ConvinceOMeter();
+    RewardOMeter rewardOMeter = new RewardOMeter();
     HBox content;
 
     KBS(String shortcut, String functionality, String iconPath) {
@@ -265,7 +265,9 @@ public class KBS extends HBox {
     }
 
     public void manageConvinceOMeter() {
-        if (tbTimesClickedInstance == 2) {
+        int upperThreshold = 8;
+        double lowerThreshold = 1.5;
+        if (tbTimesClickedInstance > 1 && convinceOMeter.getTimesSlower() < upperThreshold && convinceOMeter.getTimesSlower() > lowerThreshold) {
             convinceOMeter.setVisible(true);
             convinceOMeter.setManaged(true);
             convinceOMeter.showText1();
