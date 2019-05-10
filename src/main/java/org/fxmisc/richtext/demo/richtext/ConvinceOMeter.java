@@ -41,6 +41,7 @@ public class ConvinceOMeter extends StackPane {
         textFlow.setTextAlignment(CENTER);
         textFlow.setPadding(new Insets(7, 10, 7, 10));
 
+        timesSlowerText.setFill(Color.RED);
 
         backgroundRect = new Rectangle(width, height, Color.LIGHTGREY);
         backgroundRect.setArcHeight(100);
@@ -48,8 +49,6 @@ public class ConvinceOMeter extends StackPane {
         backgroundRect.setStroke(DARKGRAY);
 
         this.getChildren().addAll(backgroundRect, textFlow);
-
-
     }
 
     public void showText() {
@@ -57,9 +56,7 @@ public class ConvinceOMeter extends StackPane {
         //textStart.setWrappingWidth(width);
 
         timesSlowerString = Double.toString(this.timesSlower);
-        System.out.println(timesSlowerString);
         timesSlowerText.setText(timesSlowerString);
-        timesSlowerText.setFill(Color.RED);
 
 
         //this.getChildren().addAll(backgroundRect, textFlow);
