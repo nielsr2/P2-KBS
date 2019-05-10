@@ -64,4 +64,8 @@ public class RewardOMeter extends Pane {
         this.timesFaster = timesFaster;
     }
 
+    public double getTimesFaster() {
+        return this.timesFaster;
     }
+
+}
