@@ -53,8 +53,8 @@ public class KBS extends HBox {
     ImageView icon;
     Text shortcut;
     Pane kbsPane = new Pane();
-    ConvinceOMeter convinceOMeter = new ConvinceOMeter(2);
-    RewardOMeter rewardOMeter = new RewardOMeter(5);
+    ConvinceOMeter convinceOMeter = new ConvinceOMeter();
+    RewardOMeter rewardOMeter = new RewardOMeter();
     HBox content;
 
     KBS(String shortcut, String functionality, String iconPath) {

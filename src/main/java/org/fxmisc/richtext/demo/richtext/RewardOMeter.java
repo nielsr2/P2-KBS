@@ -20,7 +20,7 @@ public class RewardOMeter extends Pane {
 
     private int kbsTimesUsedInstance;
 
-    RewardOMeter(float timesFaster){
+    RewardOMeter(){
 
         this.setVisible(false);
         this.setManaged(false);
