@@ -133,7 +133,7 @@ public class KBS extends HBox {
         String kbsLog = Integer.toString(kbsTimesUsedTotal);
         LOGGER.info(functionality + " KBS executed " + kbsLog); //Logs what KBS was used and the amount.
 
-        if (this.isHidden == false && this.isPinned == false) {
+        if (!this.isHidden && !this.isPinned) {
             this.hide();
             this.isHidden = true;
         }
@@ -147,7 +147,7 @@ public class KBS extends HBox {
         String tbLog = Integer.toString(tbTimesClickedTotal);
         LOGGER.info(functionality + " Toolbar clicked " + tbLog); //Logs what toolbar was clicked and the amount
         LOGGER.info(this.functionality + " clicked " + this.tbTimesClickedInstance + " times since last time shortcut were used"); //Logs amount until KBS used.
-        if (this.isHidden == true) {
+        if (this.isHidden) {
             this.show();
             this.isHidden = false;
         } else {
