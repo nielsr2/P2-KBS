@@ -39,7 +39,7 @@ public class RewardOMeter extends Pane {
     public void manageRewardOMeter() {
         int upperThreshold = 8;
         double lowerThreshold = 1.5;
-        if (timesFaster < upperThreshold && timesFaster > lowerThreshold) {
+        if (kbsTimesUsedInstance > 1 && timesFaster < upperThreshold && timesFaster > lowerThreshold) {
             this.setVisible(true);
             this.setManaged(true);
             this.showText1();
