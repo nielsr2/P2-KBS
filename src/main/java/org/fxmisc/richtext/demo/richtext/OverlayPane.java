@@ -6,8 +6,6 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 
-import java.awt.*;
-
 public class OverlayPane extends BorderPane {
 
     public KBSManager km;
@@ -15,7 +13,7 @@ public class OverlayPane extends BorderPane {
     OverlayPane() {
         this.setPrefSize(Settings.WINDOW_WIDTH, Settings.WINDOW_HEIGHT);
         this.setPadding(new Insets(80, 0, 0, 0));
-        this.setStyle("-fx-border-color: black");
+        //this.setStyle("-fx-border-color: black");
         this.setPickOnBounds(false);
         this.setMouseTransparent(true);
         km = new KBSManager();

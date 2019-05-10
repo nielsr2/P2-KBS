@@ -81,7 +81,7 @@ public class KBSManager extends VBox {
         this.setPadding(new Insets(5, 5, 5, 5));
         this.setSpacing(5);
 
-        this.setStyle("-fx-border-color: black");
+        //this.setStyle("-fx-border-color: black");
         this.setAlignment(BOTTOM_RIGHT);
         this.getChildren().addAll(
                 new KBS(modifier + " + B", "bold", "org/fxmisc/richtext/demo/richtext/BiconHR.png"),

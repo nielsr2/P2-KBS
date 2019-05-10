@@ -29,6 +29,8 @@ import java.util.Timer;
 import java.util.TimerTask;
 import java.util.logging.Logger;
 
+import static javafx.scene.paint.Color.DARKGRAY;
+
 
 public class KBS extends HBox {
     private boolean isHidden = true;
@@ -111,6 +113,7 @@ public class KBS extends HBox {
         this.functionality = functionality;
         icon = new ImageView(new Image(iconPath, 40, 40, true, true));
         backgroundRect = new Rectangle(170, 50, Color.LIGHTGREY);
+        backgroundRect.setStroke(DARKGRAY);
         colorRect = new Rectangle(170, 50, Color.RED);
 //        this.setColor(grColorRed1,1);
 
@@ -124,12 +127,12 @@ public class KBS extends HBox {
 //        svgClose.setContent(pathClose);
 
         this.content = new HBox(5);
-        this.setStyle("-fx-border-color: black");
+        //this.setStyle("-fx-border-color: black");
         this.setAlignment(Pos.CENTER_RIGHT);
         this.content.setPadding(new Insets(5, 5, 5, 5));
         //TODO make text in ctrl+shift+sth fit into box
         this.shortcut = new Text(shortcut);
-        this.shortcut.setFont(new Font(30));
+        this.shortcut.setFont(Font.font("Sergoe UI", 30));
 
         content.getChildren().addAll(this.icon, this.shortcut);
 

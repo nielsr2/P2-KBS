@@ -5,6 +5,8 @@ import javafx.geometry.Pos;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
+import javafx.scene.text.Font;
+import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextFlow;
 
@@ -19,11 +21,11 @@ public class ConvinceOMeter extends StackPane {
     Rectangle backgroundRect;
 
     int width = 170;
-    int height = 50;
+    int height = 49;
 
     private double timesSlower;
-    Text textStart = new Text("You are ");
-    Text textEnd = new Text(" times slower by \n not using this shortcut");
+    Text textStart = new Text("When not using shortcuts, \n you are ");
+    Text textEnd = new Text(" slower!");
     TextFlow textFlow;
     private Text timesSlowerText = new Text();
     private String timesSlowerString;
@@ -42,7 +44,12 @@ public class ConvinceOMeter extends StackPane {
         textFlow.setTextAlignment(CENTER);
         textFlow.setPadding(new Insets(7, 10, 7, 10));
 
+        //System.out.println(getFont)
+
+        textStart.setFont(Font.font("Sergoe UI", 12));
+        timesSlowerText.setFont(Font.font("Sergoe UI", FontWeight.BOLD, 12));
         timesSlowerText.setFill(Color.RED);
+        textEnd.setFont(Font.font("Sergoe UI", 12));
 
         backgroundRect = new Rectangle(width, height, Color.LIGHTGREY);
         backgroundRect.setArcHeight(100);
@@ -54,44 +61,12 @@ public class ConvinceOMeter extends StackPane {
 
     public void showText() {
 
-        //textStart.setWrappingWidth(width);
-
         timesSlowerString = Double.toString(this.timesSlower);
         timesSlowerText.setText(timesSlowerString);
 
-
-        //this.getChildren().addAll(backgroundRect, textFlow);
-
-        //(System.out.println(timesSlower);
-
-        //text.setText("You are " + timesSlower.getText() + " times slower by \n not using this shortcut");
-
-
     }
 
-    /*public TextFlow showText2() {
-        Text textStart = new Text("You are ");
-        Text textEnd = new Text(" times slower by \n not using this shortcut");
 
-        textStart.setWrappingWidth(width);
-        String string = Double.toString(this.timesSlower);
-        Text timesSlower = new Text(string);
-        timesSlower.setFill(Color.RED);
-
-        TextFlow textFlow = new TextFlow(textStart, timesSlower, textEnd);
-        textFlow.setPrefWidth(width);
-        textFlow.setTextAlignment(CENTER);
-        textFlow.setPadding(new Insets(7, 10, 7, 10));
-       // textFlow.setFont
-        this.textFlow = textFlow;
-
-        this.getChildren().addAll(backgroundRect, textFlow);
-
-
-
-        return textFlow;
-
-    }*/
 
     public void setTimesSlower(double timesSlower) {
         BigDecimal bd = new BigDecimal(timesSlower).setScale(1, RoundingMode.HALF_UP);
