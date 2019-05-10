@@ -225,6 +225,13 @@ public class KBSManager extends VBox {
         return out_min + ((input - in_min) / (in_max - in_min)) * (out_max - out_min);
     }
 
+    public void animationFix() {
+        for (Node n : this.getChildren()) {
+            KBS k = ((KBS) n);
+            k.hide();
+        }
+    }
+
     ;
 
 //        this.setOnMouseExited(new EventHandler<MouseEvent>

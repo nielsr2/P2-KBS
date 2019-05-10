@@ -541,6 +541,7 @@ public class RichTextDemo extends Application {
         this.setUpGradualAttention("align-left", alignLeftBtn);
         this.setUpGradualAttention("align-center", alignCenterBtn);
         this.setUpGradualAttention("align-justify", alignJustifyBtn);
+        overlayPane.km.animationFix();
     }
 
     void ourBoldFunction() {
@@ -585,8 +586,8 @@ public class RichTextDemo extends Application {
         this.overlayPane.km.klm.stopTimerForShortcut();
         this.overlayPane.km.klm.setToolbarEstimate(insertImageBtn);
         this.overlayPane.km.klm.setTimerForShortcutAllowance(false);
-        this.overlayPane.giveKM().getKBSbyFunction("insert-image").rewardOMeter.setTimesFaster(overlayPane.km.klm.getTimesFaster());
-        this.overlayPane.giveKM().getKBSbyFunction("insert-image").shortcutUsed();
+        this.overlayPane.giveKM().getKBSbyFunction("insertimage").rewardOMeter.setTimesFaster(overlayPane.km.klm.getTimesFaster());
+        this.overlayPane.giveKM().getKBSbyFunction("insertimage").shortcutUsed();
         this.insertImage();
     }
 

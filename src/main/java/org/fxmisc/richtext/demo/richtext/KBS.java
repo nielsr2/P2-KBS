@@ -61,8 +61,7 @@ public class KBS extends HBox {
     HBox content;
 
     KBS(String shortcut, String functionality, String iconPath) {
-        this.setVisible(false);
-        this.setManaged(false);
+
 
 //        Color grColorRed1 = new Color(0.5, 0, 0, 0.70);
 //        Color grColorRed2 = new Color(0.5, 0, 0, 0.30);
@@ -105,6 +104,8 @@ public class KBS extends HBox {
         //.fade(0.1,2).play();
         this.setOnMouseMoved(event -> {
         });
+        this.setVisible(false);
+        this.setManaged(false);
     }
 
     /**
