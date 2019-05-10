@@ -76,14 +76,14 @@ public class KBS extends HBox {
         colorRect = new Rectangle(170, 50, Color.RED);
 //        this.setColor(grColorRed1,1);
 
-        SVGPath svgPin = new SVGPath();
-        SVGPath svgClose = new SVGPath();
-        String path = "M6.78,1.96c0,0-1.23-2.25-0.35-1.77c1.29,0.69,2.79,1.7,3.66,2.34c0.86,0.63-1.55,0.32-1.55,0.32L6.82,5.79 c0,0,1.04,3.12,0.59,3.33c-0.53,0.25-2.3-1-2.68-1.3C4.67,7.76,4.57,7.78,4.52,7.85c0,0-2.59,3.51-2.73,3.37 c-0.14-0.14,2.1-3.77,2.1-3.77C3.93,7.39,3.91,7.3,3.84,7.26C3.53,7.09,1.83,6,1.79,5.31C1.75,4.57,5.02,4.56,5.02,4.56L6.78,1.96z";
-        svgPin.setContent(path);
-//TODO change the position (left upper corner)
-        String pathClose = "M5.66,4.78 9.6,0.85 10.52,1.77 6.57,5.7 10.52,9.64 9.61,10.53 5.68,6.6 1.74,10.53 0.82,9.61 4.78,5.67 0.84,1.71 1.74,0.81z";
-        //Setting the SVGPath in the form of string
-        svgClose.setContent(pathClose);
+//        SVGPath svgPin = new SVGPath();
+//        SVGPath svgClose = new SVGPath();
+//        String path = "M6.78,1.96c0,0-1.23-2.25-0.35-1.77c1.29,0.69,2.79,1.7,3.66,2.34c0.86,0.63-1.55,0.32-1.55,0.32L6.82,5.79 c0,0,1.04,3.12,0.59,3.33c-0.53,0.25-2.3-1-2.68-1.3C4.67,7.76,4.57,7.78,4.52,7.85c0,0-2.59,3.51-2.73,3.37 c-0.14-0.14,2.1-3.77,2.1-3.77C3.93,7.39,3.91,7.3,3.84,7.26C3.53,7.09,1.83,6,1.79,5.31C1.75,4.57,5.02,4.56,5.02,4.56L6.78,1.96z";
+//        svgPin.setContent(path);
+//
+//        String pathClose = "M5.66,4.78 9.6,0.85 10.52,1.77 6.57,5.7 10.52,9.64 9.61,10.53 5.68,6.6 1.74,10.53 0.82,9.61 4.78,5.67 0.84,1.71 1.74,0.81z";
+//        //Setting the SVGPath in the form of string
+//        svgClose.setContent(pathClose);
 
         this.content = new HBox(5);
         this.setStyle("-fx-border-color: black");
@@ -93,7 +93,7 @@ public class KBS extends HBox {
         this.shortcut = new Text(shortcut);
         this.shortcut.setFont(new Font(30));
 
-        content.getChildren().addAll(this.icon, this.shortcut, svgPin, svgClose);
+        content.getChildren().addAll(this.icon, this.shortcut);
 
 
         kbsPane.getChildren().addAll(backgroundRect, colorRect, content);

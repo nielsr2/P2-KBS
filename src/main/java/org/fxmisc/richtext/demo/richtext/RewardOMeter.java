@@ -8,7 +8,7 @@ import javafx.scene.text.TextFlow;
 
 public class RewardOMeter extends Pane {
 
-    private final float timesFaster;
+    private double timesFaster;
     Rectangle backgroundRect;
     private Text text = new Text();
 
@@ -25,7 +25,7 @@ public class RewardOMeter extends Pane {
         this.setVisible(false);
         this.setManaged(false);
 
-        this.timesFaster = timesFaster;
+        //this.timesFaster = timesFaster;
         backgroundRect = new Rectangle(170, 50, Color.LIGHTGREY);
 
         TextFlow textFlow = new TextFlow(text);
@@ -58,6 +58,10 @@ public class RewardOMeter extends Pane {
     public Text showText2(){
         text.setText( "testing 123");
         return text;
+    }
+
+    public void setTimesFaster(double timesFaster) {
+        this.timesFaster = timesFaster;
     }
 
     }

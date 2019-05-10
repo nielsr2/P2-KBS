@@ -20,6 +20,7 @@ import javafx.animation.FadeTransition;
 import javafx.util.Duration;
 
 import java.awt.*;
+import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -104,12 +105,12 @@ public class KBSManager extends VBox {
                 new KBS(modifier + " + B", "bold", "org/fxmisc/richtext/demo/richtext/BiconHR.png"),
                 new KBS(modifier + " + I", "italic", "org/fxmisc/richtext/demo/richtext/IiconHR.png"),
                 new KBS(modifier + " + U", "underline", "org/fxmisc/richtext/demo/richtext/UiconHR.png"),
-                new KBS(modifier + " + Shift + X", "strikethrough", "org/fxmisc/richtext/demo/richtext/SiconHR.png"),
-                new KBS(modifier + " + Shift + N", "insertimage", "org/fxmisc/richtext/demo/richtext/AddImageIconHR.png"),
-                new KBS(modifier + " + {", "align-right", "org/fxmisc/richtext/demo/richtext/ARiconHR.png"),
-                new KBS(modifier + " + |", "align-center", "org/fxmisc/richtext/demo/richtext/ACiconHR.png"),
-                new KBS(modifier + " + }", "align-left", "org/fxmisc/richtext/demo/richtext/ALiconHR.png"),
-                new KBS(modifier + " + Alt + |", "align-justify", "org/fxmisc/richtext/demo/richtext/AJiconHR.png")
+                new KBS(modifier + " + T", "strikethrough", "org/fxmisc/richtext/demo/richtext/SiconHR.png"),
+                new KBS(modifier + " + P", "insertimage", "org/fxmisc/richtext/demo/richtext/AddImageIconHR.png"),
+                new KBS(modifier + " + L", "align-left", "org/fxmisc/richtext/demo/richtext/ALiconHR.png"),
+                new KBS(modifier + " + E", "align-center", "org/fxmisc/richtext/demo/richtext/ACiconHR.png"),
+                new KBS(modifier + " + R", "align-right", "org/fxmisc/richtext/demo/richtext/ARiconHR.png"),
+                new KBS(modifier + " + J", "align-justify", "org/fxmisc/richtext/demo/richtext/AJiconHR.png")
                 //new KBS("Ctrl + Fuck", "image", "asdfasfd")
         );
         this.setUpHovers();
