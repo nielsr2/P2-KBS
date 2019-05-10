@@ -30,6 +30,12 @@ public class ConvinceOMeter extends StackPane {
     private Text timesSlowerText = new Text();
     private String timesSlowerString;
 
+    private int tbTimesClickedInstance;
+
+    public void tbTimesClickedInstance(int tbTimesClickedInstance) {
+        this.tbTimesClickedInstance = tbTimesClickedInstance;
+    }
+
 
     ConvinceOMeter() {
 
@@ -60,13 +66,13 @@ public class ConvinceOMeter extends StackPane {
     }
 
     public void showText() {
-
         timesSlowerString = Double.toString(this.timesSlower);
         timesSlowerText.setText(timesSlowerString);
-
     }
 
-
+    public double getTimesSlower() {
+        return this.timesSlower;
+    }
 
     public void setTimesSlower(double timesSlower) {
         BigDecimal bd = new BigDecimal(timesSlower).setScale(1, RoundingMode.HALF_UP);
@@ -74,8 +80,19 @@ public class ConvinceOMeter extends StackPane {
         this.timesSlower = newInput;
     }
 
-    public double getTimesSlower() {
-        return this.timesSlower;
+    public void manageConvinceOMeter() {
+        int upperThreshold = 8;
+        double lowerThreshold = 1.5;
+        if (tbTimesClickedInstance > 1 && getTimesSlower() < upperThreshold && getTimesSlower() > lowerThreshold) {
+            setVisible(true);
+            setManaged(true);
+            showText();
+        } else {
+            setVisible(false);
+            setManaged(false);
+        }
     }
+
+
 
 }

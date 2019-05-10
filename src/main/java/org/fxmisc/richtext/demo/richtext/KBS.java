@@ -47,7 +47,7 @@ public class KBS extends HBox {
     protected int tbTimesClickedInstance = 0; //times clicked since last time shortcut were used
     private int nrOnList;
     private boolean pinned;
-    public int KBStype[] = new int[5];
+    public int[] KBStype = new int[5];
     private final static Logger LOGGER = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME); //Allows access for the logger
 
     private double opacity = 1;
@@ -171,6 +171,9 @@ public class KBS extends HBox {
     public void toolbarPressed() {
         this.tbTimesClickedTotal++;
         this.tbTimesClickedInstance++;
+        convinceOMeter.tbTimesClickedInstance(this.tbTimesClickedInstance);
+        convinceOMeter.manageConvinceOMeter();
+
         this.kbsTimesUsedInstance = 0;
         String tbLog = Integer.toString(tbTimesClickedTotal);
         LOGGER.info(functionality + " Toolbar clicked " + tbLog); //Logs what toolbar was clicked and the amount
@@ -181,7 +184,7 @@ public class KBS extends HBox {
         } else {
             this.seekAttention();
         }
-        this.manageConvinceOMeter();
+        convinceOMeter.manageConvinceOMeter();
     }
 
     public void show() {
@@ -271,22 +274,18 @@ public class KBS extends HBox {
         pt.play();
     }
 
-    public void manageConvinceOMeter() {
-        int upperThreshold = 8;
-        double lowerThreshold = 1.5;
-        if (tbTimesClickedInstance > 1 && convinceOMeter.getTimesSlower() < upperThreshold && convinceOMeter.getTimesSlower() > lowerThreshold) {
-            convinceOMeter.setVisible(true);
-            convinceOMeter.setManaged(true);
-            convinceOMeter.showText();
-        } else if (tbTimesClickedInstance == 5) {
-            convinceOMeter.setVisible(true);
-            convinceOMeter.setManaged(true);
-            convinceOMeter.showText();
-        } else {
-            convinceOMeter.setVisible(false);
-            convinceOMeter.setManaged(false);
-        }
-    }
+//    public void manageConvinceOMeter() {
+//        int upperThreshold = 8;
+//        double lowerThreshold = 1.5;
+//        if (tbTimesClickedInstance > 1 && convinceOMeter.getTimesSlower() < upperThreshold && convinceOMeter.getTimesSlower() > lowerThreshold) {
+//            convinceOMeter.setVisible(true);
+//            convinceOMeter.setManaged(true);
+//            convinceOMeter.showText();
+//        } else {
+//            convinceOMeter.setVisible(false);
+//            convinceOMeter.setManaged(false);
+//        }
+//    }
 
     public void setButtonCoordinates(double buttonX, double buttonY, double buttonWidth) {
         System.out.println(this.functionality + " x:" + buttonX + " y: " + buttonY);
