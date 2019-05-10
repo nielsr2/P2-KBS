@@ -420,9 +420,10 @@ public class RichTextDemo extends Application {
         }));
         area.setOnMouseMoved((e -> {
             startMouse = MouseInfo.getPointerInfo();
+            int threshold = 3;
             if (overlayPane.km.klm.getTimerForToolbarAllowance() == true) {
                 double distance = startMouse.getLocation().getX() - endMouse.getLocation().getX();
-                if (distance > 5 || distance < -5) {
+                if (distance > threshold || distance < -threshold) {
                     overlayPane.km.klm.startTimerForToolbar();
                     overlayPane.km.klm.setTimerForToolbarAllowance(false);
                 }
