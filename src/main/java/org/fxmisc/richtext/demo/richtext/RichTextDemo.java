@@ -65,6 +65,7 @@ public class RichTextDemo extends Application {
         }
         launch(args);
     }
+
     PointerInfo startMouse, endMouse;
 
     Button boldBtn, italicBtn, underlineBtn, strikeBtn, insertImageBtn;
@@ -416,9 +417,10 @@ public class RichTextDemo extends Application {
         }));
         area.setOnMouseMoved((e -> {
             startMouse = MouseInfo.getPointerInfo();
+            int threshold = 3;
             if (overlayPane.km.klm.getTimerForToolbarAllowance() == true) {
                 double distance = startMouse.getLocation().getX() - endMouse.getLocation().getX();
-                if (distance > 5 || distance < -5) {
+                if (distance > threshold || distance < -threshold) {
                     overlayPane.km.klm.startTimerForToolbar();
                     overlayPane.km.klm.setTimerForToolbarAllowance(false);
                 }
@@ -468,6 +470,13 @@ public class RichTextDemo extends Application {
 
         // ********************************************************************************************************************
         //nielz work zone
+        for (Node n : toolBar2.getItems()) {
+            n.setOnMouseMoved(event -> {
+                double mx = event.getSceneX();
+                double my = event.getSceneY();
+                overlayPane.km.parseMouse(mx, my);
+            });
+        }
         toolBar2.setOnMouseMoved(event -> {
             double mx = event.getSceneX();
             double my = event.getSceneY();
@@ -518,7 +527,16 @@ public class RichTextDemo extends Application {
         area.requestFocus();
         primaryStage.setTitle("Rich Text Demo");
         primaryStage.show();
-        this.initNielz();
+//        this.initNielz();
+        this.setUpGradualAttention("bold", boldBtn);
+        this.setUpGradualAttention("italic", italicBtn);
+        this.setUpGradualAttention("underline", underlineBtn);
+        this.setUpGradualAttention("strikethrough", strikeBtn);
+        this.setUpGradualAttention("align-right", alignRightBtn);
+        this.setUpGradualAttention("align-left", alignLeftBtn);
+        this.setUpGradualAttention("align-center", alignCenterBtn);
+        this.setUpGradualAttention("align-justify", alignJustifyBtn);
+        overlayPane.km.animationFix();
     }
 
     void ourBoldFunction() {
@@ -563,8 +581,8 @@ public class RichTextDemo extends Application {
         this.overlayPane.km.klm.stopTimerForShortcut();
         this.overlayPane.km.klm.setToolbarEstimate(insertImageBtn);
         this.overlayPane.km.klm.setTimerForShortcutAllowance(false);
-        this.overlayPane.giveKM().getKBSbyFunction("insert-image").rewardOMeter.setTimesFaster(overlayPane.km.klm.getTimesFaster());
-        this.overlayPane.giveKM().getKBSbyFunction("insert-image").shortcutUsed();
+        this.overlayPane.giveKM().getKBSbyFunction("insertimage").rewardOMeter.setTimesFaster(overlayPane.km.klm.getTimesFaster());
+        this.overlayPane.giveKM().getKBSbyFunction("insertimage").shortcutUsed();
         this.insertImage();
     }
 
@@ -857,8 +875,58 @@ public class RichTextDemo extends Application {
 
     public void initNielz() {
         this.overlayPane.km.getKBSbyFunction("bold").buttonWidth = boldBtn.getWidth();
-        this.overlayPane.km.getKBSbyFunction("bold").setButtonCoordinates(boldBtn.getLayoutX(), boldBtn.getLayoutY());
+        this.overlayPane.km.getKBSbyFunction("bold").setButtonCoordinates(boldBtn.getLayoutX(), boldBtn.getLayoutY(), boldBtn.getWidth());
+        this.boldBtn.setOnMouseEntered((e -> {
+            this.overlayPane.km.getKBSbyFunction("bold").dontdoit();
+            this.overlayPane.km.getKBSbyFunction("bold").didit = true;
+            this.overlayPane.km.disableColor();
+        }));
+        this.boldBtn.setOnMouseExited((e -> {
+            this.overlayPane.km.getKBSbyFunction("bold").didit = false;
+        }));
 
-        this.overlayPane.km.getKBSbyFunction("italic").setButtonCoordinates(italicBtn.getLayoutX(), italicBtn.getLayoutY());
+
+        this.overlayPane.km.getKBSbyFunction("italic").setButtonCoordinates(italicBtn.getLayoutX(), italicBtn.getLayoutY(), italicBtn.getWidth());
+        this.italicBtn.setOnMouseEntered((e -> {
+            this.overlayPane.km.getKBSbyFunction("italic").didit = true;
+            this.overlayPane.km.getKBSbyFunction("italic").dontdoit();
+            this.overlayPane.km.disableColor();
+        }));
+        this.italicBtn.setOnMouseExited((e -> {
+            this.overlayPane.km.getKBSbyFunction("italic").didit = false;
+        }));
+
+//        underlineBtn, strikeBtn, insertImageBtn;
+//        ToggleButton alignLeftBtn, alignCenterBtn, alignRightBtn, alignJustifyBtn;
+    }
+
+    void setUpGradualAttention(String functionality, Button button) {
+        this.overlayPane.km.getKBSbyFunction(functionality).buttonWidth = button.getWidth();
+        this.overlayPane.km.getKBSbyFunction(functionality).setButtonCoordinates(button.getLayoutX(), button.getLayoutY(), button.getWidth());
+        button.setOnMouseEntered((e -> {
+            if (this.overlayPane.km.getKBSbyFunction(functionality).attentionable) {
+                this.overlayPane.km.getKBSbyFunction(functionality).dontdoit();
+                this.overlayPane.km.getKBSbyFunction(functionality).didit = true;
+                this.overlayPane.km.disableColor();
+            }
+        }));
+        button.setOnMouseExited((e -> {
+            this.overlayPane.km.getKBSbyFunction(functionality).didit = false;
+        }));
+    }
+
+    void setUpGradualAttention(String functionality, ToggleButton button) {
+        this.overlayPane.km.getKBSbyFunction(functionality).buttonWidth = button.getWidth();
+        this.overlayPane.km.getKBSbyFunction(functionality).setButtonCoordinates(button.getLayoutX(), button.getLayoutY(), button.getWidth());
+        button.setOnMouseEntered((e -> {
+            if (this.overlayPane.km.getKBSbyFunction(functionality).attentionable) {
+                this.overlayPane.km.getKBSbyFunction(functionality).dontdoit();
+                this.overlayPane.km.getKBSbyFunction(functionality).didit = true;
+                this.overlayPane.km.disableColor();
+            }
+        }));
+        button.setOnMouseExited((e -> {
+            this.overlayPane.km.getKBSbyFunction(functionality).didit = false;
+        }));
     }
 }

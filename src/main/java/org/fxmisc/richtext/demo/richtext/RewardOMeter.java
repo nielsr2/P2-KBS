@@ -6,6 +6,9 @@ import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextFlow;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
+
 public class RewardOMeter extends Pane {
 
     private double timesFaster;
@@ -20,7 +23,7 @@ public class RewardOMeter extends Pane {
 
     private int kbsTimesUsedInstance;
 
-    RewardOMeter(float timesFaster){
+    RewardOMeter() {
 
         this.setVisible(false);
         this.setManaged(false);
@@ -34,8 +37,9 @@ public class RewardOMeter extends Pane {
     }
 
     public void manageRewardOMeter() {
-        //System.out.println(kbsTimesUsedInstance);
-        if (kbsTimesUsedInstance == 2) {
+        int upperThreshold = 8;
+        double lowerThreshold = 1.5;
+        if (kbsTimesUsedInstance > 1 && timesFaster < upperThreshold && timesFaster > lowerThreshold) {
             this.setVisible(true);
             this.setManaged(true);
             this.showText1();
@@ -60,8 +64,14 @@ public class RewardOMeter extends Pane {
         return text;
     }
 
-    public void setTimesFaster(double timesFaster) {
-        this.timesFaster = timesFaster;
+    public double getTimesFaster() {
+        return this.timesFaster;
     }
 
+    public void setTimesFaster(double timesFaster) {
+        BigDecimal bd = new BigDecimal(timesFaster).setScale(1, RoundingMode.HALF_UP);
+        double newInput = bd.doubleValue();
+        this.timesFaster = newInput;
     }
+
+}

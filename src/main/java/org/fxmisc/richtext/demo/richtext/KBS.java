@@ -3,6 +3,7 @@ package org.fxmisc.richtext.demo.richtext;
 import com.fxexperience.javafx.animation.BounceOutRightTransition;
 import com.fxexperience.javafx.animation.FadeInUpTransition;
 import com.fxexperience.javafx.animation.ShakeTransition;
+import com.fxexperience.javafx.animation.SwingTransition;
 import javafx.animation.FadeTransition;
 import javafx.animation.ParallelTransition;
 import javafx.animation.ScaleTransition;
@@ -24,7 +25,8 @@ import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.util.Duration;
 
-import java.awt.*;
+import java.util.Timer;
+import java.util.TimerTask;
 import java.util.logging.Logger;
 
 
@@ -51,13 +53,54 @@ public class KBS extends HBox {
     ImageView icon;
     Text shortcut;
     Pane kbsPane = new Pane();
-    ConvinceOMeter convinceOMeter = new ConvinceOMeter(2);
-    RewardOMeter rewardOMeter = new RewardOMeter(5);
+    ConvinceOMeter convinceOMeter = new ConvinceOMeter();
+    RewardOMeter rewardOMeter = new RewardOMeter();
     HBox content;
+    boolean attentionLock = true;
+
+    /**
+     * colors for the gradient
+     */
+    // http://www.java2s.com/Tutorials/Java/JavaFX/0110__JavaFX_Gradient_Color.htm
+
+    Color grColorGrey1 = new Color(0.5, 0.5, 0.5, 0.30);
+    Color grColorGrey2 = new Color(0.7, 0.7, 0.7, 0.15);
+    Color grColorRed1 = new Color(0.5, 0, 0, 0.70);
+    Color grColorRed2 = new Color(0.5, 0, 0, 0.30);
+    Color grColorYellow1 = new Color(0.9, 0.7, 0, 0.70);
+    Color grColorYellow2 = new Color(0.9, 0.7, 0, 0.30);
+    Color grColorGreen1 = new Color(0.2, 0.6, 0, 0.70);
+    Color grColorGreen2 = new Color(0.2, 0.6, 0, 0.30);
+    boolean didit, dothatcolorthing;
+    boolean attentionable = false;
+
+    /**
+     * methods for each gradient color gradient
+     */
+
+    //Function for setting color and setting linear gradient
+    public void setColor(Color colorLeft, Color colorRight) {
+        Stop[] stopsColor = new Stop[]{new Stop(0, colorRight), new Stop(1, colorLeft)};
+        LinearGradient lgColor = new LinearGradient(1, 0, 0, 0, true, CycleMethod.NO_CYCLE, stopsColor);
+
+        this.backgroundRect.setFill(lgColor);
+    }
+
+    //Function for setting color with linear gradient and setting opacity
+    public void setColor(Color color, double opacity) {
+        Color colorLeft = new Color(color.getRed(), color.getGreen(), color.getBlue(), opacity / 2);
+        Color colorRight = new Color(color.getRed(), color.getGreen(), color.getBlue(), opacity);
+
+        Stop[] stopsColor = new Stop[]{new Stop(0, colorRight), new Stop(1, colorLeft)};
+        LinearGradient lgColor = new LinearGradient(1, 0, 0, 0, true, CycleMethod.NO_CYCLE, stopsColor);
+
+        this.backgroundRect.setFill(lgColor);
+    }
+
+    public boolean isShown = false;
 
     KBS(String shortcut, String functionality, String iconPath) {
-        this.setVisible(false);
-        this.setManaged(false);
+
 
 //        Color grColorRed1 = new Color(0.5, 0, 0, 0.70);
 //        Color grColorRed2 = new Color(0.5, 0, 0, 0.30);
@@ -100,21 +143,9 @@ public class KBS extends HBox {
         //.fade(0.1,2).play();
         this.setOnMouseMoved(event -> {
         });
+        this.setVisible(false);
+        this.setManaged(false);
     }
-
-    /**
-     * colors for the gradient
-     */
-    // http://www.java2s.com/Tutorials/Java/JavaFX/0110__JavaFX_Gradient_Color.htm
-
-    Color grColorGrey1 = new Color(0.5, 0.5, 0.5, 0.30);
-    Color grColorGrey2 = new Color(0.7, 0.7, 0.7, 0.15);
-    Color grColorRed1 = new Color(0.5, 0, 0, 0.70);
-    Color grColorRed2 = new Color(0.5, 0, 0, 0.30);
-    Color grColorYellow1 = new Color(0.9, 0.7, 0, 0.70);
-    Color grColorYellow2 = new Color(0.9, 0.7, 0, 0.30);
-    Color grColorGreen1 = new Color(0.2, 0.6, 0, 0.70);
-    Color grColorGreen2 = new Color(0.2, 0.6, 0, 0.30);
 
     public void shortcutUsed() {
         this.kbsTimesUsedTotal++;
@@ -127,12 +158,13 @@ public class KBS extends HBox {
         String kbsLog = Integer.toString(kbsTimesUsedTotal);
         LOGGER.info(functionality + " KBS executed " + kbsLog); //Logs what KBS was used and the amount.
 
-        if(this.isHidden == false && this.isPinned == false) {
+        if (this.isHidden == false && this.isPinned == false) {
             this.hide();
             this.isHidden = true;
         }
 
     }
+
     public void toolbarPressed() {
         this.tbTimesClickedTotal++;
         this.tbTimesClickedInstance++;
@@ -140,7 +172,7 @@ public class KBS extends HBox {
         String tbLog = Integer.toString(tbTimesClickedTotal);
         LOGGER.info(functionality + " Toolbar clicked " + tbLog); //Logs what toolbar was clicked and the amount
         LOGGER.info(this.functionality + " clicked " + this.tbTimesClickedInstance + " times since last time shortcut were used"); //Logs amount until KBS used.
-        if(this.isHidden == true) {
+        if (this.isHidden == true) {
             this.show();
             this.isHidden = false;
         } else {
@@ -149,43 +181,23 @@ public class KBS extends HBox {
         this.manageConvinceOMeter();
     }
 
-    /**
-     * methods for each gradient color gradient
-     */
-
-    //Function for setting color and setting linear gradient
-    public void setColor(Color colorLeft, Color colorRight) {
-        Stop[] stopsColor = new Stop[]{new Stop(0, colorRight), new Stop(1, colorLeft)};
-        LinearGradient lgColor = new LinearGradient(1, 0, 0, 0, true, CycleMethod.NO_CYCLE, stopsColor);
-
-        this.backgroundRect.setFill(lgColor);
-    }
-
-    //Function for setting color with linear gradient and setting opacity
-    public void setColor(Color color, double opacity) {
-        Color colorLeft = new Color(color.getRed(), color.getGreen(), color.getBlue(), opacity / 2);
-        Color colorRight = new Color(color.getRed(), color.getGreen(), color.getBlue(), opacity);
-
-        Stop[] stopsColor = new Stop[]{new Stop(0, colorRight), new Stop(1, colorLeft)};
-        LinearGradient lgColor = new LinearGradient(1, 0, 0, 0, true, CycleMethod.NO_CYCLE, stopsColor);
-
-        this.backgroundRect.setFill(lgColor);
-    }
-
-    public boolean isShown = false;
-
     public void show() {
         isShown = true;
         FadeInUpTransition Anim = new FadeInUpTransition(this);
         Anim.play();
         this.setVisible(true);
         this.setManaged(true);
+        this.initialClickGate();
+    }
+
+    public void forget() {
     }
 
     public void hide() {
         isShown = false;
+        this.attentionable = false;
         KBS k = this;
-        //System.out.println("Hi there! Now I'm hidden!");
+        System.out.println("Hi there! Now I'm hidden!");
         BounceOutRightTransition Anim = new BounceOutRightTransition(k);
         Anim.setOnFinished(new EventHandler<ActionEvent>() {
             @Override
@@ -198,26 +210,6 @@ public class KBS extends HBox {
         Anim.play();
     }
 
-    public void pin(boolean isPinned) {
-        this.isPinned = isPinned;
-        if (isPinned == true) {
-            //System.out.println("Hi there! Now I'm pinned");
-        } else {
-            //System.out.println("Hi there! Now I'm unpinned");
-        }
-    }
-
-    public void forget() {
-    }
-
-    public void seekAttention() {
-        KBS k = this;
-        //System.out.println("C'mon! You stupid!");
-        ShakeTransition Anim = new ShakeTransition(k);
-//        Anim.play();
-        grow(1.5, .8);
-    }
-
     void resetGrow() {
         this.setScaleX(1);
         this.setScaleY(1);
@@ -225,16 +217,13 @@ public class KBS extends HBox {
         this.setTranslateY(0.);
     }
 
-    void grow(double size, double seconds) {
-        //System.out.println("grow ran!!!!!");
-        TranslateTransition tt = new TranslateTransition(Duration.seconds(seconds), this);
-        tt.setToX((-1 * this.getHeight() * 2) * (size - 1));
-        tt.setToY((-1 * this.getWidth() / 4) * (size - 1));
-        ScaleTransition st = new ScaleTransition(Duration.seconds(seconds), this);
-        st.setToX(size);
-        st.setToY(size);
-        ParallelTransition pt = new ParallelTransition(tt, st);
-        pt.play();
+    public void pin(boolean isPinned) {
+        this.isPinned = isPinned;
+        if (isPinned == true) {
+            System.out.println("Hi there! Now I'm pinned");
+        } else {
+            System.out.println("Hi there! Now I'm unpinned");
+        }
     }
 
     public FadeTransition fade(double opacityEnd, double time) {
@@ -255,36 +244,71 @@ public class KBS extends HBox {
 
     }
 
-    public void manageConvinceOMeter() {
-        if (tbTimesClickedInstance == 2 || tbTimesClickedInstance == 5) {
-            convinceOMeter.setVisible(true);
-            convinceOMeter.setManaged(true);
-            convinceOMeter.showText();
-        } /*else if (tbTimesClickedInstance == 5) {
-            convinceOMeter.setVisible(true);
-            convinceOMeter.setManaged(true);
-            convinceOMeter.showText2();
-        } */ else {
-            convinceOMeter.setVisible(false);
-            convinceOMeter.setManaged(false);
-        }
+    public void seekAttention() {
+        KBS k = this;
+        System.out.println("C'mon! You stupid!");
+        ShakeTransition Anim = new ShakeTransition(k);
+//        Anim.play();
+        grow(1.5, .8);
     }
 
     double buttonX;
     double buttonY;
     double buttonWidth;
-    PointerInfo startMouse = MouseInfo.getPointerInfo();
 
-    public void setButtonCoordinates(double buttonX, double buttonY) {
-        //System.out.println(this.functionality + " x:" + buttonX + " y: " + buttonY);
-        this.buttonX = buttonX + buttonWidth/2;
-        this.buttonY = buttonY + buttonWidth/2;
+    void grow(double size, double seconds) {
+        System.out.println("grow ran!!!!!");
+        TranslateTransition tt = new TranslateTransition(Duration.seconds(seconds), this);
+        tt.setToX((-1 * this.getHeight() * 2) * (size - 1));
+        tt.setToY((-1 * this.getWidth() / 4) * (size - 1));
+        ScaleTransition st = new ScaleTransition(Duration.seconds(seconds), this);
+        st.setToX(size);
+        st.setToY(size);
+        ParallelTransition pt = new ParallelTransition(tt, st);
+        pt.play();
     }
 
+    public void manageConvinceOMeter() {
+        int upperThreshold = 8;
+        double lowerThreshold = 1.5;
+        if (tbTimesClickedInstance > 1 && convinceOMeter.getTimesSlower() < upperThreshold && convinceOMeter.getTimesSlower() > lowerThreshold) {
+            convinceOMeter.setVisible(true);
+            convinceOMeter.setManaged(true);
+            convinceOMeter.showText();
+        } else if (tbTimesClickedInstance == 5) {
+            convinceOMeter.setVisible(true);
+            convinceOMeter.setManaged(true);
+            convinceOMeter.showText();
+        } else {
+            convinceOMeter.setVisible(false);
+            convinceOMeter.setManaged(false);
+        }
+    }
 
+    public void setButtonCoordinates(double buttonX, double buttonY, double buttonWidth) {
+        System.out.println(this.functionality + " x:" + buttonX + " y: " + buttonY);
+        this.buttonX = buttonX + buttonWidth / 2;
+        this.buttonY = buttonY + buttonWidth / 2;
+        this.buttonWidth = buttonWidth;
+    }
 
+    public void dontdoit() {
+        SwingTransition pt = new SwingTransition(this);
+        pt.play();
+        this.colorRect.setOpacity(1.);
+    }
 
-
-
-
+    void initialClickGate() {
+        Timer timer = new Timer();
+        timer.schedule(new TimerTask() {
+            @Override
+            public void run() {
+                attentionable = true;
+                System.out.println("attentionable:" + attentionable);
+            }
+        }, 4000);
+    }
 }
+
+
+

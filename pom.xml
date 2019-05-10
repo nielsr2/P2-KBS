@@ -38,6 +38,12 @@
             <version>RELEASE</version>
             <scope>compile</scope>
         </dependency>
+        <!-- https://mvnrepository.com/artifact/com.gluonhq/charm-glisten -->
+        <dependency>
+            <groupId>com.gluonhq</groupId>
+            <artifactId>charm-glisten</artifactId>
+            <version>5.0.x</version>
+        </dependency>
 
     </dependencies>
 
@@ -81,7 +87,7 @@
                 </plugin>
                 <plugin>
                     <artifactId>maven-project-info-reports-plugin</artifactId>
-                    <version>3.0.0</version>
+                    <version>3.0.X</version>
                 </plugin>
             </plugins>
         </pluginManagement>

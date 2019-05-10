@@ -132,6 +132,17 @@
       <JAVADOC />
       <SOURCES />
     </library>
+    <library name="Maven: com.gluonhq:charm-glisten:5.0.x">
+      <CLASSES>
+        <root url="jar://$MAVEN_REPOSITORY$/com/gluonhq/charm-glisten/5.0.x/charm-glisten-5.0.x.jar!/" />
+      </CLASSES>
+      <JAVADOC>
+        <root url="jar://$MAVEN_REPOSITORY$/com/gluonhq/charm-glisten/5.0.x/charm-glisten-5.0.x-javadoc.jar!/" />
+      </JAVADOC>
+      <SOURCES>
+        <root url="jar://$MAVEN_REPOSITORY$/com/gluonhq/charm-glisten/5.0.x/charm-glisten-5.0.x-sources.jar!/" />
+      </SOURCES>
+    </library>
     <library name="Maven: junit:junit:4.11">
       <CLASSES>
         <root url="jar://$MAVEN_REPOSITORY$/junit/junit/4.11/junit-4.11.jar!/" />
