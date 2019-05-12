@@ -49,26 +49,26 @@ public class KBSManager extends VBox {
     boolean focus = true;
     KLM klm = new KLM();
 
-    //TODO create a timer
-    Timer timer = new Timer();
-    boolean movement = false;
-
-    public void callingFunctionOnTimer() {
-        int delay = 5000;
-        int period = 5000;
-        movement = false;
-        timer.schedule(new TimerTask() {
-            @Override
-            public void run() {
-                if (!movement) {
-                    System.out.println("NO MOVEMENT DETECTED");
-                }
-                movement = false;
-                //write what should happen here
-                System.out.println("time had passed");
-            }
-        }, delay, period);
-    }
+//    //TODO THIS DELIBLE?
+//    Timer timer = new Timer();
+//    boolean movement = false;
+//
+//    public void callingFunctionOnTimer() {
+//        int delay = 5000;
+//        int period = 5000;
+//        movement = false;
+//        timer.schedule(new TimerTask() {
+//            @Override
+//            public void run() {
+//                if (!movement) {
+//                    System.out.println("NO MOVEMENT DETECTED");
+//                }
+//                movement = false;
+//                //write what should happen here
+//                System.out.println("time had passed");
+//            }
+//        }, delay, period);
+//    }
 
     void registerOnMovement() {
 
@@ -84,7 +84,7 @@ public class KBSManager extends VBox {
     //public BooleanBinding test;
 
     KBSManager() {
-        callingFunctionOnTimer();
+//        callingFunctionOnTimer();
         setMaxSize(Settings.WINDOW_WIDTH, Settings.WINDOW_HEIGHT);
         LOGGER.info("Operation system " + oprSystem); //Logs operation system
         String modifier; //Show shortcut, changes depending on operating system
@@ -188,31 +188,31 @@ public class KBSManager extends VBox {
                 KBS k = ((KBS) n);
                 if (k.isShown) {
                     double num = Math.sqrt(Math.pow(x - k.buttonX, 2) + Math.pow(y - k.buttonY, 2));
-                    double scaled = this.scaleFunc(num, 0, 100, 0.4, 0.2);
+                    double scaled = this.scaleFunc(num, 0, 100, 1., 0.2);
                     k.colorRect.setOpacity(scaled);
                     if (num < k.buttonWidth / 2) {
 //                        SwingTransition pt = new SwingTransition(k);
 //                        pt.play();
 //                        k.colorRect.setOpacity(1.);
-                        System.out.println("FUCKME!!!!!FUCKME!!!!!FUCKME!!!!!FUCKME!!!!!FUCKME!!!!!FUCKME!!!!!FUCKME!!!!!FUCKME!!!!!");
+                        // TODO REMOVE DIS
                     }
-                    System.out.println("DISTANCE to " + k.functionality + ": " + num + " SCALED: " + scaled);
+//                    System.out.println("DISTANCE to " + k.functionality + ": " + num + " SCALED: " + scaled);
                 }
-
             }
         }
     }
-    public void disableColor(){
+
+    public void disableColor() {
         for (Node n : this.getChildren()) {
             KBS k = ((KBS) n);
-            if (!k.didit && !k.isShown) {
-                this.fade(0.,0.35,k.colorRect);
-                k.colorRect.setOpacity(0.);
+            if (!k.didit && k.isShown) {
+                this.fade(0., 0.35, k.colorRect);
+//                k.colorRect.setOpacity(0.);
             }
         }
     }
 
-     void fuck() {
+    void fuck() {
         for (Node n : this.getChildren()) {
             if (n.getClass().equals(KBS.class)) {
                 KBS k = ((KBS) n);
@@ -223,9 +223,7 @@ public class KBSManager extends VBox {
 
     double scaleFunc(double input, double in_min, double in_max, double out_min, double out_max) {
         return out_min + ((input - in_min) / (in_max - in_min)) * (out_max - out_min);
-    }
-
-    ;
+    };
 
 //        this.setOnMouseExited(new EventHandler<MouseEvent>
 //                () {

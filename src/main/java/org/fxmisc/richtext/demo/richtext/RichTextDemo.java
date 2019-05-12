@@ -798,7 +798,7 @@ public class RichTextDemo extends Application {
 
     private void updateStyleInSelection(Function<StyleSpans<TextStyle>, TextStyle> mixinGetter) {
         IndexRange selection = area.getSelection();
-        System.out.println("selection.getLength(): " + selection.getLength());
+//        System.out.println("selection.getLength(): " + selection.getLength());
         if (selection.getLength() != 0) {
             StyleSpans<TextStyle> styles = area.getStyleSpans(selection);
             TextStyle mixin = mixinGetter.apply(styles);

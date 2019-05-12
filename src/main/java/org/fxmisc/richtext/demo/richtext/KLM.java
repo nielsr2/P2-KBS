@@ -88,7 +88,7 @@ public class KLM {
 
     public void startTimerForToolbar() {
         startTimeToolbar = System.nanoTime();
-        System.out.println("timer has started");
+//        System.out.println("timer has started");
     }
 
     public void stopTimerForToolbar() {

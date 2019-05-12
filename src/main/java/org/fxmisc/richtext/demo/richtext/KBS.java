@@ -73,7 +73,7 @@ public class KBS extends HBox {
         this.functionality = functionality;
         icon = new ImageView(new Image(iconPath, 40, 40, true, true));
         backgroundRect = new Rectangle(170, 50, Color.LIGHTGREY);
-        colorRect = new Rectangle(170, 50, Color.RED);
+        colorRect = new Rectangle(170, 50, this.getGradient(Color.web("#FF5252"), Color.web("#C72020")));
 //        this.setColor(grColorRed1,1);
 
 //        SVGPath svgPin = new SVGPath();
@@ -95,7 +95,8 @@ public class KBS extends HBox {
 
         content.getChildren().addAll(this.icon, this.shortcut);
 
-
+        this.backgroundRect.setFill(this.getGradient(Color.web("#DDDDDD"), Color.web("#CCCCCC")));
+//        this.colorRect.setFill();
         kbsPane.getChildren().addAll(backgroundRect, colorRect, content);
 
         this.setSpacing(5);
@@ -134,7 +135,7 @@ public class KBS extends HBox {
 
         if (this.isHidden == false && this.isPinned == false) {
             this.hide();
-            this.isHidden = true;
+            this.isHidden = true;   // todo this boolean should be set in the hide function
         }
 
     }
@@ -149,15 +150,23 @@ public class KBS extends HBox {
         if (this.isHidden == true) {
             this.show();
             this.isHidden = false;
+
         } else {
             this.seekAttention();
         }
         this.manageConvinceOMeter();
+
     }
 
     /**
      * methods for each gradient color gradient
      */
+
+    LinearGradient getGradient(Color top, Color bottom){
+        Stop[] stopsColor = new Stop[]{new Stop(0, bottom), new Stop(1, top)};
+        LinearGradient lgColor = new LinearGradient(0, 1, 0, 0, true, CycleMethod.NO_CYCLE, stopsColor);
+        return lgColor;
+    }
 
     //Function for setting color and setting linear gradient
     public void setColor(Color colorLeft, Color colorRight) {
@@ -224,7 +233,7 @@ public class KBS extends HBox {
         System.out.println("C'mon! You stupid!");
         ShakeTransition Anim = new ShakeTransition(k);
 //        Anim.play();
-        grow(1.5, .8);
+
     }
 
     void resetGrow() {
@@ -235,10 +244,11 @@ public class KBS extends HBox {
     }
 
     void grow(double size, double seconds) {
-        System.out.println("grow ran!!!!!");
+        System.out.println("Width: " + this.getWidth() + ", Height: " + this.getHeight());
+
         TranslateTransition tt = new TranslateTransition(Duration.seconds(seconds), this);
-        tt.setToX((-1 * this.getHeight() * 2) * (size - 1));
-        tt.setToY((-1 * this.getWidth() / 4) * (size - 1));
+        tt.setToY((-1 * this.getHeight() / 4) * (size - (size/2)));
+        tt.setToX((-1 * this.getWidth() / 4) * (size - (size/2)));
         ScaleTransition st = new ScaleTransition(Duration.seconds(seconds), this);
         st.setToX(size);
         st.setToY(size);
@@ -268,9 +278,11 @@ public class KBS extends HBox {
         int upperThreshold = 8;
         double lowerThreshold = 1.5;
         if (tbTimesClickedInstance > 1 && convinceOMeter.getTimesSlower() < upperThreshold && convinceOMeter.getTimesSlower() > lowerThreshold) {
+
             convinceOMeter.setVisible(true);
             convinceOMeter.setManaged(true);
             convinceOMeter.showText1();
+
         } else if (tbTimesClickedInstance == 5) {
             convinceOMeter.setVisible(true);
             convinceOMeter.setManaged(true);
@@ -279,6 +291,7 @@ public class KBS extends HBox {
             convinceOMeter.setVisible(false);
             convinceOMeter.setManaged(false);
         }
+
     }
 
     double buttonX;
@@ -308,9 +321,9 @@ public class KBS extends HBox {
             @Override
             public void run() {
                 attentionable = true;
-                System.out.println("attentionable:" + attentionable);
+//                System.out.println("attentionable:" + attentionable);
             }
-        }, 4000);
+        }, 2000);
     }
 }
 
