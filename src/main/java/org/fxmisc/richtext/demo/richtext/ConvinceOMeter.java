@@ -5,6 +5,8 @@ import javafx.geometry.Pos;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
+import javafx.scene.text.Font;
+import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextFlow;
 
@@ -19,60 +21,57 @@ public class ConvinceOMeter extends StackPane {
     Rectangle backgroundRect;
 
     int width = 170;
-    int height = 50;
+    int height = 49;
 
     private double timesSlower;
-    String argument;
-    private Text text = new Text(argument);
+    Text textStart = new Text("When not using shortcuts, \n you are ");
+    Text textEnd = new Text(" slower!");
+    TextFlow textFlow;
+    private Text timesSlowerText = new Text();
+    private String timesSlowerString;
+
+    private int tbTimesClickedInstance;
+
+    public void tbTimesClickedInstance(int tbTimesClickedInstance) {
+        this.tbTimesClickedInstance = tbTimesClickedInstance;
+    }
 
 
-
-    ConvinceOMeter(){
+    ConvinceOMeter() {
 
 
         this.setVisible(false);
         this.setManaged(false);
         this.setAlignment(Pos.CENTER);
 
+        textFlow = new TextFlow(textStart, timesSlowerText, textEnd);
 
+        textFlow.setPrefWidth(width);
+        textFlow.setTextAlignment(CENTER);
+        textFlow.setPadding(new Insets(7, 10, 7, 10));
 
+        //System.out.println(getFont)
 
+        textStart.setFont(Font.font("Sergoe UI", 12));
+        timesSlowerText.setFont(Font.font("Sergoe UI", FontWeight.BOLD, 12));
+        timesSlowerText.setFill(Color.RED);
+        textEnd.setFont(Font.font("Sergoe UI", 12));
 
         backgroundRect = new Rectangle(width, height, Color.LIGHTGREY);
         backgroundRect.setArcHeight(100);
         backgroundRect.setArcWidth(40);
         backgroundRect.setStroke(DARKGRAY);
 
-
-        this.showText1();
-
-
-        TextFlow textFlow = new TextFlow(text);
-
-        textFlow.setPrefWidth(width);
-        textFlow.setTextAlignment(CENTER);
-        textFlow.setPadding(new Insets(7, 10, 7, 10));
-
         this.getChildren().addAll(backgroundRect, textFlow);
-
-
-
     }
 
-    public Text showText1(){
-        text.setWrappingWidth(width);
-        String string = Double.toString(this.timesSlower);
-        Text timesSlower = new Text(string);
-
-        text.setText("You are " + string + " times slower by \n not using this shortcut");
-        return text;
-
+    public void showText() {
+        timesSlowerString = Double.toString(this.timesSlower);
+        timesSlowerText.setText(timesSlowerString);
     }
 
-    public Text showText2(){
-        text.setText( "testing 123");
-        return text;
-
+    public double getTimesSlower() {
+        return this.timesSlower;
     }
 
     public void setTimesSlower(double timesSlower) {
@@ -81,8 +80,19 @@ public class ConvinceOMeter extends StackPane {
         this.timesSlower = newInput;
     }
 
-    public double getTimesSlower() {
-        return this.timesSlower;
+    public void manageConvinceOMeter() {
+        int upperThreshold = 8;
+        double lowerThreshold = 1.5;
+        if (tbTimesClickedInstance > 1 && getTimesSlower() < upperThreshold && getTimesSlower() > lowerThreshold) {
+            setVisible(true);
+            setManaged(true);
+            showText();
+        } else {
+            setVisible(false);
+            setManaged(false);
+        }
     }
+
+
 
 }

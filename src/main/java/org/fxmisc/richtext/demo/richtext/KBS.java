@@ -30,7 +30,7 @@ import java.util.Timer;
 import java.util.TimerTask;
 import java.util.logging.Logger;
 
-import java.awt.*;
+import static javafx.scene.paint.Color.DARKGRAY;
 
 
 public class KBS extends HBox {
@@ -48,7 +48,7 @@ public class KBS extends HBox {
     protected int tbTimesClickedInstance = 0; //times clicked since last time shortcut were used
     private int nrOnList;
     private boolean pinned;
-    public int KBStype[] = new int[5];
+    public int[] KBStype = new int[5];
     private final static Logger LOGGER = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME); //Allows access for the logger
 
     private double opacity = 1;
@@ -61,8 +61,7 @@ public class KBS extends HBox {
     HBox content;
 
     KBS(String shortcut, String functionality, String iconPath) {
-        this.setVisible(false);
-        this.setManaged(false);
+
 
 //        Color grColorRed1 = new Color(0.5, 0, 0, 0.70);
 //        Color grColorRed2 = new Color(0.5, 0, 0, 0.30);
@@ -106,6 +105,8 @@ public class KBS extends HBox {
         //.fade(0.1,2).play();
         this.setOnMouseMoved(event -> {
         });
+        this.setVisible(false);
+        this.setManaged(false);
     }
 
     /**
@@ -133,9 +134,9 @@ public class KBS extends HBox {
         String kbsLog = Integer.toString(kbsTimesUsedTotal);
         LOGGER.info(functionality + " KBS executed " + kbsLog); //Logs what KBS was used and the amount.
 
-        if (this.isHidden == false && this.isPinned == false) {
+        if (!this.isHidden && !this.isPinned) {
             this.hide();
-            this.isHidden = true;   // todo this boolean should be set in the hide function
+            this.isHidden = true;
         }
 
     }
@@ -143,30 +144,25 @@ public class KBS extends HBox {
     public void toolbarPressed() {
         this.tbTimesClickedTotal++;
         this.tbTimesClickedInstance++;
+        convinceOMeter.tbTimesClickedInstance(this.tbTimesClickedInstance);
+        convinceOMeter.manageConvinceOMeter();
+
         this.kbsTimesUsedInstance = 0;
         String tbLog = Integer.toString(tbTimesClickedTotal);
         LOGGER.info(functionality + " Toolbar clicked " + tbLog); //Logs what toolbar was clicked and the amount
         LOGGER.info(this.functionality + " clicked " + this.tbTimesClickedInstance + " times since last time shortcut were used"); //Logs amount until KBS used.
-        if (this.isHidden == true) {
+        if (this.isHidden) {
             this.show();
             this.isHidden = false;
-
         } else {
             this.seekAttention();
         }
         this.manageConvinceOMeter();
-
     }
 
     /**
      * methods for each gradient color gradient
      */
-
-    LinearGradient getGradient(Color top, Color bottom){
-        Stop[] stopsColor = new Stop[]{new Stop(0, bottom), new Stop(1, top)};
-        LinearGradient lgColor = new LinearGradient(0, 1, 0, 0, true, CycleMethod.NO_CYCLE, stopsColor);
-        return lgColor;
-    }
 
     //Function for setting color and setting linear gradient
     public void setColor(Color colorLeft, Color colorRight) {
@@ -233,7 +229,7 @@ public class KBS extends HBox {
         System.out.println("C'mon! You stupid!");
         ShakeTransition Anim = new ShakeTransition(k);
 //        Anim.play();
-
+        grow(1.5, .8);
     }
 
     void resetGrow() {
@@ -278,11 +274,9 @@ public class KBS extends HBox {
         int upperThreshold = 8;
         double lowerThreshold = 1.5;
         if (tbTimesClickedInstance > 1 && convinceOMeter.getTimesSlower() < upperThreshold && convinceOMeter.getTimesSlower() > lowerThreshold) {
-
             convinceOMeter.setVisible(true);
             convinceOMeter.setManaged(true);
             convinceOMeter.showText1();
-
         } else if (tbTimesClickedInstance == 5) {
             convinceOMeter.setVisible(true);
             convinceOMeter.setManaged(true);
@@ -291,7 +285,6 @@ public class KBS extends HBox {
             convinceOMeter.setVisible(false);
             convinceOMeter.setManaged(false);
         }
-
     }
 
     double buttonX;

@@ -28,8 +28,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import static com.sun.xml.internal.ws.spi.db.BindingContextFactory.LOGGER;
-import static javafx.geometry.Orientation.VERTICAL;
-import static javafx.geometry.Pos.*;
+import static javafx.geometry.Pos.BOTTOM_RIGHT;
 
 // TODO add 'previously used shortcuts' that appears when some thing in here is hovered?
 // TODO make a log of session? (KBSused,ToolbarPressed etc.) probably want a timelime + sum up statistic
@@ -99,7 +98,7 @@ public class KBSManager extends VBox {
         this.setPadding(new Insets(5, 5, 5, 5));
         this.setSpacing(5);
 
-        this.setStyle("-fx-border-color: black");
+        //this.setStyle("-fx-border-color: black");
         this.setAlignment(BOTTOM_RIGHT);
         this.getChildren().addAll(
                 new KBS(modifier + " + B", "bold", "org/fxmisc/richtext/demo/richtext/BiconHR.png"),
@@ -198,11 +197,11 @@ public class KBSManager extends VBox {
                     }
 //                    System.out.println("DISTANCE to " + k.functionality + ": " + num + " SCALED: " + scaled);
                 }
+
             }
         }
     }
-
-    public void disableColor() {
+    public void disableColor(){
         for (Node n : this.getChildren()) {
             KBS k = ((KBS) n);
             if (!k.didit && k.isShown) {
@@ -212,7 +211,7 @@ public class KBSManager extends VBox {
         }
     }
 
-    void fuck() {
+     void fuck() {
         for (Node n : this.getChildren()) {
             if (n.getClass().equals(KBS.class)) {
                 KBS k = ((KBS) n);
@@ -223,7 +222,16 @@ public class KBSManager extends VBox {
 
     double scaleFunc(double input, double in_min, double in_max, double out_min, double out_max) {
         return out_min + ((input - in_min) / (in_max - in_min)) * (out_max - out_min);
-    };
+    }
+
+    public void animationFix() {
+        for (Node n : this.getChildren()) {
+            KBS k = ((KBS) n);
+            k.hide();
+        }
+    }
+
+    ;
 
 //        this.setOnMouseExited(new EventHandler<MouseEvent>
 //                () {

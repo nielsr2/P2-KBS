@@ -17,6 +17,7 @@ import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.Button;
+import javafx.scene.control.*;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyCodeCombination;
 import javafx.scene.input.KeyCombination;
@@ -452,21 +453,21 @@ public class RichTextDemo extends Application {
         area.setOnKeyPressed(e -> {
             if (e.isMetaDown()) {
                 if (e.getCode() == KeyCode.LEFT || e.getCode() == KeyCode.RIGHT) {
-                    System.out.println("NOPE");
+                    //System.out.println("NOPE");
 //                    overlayPane.km.fade(1, 0.2);
                 }
             }
         });
         area.setOnKeyPressed(e -> {
             if (e.isShortcutDown() && this.overlayPane.km.klm.getTimerForShortcutAllowance() == true) {
-                System.out.println("NOPE" + KeyCombination.SHORTCUT_DOWN);
+                //System.out.println("NOPE" + KeyCombination.SHORTCUT_DOWN);
                 this.overlayPane.km.klm.startTimerForShortcut();
                 this.overlayPane.km.klm.setTimerForShortcutAllowance(false);
 //                    overlayPane.km.fade(1, 0.2);
             }
         });
         area.setOnKeyReleased(e -> {
-            System.out.println("Key released");
+            //System.out.println("Key released");
             this.overlayPane.km.klm.setTimerForShortcutAllowance(true);
         });
         // *****************************
@@ -541,10 +542,11 @@ public class RichTextDemo extends Application {
         this.setUpGradualAttention("align-left", alignLeftBtn);
         this.setUpGradualAttention("align-center", alignCenterBtn);
         this.setUpGradualAttention("align-justify", alignJustifyBtn);
+        overlayPane.km.animationFix();
     }
 
     void ourBoldFunction() {
-        System.out.println("void ourBoldFunction() called");
+        //ystem.out.println("void ourBoldFunction() called");
 //        System.out.println(selectionEmpty);
         this.overlayPane.km.klm.stopTimerForShortcut();
         this.overlayPane.km.klm.setToolbarEstimate(boldBtn);
@@ -585,8 +587,8 @@ public class RichTextDemo extends Application {
         this.overlayPane.km.klm.stopTimerForShortcut();
         this.overlayPane.km.klm.setToolbarEstimate(insertImageBtn);
         this.overlayPane.km.klm.setTimerForShortcutAllowance(false);
-        this.overlayPane.giveKM().getKBSbyFunction("insert-image").rewardOMeter.setTimesFaster(overlayPane.km.klm.getTimesFaster());
-        this.overlayPane.giveKM().getKBSbyFunction("insert-image").shortcutUsed();
+        this.overlayPane.giveKM().getKBSbyFunction("insertimage").rewardOMeter.setTimesFaster(overlayPane.km.klm.getTimesFaster());
+        this.overlayPane.giveKM().getKBSbyFunction("insertimage").shortcutUsed();
         this.insertImage();
     }
 
@@ -798,7 +800,7 @@ public class RichTextDemo extends Application {
 
     private void updateStyleInSelection(Function<StyleSpans<TextStyle>, TextStyle> mixinGetter) {
         IndexRange selection = area.getSelection();
-//        System.out.println("selection.getLength(): " + selection.getLength());
+        System.out.println("selection.getLength(): " + selection.getLength());
         if (selection.getLength() != 0) {
             StyleSpans<TextStyle> styles = area.getStyleSpans(selection);
             TextStyle mixin = mixinGetter.apply(styles);
