@@ -32,11 +32,6 @@ public class KBS extends HBox implements UIColors {
     private boolean isHidden = true;
     private boolean isPinned = false;// todo, general thing: place properties above the function the relate to. if it's used a lot of places, i would place it up here
     protected int kbsTimesUsedTotal = 0;
-
-    public void setKbsTimesUsedInstance(int kbsTimesUsedInstance) {
-        this.kbsTimesUsedInstance = kbsTimesUsedInstance;
-    }
-
     protected int kbsTimesUsedInstance = 0;
     String functionality;
     protected int tbTimesClickedTotal = 0;
@@ -51,66 +46,21 @@ public class KBS extends HBox implements UIColors {
     ImageView icon;
     Text shortcut;
     Pane kbsPane = new Pane();
-    ConvinceOMeter convinceOMeter = new ConvinceOMeter();
-    RewardOMeter rewardOMeter = new RewardOMeter();
+
+    Text textStartConvince = new Text("When not using shortcuts, \n you are ");
+    Text textEndConvince = new Text(" slower!");
+    double timesSlower;
+    SkillOMeter convinceOMeter = new SkillOMeter(textStartConvince, timesSlower, textEndConvince, textAlertColor);
+
+    Text textStartReward = new Text("When using shortcuts, \n you are ");
+    Text textEndReward = new Text(" faster!");
+    double timesFaster;
+    SkillOMeter rewardOMeter = new SkillOMeter(textStartReward, timesFaster, textEndReward, textApprovalColor);
     HBox content;
 
-    /**
-     * methods for each gradient color gradient
-     */
-
-//    //Function for setting color and setting linear gradient
-//    public void setColor(Color colorLeft, Color colorRight) {
-//        Stop[] stopsColor = new Stop[]{new Stop(0, colorRight), new Stop(1, colorLeft)};
-//        LinearGradient lgColor = new LinearGradient(1, 0, 0, 0, true, CycleMethod.NO_CYCLE, stopsColor);
-//
-//        this.backgroundRect.setFill(lgColor);
-//    }
-//
-//    //Function for setting color with linear gradient and setting opacity
-//    public void setColor(Color color, double opacity) {
-//        Color colorLeft = new Color(color.getRed(), color.getGreen(), color.getBlue(), opacity / 2);
-//        Color colorRight = new Color(color.getRed(), color.getGreen(), color.getBlue(), opacity);
-//
-//        Stop[] stopsColor = new Stop[]{new Stop(0, colorRight), new Stop(1, colorLeft)};
-//        LinearGradient lgColor = new LinearGradient(1, 0, 0, 0, true, CycleMethod.NO_CYCLE, stopsColor);
-//
-//        this.backgroundRect.setFill(lgColor);
-//    }
 
     public boolean isShown = false;
 
-    /**
-     * colors for the gradient
-     */
-    // http://www.java2s.com/Tutorials/Java/JavaFX/0110__JavaFX_Gradient_Color.htm
-
-    Color grColorGrey1 = new Color(0.5, 0.5, 0.5, 0.30);
-    Color grColorGrey2 = new Color(0.7, 0.7, 0.7, 0.15);
-    Color grColorRed1 = new Color(0.5, 0, 0, 0.70);
-    Color grColorRed2 = new Color(0.5, 0, 0, 0.30);
-    Color grColorYellow1 = new Color(0.9, 0.7, 0, 0.70);
-    Color grColorYellow2 = new Color(0.9, 0.7, 0, 0.30);
-    Color grColorGreen1 = new Color(0.2, 0.6, 0, 0.70);
-    Color grColorGreen2 = new Color(0.2, 0.6, 0, 0.30);
-
-    public void shortcutUsed() {
-        this.kbsTimesUsedTotal++;
-        this.kbsTimesUsedInstance++;
-        rewardOMeter.setKbsTimesUsedInstance(this.kbsTimesUsedInstance);
-        rewardOMeter.manageRewardOMeter();
-
-        this.tbTimesClickedInstance = 0;
-
-        String kbsLog = Integer.toString(kbsTimesUsedTotal);
-        LOGGER.info(functionality + " KBS executed " + kbsLog); //Logs what KBS was used and the amount.
-
-        if (!this.isHidden && !this.isPinned) {
-            this.hide();
-            this.isHidden = true;
-        }
-
-    }
 
     KBS(String shortcut, String functionality, String iconPath) {
 
@@ -164,11 +114,29 @@ public class KBS extends HBox implements UIColors {
         this.setManaged(false);
     }
 
+    public void shortcutUsed() {
+        this.kbsTimesUsedTotal++;
+        this.kbsTimesUsedInstance++;
+        rewardOMeter.setKbsTimesUsedInstance(this.kbsTimesUsedInstance);
+
+        this.tbTimesClickedInstance = 0;
+
+        String kbsLog = Integer.toString(kbsTimesUsedTotal);
+        LOGGER.info(functionality + " KBS executed " + kbsLog); //Logs what KBS was used and the amount.
+
+        if (!this.isHidden && !this.isPinned) {
+            this.hide();
+            this.isHidden = true;
+        }
+
+        rewardOMeter.manageRewardOMeter(0.2, 8);
+
+    }
+
     public void toolbarPressed() {
         this.tbTimesClickedTotal++;
         this.tbTimesClickedInstance++;
         convinceOMeter.tbTimesClickedInstance(this.tbTimesClickedInstance);
-        convinceOMeter.manageConvinceOMeter();
 
         this.kbsTimesUsedInstance = 0;
         String tbLog = Integer.toString(tbTimesClickedTotal);
@@ -180,8 +148,9 @@ public class KBS extends HBox implements UIColors {
         } else {
             this.seekAttention();
         }
-        convinceOMeter.manageConvinceOMeter();
+        convinceOMeter.manageConvinceOMeter(1.5, 8);
     }
+
     boolean attentionLock = true;
 
     public void show() {
@@ -241,8 +210,8 @@ public class KBS extends HBox implements UIColors {
         System.out.println("Width: " + this.getWidth() + ", Height: " + this.getHeight());
 
         TranslateTransition tt = new TranslateTransition(Duration.seconds(seconds), this);
-        tt.setToY((-1 * this.getHeight() / 4) * (size - (size/2)));
-        tt.setToX((-1 * this.getWidth() / 4) * (size - (size/2)));
+        tt.setToY((-1 * this.getHeight() / 4) * (size - (size / 2)));
+        tt.setToX((-1 * this.getWidth() / 4) * (size - (size / 2)));
         ScaleTransition st = new ScaleTransition(Duration.seconds(seconds), this);
         st.setToX(size);
         st.setToY(size);
@@ -267,23 +236,6 @@ public class KBS extends HBox implements UIColors {
         //this.setOnMousePressed(e -> System.out.println("adasfdf"));
 
     }
-
-//    public void manageConvinceOMeter() {
-//        int upperThreshold = 8;
-//        double lowerThreshold = 1.5;
-//        if (tbTimesClickedInstance > 1 && convinceOMeter.getTimesSlower() < upperThreshold && convinceOMeter.getTimesSlower() > lowerThreshold) {
-//            convinceOMeter.setVisible(true);
-//            convinceOMeter.setManaged(true);
-//            convinceOMeter.showText1();
-//        } else if (tbTimesClickedInstance == 5) {
-//            convinceOMeter.setVisible(true);
-//            convinceOMeter.setManaged(true);
-//            convinceOMeter.showText2();
-//        } else {
-//            convinceOMeter.setVisible(false);
-//            convinceOMeter.setManaged(false);
-//        }
-//    }
 
     double buttonX;
     double buttonY;
