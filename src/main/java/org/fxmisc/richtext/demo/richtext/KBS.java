@@ -45,12 +45,12 @@ public class KBS extends HBox implements UIColors {
     Pane kbsPane = new Pane();
 
     Text textStartConvince = new Text("When not using shortcuts, \n you are ");
-    Text textEndConvince = new Text(" slower!");
+    Text textEndConvince = new Text(" times slower!");
     double timesSlower;
     SkillOMeter convinceOMeter = new SkillOMeter(textStartConvince, timesSlower, textEndConvince, textAlertColor);
 
     Text textStartReward = new Text("When using shortcuts, \n you are ");
-    Text textEndReward = new Text(" faster!");
+    Text textEndReward = new Text(" times faster!");
     double timesFaster;
     SkillOMeter rewardOMeter = new SkillOMeter(textStartReward, timesFaster, textEndReward, textApprovalColor);
     HBox content;
