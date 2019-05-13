@@ -201,6 +201,8 @@ public class KBSManager extends VBox {
     public void animationFix() {
         for (Node n : this.getChildren()) {
             KBS k = ((KBS) n);
+            k.convinceOMeter.hide();
+//            k.rewardOMeter.hide();
             k.hide();
         }
     }

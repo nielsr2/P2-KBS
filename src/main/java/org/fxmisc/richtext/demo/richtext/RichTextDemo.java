@@ -9,19 +9,24 @@ package org.fxmisc.richtext.demo.richtext;
 import javafx.application.Application;
 import javafx.beans.binding.BooleanBinding;
 import javafx.collections.FXCollections;
+import javafx.geometry.Insets;
 import javafx.geometry.Orientation;
+import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.*;
+import javafx.scene.effect.DropShadow;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyCodeCombination;
 import javafx.scene.input.KeyCombination;
 import javafx.scene.input.Mnemonic;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.Priority;
+import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
+import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Font;
 import javafx.scene.text.TextAlignment;
 import javafx.stage.FileChooser;
@@ -43,6 +48,8 @@ import java.util.function.BiConsumer;
 import java.util.function.Function;
 import java.util.logging.Logger;
 
+import static org.fxmisc.richtext.demo.richtext.Settings.*;
+import static org.fxmisc.richtext.demo.richtext.UIColors.setBackgroundColor;
 import static org.fxmisc.richtext.model.TwoDimensional.Bias.Backward;
 import static org.fxmisc.richtext.model.TwoDimensional.Bias.Forward;
 
@@ -398,9 +405,39 @@ public class RichTextDemo extends Application {
 
         ToolBar toolBar2 = new ToolBar(sizeCombo, familyCombo, textColorPicker, backgroundColorPicker);
 
-        VirtualizedScrollPane<GenericStyledArea<ParStyle, Either<String, LinkedImage>, TextStyle>> vsPane = new VirtualizedScrollPane<>(area);
+
+        VirtualizedScrollPane<GenericStyledArea<ParStyle, Either<String, LinkedImage>, TextStyle>> writePane = new VirtualizedScrollPane<>(area);
+
+        StackPane wrapperPane = new StackPane(writePane);
+
+
+        //StackPane paperPane = new StackPane();
+
+        wrapperPane.setMaxWidth(PAPER_WIDTH);
+        wrapperPane.setPadding(new Insets(10, 5, 5, 5));
+
+
+        //wrapperPane.setPadding(new Insets(100,10,10,10));
+
+        //paperPane.getChildren().addAll(wrapperPane);
+
+
+        DropShadow dropShadow = new DropShadow(10, 4, 4, Color.GREY);
+        wrapperPane.setEffect(dropShadow);
+
+
+        StackPane vsPane = new StackPane();
+        Rectangle backgroundRect;
+        backgroundRect = new Rectangle(WINDOW_WIDTH, WINDOW_WIDTH);
+        backgroundRect.setFill(setBackgroundColor());
+        vsPane.setAlignment(Pos.CENTER);
+        vsPane.getChildren().addAll(backgroundRect, wrapperPane);
+
+
+
+
         VBox vbox = new VBox();
-        vbox.setPrefSize(Settings.WINDOW_WIDTH, Settings.WINDOW_HEIGHT);
+        vbox.setPrefSize(WINDOW_WIDTH, WINDOW_HEIGHT);
         VBox.setVgrow(vsPane, Priority.ALWAYS);
         vbox.getChildren().addAll(toolBar1, toolBar2, vsPane);
 // *****************************
@@ -493,10 +530,10 @@ public class RichTextDemo extends Application {
         });
         // ********************************************************************************************************************
 //        *************************************************************************************************************************************************
-        root.setPrefSize(Settings.WINDOW_WIDTH, Settings.WINDOW_HEIGHT);
+        root.setPrefSize(WINDOW_WIDTH, WINDOW_HEIGHT);
         root.getChildren().addAll(vbox, overlayPane);
 
-        Scene scene = new Scene(root, Settings.WINDOW_WIDTH, Settings.WINDOW_HEIGHT);
+        Scene scene = new Scene(root, WINDOW_WIDTH, WINDOW_HEIGHT);
         scene.getStylesheets().add(RichTextDemo.class.getResource("rich-text.css").toExternalForm());
 
 //
