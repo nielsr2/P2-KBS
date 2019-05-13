@@ -4,10 +4,6 @@ import com.fxexperience.javafx.animation.BounceOutRightTransition;
 import com.fxexperience.javafx.animation.FadeInUpTransition;
 import com.fxexperience.javafx.animation.ShakeTransition;
 import com.fxexperience.javafx.animation.SwingTransition;
-import javafx.animation.FadeTransition;
-import javafx.animation.ParallelTransition;
-import javafx.animation.ScaleTransition;
-import javafx.animation.TranslateTransition;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.image.Image;
@@ -18,7 +14,6 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
-import javafx.util.Duration;
 
 import java.util.Timer;
 import java.util.TimerTask;
@@ -157,7 +152,7 @@ public class KBS extends HBox implements UIColors {
         Anim.setOnFinished(event -> {
             setVisible(false);
             setManaged(false);
-            resetGrow(); // reset size + translation
+//            resetGrow(); // reset size + translation
         });
         Anim.play();
     }
@@ -178,46 +173,46 @@ public class KBS extends HBox implements UIColors {
         System.out.println("C'mon! You stupid!");
         ShakeTransition Anim = new ShakeTransition(this);
 //        Anim.play();
-        grow(1.5, .8);
+//        grow(1.5, .8);
     }
 
-    void resetGrow() {
-        this.setScaleX(1);
-        this.setScaleY(1);
-        this.setTranslateX(0.);
-        this.setTranslateY(0.);
-    }
-
-    void grow(double size, double seconds) {
-        System.out.println("Width: " + this.getWidth() + ", Height: " + this.getHeight());
-
-        TranslateTransition tt = new TranslateTransition(Duration.seconds(seconds), this);
-        tt.setToY((-1 * this.getHeight() / 4) * (size - (size / 2)));
-        tt.setToX((-1 * this.getWidth() / 4) * (size - (size / 2)));
-        ScaleTransition st = new ScaleTransition(Duration.seconds(seconds), this);
-        st.setToX(size);
-        st.setToY(size);
-        ParallelTransition pt = new ParallelTransition(tt, st);
-        pt.play();
-    }
-
-    public FadeTransition fade(double opacityEnd, double time) {
-
-        double opacityStart = this.opacity;
-
-
-        FadeTransition fade = new FadeTransition(Duration.seconds(time), this);
-        fade.setFromValue(opacityStart);
-        fade.setToValue(opacityEnd);
-        //fade.setCycleCount(Timeline.INDEFINITE);
-        //fade.setAutoReverse(true);
-        fade.play(); //start animation
-
-        return fade;
-
-        //this.setOnMousePressed(e -> System.out.println("adasfdf"));
-
-    }
+//    void resetGrow() {
+//        this.setScaleX(1);
+//        this.setScaleY(1);
+//        this.setTranslateX(0.);
+//        this.setTranslateY(0.);
+//    }
+//
+//    void grow(double size, double seconds) {
+//        System.out.println("Width: " + this.getWidth() + ", Height: " + this.getHeight());
+//
+//        TranslateTransition tt = new TranslateTransition(Duration.seconds(seconds), this);
+//        tt.setToY((-1 * this.getHeight() / 4) * (size - (size / 2)));
+//        tt.setToX((-1 * this.getWidth() / 4) * (size - (size / 2)));
+//        ScaleTransition st = new ScaleTransition(Duration.seconds(seconds), this);
+//        st.setToX(size);
+//        st.setToY(size);
+//        ParallelTransition pt = new ParallelTransition(tt, st);
+//        pt.play();
+//    }
+//
+//    public FadeTransition fade(double opacityEnd, double time) {
+//
+//        double opacityStart = this.opacity;
+//
+//
+//        FadeTransition fade = new FadeTransition(Duration.seconds(time), this);
+//        fade.setFromValue(opacityStart);
+//        fade.setToValue(opacityEnd);
+//        //fade.setCycleCount(Timeline.INDEFINITE);
+//        //fade.setAutoReverse(true);
+//        fade.play(); //start animation
+//
+//        return fade;
+//
+//        //this.setOnMousePressed(e -> System.out.println("adasfdf"));
+//
+//    }
 
     double buttonX;
     double buttonY;

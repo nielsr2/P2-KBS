@@ -10,6 +10,7 @@ public interface UIColors {
     Color borderColor = Color.DARKGRAY;
     Color textAlertColor = Color.RED;
     Color textApprovalColor = Color.GREEN;
+    Color backgrondColor = Color.LIGHTGREY;
 
     static LinearGradient setKBSAlertColor() {
         Color colorLeft = Color.web("#FF5252");
@@ -37,6 +38,16 @@ public interface UIColors {
 
         Stop[] stopsColor = new Stop[]{new Stop(0, colorRight), new Stop(1, colorLeft)};
         LinearGradient linearGradient = new LinearGradient(1, 0, 0, 0, true, CycleMethod.NO_CYCLE, stopsColor);
+
+        return linearGradient;
+    }
+
+    static LinearGradient setBackgroundColor() {
+        Color colorLeft = Color.web("#EEEEEE");
+        Color colorRight = Color.web("#BBBBBB");
+
+        Stop[] stopsColor = new Stop[]{new Stop(0, colorRight), new Stop(1, colorLeft)};
+        LinearGradient linearGradient = new LinearGradient(0, 1, 0, 0, true, CycleMethod.NO_CYCLE, stopsColor);
 
         return linearGradient;
     }

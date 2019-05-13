@@ -1,5 +1,8 @@
 package org.fxmisc.richtext.demo.richtext;
 
+import com.fxexperience.javafx.animation.BounceOutRightTransition;
+import com.fxexperience.javafx.animation.FadeInRightTransition;
+import com.fxexperience.javafx.animation.FadeOutRightBigTransition;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.layout.StackPane;
@@ -66,6 +69,8 @@ public class SkillOMeter extends StackPane implements UIColors {
         backgroundRect.setStroke(borderColor);
 
         this.getChildren().addAll(backgroundRect, textFlow);
+
+
     }
 
     public void tbTimesClickedInstance(int tbTimesClickedInstance) {
@@ -97,6 +102,7 @@ public class SkillOMeter extends StackPane implements UIColors {
             setVisible(true);
             setManaged(true);
             showText();
+            animateConvince();
         } else {
             setVisible(false);
             setManaged(false);
@@ -109,11 +115,40 @@ public class SkillOMeter extends StackPane implements UIColors {
             setVisible(true);
             setManaged(true);
             showText();
+
         } else {
             setVisible(false);
             setManaged(false);
         }
     }
 
+    public void animateConvince() {
 
+
+        System.out.println("Hi there! Now I'm hidden!");
+        FadeInRightTransition fadeInRightTransition = new FadeInRightTransition(this);
+        FadeOutRightBigTransition fadeOutRightBigTransition = new FadeOutRightBigTransition(this);
+
+        fadeInRightTransition.play();
+
+        fadeInRightTransition.setOnFinished(eventStart -> {
+            fadeOutRightBigTransition.play();
+        });
+
+        fadeOutRightBigTransition.setOnFinished(eventEnd -> {
+            setVisible(false);
+            setManaged(false);
+        });
+    }
+
+    public void hide() {
+
+        BounceOutRightTransition Anim = new BounceOutRightTransition(this);
+        Anim.setOnFinished(event -> {
+            setVisible(false);
+            setManaged(false);
+//            resetGrow(); // reset size + translation
+        });
+        Anim.play();
+    }
 }
