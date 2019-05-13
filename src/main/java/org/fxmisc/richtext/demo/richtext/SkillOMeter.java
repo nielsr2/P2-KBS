@@ -35,11 +35,10 @@ public class SkillOMeter extends StackPane implements UIColors {
     private int tbTimesClickedInstance;
     private int kbsTimesUsedInstance;
 
-    SkillOMeter(Text textStart, double skillNr, Text textEnd, Color skillNrColor) {
+    SkillOMeter(Text textStart, Text textEnd, Color skillNrColor) {
 
         this.textStart = textStart;
         this.textEnd = textEnd;
-        this.skillNr = skillNr;
         this.skillNrColor = skillNrColor;
 
 

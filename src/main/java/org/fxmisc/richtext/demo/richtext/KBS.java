@@ -44,15 +44,9 @@ public class KBS extends HBox implements UIColors {
     Text shortcut;
     Pane kbsPane = new Pane();
 
-    Text textStartConvince = new Text("When not using shortcuts, \n you are ");
-    Text textEndConvince = new Text(" times slower!");
-    double timesSlower;
-    SkillOMeter convinceOMeter = new SkillOMeter(textStartConvince, timesSlower, textEndConvince, textAlertColor);
+    SkillOMeter convinceOMeter;
+    SkillOMeter rewardOMeter;
 
-    Text textStartReward = new Text("When using shortcuts, \n you are ");
-    Text textEndReward = new Text(" times faster!");
-    double timesFaster;
-    SkillOMeter rewardOMeter = new SkillOMeter(textStartReward, timesFaster, textEndReward, textApprovalColor);
     HBox content;
 
 
@@ -91,6 +85,13 @@ public class KBS extends HBox implements UIColors {
 
         this.setSpacing(5);
 
+        Text textStartConvince = new Text("When not using shortcuts, \n you are ");
+        Text textEndConvince = new Text(" times slower!");
+        convinceOMeter = new SkillOMeter(textStartConvince, textEndConvince, textApprovalColor);
+
+        Text textStartReward = new Text("When using the " + functionality + " shortcut, \n you are ");
+        Text textEndReward = new Text(" times faster!");
+        rewardOMeter = new SkillOMeter(textStartReward, textEndReward, textApprovalColor);
 
         this.getChildren().addAll(convinceOMeter, kbsPane);
         //.fade(0.1,2).play();
