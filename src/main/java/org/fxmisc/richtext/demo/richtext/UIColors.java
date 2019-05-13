@@ -44,7 +44,7 @@ public interface UIColors {
 
     static LinearGradient setBackgroundColor() {
         Color colorLeft = Color.web("#EEEEEE");
-        Color colorRight = Color.web("#BBBBBB");
+        Color colorRight = Color.web("#666666");
 
         Stop[] stopsColor = new Stop[]{new Stop(0, colorRight), new Stop(1, colorLeft)};
         LinearGradient linearGradient = new LinearGradient(0, 1, 0, 0, true, CycleMethod.NO_CYCLE, stopsColor);
