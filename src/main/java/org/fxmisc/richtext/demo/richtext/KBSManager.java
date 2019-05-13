@@ -1,31 +1,12 @@
 package org.fxmisc.richtext.demo.richtext;
 
-import com.fxexperience.javafx.animation.PulseTransition;
-import com.fxexperience.javafx.animation.ShakeTransition;
-import com.fxexperience.javafx.animation.SwingTransition;
-import com.fxexperience.javafx.animation.WobbleTransition;
-import javafx.beans.binding.BooleanBinding;
-import javafx.beans.property.BooleanProperty;
-import javafx.beans.property.BooleanPropertyBase;
 import javafx.animation.FadeTransition;
-import javafx.event.EventHandler;
-import javafx.geometry.HPos;
 import javafx.geometry.Insets;
-import javafx.geometry.Pos;
-import javafx.geometry.VPos;
 import javafx.scene.Node;
-import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.VBox;
-import javafx.animation.FadeTransition;
 import javafx.util.Duration;
 
 import java.awt.*;
-import java.awt.event.KeyEvent;
-import java.awt.event.MouseEvent;
-import java.util.Timer;
-import java.util.TimerTask;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 import static com.sun.xml.internal.ws.spi.db.BindingContextFactory.LOGGER;
 import static javafx.geometry.Pos.BOTTOM_RIGHT;
@@ -201,7 +182,8 @@ public class KBSManager extends VBox {
             }
         }
     }
-    public void disableColor(){
+
+    public void disableColor() {
         for (Node n : this.getChildren()) {
             KBS k = ((KBS) n);
             if (!k.didit && k.isShown) {
@@ -211,14 +193,6 @@ public class KBSManager extends VBox {
         }
     }
 
-     void fuck() {
-        for (Node n : this.getChildren()) {
-            if (n.getClass().equals(KBS.class)) {
-                KBS k = ((KBS) n);
-
-            }
-        }
-    }
 
     double scaleFunc(double input, double in_min, double in_max, double out_min, double out_max) {
         return out_min + ((input - in_min) / (in_max - in_min)) * (out_max - out_min);
@@ -231,96 +205,12 @@ public class KBSManager extends VBox {
         }
     }
 
-    ;
+    void fuck() {
+        for (Node n : this.getChildren()) {
+            if (n.getClass().equals(KBS.class)) {
+                KBS k = ((KBS) n);
 
-//        this.setOnMouseExited(new EventHandler<MouseEvent>
-//                () {
-//
-//            @Override
-//            public void handle(MouseEvent) {
-//                System.out.println("EXIT");
-//            }
-//        });
+            }
+        }
+    }
 }
-//    void getKBS(String functionality) {
-//        ObservableList<Node> workingCollection = FXCollections.observableArrayList(
-//                this.getChildren());
-//        System.out.println(workingCollection);
-////        KBS found = new KBS();
-////        for (KBS k: this.kbsArray) {
-////            if (k.functionality == functionality)
-////                found = k;
-////        }
-////        return found;
-////        System.out.println(this.getChildren().getByTag();
-////        System.out.println(this.getChildren().filtered());
-//    }
-
-//    private SVGPath _init() {
-////        String path = "M 100 100 L 300 100 L 200 200 L 0 200 z";
-//        // bulb shape
-//        String path = "M224.68,57c-61.16,0-110.8,51.2-110.87,112.36a112.06,112.06,0,0,0,27,73.2,100.45,100.45,0,0,1,21.6,44.64c9.93,47,40.68,58.23,62.29,58.23h0c21.62,0,52.37-11.25,62.29-58.23a100.45,100.45,0,0,1,21.6-44.64,112.06,112.06,0,0,0,27-73.2C335.48,108.2,281,57,224.68,57Z";
-//        SVGPath svgpath = new SVGPath();
-//        svgpath.setContent(path);
-//        svgpath.setStrokeWidth(2);
-//        svgpath.setStroke(Color.BLACK);
-//        return svgpath;
-//    }
-//
-//
-//    private void _initializeEvents() {
-//        this.OUR.setOnMousePressed(new EventHandler<MouseEvent>() {
-//            @Override
-//            public void handle(MouseEvent event) {
-//                System.out.println( "Hi there! You clicked me!");
-//                OUR.setFill(Color.RED);
-//                FadeInDownBigTransition Anim = new FadeInDownBigTransition(OUR);
-//                Anim.setOnFinished(new EventHandler<ActionEvent>() {
-//                    @Override
-//                    public void handle(ActionEvent event) {
-//                        new TadaTransition(OUR).play();
-//                    }
-//                });
-//                Anim.play();
-//
-//
-//            }
-//        });
-//    }
-//void setupToolbarListeners(){
-//
-//    parent.boldToggleButton.setOnAction(new EventHandler<ActionEvent>() {
-//        @Override
-//        public void handle(ActionEvent event) {
-//            int bold = 0;
-//            KBSArray[bold].KBSused();
-//        }
-//    });
-//
-//    this.italicToggleButton.setOnAction(new EventHandler<ActionEvent>() {
-//        @Override
-//        public void handle(ActionEvent event) {
-//            int italic = 1;
-//            KBSArray[italic].KBSused();
-//        }
-//    });
-//
-//    this.underlineToggleButton.setOnAction(new EventHandler<ActionEvent>() {
-//        @Override
-//        public void handle(ActionEvent event) {
-//            int underline = 2;
-//            KBSArray[underline].KBSused();
-//        }
-//    });
-//
-//    this.strikethroughToggleButton.setOnAction(new EventHandler<ActionEvent>() {
-//        @Override
-//        public void handle(ActionEvent event) {
-//            int strikethrough = 3;
-//            KBSArray[strikethrough].KBSused();
-//        }
-//    });
-//
-//}
-
-
