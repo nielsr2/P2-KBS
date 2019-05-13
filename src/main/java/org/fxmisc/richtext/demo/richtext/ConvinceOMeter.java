@@ -3,7 +3,6 @@ package org.fxmisc.richtext.demo.richtext;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.layout.StackPane;
-import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
@@ -13,10 +12,10 @@ import javafx.scene.text.TextFlow;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 
-import static javafx.scene.paint.Color.DARKGRAY;
 import static javafx.scene.text.TextAlignment.CENTER;
 
-public class ConvinceOMeter extends StackPane {
+
+public class ConvinceOMeter extends StackPane implements UIColors {
 
     Rectangle backgroundRect;
 
@@ -54,13 +53,13 @@ public class ConvinceOMeter extends StackPane {
 
         textStart.setFont(Font.font("Sergoe UI", 12));
         timesSlowerText.setFont(Font.font("Sergoe UI", FontWeight.BOLD, 12));
-        timesSlowerText.setFill(Color.RED);
+        timesSlowerText.setFill(textAlertColor);
         textEnd.setFont(Font.font("Sergoe UI", 12));
 
-        backgroundRect = new Rectangle(width, height, Color.LIGHTGREY);
+        backgroundRect = new Rectangle(width, height, UIColors.setSkillOMeterColor());
         backgroundRect.setArcHeight(100);
         backgroundRect.setArcWidth(40);
-        backgroundRect.setStroke(DARKGRAY);
+        backgroundRect.setStroke(borderColor);
 
         this.getChildren().addAll(backgroundRect, textFlow);
     }

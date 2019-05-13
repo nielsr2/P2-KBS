@@ -16,7 +16,7 @@ import java.math.RoundingMode;
 import static javafx.scene.paint.Color.DARKGRAY;
 import static javafx.scene.text.TextAlignment.CENTER;
 
-public class RewardOMeter extends StackPane {
+public class RewardOMeter extends StackPane implements UIColors {
 
 
     Rectangle backgroundRect;
@@ -52,7 +52,7 @@ public class RewardOMeter extends StackPane {
 
         textStart.setFont(Font.font("Sergoe UI", 12));
         timesFasterText.setFont(Font.font("Sergoe UI", FontWeight.BOLD, 12));
-        timesFasterText.setFill(Color.RED);
+        timesFasterText.setFill(textApprovalColor);
         textEnd.setFont(Font.font("Sergoe UI", 12));
 
 
