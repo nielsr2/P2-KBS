@@ -32,8 +32,10 @@ public class SkillOMeter extends StackPane implements UIColors {
     private boolean isBeingAnimatedReward = false;
 
 
-    Text textStart = new Text("When not using shortcuts, \n you are ");
-    Text textEnd = new Text(" slower!");
+    Text textStart;
+    Text textEnd;
+    Text textMiddle;
+    Text textFunctionality;
     TextFlow textFlow;
     private Color skillNrColor;
     private double skillNr;
@@ -42,6 +44,46 @@ public class SkillOMeter extends StackPane implements UIColors {
 
     private int tbTimesClickedInstance;
     private int kbsTimesUsedInstance;
+
+    SkillOMeter(Text textStart, Text textMiddle, Text textEnd, Text textFunctionality, Color skillNrColor) {
+
+        this.textStart = textStart;
+        this.textMiddle = textMiddle;
+        this.textEnd = textEnd;
+        this.textFunctionality = textFunctionality;
+        this.skillNrColor = skillNrColor;
+
+
+        this.setVisible(false);
+        this.setManaged(false);
+        this.setAlignment(Pos.CENTER);
+        this.setPadding(new Insets(0, 0, 0, 5));
+
+        textFlow = new TextFlow(textStart, textFunctionality, textMiddle, skillNrText, textEnd);
+
+        textFlow.setPrefWidth(width);
+        textFlow.setTextAlignment(CENTER);
+        textFlow.setPadding(new Insets(7, 10, 7, 10));
+
+        //System.out.println(getFont)
+
+        textStart.setFont(Font.font("San Fransisco", 12));
+        textMiddle.setFont(Font.font("San Fransisco", 12));
+        textFunctionality.setFont(Font.font("San Fransisco", FontWeight.BOLD, 12));
+        skillNrText.setFont(Font.font("San Fransisco", FontWeight.BOLD, 12));
+        skillNrText.setFill(this.skillNrColor);
+        textEnd.setFont(Font.font("San Fransisco", 12));
+
+        backgroundRect = new Rectangle(width, height, setSkillOMeterColor());
+        backgroundRect.setArcHeight(100);
+        backgroundRect.setArcWidth(40);
+        backgroundRect.setStroke(borderColor);
+        backgroundRect.setOpacity(0.8);
+
+        this.getChildren().addAll(backgroundRect, textFlow);
+
+
+    }
 
     SkillOMeter(Text textStart, Text textEnd, Color skillNrColor) {
 

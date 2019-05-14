@@ -397,16 +397,17 @@ public class RichTextDemo extends Application {
         });
 
         ToolBar toolBar1 = new ToolBar(
-                loadBtn, saveBtn, new Separator(Orientation.VERTICAL),
-                wrapToggle, new Separator(Orientation.VERTICAL),
+                loadBtn, saveBtn, /*new Separator(Orientation.VERTICAL),
+                wrapToggle,*/ new Separator(Orientation.VERTICAL),
                 undoBtn, redoBtn, new Separator(Orientation.VERTICAL),
                 cutBtn, copyBtn, pasteBtn, new Separator(Orientation.VERTICAL),
                 boldBtn, italicBtn, underlineBtn, strikeBtn, new Separator(Orientation.VERTICAL),
-                alignLeftBtn, alignCenterBtn, alignRightBtn, alignJustifyBtn, new Separator(Orientation.VERTICAL),
-                insertImageBtn, new Separator(Orientation.VERTICAL),
-                paragraphBackgroundPicker);
+                alignLeftBtn, alignCenterBtn, alignRightBtn, alignJustifyBtn,
+                new Separator(Orientation.VERTICAL), sizeCombo, familyCombo
+                /*, insertImageBtn, new Separator(Orientation.VERTICAL),
+                paragraphBackgroundPicker*/);
 
-        ToolBar toolBar2 = new ToolBar(sizeCombo, familyCombo, textColorPicker, backgroundColorPicker);
+//        ToolBar toolBar2 = new ToolBar(sizeCombo, familyCombo/*, textColorPicker, backgroundColorPicker*/);
 
 
         VirtualizedScrollPane<GenericStyledArea<ParStyle, Either<String, LinkedImage>, TextStyle>> writePane = new VirtualizedScrollPane<>(area);
@@ -432,7 +433,7 @@ public class RichTextDemo extends Application {
         VBox vbox = new VBox();
         vbox.setPrefSize(WINDOW_WIDTH, WINDOW_HEIGHT);
         VBox.setVgrow(vsPane, Priority.ALWAYS);
-        vbox.getChildren().addAll(toolBar1, toolBar2, vsPane);
+        vbox.getChildren().addAll(toolBar1, /*toolBar2,*/ vsPane);
 // *****************************
         area.setOnMouseReleased((e -> {
             boolean textHighlighted = !selectionEmpty.get(); // get, since selectionEmpty is a BooleanBinding, get is used to get the boolean value;
@@ -499,14 +500,14 @@ public class RichTextDemo extends Application {
 
         // ********************************************************************************************************************
         //nielz work zone
-        for (Node n : toolBar2.getItems()) {
+        for (Node n : toolBar1.getItems()) {
             n.setOnMouseMoved(event -> {
                 double mx = event.getSceneX();
                 double my = event.getSceneY();
                 overlayPane.km.parseMouse(mx, my);
             });
         }
-        toolBar2.setOnMouseMoved(event -> {
+        toolBar1.setOnMouseMoved(event -> {
             double mx = event.getSceneX();
             double my = event.getSceneY();
             overlayPane.km.parseMouse(mx, my);

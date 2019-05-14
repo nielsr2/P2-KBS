@@ -58,6 +58,7 @@ public class KBS extends HBox implements UIColors {
         this.setUserData(functionality);
         this.setId(functionality);
         this.functionality = functionality;
+
         icon = new ImageView(new Image(iconPath, 40, 40, true, true));
         backgroundRect = new Rectangle(170, 50, Color.LIGHTGREY);
         backgroundRect.setStroke(borderColor);
@@ -87,9 +88,13 @@ public class KBS extends HBox implements UIColors {
         Text textEndConvince = new Text(" times slower!");
         convinceOMeter = new SkillOMeter(textStartConvince, textEndConvince, textAlertColor);
 
-        Text textStartReward = new Text("When using the " + functionality + " shortcut, \n you are ");
+
+        Text textStartReward = new Text("When using the \n");
+        Text textFunctionality = new Text(functionality);
+        Text textMiddleReward = new Text(" shortcut, \n you are ");
         Text textEndReward = new Text(" times faster!");
-        rewardOMeter = new SkillOMeter(textStartReward, textEndReward, textApprovalColor);
+
+        rewardOMeter = new SkillOMeter(textStartReward, textMiddleReward, textEndReward, textFunctionality, textApprovalColor);
 
         this.getChildren().addAll(convinceOMeter, kbsPane);
         //.fade(0.1,2).play();
@@ -114,7 +119,7 @@ public class KBS extends HBox implements UIColors {
             this.isHidden = true;
         }
 
-        rewardOMeter.manageRewardOMeter(0.2, 8);
+        rewardOMeter.manageRewardOMeter(0.05, 8);
 
     }
 
