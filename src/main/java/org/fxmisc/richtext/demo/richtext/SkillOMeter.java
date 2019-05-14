@@ -53,6 +53,7 @@ public class SkillOMeter extends StackPane implements UIColors {
         this.setVisible(false);
         this.setManaged(false);
         this.setAlignment(Pos.CENTER);
+        this.setPadding(new Insets(0, 0, 0, 5));
 
         textFlow = new TextFlow(textStart, skillNrText, textEnd);
 
@@ -134,7 +135,7 @@ public class SkillOMeter extends StackPane implements UIColors {
         FadeInRightTransition fadeInRightTransition = new FadeInRightTransition(this);
         FadeOutTransition fadeOutTransition = new FadeOutTransition(this);
 
-        fadeInRightTransition.setRate(0.5);
+        fadeInRightTransition.setRate(0.8);
         fadeInRightTransition.play();
 
         fadeInRightTransition.setOnFinished(eventStart -> {
@@ -157,7 +158,7 @@ public class SkillOMeter extends StackPane implements UIColors {
         FadeInLeftTransition fadeInLeftTransition = new FadeInLeftTransition(this);
         FadeOutTransition fadeOutTransition = new FadeOutTransition(this);
 
-        fadeInLeftTransition.setRate(0.5);
+        fadeInLeftTransition.setRate(0.8);
         fadeInLeftTransition.play();
 
         fadeInLeftTransition.setOnFinished(eventStart -> {

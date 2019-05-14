@@ -416,7 +416,7 @@ public class RichTextDemo extends Application {
         wrapperPane.setPadding(new Insets(55, 0, 0, 0)); //top paperMargin
 
         Rectangle paper = new Rectangle(PAPER_WIDTH, WINDOW_HEIGHT + 280, Color.WHITE);
-        DropShadow dropShadow = new DropShadow(20, 4, 4, Color.GREY);
+        DropShadow dropShadow = new DropShadow(30, 5, 6, Color.web("#7085A0"));
         paper.setEffect(dropShadow);
 
 
