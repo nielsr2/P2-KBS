@@ -27,6 +27,7 @@ public class SkillOMeter extends StackPane implements UIColors {
 
     int width = 170;
     int height = 49;
+    private boolean isBeingAnimated = false;
 
 
     Text textStart = new Text("When not using shortcuts, \n you are ");
@@ -100,12 +101,12 @@ public class SkillOMeter extends StackPane implements UIColors {
 
     public void manageConvinceOMeter(double lowerThreshold, double upperThreshold) {
 
-        if (tbTimesClickedInstance > 1 && getSkillNr() < upperThreshold && getSkillNr() > lowerThreshold) {
+        if (tbTimesClickedInstance > 1 && getSkillNr() < upperThreshold && getSkillNr() > lowerThreshold && !this.isBeingAnimated) {
             setVisible(true);
             setManaged(true);
             showText();
             animateConvince();
-        } else {
+        } else if (!this.isBeingAnimated){
             setVisible(false);
             setManaged(false);
         }
@@ -126,7 +127,7 @@ public class SkillOMeter extends StackPane implements UIColors {
 
     public void animateConvince() {
 
-
+        this.isBeingAnimated = true;
         System.out.println("Hi there! Now I'm hidden!");
         FadeInRightTransition fadeInRightTransition = new FadeInRightTransition(this);
         FadeOutTransition fadeOutTransition = new FadeOutTransition(this);
@@ -142,6 +143,7 @@ public class SkillOMeter extends StackPane implements UIColors {
         fadeOutTransition.setOnFinished(eventEnd -> {
             setVisible(false);
             setManaged(false);
+            this.isBeingAnimated = false;
         });
     }
 
