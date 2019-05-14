@@ -2,7 +2,6 @@ package org.fxmisc.richtext.demo.richtext;
 
 import com.fxexperience.javafx.animation.BounceOutRightTransition;
 import com.fxexperience.javafx.animation.FadeInRightTransition;
-import com.fxexperience.javafx.animation.FadeOutRightBigTransition;
 import com.fxexperience.javafx.animation.FadeOutTransition;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -60,10 +59,10 @@ public class SkillOMeter extends StackPane implements UIColors {
 
         //System.out.println(getFont)
 
-        textStart.setFont(Font.font("Sergoe UI", 12));
-        skillNrText.setFont(Font.font("Sergoe UI", FontWeight.BOLD, 12));
+        textStart.setFont(Font.font("San Fransisco", 12));
+        skillNrText.setFont(Font.font("San Fransisco", FontWeight.BOLD, 12));
         skillNrText.setFill(this.skillNrColor);
-        textEnd.setFont(Font.font("Sergoe UI", 12));
+        textEnd.setFont(Font.font("San Fransisco", 12));
 
         backgroundRect = new Rectangle(width, height, setSkillOMeterColor());
         backgroundRect.setArcHeight(100);
