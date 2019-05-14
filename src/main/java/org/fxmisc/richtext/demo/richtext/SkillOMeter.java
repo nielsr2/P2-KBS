@@ -12,6 +12,7 @@ import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextFlow;
+import javafx.util.Duration;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
@@ -130,9 +131,11 @@ public class SkillOMeter extends StackPane implements UIColors {
         FadeInRightTransition fadeInRightTransition = new FadeInRightTransition(this);
         FadeOutRightBigTransition fadeOutRightBigTransition = new FadeOutRightBigTransition(this);
 
+        fadeInRightTransition.setRate(2);
         fadeInRightTransition.play();
 
         fadeInRightTransition.setOnFinished(eventStart -> {
+            fadeOutRightBigTransition.setDelay(Duration.millis(2000));
             fadeOutRightBigTransition.play();
         });
 
