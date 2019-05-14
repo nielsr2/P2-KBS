@@ -409,29 +409,19 @@ public class RichTextDemo extends Application {
         VirtualizedScrollPane<GenericStyledArea<ParStyle, Either<String, LinkedImage>, TextStyle>> writePane = new VirtualizedScrollPane<>(area);
 
         StackPane wrapperPane = new StackPane(writePane);
+        wrapperPane.setMaxWidth(PAPER_WIDTH - 90); //side paperMargins
+        wrapperPane.setPadding(new Insets(55, 0, 0, 0)); //top paperMargin
 
-
-        //StackPane paperPane = new StackPane();
-
-        wrapperPane.setMaxWidth(PAPER_WIDTH);
-        wrapperPane.setPadding(new Insets(10, 5, 5, 5));
-
-
-        //wrapperPane.setPadding(new Insets(100,10,10,10));
-
-        //paperPane.getChildren().addAll(wrapperPane);
-
-
-        DropShadow dropShadow = new DropShadow(10, 4, 4, Color.GREY);
-        wrapperPane.setEffect(dropShadow);
+        Rectangle paper = new Rectangle(PAPER_WIDTH, WINDOW_HEIGHT + 280, Color.WHITE);
+        DropShadow dropShadow = new DropShadow(20, 4, 4, Color.GREY);
+        paper.setEffect(dropShadow);
 
 
         StackPane vsPane = new StackPane();
-        Rectangle backgroundRect;
-        backgroundRect = new Rectangle(WINDOW_WIDTH, WINDOW_WIDTH);
+        Rectangle backgroundRect = new Rectangle(WINDOW_WIDTH, WINDOW_WIDTH);
         backgroundRect.setFill(setBackgroundColor());
         vsPane.setAlignment(Pos.CENTER);
-        vsPane.getChildren().addAll(backgroundRect, wrapperPane);
+        vsPane.getChildren().addAll(backgroundRect, paper, wrapperPane);
 
 
 

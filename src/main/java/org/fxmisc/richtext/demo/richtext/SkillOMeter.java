@@ -18,6 +18,7 @@ import java.math.BigDecimal;
 import java.math.RoundingMode;
 
 import static javafx.scene.text.TextAlignment.CENTER;
+import static org.fxmisc.richtext.demo.richtext.UIColors.setSkillOMeterColor;
 
 
 public class SkillOMeter extends StackPane implements UIColors {
@@ -63,10 +64,11 @@ public class SkillOMeter extends StackPane implements UIColors {
         skillNrText.setFill(this.skillNrColor);
         textEnd.setFont(Font.font("Sergoe UI", 12));
 
-        backgroundRect = new Rectangle(width, height, UIColors.setSkillOMeterColor());
+        backgroundRect = new Rectangle(width, height, setSkillOMeterColor());
         backgroundRect.setArcHeight(100);
         backgroundRect.setArcWidth(40);
         backgroundRect.setStroke(borderColor);
+        backgroundRect.setOpacity(0.8);
 
         this.getChildren().addAll(backgroundRect, textFlow);
 
