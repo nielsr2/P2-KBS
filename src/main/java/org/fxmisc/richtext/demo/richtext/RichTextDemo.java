@@ -125,6 +125,9 @@ public class RichTextDemo extends Application {
         Button pasteBtn = createButton("paste", area::paste, "Paste");
 
 
+        // TOGGLE OUR SOLUTION VISIBILITY
+        KeyCombination kcShow = new KeyCodeCombination(KeyCode.W, KeyCombination.SHORTCUT_DOWN);
+        Runnable rnShow = () -> overlayPane.km.toggleShow(); //this.toggleBold();
 //     BOLD BUTTON  *********************************************************************************************************           BOLD BUTTON
         boldBtn = createButton("bold", this::toggleBold, "Bold");
         boldBtn.setOnMouseClicked((event) -> {
@@ -529,6 +532,7 @@ public class RichTextDemo extends Application {
 //
 
 //      ************************************************************************************
+        scene.getAccelerators().put(kcShow, rnShow);
         scene.addMnemonic(mnBold);
         scene.getAccelerators().put(kcBold, rnBold);
         scene.addMnemonic(mnItalic);
