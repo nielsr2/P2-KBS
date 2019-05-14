@@ -489,6 +489,13 @@ public class RichTextDemo extends Application {
                 this.overlayPane.km.klm.setTimerForShortcutAllowance(false);
 //                    overlayPane.km.fade(1, 0.2);
             }
+            if (e.isShortcutDown() && e.isAltDown() && e.isControlDown() && e.isShiftDown() && e.getCode() == KeyCode.P) {
+                for (Node n : this.overlayPane.km.getChildren()) {
+                    KBS k = ((KBS) n);
+                    k.setOn(!k.getOn());
+                    System.out.println(k.getOn());
+                }
+            }
         });
         area.setOnKeyReleased(e -> {
             //System.out.println("Key released");

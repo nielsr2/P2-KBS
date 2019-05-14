@@ -21,6 +21,7 @@ import java.util.logging.Logger;
 
 
 public class KBS extends HBox implements UIColors {
+    private boolean isOn = true;
     private boolean isHidden = true;
     private boolean isPinned = false;// todo, general thing: place properties above the function the relate to. if it's used a lot of places, i would place it up here
     protected int kbsTimesUsedTotal = 0;
@@ -49,6 +50,7 @@ public class KBS extends HBox implements UIColors {
 
 
     KBS(String shortcut, String functionality, String iconPath) {
+        System.out.println(isOn);
 
 
 //        Color grColorRed1 = new Color(0.5, 0, 0, 0.70);
@@ -98,47 +100,56 @@ public class KBS extends HBox implements UIColors {
 
         this.getChildren().addAll(convinceOMeter, kbsPane);
         //.fade(0.1,2).play();
-        this.setOnMouseMoved(event -> {
+        this.setOnMouseClicked(event -> {
+            this.isOn = false;
+            System.out.println(isOn);
+        });
+        this.setOnKeyPressed(event -> {
+            this.isOn = true;
+            System.out.println(isOn);
         });
         this.setVisible(false);
         this.setManaged(false);
     }
 
     public void shortcutUsed() {
-        this.kbsTimesUsedTotal++;
-        this.kbsTimesUsedInstance++;
-        rewardOMeter.setKbsTimesUsedInstance(this.kbsTimesUsedInstance);
+        if (isOn) {
+            this.kbsTimesUsedTotal++;
+            this.kbsTimesUsedInstance++;
+            rewardOMeter.setKbsTimesUsedInstance(this.kbsTimesUsedInstance);
 
-        this.tbTimesClickedInstance = 0;
+            this.tbTimesClickedInstance = 0;
 
-        String kbsLog = Integer.toString(kbsTimesUsedTotal);
-        LOGGER.info(functionality + " KBS executed " + kbsLog); //Logs what KBS was used and the amount.
+            String kbsLog = Integer.toString(kbsTimesUsedTotal);
+            LOGGER.info(functionality + " KBS executed " + kbsLog); //Logs what KBS was used and the amount.
 
-        if (!this.isHidden && !this.isPinned) {
-            this.hide();
-            this.isHidden = true;
+            if (!this.isHidden && !this.isPinned) {
+                this.hide();
+                this.isHidden = true;
+            }
+
+            rewardOMeter.manageRewardOMeter(0.05, 8);
         }
-
-        rewardOMeter.manageRewardOMeter(0.05, 8);
-
     }
 
     public void toolbarPressed() {
-        this.tbTimesClickedTotal++;
-        this.tbTimesClickedInstance++;
-        convinceOMeter.tbTimesClickedInstance(this.tbTimesClickedInstance);
+        if (isOn) {
+            this.tbTimesClickedTotal++;
+            this.tbTimesClickedInstance++;
+            convinceOMeter.tbTimesClickedInstance(this.tbTimesClickedInstance);
 
-        this.kbsTimesUsedInstance = 0;
-        String tbLog = Integer.toString(tbTimesClickedTotal);
-        LOGGER.info(functionality + " Toolbar clicked " + tbLog); //Logs what toolbar was clicked and the amount
-        LOGGER.info(this.functionality + " clicked " + this.tbTimesClickedInstance + " times since last time shortcut were used"); //Logs amount until KBS used.
-        if (this.isHidden) {
-            this.show();
-            this.isHidden = false;
-        } else {
+            this.kbsTimesUsedInstance = 0;
+            String tbLog = Integer.toString(tbTimesClickedTotal);
+            LOGGER.info(functionality + " Toolbar clicked " + tbLog); //Logs what toolbar was clicked and the amount
+            LOGGER.info(this.functionality + " clicked " + this.tbTimesClickedInstance + " times since last time shortcut were used"); //Logs amount until KBS used.
+            if (this.isHidden) {
+                this.show();
+                this.isHidden = false;
+            } else {
 //            this.seekAttention();
+            }
+            convinceOMeter.manageConvinceOMeter(1.5, 8);
         }
-        convinceOMeter.manageConvinceOMeter(1.5, 8);
     }
 
     boolean attentionLock = true;
@@ -214,6 +225,14 @@ public class KBS extends HBox implements UIColors {
 //                System.out.println("attentionable:" + attentionable);
             }
         }, 2000);
+    }
+
+    public void setOn(boolean isOn) {
+        this.isOn = isOn;
+    }
+
+    public boolean getOn() {
+        return this.isOn;
     }
 }
 

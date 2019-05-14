@@ -135,6 +135,10 @@ public class KBSManager extends VBox {
 //            System.out.println(event.getSceneX() + " " + event.getSceneY());
 ////            System.out.println();
 //        });
+        this.setOnKeyPressed((e -> {
+            System.out.println("ENTER");
+            this.fade(1, 0.2);
+        }));
         this.setOnMouseEntered((e -> {
             System.out.println("ENTER");
             this.fade(1, 0.2);
