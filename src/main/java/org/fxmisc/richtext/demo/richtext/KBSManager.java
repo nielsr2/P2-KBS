@@ -57,9 +57,24 @@ public class KBSManager extends VBox {
     private String oprSystem = System.getProperty("os.name");
 
 
+    boolean show = true;
+
     void show(boolean show) {
         this.setVisible(show);
         this.setManaged(show);
+    }
+
+    void toggleShow() {
+        System.out.println("KBSMANAGER SHOW TOGGLED");
+        if (show) {
+            this.setVisible(false);
+            this.setManaged(false);
+            this.show = false;
+        } else {
+            this.setVisible(true);
+            this.setManaged(true);
+            this.show = true;
+        }
     }
     //public BooleanBinding test;
 

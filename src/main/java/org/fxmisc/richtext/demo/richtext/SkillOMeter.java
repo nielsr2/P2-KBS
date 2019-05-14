@@ -3,6 +3,7 @@ package org.fxmisc.richtext.demo.richtext;
 import com.fxexperience.javafx.animation.BounceOutRightTransition;
 import com.fxexperience.javafx.animation.FadeInRightTransition;
 import com.fxexperience.javafx.animation.FadeOutRightBigTransition;
+import com.fxexperience.javafx.animation.FadeOutTransition;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.layout.StackPane;
@@ -129,17 +130,17 @@ public class SkillOMeter extends StackPane implements UIColors {
 
         System.out.println("Hi there! Now I'm hidden!");
         FadeInRightTransition fadeInRightTransition = new FadeInRightTransition(this);
-        FadeOutRightBigTransition fadeOutRightBigTransition = new FadeOutRightBigTransition(this);
+        FadeOutTransition fadeOutTransition = new FadeOutTransition(this);
 
         fadeInRightTransition.setRate(2);
         fadeInRightTransition.play();
 
         fadeInRightTransition.setOnFinished(eventStart -> {
-            fadeOutRightBigTransition.setDelay(Duration.millis(2000));
-            fadeOutRightBigTransition.play();
+            fadeOutTransition.setDelay(Duration.millis(4000));
+            fadeOutTransition.play();
         });
 
-        fadeOutRightBigTransition.setOnFinished(eventEnd -> {
+        fadeOutTransition.setOnFinished(eventEnd -> {
             setVisible(false);
             setManaged(false);
         });
