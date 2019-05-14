@@ -1,6 +1,7 @@
 package org.fxmisc.richtext.demo.richtext;
 
 import com.fxexperience.javafx.animation.BounceOutRightTransition;
+import com.fxexperience.javafx.animation.FadeInLeftTransition;
 import com.fxexperience.javafx.animation.FadeInRightTransition;
 import com.fxexperience.javafx.animation.FadeOutTransition;
 import javafx.geometry.Insets;
@@ -132,11 +133,12 @@ public class SkillOMeter extends StackPane implements UIColors {
         FadeInRightTransition fadeInRightTransition = new FadeInRightTransition(this);
         FadeOutTransition fadeOutTransition = new FadeOutTransition(this);
 
-        fadeInRightTransition.setRate(2);
+        fadeInRightTransition.setRate(0.5);
         fadeInRightTransition.play();
 
         fadeInRightTransition.setOnFinished(eventStart -> {
-            fadeOutTransition.setDelay(Duration.millis(4000));
+            fadeOutTransition.setDelay(Duration.millis(3000));
+            fadeOutTransition.setRate(0.2);
             fadeOutTransition.play();
         });
 
@@ -146,6 +148,30 @@ public class SkillOMeter extends StackPane implements UIColors {
             this.isBeingAnimated = false;
         });
     }
+
+    public void animateReward() {
+
+        this.isBeingAnimated = true;
+        System.out.println("Hi there! Now I'm hidden!");
+        FadeInLeftTransition fadeInLeftTransition = new FadeInLeftTransition(this);
+        FadeOutTransition fadeOutTransition = new FadeOutTransition(this);
+
+        fadeInLeftTransition.setRate(0.5);
+        fadeInLeftTransition.play();
+
+        fadeInLeftTransition.setOnFinished(eventStart -> {
+            fadeOutTransition.setDelay(Duration.millis(3000));
+            fadeOutTransition.setRate(0.2);
+            fadeOutTransition.play();
+        });
+
+        fadeOutTransition.setOnFinished(eventEnd -> {
+            setVisible(false);
+            setManaged(false);
+            this.isBeingAnimated = false;
+        });
+    }
+
 
     public void hide() {
 
