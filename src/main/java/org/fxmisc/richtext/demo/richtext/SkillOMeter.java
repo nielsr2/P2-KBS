@@ -25,7 +25,7 @@ public class SkillOMeter extends StackPane implements UIColors {
 
     Rectangle backgroundRect;
 
-    int width = 170;
+    int width = 180;
     int height = 49;
     private boolean isBeingAnimated = false;
 
