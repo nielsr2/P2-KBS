@@ -129,6 +129,7 @@ public class SkillOMeter extends StackPane implements UIColors {
         FadeInRightTransition fadeInRightTransition = new FadeInRightTransition(this);
         FadeOutRightBigTransition fadeOutRightBigTransition = new FadeOutRightBigTransition(this);
 
+        fadeInRightTransition.setRate(2);
         fadeInRightTransition.play();
 
         fadeInRightTransition.setOnFinished(eventStart -> {
