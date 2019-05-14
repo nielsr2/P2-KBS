@@ -61,8 +61,11 @@ public class KBS extends HBox implements UIColors {
         icon = new ImageView(new Image(iconPath, 40, 40, true, true));
         backgroundRect = new Rectangle(170, 50, Color.LIGHTGREY);
         backgroundRect.setStroke(borderColor);
+        backgroundRect.setOpacity(0.8);
+
 
         colorRect = new Rectangle(170, 50, UIColors.setKBSAlertColor());
+        colorRect.setStroke(borderColor);
 
         this.content = new HBox(5);
 //        this.setStyle("-fx-border-color: black");
@@ -82,7 +85,7 @@ public class KBS extends HBox implements UIColors {
 
         Text textStartConvince = new Text("When not using shortcuts, \n you are ");
         Text textEndConvince = new Text(" times slower!");
-        convinceOMeter = new SkillOMeter(textStartConvince, textEndConvince, textApprovalColor);
+        convinceOMeter = new SkillOMeter(textStartConvince, textEndConvince, textAlertColor);
 
         Text textStartReward = new Text("When using the " + functionality + " shortcut, \n you are ");
         Text textEndReward = new Text(" times faster!");
