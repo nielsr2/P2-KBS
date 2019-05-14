@@ -3,7 +3,7 @@ package org.fxmisc.richtext.demo.richtext;
 import com.fxexperience.javafx.animation.BounceOutRightTransition;
 import com.fxexperience.javafx.animation.FadeInUpTransition;
 import com.fxexperience.javafx.animation.ShakeTransition;
-import com.fxexperience.javafx.animation.SwingTransition;
+import javafx.animation.Interpolator;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.image.Image;
@@ -131,7 +131,7 @@ public class KBS extends HBox implements UIColors {
             this.show();
             this.isHidden = false;
         } else {
-            this.seekAttention();
+//            this.seekAttention();
         }
         convinceOMeter.manageConvinceOMeter(1.5, 8);
     }
@@ -170,54 +170,6 @@ public class KBS extends HBox implements UIColors {
         }
     }
 
-    public void forget() {
-    }
-
-    public void seekAttention() {
-        System.out.println("C'mon! You stupid!");
-        ShakeTransition Anim = new ShakeTransition(this);
-//        Anim.play();
-//        grow(1.5, .8);
-    }
-
-//    void resetGrow() {
-//        this.setScaleX(1);
-//        this.setScaleY(1);
-//        this.setTranslateX(0.);
-//        this.setTranslateY(0.);
-//    }
-//
-//    void grow(double size, double seconds) {
-//        System.out.println("Width: " + this.getWidth() + ", Height: " + this.getHeight());
-//
-//        TranslateTransition tt = new TranslateTransition(Duration.seconds(seconds), this);
-//        tt.setToY((-1 * this.getHeight() / 4) * (size - (size / 2)));
-//        tt.setToX((-1 * this.getWidth() / 4) * (size - (size / 2)));
-//        ScaleTransition st = new ScaleTransition(Duration.seconds(seconds), this);
-//        st.setToX(size);
-//        st.setToY(size);
-//        ParallelTransition pt = new ParallelTransition(tt, st);
-//        pt.play();
-//    }
-//
-//    public FadeTransition fade(double opacityEnd, double time) {
-//
-//        double opacityStart = this.opacity;
-//
-//
-//        FadeTransition fade = new FadeTransition(Duration.seconds(time), this);
-//        fade.setFromValue(opacityStart);
-//        fade.setToValue(opacityEnd);
-//        //fade.setCycleCount(Timeline.INDEFINITE);
-//        //fade.setAutoReverse(true);
-//        fade.play(); //start animation
-//
-//        return fade;
-//
-//        //this.setOnMousePressed(e -> System.out.println("adasfdf"));
-//
-//    }
-
     double buttonX;
     double buttonY;
     double buttonWidth;
@@ -231,11 +183,20 @@ public class KBS extends HBox implements UIColors {
 
     boolean didit, dothatcolorthing;
 
-    public void dontdoit() {
-        SwingTransition pt = new SwingTransition(this);
-        pt.play();
+    public void hoverShake() {
+        ShakeTransition shakeTransition = new ShakeTransition(kbsPane);
+        shakeTransition.setRate(5);
+        shakeTransition.setInterpolator(Interpolator.EASE_OUT);
+        shakeTransition.play();
         this.colorRect.setOpacity(1.);
     }
+
+//    public void seekAttention() {
+//        ShakeTransition shakeTransition = new ShakeTransition(kbsPane);
+//        shakeTransition.setRate(5);
+//        shakeTransition.setInterpolator(Interpolator.EASE_OUT);
+//        shakeTransition.play();
+//    }
 
     boolean attentionable = false;
 

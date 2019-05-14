@@ -903,7 +903,7 @@ public class RichTextDemo extends Application {
         this.overlayPane.km.getKBSbyFunction("bold").buttonWidth = boldBtn.getWidth();
         this.overlayPane.km.getKBSbyFunction("bold").setButtonCoordinates(boldBtn.getLayoutX(), boldBtn.getLayoutY(), boldBtn.getWidth());
         this.boldBtn.setOnMouseEntered((e -> {
-            this.overlayPane.km.getKBSbyFunction("bold").dontdoit();
+            this.overlayPane.km.getKBSbyFunction("bold").hoverShake();
             this.overlayPane.km.getKBSbyFunction("bold").didit = true;
             this.overlayPane.km.disableColor();
         }));
@@ -915,7 +915,7 @@ public class RichTextDemo extends Application {
         this.overlayPane.km.getKBSbyFunction("italic").setButtonCoordinates(italicBtn.getLayoutX(), italicBtn.getLayoutY(), italicBtn.getWidth());
         this.italicBtn.setOnMouseEntered((e -> {
             this.overlayPane.km.getKBSbyFunction("italic").didit = true;
-            this.overlayPane.km.getKBSbyFunction("italic").dontdoit();
+            this.overlayPane.km.getKBSbyFunction("italic").hoverShake();
             this.overlayPane.km.disableColor();
         }));
         this.italicBtn.setOnMouseExited((e -> {
@@ -931,7 +931,7 @@ public class RichTextDemo extends Application {
         this.overlayPane.km.getKBSbyFunction(functionality).setButtonCoordinates(button.getLayoutX(), button.getLayoutY(), button.getWidth());
         button.setOnMouseEntered((e -> {
             if (this.overlayPane.km.getKBSbyFunction(functionality).attentionable) {
-                this.overlayPane.km.getKBSbyFunction(functionality).dontdoit();
+                this.overlayPane.km.getKBSbyFunction(functionality).hoverShake();
                 this.overlayPane.km.getKBSbyFunction(functionality).didit = true;
                 this.overlayPane.km.disableColor();
             }
@@ -946,7 +946,7 @@ public class RichTextDemo extends Application {
         this.overlayPane.km.getKBSbyFunction(functionality).setButtonCoordinates(button.getLayoutX(), button.getLayoutY(), button.getWidth());
         button.setOnMouseEntered((e -> {
             if (this.overlayPane.km.getKBSbyFunction(functionality).attentionable) {
-                this.overlayPane.km.getKBSbyFunction(functionality).dontdoit();
+                this.overlayPane.km.getKBSbyFunction(functionality).hoverShake();
                 this.overlayPane.km.getKBSbyFunction(functionality).didit = true;
                 this.overlayPane.km.disableColor();
             }
