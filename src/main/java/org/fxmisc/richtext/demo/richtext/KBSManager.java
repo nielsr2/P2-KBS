@@ -217,7 +217,7 @@ public class KBSManager extends VBox {
         for (Node n : this.getChildren()) {
             KBS k = ((KBS) n);
             k.convinceOMeter.hide();
-//            k.rewardOMeter.hide();
+            k.rewardOMeter.hide();
             k.hide();
         }
     }
