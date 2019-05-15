@@ -76,7 +76,7 @@ public class RichTextDemo extends Application {
     PointerInfo startMouse, endMouse;
 
     Button boldBtn, italicBtn, underlineBtn, strikeBtn, insertImageBtn;
-    ToggleButton alignLeftBtn, alignCenterBtn, alignRightBtn, alignJustifyBtn;
+    ToggleButton boldTBtn, alignLeftBtn, alignCenterBtn, alignRightBtn, alignJustifyBtn;
 
     private final TextOps<String, TextStyle> styledTextOps = SegmentOps.styledTextOps();
     private final LinkedImageOps<TextStyle> linkedImageOps = new LinkedImageOps<>();
@@ -189,6 +189,7 @@ public class RichTextDemo extends Application {
 
         /////////////// ALIGN LEFT BUTTON ////////////////////////
         alignLeftBtn = createToggleButton(alignmentGrp, "align-left", this::alignLeft, "Align left");
+        boldTBtn = createToggleButton(alignmentGrp, "bold", this::toggledBold2, "jajaja");
         alignLeftBtn.setOnMouseClicked((event) -> {
             overlayPane.km.klm.stopTimerForToolbar();
             overlayPane.giveKM().getKBSbyFunction("align-left").convinceOMeter.setSkillNr(overlayPane.km.klm.getTimesSlower());
@@ -402,7 +403,7 @@ public class RichTextDemo extends Application {
                 undoBtn, redoBtn, new Separator(Orientation.VERTICAL),
                 cutBtn, copyBtn, pasteBtn, new Separator(Orientation.VERTICAL),
                 boldBtn, italicBtn, underlineBtn, strikeBtn, new Separator(Orientation.VERTICAL),
-                alignLeftBtn, alignCenterBtn, alignRightBtn, alignJustifyBtn,
+                boldTBtn, alignLeftBtn, alignCenterBtn, alignRightBtn, alignJustifyBtn,
                 new Separator(Orientation.VERTICAL), sizeCombo, familyCombo
                 /*, insertImageBtn, new Separator(Orientation.VERTICAL),
                 paragraphBackgroundPicker*/);
@@ -705,16 +706,21 @@ public class RichTextDemo extends Application {
     }
 
     private void toggleBold() {
-        updateStyleInSelection(spans -> TextStyle.bold(!spans.styleStream().allMatch(style -> style.bold.orElse(false))));
+
+
+        updateStyleInSelection(spans -> TextStyle.bold(!spans.styleStream().allMatch(style -> style.bold.orElse(true))));
+//        updateStyleInSelection("bold");
     }
 
     //********************
     private void toggledBold2() {
-        updateStyleInSelection(spans -> TextStyle.bold(!spans.styleStream().allMatch(style -> style.bold.orElse(false))));
+        updateStyleInSelection(spans -> TextStyle.bold(!spans.styleStream().noneMatch(style -> style.bold.orElse(true))));
+
     }
 
     //********************
     private void toggleItalic() {
+        updateStyleInSelection("italic");
         updateStyleInSelection(spans -> TextStyle.italic(!spans.styleStream().allMatch(style -> style.italic.orElse(false))));
     }
 
@@ -830,28 +836,54 @@ public class RichTextDemo extends Application {
         }
     }
 
+    private void updateStyleInSelection(String style) {
+        area.setStyle("-fx-font-weight:" + style + ";");
+    }
     private void updateStyleInSelection(Function<StyleSpans<TextStyle>, TextStyle> mixinGetter) {
         IndexRange selection = area.getSelection();
-        System.out.println("selection.getLength(): " + selection.getLength());
+
         if (selection.getLength() != 0) {
+            System.out.println("selection.getLength(): " + selection.getLength());
             StyleSpans<TextStyle> styles = area.getStyleSpans(selection);
             TextStyle mixin = mixinGetter.apply(styles);
             StyleSpans<TextStyle> newStyles = styles.mapStyles(style -> style.updateWith(mixin));
             area.setStyleSpans(selection.getStart(), newStyles);
-        } else if (selection.getLength() == 0) {
-//            System.out.println("nib testin");
-//            int p = area.getCurrentParagraph();
-//            int col = area.getCaretColumn();
-//            StyleSpans<TextStyle> styles = area.getStyleSpans(p);
-//            System.out.println(area.getStyleSpans(p));
+        }
+        if (selection.getLength() == 0) {
+            area.appendText(" ");
+            area.selectRange(area.getCaretPosition() - 1, area.getCaretPosition());
+            IndexRange sel = area.getSelection();
+            int p = area.getCurrentParagraph();
+            int col = area.getCaretColumn();
+            System.out.println("P: " + p + " COL: " + col);
+            StyleSpans<TextStyle> styles = area.getStyleSpans(p);
+            System.out.println("styles: " + styles);
 //            TextStyle style = area.getStyleAtPosition(p, col);
-//            TextStyle mixin = mixinGetter.apply(styles);
-//            StyleSpans<TextStyle> newStyles = styles.mapStyles(stylex -> style.updateWith(mixin));
+//            System.out.println(style);
+            TextStyle mixin = mixinGetter.apply(styles);
+            System.out.println("mixin: " + mixin);
+
+            StyleSpans<TextStyle> newStyles = styles.mapStyles(style -> style.updateWith(mixin));
+            System.out.println("newStyles: " + newStyles);
+            System.out.println("selection.getEnd()" + selection.getEnd());
+            System.out.println("area.getCaretPosition(): " + area.getCaretPosition());
+            System.out.println("selection.getLength(): " + selection.getLength());
+            StyleSpans<TextStyle> styles2 = area.getStyleSpans(sel);
+            TextStyle mixin2 = mixinGetter.apply(styles2);
+            StyleSpans<TextStyle> newStyles2 = styles2.mapStyles(style -> style.updateWith(mixin2));
+            area.setStyleSpans(selection.getStart(), newStyles2);
+            area.deselect();
+            area.moveTo(area.getCaretPosition());
+//            area.deletePreviousChar();
+
+//            area.setStyleSpans(sel.getEnd(), newStyles);
+
+//            Style(area.getCaretPosition(), area.getCaretPosition(), "-fx-font-weight: bold")
 //            area.setStyleSpans(selection.getStart(), newStyles);
 //            StyleSpans<TextStyle> styles = area.getParagraphs();
 //            TextStyle mixin = mixinGetter.apply(styles);
 //            StyleSpans<TextStyle> newStyles = styles.mapStyles(style -> style.updateWith(mixin));
-//            area.setStyleSpans(selection.getStart(), newStyles);
+
 //           // TODO NIELS I TIHNK IT'S HERES
 //            System.out.println("nibs");
 //            area.se
@@ -860,10 +892,11 @@ public class RichTextDemo extends Application {
 
     private void updateStyleInSelection(TextStyle mixin) {
         IndexRange selection = area.getSelection();
+        StyleSpans<TextStyle> styles = area.getStyleSpans(selection);
+        StyleSpans<TextStyle> newStyles = styles.mapStyles(style -> style.updateWith(mixin));
+        area.setStyleSpans(selection.getStart(), newStyles);
         if (selection.getLength() != 0) {
-            StyleSpans<TextStyle> styles = area.getStyleSpans(selection);
-            StyleSpans<TextStyle> newStyles = styles.mapStyles(style -> style.updateWith(mixin));
-            area.setStyleSpans(selection.getStart(), newStyles);
+
         }
     }
 
