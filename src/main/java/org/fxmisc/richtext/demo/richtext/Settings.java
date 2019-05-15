@@ -1,9 +1,18 @@
 package org.fxmisc.richtext.demo.richtext;
 
-public class Settings {
+
+import java.awt.*;
+
+public interface Settings {
 
     //public final static String WINDOW_TITLE = "SimpleRichTextFX Demo";
-    public final static int WINDOW_WIDTH = 900;
-    public final static int WINDOW_HEIGHT = 600;
-    public final static int PAPER_WIDTH = 600;
+
+    Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+    double WINDOW_WIDTH = screenSize.getWidth() / 3 * 2;
+
+    double WINDOW_HEIGHT = screenSize.getHeight() / 3 * 2 - 25;
+    double PAPER_WIDTH = 600;
+    double PAPER_HEIGHT = PAPER_WIDTH * 1.4;
+
+
 }

@@ -9,7 +9,6 @@ package org.fxmisc.richtext.demo.richtext;
 import javafx.application.Application;
 import javafx.beans.binding.BooleanBinding;
 import javafx.collections.FXCollections;
-import javafx.geometry.Insets;
 import javafx.geometry.Orientation;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
@@ -413,27 +412,34 @@ public class RichTextDemo extends Application {
         VirtualizedScrollPane<GenericStyledArea<ParStyle, Either<String, LinkedImage>, TextStyle>> writePane = new VirtualizedScrollPane<>(area);
 
         StackPane wrapperPane = new StackPane(writePane);
-        wrapperPane.setMaxWidth(PAPER_WIDTH - 90); //side paperMargins
-        wrapperPane.setPadding(new Insets(55, 0, 0, 0)); //top paperMargin
 
-        Rectangle paper = new Rectangle(PAPER_WIDTH, WINDOW_HEIGHT + 280, Color.WHITE);
-        DropShadow dropShadow = new DropShadow(30, 5, 6, Color.web("#7085A0"));
+        wrapperPane.setMaxSize(PAPER_WIDTH - 90, PAPER_HEIGHT - 60);
+        wrapperPane.setTranslateY(50);
+
+        Rectangle paper = new Rectangle(PAPER_WIDTH, WINDOW_HEIGHT, Color.WHITE);
+        paper.setTranslateY(10);
+        DropShadow dropShadow = new DropShadow(30, 5, 6, Color.web("#405070"));
         paper.setEffect(dropShadow);
 
 
         StackPane vsPane = new StackPane();
-        Rectangle backgroundRect = new Rectangle(WINDOW_WIDTH, WINDOW_WIDTH);
+        Rectangle backgroundRect = new Rectangle(WINDOW_WIDTH, WINDOW_HEIGHT - toolBar1.getHeight());
         backgroundRect.setFill(setBackgroundColor());
-        vsPane.setAlignment(Pos.CENTER);
+        vsPane.setAlignment(Pos.TOP_CENTER);
+
+        vsPane.setMaxHeight(WINDOW_HEIGHT - 200);
         vsPane.getChildren().addAll(backgroundRect, paper, wrapperPane);
 
 
 
 
+
         VBox vbox = new VBox();
-        vbox.setPrefSize(WINDOW_WIDTH, WINDOW_HEIGHT);
+
+        vbox.setMaxSize(WINDOW_WIDTH, WINDOW_HEIGHT);
         VBox.setVgrow(vsPane, Priority.ALWAYS);
         vbox.getChildren().addAll(toolBar1, /*toolBar2,*/ vsPane);
+
 // *****************************
         area.setOnMouseReleased((e -> {
             boolean textHighlighted = !selectionEmpty.get(); // get, since selectionEmpty is a BooleanBinding, get is used to get the boolean value;
@@ -532,6 +538,7 @@ public class RichTextDemo extends Application {
         // ********************************************************************************************************************
 //        *************************************************************************************************************************************************
         root.setPrefSize(WINDOW_WIDTH, WINDOW_HEIGHT);
+        overlayPane.setMaxSize(WINDOW_WIDTH, WINDOW_HEIGHT);
         root.getChildren().addAll(vbox, overlayPane);
 
         Scene scene = new Scene(root, WINDOW_WIDTH, WINDOW_HEIGHT);
@@ -594,6 +601,7 @@ public class RichTextDemo extends Application {
         this.overlayPane.km.klm.setTimerForShortcutAllowance(false);
         this.overlayPane.giveKM().getKBSbyFunction("italic").rewardOMeter.setSkillNr(overlayPane.km.klm.getTimesFaster());
         this.overlayPane.giveKM().getKBSbyFunction("italic").shortcutUsed();
+        System.out.println(WINDOW_WIDTH);
         this.toggleItalic();
     }
 

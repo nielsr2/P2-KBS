@@ -6,12 +6,14 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 
+import static org.fxmisc.richtext.demo.richtext.Settings.WINDOW_WIDTH;
+
 public class OverlayPane extends BorderPane {
 
     public KBSManager km;
 
     OverlayPane() {
-        this.setPrefSize(Settings.WINDOW_WIDTH, Settings.WINDOW_HEIGHT);
+        this.setPrefSize(WINDOW_WIDTH, Settings.WINDOW_HEIGHT);
         this.setPadding(new Insets(80, 0, 0, 0));
         //this.setStyle("-fx-border-color: black");
         this.setPickOnBounds(false);
