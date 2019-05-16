@@ -41,6 +41,7 @@ public class SkillOMeter extends StackPane implements UIColors {
     private double skillNr;
     private Text skillNrText = new Text();
     private String skillNrString;
+    public boolean rewardShown = false;
 
     private int tbTimesClickedInstance;
     private int kbsTimesUsedInstance;
@@ -159,11 +160,13 @@ public class SkillOMeter extends StackPane implements UIColors {
 
     public void manageRewardOMeter(double lowerThreshold, double upperThreshold) {
 
-        if (kbsTimesUsedInstance > 1 && getSkillNr() < upperThreshold && getSkillNr() > lowerThreshold && !this.isBeingAnimatedReward) {
+
+        if (kbsTimesUsedInstance > 2 && getSkillNr() < upperThreshold && getSkillNr() > lowerThreshold && !this.isBeingAnimatedReward && rewardShown == false) {
             setVisible(true);
             setManaged(true);
             showText();
             animateReward();
+            rewardShown = true;
         } else if (!this.isBeingAnimatedReward){
             setVisible(false);
             setManaged(false);

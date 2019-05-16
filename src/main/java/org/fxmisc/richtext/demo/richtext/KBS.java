@@ -73,7 +73,7 @@ public class KBS extends HBox implements UIColors {
         this.content = new HBox(5);
 //        this.setStyle("-fx-border-color: black");
         this.setAlignment(Pos.CENTER_RIGHT);
-        this.content.setPadding(new Insets(5, 5, 5, 5));
+        this.content.setPadding(new Insets(5));
         //TODO make text in ctrl+shift+sth fit into box
         this.shortcut = new Text(shortcut);
         this.shortcut.setFont(new Font(30));
@@ -85,6 +85,7 @@ public class KBS extends HBox implements UIColors {
         kbsPane.getChildren().addAll(backgroundRect, colorRect, content);
 
         this.setSpacing(5);
+
 
         Text textStartConvince = new Text("When not using shortcuts, \n you are ");
         Text textEndConvince = new Text(" times slower!");
@@ -139,6 +140,7 @@ public class KBS extends HBox implements UIColors {
             convinceOMeter.tbTimesClickedInstance(this.tbTimesClickedInstance);
 
             this.kbsTimesUsedInstance = 0;
+            rewardOMeter.rewardShown = false;
             String tbLog = Integer.toString(tbTimesClickedTotal);
             LOGGER.info(functionality + " Toolbar clicked " + tbLog); //Logs what toolbar was clicked and the amount
             LOGGER.info(this.functionality + " clicked " + this.tbTimesClickedInstance + " times since last time shortcut were used"); //Logs amount until KBS used.
