@@ -139,6 +139,7 @@ public class KBS extends HBox implements UIColors {
             convinceOMeter.tbTimesClickedInstance(this.tbTimesClickedInstance);
 
             this.kbsTimesUsedInstance = 0;
+            rewardOMeter.rewardShown = false;
             String tbLog = Integer.toString(tbTimesClickedTotal);
             LOGGER.info(functionality + " Toolbar clicked " + tbLog); //Logs what toolbar was clicked and the amount
             LOGGER.info(this.functionality + " clicked " + this.tbTimesClickedInstance + " times since last time shortcut were used"); //Logs amount until KBS used.
