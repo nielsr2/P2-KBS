@@ -198,24 +198,27 @@ public class KBSManager extends VBox {
 
                     double scaled = this.scaleFunc(num, 0, 100, 1., 0.2);
                     k.colorRect.setOpacity(scaled);
-                    if (!mouseLock) {
 
-                        this.setOpacity(scaled);
-                    } else if (mouseLock) {
-                        k.colorRect.setOpacity(0);
+                    if (mouseLock) {
+//                        k.colorRect.setOpacity(0);
                     }
-                    System.out.println("scaled: " + scaled);
-                    if (num < k.buttonWidth / 2) {
-//                        SwingTransition pt = new SwingTransition(k);
-//                        pt.play();
-//                        k.colorRect.setOpacity(1.);
-                        // TODO REMOVE DIS
+
+//                    System.out.println("scaled: " + scaled);
+
+                    double numMus = y - 12.5;
+                    double opaScaled = this.scaleFunc(numMus, 0, 100, 1., 0.2);
+                    if (!mouseLock) {
+                        k.setOpacity(opaScaled);
+                        if (k.convinceOMeter.isBeingAnimatedConvince) {
+                            k.setOpacity(1);
+                        }
                     }
 //                    System.out.println("DISTANCE to " + k.functionality + ": " + num + " SCALED: " + scaled);
                 }
 
             }
         }
+
     }
 
     public void disableColor() {

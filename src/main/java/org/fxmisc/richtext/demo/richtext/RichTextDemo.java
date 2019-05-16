@@ -446,12 +446,12 @@ public class RichTextDemo extends Application {
             boolean textHighlighted = !selectionEmpty.get(); // get, since selectionEmpty is a BooleanBinding, get is used to get the boolean value;
             if (textHighlighted) {
                 overlayPane.km.fade(1, 0.2);
-//                overlayPane.km.mouseLock = true;
+                overlayPane.km.mouseLock = true;
 
             } else {
                 overlayPane.km.fade(0.2, 0.2);
                 overlayPane.km.klm.stopTimerForToolbar();
-//                overlayPane.km.mouseLock = false;
+                overlayPane.km.mouseLock = false;
             }
             overlayPane.km.klm.setTimerForToolbarAllowance(true);
         }));
@@ -469,29 +469,27 @@ public class RichTextDemo extends Application {
         }));
 
 
-//        area.setOnKeyReleased(e -> {
-//            if (e.isMetaDown() && e.getCode() == KeyCode.LEFT) {
-//                overlayPane.km.fade(1, 0.2);
-//                System.out.println("YESSS");
-//                Timer timer = new Timer();
-//                timer.schedule(new TimerTask() {
-//                    @Override
-//                    public void run() {
-//
-//                        overlayPane.km.fade(1, 0.2);
-//                    }
-//                }, 5000);
-//            }
-//        });
-        //        **************************** set TEXTHIGHLIGHTED
-        area.setOnKeyPressed(e -> {
-            if (e.isMetaDown()) {
-                if (e.getCode() == KeyCode.LEFT || e.getCode() == KeyCode.RIGHT) {
-                    //System.out.println("NOPE");
-//                    overlayPane.km.fade(1, 0.2);
-                }
+        area.setOnKeyReleased(e -> {
+
+            System.out.println(e);
+            if (e.isMetaDown() && e.getCode() == KeyCode.LEFT) {
+                overlayPane.km.fade(1, 0.2);
+                System.out.println("YESSS");
+
             }
         });
+        //        **************************** set TEXTHIGHLIGHTED
+//        area.setOnKeyPressed(e -> {
+//            System.out.println("NOPE2");
+//            if (e.isMetaDown()) {
+//                System.out.println("NOPE1");
+//                if (e.getCode() == KeyCode.LEFT || e.getCode() == KeyCode.RIGHT) {
+//                    System.out.println("NOPE");
+//                    overlayPane.km.fade(1, 0.2);
+//
+//                }
+//            }
+//        });
         area.setOnKeyPressed(e -> {
             if (e.isShortcutDown() && this.overlayPane.km.klm.getTimerForShortcutAllowance() == true) {
                 //System.out.println("NOPE" + KeyCombination.SHORTCUT_DOWN);
