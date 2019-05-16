@@ -1,13 +1,9 @@
 package org.fxmisc.richtext.demo.richtext;
 
 import java.io.IOException;
-import java.util.logging.ConsoleHandler;
-import java.util.logging.FileHandler;
-import java.util.logging.Formatter;
-import java.util.logging.Handler;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import java.util.logging.SimpleFormatter;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.logging.*;
 
 public class MyLogger {
     static private FileHandler fileTxt;
@@ -29,7 +25,8 @@ public class MyLogger {
         }
 
         logger.setLevel(Level.INFO);
-        fileTxt = new FileHandler("Logging.txt");
+        String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(Calendar.getInstance().getTime());
+        fileTxt = new FileHandler("Logging" + timeStamp + ".txt");
         //fileHTML = new FileHandler("Logging.html");
 
         // create a TXT formatter

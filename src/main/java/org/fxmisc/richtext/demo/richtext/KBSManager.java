@@ -89,7 +89,6 @@ public class KBSManager extends VBox {
                                   String ToolbarImage) {
     }
 
-
     public KBS getKBSbyFunction(Object data) {
         for (Node n : this.getChildren()) {
             if (data.equals(n.getUserData())) {
@@ -113,7 +112,7 @@ public class KBSManager extends VBox {
         }
 
         //this.setOrientation(VERTICAL);
-        this.setPadding(new Insets(5, 5, 5, 5));
+        this.setPadding(new Insets(10));
         this.setSpacing(5);
 
         //this.setStyle("-fx-border-color: black");
@@ -199,8 +198,12 @@ public class KBSManager extends VBox {
 
                     double scaled = this.scaleFunc(num, 0, 100, 1., 0.2);
                     k.colorRect.setOpacity(scaled);
-                    if (!mouseLock)
+                    if (!mouseLock) {
+
                         this.setOpacity(scaled);
+                    } else if (mouseLock) {
+                        k.colorRect.setOpacity(0);
+                    }
                     System.out.println("scaled: " + scaled);
                     if (num < k.buttonWidth / 2) {
 //                        SwingTransition pt = new SwingTransition(k);
