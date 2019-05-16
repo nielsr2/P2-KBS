@@ -446,11 +446,12 @@ public class RichTextDemo extends Application {
             boolean textHighlighted = !selectionEmpty.get(); // get, since selectionEmpty is a BooleanBinding, get is used to get the boolean value;
             if (textHighlighted) {
                 overlayPane.km.fade(1, 0.2);
-                overlayPane.km.mouseLock = true;
+//                overlayPane.km.mouseLock = true;
+
             } else {
                 overlayPane.km.fade(0.2, 0.2);
                 overlayPane.km.klm.stopTimerForToolbar();
-                overlayPane.km.mouseLock = false;
+//                overlayPane.km.mouseLock = false;
             }
             overlayPane.km.klm.setTimerForToolbarAllowance(true);
         }));

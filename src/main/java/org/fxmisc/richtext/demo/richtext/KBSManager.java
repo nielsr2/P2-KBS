@@ -199,8 +199,12 @@ public class KBSManager extends VBox {
 
                     double scaled = this.scaleFunc(num, 0, 100, 1., 0.2);
                     k.colorRect.setOpacity(scaled);
-                    if (!mouseLock)
+                    if (!mouseLock) {
+
                         this.setOpacity(scaled);
+                    } else if (mouseLock) {
+                        k.colorRect.setOpacity(0);
+                    }
                     System.out.println("scaled: " + scaled);
                     if (num < k.buttonWidth / 2) {
 //                        SwingTransition pt = new SwingTransition(k);

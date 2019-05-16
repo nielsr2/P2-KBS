@@ -35,7 +35,7 @@ public class KBS extends HBox implements UIColors {
     private final static Logger LOGGER = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME); //Allows access for the logger
 
     private double opacity = 1;
-    Rectangle backgroundRect, colorRect;
+    public Rectangle backgroundRect, colorRect;
     ImageView icon;
     Text shortcut;
     Pane kbsPane = new Pane();
