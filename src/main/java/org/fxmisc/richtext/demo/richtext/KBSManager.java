@@ -89,7 +89,6 @@ public class KBSManager extends VBox {
                                   String ToolbarImage) {
     }
 
-
     public KBS getKBSbyFunction(Object data) {
         for (Node n : this.getChildren()) {
             if (data.equals(n.getUserData())) {
@@ -113,7 +112,7 @@ public class KBSManager extends VBox {
         }
 
         //this.setOrientation(VERTICAL);
-        this.setPadding(new Insets(5, 5, 5, 5));
+        this.setPadding(new Insets(10));
         this.setSpacing(5);
 
         //this.setStyle("-fx-border-color: black");
