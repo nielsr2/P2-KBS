@@ -75,7 +75,7 @@ public class RichTextDemo extends Application {
     PointerInfo startMouse, endMouse;
 
     Button boldBtn, italicBtn, underlineBtn, strikeBtn, insertImageBtn;
-    ToggleButton boldTBtn, alignLeftBtn, alignCenterBtn, alignRightBtn, alignJustifyBtn;
+    ToggleButton alignLeftBtn, alignCenterBtn, alignRightBtn, alignJustifyBtn;
 
     private final TextOps<String, TextStyle> styledTextOps = SegmentOps.styledTextOps();
     private final LinkedImageOps<TextStyle> linkedImageOps = new LinkedImageOps<>();
@@ -188,7 +188,7 @@ public class RichTextDemo extends Application {
 
         /////////////// ALIGN LEFT BUTTON ////////////////////////
         alignLeftBtn = createToggleButton(alignmentGrp, "align-left", this::alignLeft, "Align left");
-        boldTBtn = createToggleButton(alignmentGrp, "bold", this::toggledBold2, "jajaja");
+
         alignLeftBtn.setOnMouseClicked((event) -> {
             overlayPane.km.klm.stopTimerForToolbar();
             overlayPane.giveKM().getKBSbyFunction("align-left").convinceOMeter.setSkillNr(overlayPane.km.klm.getTimesSlower());
@@ -402,7 +402,7 @@ public class RichTextDemo extends Application {
                 undoBtn, redoBtn, new Separator(Orientation.VERTICAL),
                 cutBtn, copyBtn, pasteBtn, new Separator(Orientation.VERTICAL),
                 boldBtn, italicBtn, underlineBtn, strikeBtn, new Separator(Orientation.VERTICAL),
-                boldTBtn, alignLeftBtn, alignCenterBtn, alignRightBtn, alignJustifyBtn,
+                alignLeftBtn, alignCenterBtn, alignRightBtn, alignJustifyBtn,
                 new Separator(Orientation.VERTICAL), sizeCombo, familyCombo
                 /*, insertImageBtn, new Separator(Orientation.VERTICAL),
                 paragraphBackgroundPicker*/);
