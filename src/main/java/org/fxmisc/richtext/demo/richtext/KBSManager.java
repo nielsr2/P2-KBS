@@ -78,7 +78,29 @@ public class KBSManager extends VBox {
     }
     //public BooleanBinding test;
 
+    boolean mouseLock;
+
+    KBSManager(String oprSystem) {
+        oprSystem = System.getProperty("os.name");
+    }
+
+    void AddButtonOrFunctionAsKBS(Button buttonObjectToMaybeReturn,
+                                  String Functionality,
+                                  String ToolbarImage) {
+    }
+
+
+    public KBS getKBSbyFunction(Object data) {
+        for (Node n : this.getChildren()) {
+            if (data.equals(n.getUserData())) {
+                return (KBS) n;
+            }
+        }
+        return null;
+    }
+
     KBSManager() {
+        this.setMouseTransparent(false);
 //        callingFunctionOnTimer();
         setMaxSize(Settings.WINDOW_WIDTH, Settings.WINDOW_HEIGHT);
         LOGGER.info("Operation system " + oprSystem); //Logs operation system
@@ -109,44 +131,6 @@ public class KBSManager extends VBox {
                 //new KBS("Ctrl + Fuck", "image", "asdfasfd")
         );
         this.setUpHovers();
-    }
-
-    KBSManager(String oprSystem) {
-        oprSystem = System.getProperty("os.name");
-    }
-
-    void AddButtonOrFunctionAsKBS(Button buttonObjectToMaybeReturn,
-                                  String Functionality,
-                                  String ToolbarImage) {
-    }
-
-
-    public KBS getKBSbyFunction(Object data) {
-        for (Node n : this.getChildren()) {
-            if (data.equals(n.getUserData())) {
-                return (KBS) n;
-            }
-        }
-        return null;
-    }
-
-    public void setUpHovers() {
-//        this.setOnMouseMoved(event -> {
-//            System.out.println(event.getSceneX() + " " + event.getSceneY());
-////            System.out.println();
-//        });
-        this.setOnKeyPressed((e -> {
-            System.out.println("ENTER");
-            this.fade(1, 0.2);
-        }));
-        this.setOnMouseEntered((e -> {
-            System.out.println("ENTER");
-            this.fade(1, 0.2);
-        }));
-        this.setOnMouseExited((e -> {
-            System.out.println("EXIT");
-            this.fade(0.2, 0.2);
-        }));
     }
 
     public FadeTransition fade(double opacityEnd, double time) {
@@ -181,14 +165,43 @@ public class KBSManager extends VBox {
         //this.setOnMousePressed(e -> System.out.println("adasfdf"));
     }
 
+    public void setUpHovers() {
+//        this.setOnMouseMoved(event -> {
+//            System.out.println(event.getSceneX() + " " + event.getSceneY());
+////            System.out.println();
+//        });
+        this.setOnKeyPressed((e -> {
+            System.out.println("ENTER");
+            this.mouseLock = true;
+            this.fade(1, 0.2);
+
+        }));
+        this.setOnMouseEntered((e -> {
+            this.mouseLock = true;
+            System.out.println("ENTER");
+            this.fade(1, 0.2);
+        }));
+        this.setOnMouseExited((e -> {
+            this.mouseLock = false;
+            System.out.println("EXIT");
+            this.fade(0.2, 0.2);
+        }));
+    }
+
     public void parseMouse(double x, double y) {
+
         for (Node n : this.getChildren()) {
             if (n.getClass().equals(KBS.class)) {
                 KBS k = ((KBS) n);
                 if (k.isShown) {
                     double num = Math.sqrt(Math.pow(x - k.buttonX, 2) + Math.pow(y - k.buttonY, 2));
+
+
                     double scaled = this.scaleFunc(num, 0, 100, 1., 0.2);
                     k.colorRect.setOpacity(scaled);
+                    if (!mouseLock)
+                        this.setOpacity(scaled);
+                    System.out.println("scaled: " + scaled);
                     if (num < k.buttonWidth / 2) {
 //                        SwingTransition pt = new SwingTransition(k);
 //                        pt.play();
@@ -214,7 +227,14 @@ public class KBSManager extends VBox {
 
 
     double scaleFunc(double input, double in_min, double in_max, double out_min, double out_max) {
-        return out_min + ((input - in_min) / (in_max - in_min)) * (out_max - out_min);
+        double calc = out_min + ((input - in_min) / (in_max - in_min)) * (out_max - out_min);
+        if (calc < out_max)
+            return out_max;
+        else if (calc > out_min)
+            return out_min;
+        else
+            return calc;
+
     }
 
     public void animationFix() {

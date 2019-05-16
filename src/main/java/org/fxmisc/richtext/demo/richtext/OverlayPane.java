@@ -17,7 +17,7 @@ public class OverlayPane extends BorderPane {
         this.setPadding(new Insets(80, 0, 0, 0));
         //this.setStyle("-fx-border-color: black");
         this.setPickOnBounds(false);
-        this.setMouseTransparent(true);
+//        this.setMouseTransparent(true);
         km = new KBSManager();
         this.setId("overlayPane");
         this.setRight(km);
