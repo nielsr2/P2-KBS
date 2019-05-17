@@ -445,13 +445,18 @@ public class RichTextDemo extends Application {
         area.setOnMouseReleased((e -> {
             boolean textHighlighted = !selectionEmpty.get(); // get, since selectionEmpty is a BooleanBinding, get is used to get the boolean value;
             if (textHighlighted) {
-                overlayPane.km.fade(1, 0.2);
+//                overlayPane.km.fade(1, 0.2);
+
                 overlayPane.km.mouseLock = true;
+                overlayPane.km.onSelect();
+//                overlayPane.km.parseMouse(0,0);
 
             } else {
-                overlayPane.km.fade(0.2, 0.2);
+                overlayPane.km.offSelect();
+//                overlayPane.km.fade(0.2, 0.2);
                 overlayPane.km.klm.stopTimerForToolbar();
                 overlayPane.km.mouseLock = false;
+//                overlayPane.km.parseMouse(0,0);
             }
             overlayPane.km.klm.setTimerForToolbarAllowance(true);
         }));
@@ -473,7 +478,7 @@ public class RichTextDemo extends Application {
 
             System.out.println(e);
             if (e.isMetaDown() && e.getCode() == KeyCode.LEFT) {
-                overlayPane.km.fade(1, 0.2);
+//                overlayPane.km.fade(1, 0.2);
                 System.out.println("YESSS");
 
             }

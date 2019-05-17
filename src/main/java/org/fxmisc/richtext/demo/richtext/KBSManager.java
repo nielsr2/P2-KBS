@@ -171,33 +171,71 @@ public class KBSManager extends VBox {
 //        });
         this.setOnKeyPressed((e -> {
             System.out.println("ENTER");
-            this.mouseLock = true;
-            this.fade(1, 0.2);
+//            this.mouseLock = true;
+//            this.fade(1, 0.2);
 
         }));
         this.setOnMouseEntered((e -> {
             this.mouseLock = true;
             System.out.println("ENTER");
-            this.fade(1, 0.2);
+//            this.fade(1, 0.2);
+//            this.onSelect();
         }));
         this.setOnMouseExited((e -> {
             this.mouseLock = false;
             System.out.println("EXIT");
-            this.fade(0.2, 0.2);
+//            this.fade(0.2, 0.2);
+//            this.offSelect();
         }));
     }
 
-    public void parseMouse(double x, double y) {
-
+    public void onSelect() {
         for (Node n : this.getChildren()) {
             if (n.getClass().equals(KBS.class)) {
                 KBS k = ((KBS) n);
                 if (k.isShown) {
+                    k.setOpacity(1.);
+                    k.colorRect.setOpacity(0);
+                }
+            }
+        }
+    }
+
+    public void offSelect() {
+        for (Node n : this.getChildren()) {
+            if (n.getClass().equals(KBS.class)) {
+                KBS k = ((KBS) n);
+                if (k.isShown) {
+                    k.setOpacity(.2);
+                    k.colorRect.setOpacity(0);
+                }
+            }
+        }
+    }
+    public void parseMouse(double x, double y) {
+        System.out.println("KM OPACITY: " + this.getOpacity() + "       MOUSELOCK: " + this.mouseLock);
+        for (Node n : this.getChildren()) {
+            if (n.getClass().equals(KBS.class)) {
+                KBS k = ((KBS) n);
+                if (k.isShown) {
+                    double numMus = y - 12.5;
+                    double opaScaled = this.scaleFunc(numMus, 0, 100, 1., 0.2);
+                    if (!mouseLock) {
+                        k.setOpacity(opaScaled);
+
+                    } else {
+                        k.setOpacity(1.);
+                    }
+                    if (k.convinceOMeter.isBeingAnimatedConvince) {
+                        k.setOpacity(1);
+                    }
                     double num = Math.sqrt(Math.pow(x - k.buttonX, 2) + Math.pow(y - k.buttonY, 2));
 
 
-                    double scaled = this.scaleFunc(num, 0, 100, 1., 0.2);
-                    k.colorRect.setOpacity(scaled);
+                    double scaled = this.scaleFunc(num, 0, 100, 1., 0);
+                    if (k.attentionable && !k.didit) {
+                        k.colorRect.setOpacity(scaled);
+                    }
 
                     if (mouseLock) {
 //                        k.colorRect.setOpacity(0);
@@ -205,15 +243,9 @@ public class KBSManager extends VBox {
 
 //                    System.out.println("scaled: " + scaled);
 
-                    double numMus = y - 12.5;
-                    double opaScaled = this.scaleFunc(numMus, 0, 100, 1., 0.2);
-                    if (!mouseLock) {
-                        k.setOpacity(opaScaled);
-                        if (k.convinceOMeter.isBeingAnimatedConvince) {
-                            k.setOpacity(1);
-                        }
-                    }
+
 //                    System.out.println("DISTANCE to " + k.functionality + ": " + num + " SCALED: " + scaled);
+                    System.out.println("FUNC: " + k.functionality + "           COLORECTOPA: " + k.colorRect.getOpacity() + "           KOPA: " + k.getOpacity());
                 }
 
             }
