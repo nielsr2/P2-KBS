@@ -56,26 +56,17 @@ public class RichTextDemo extends Application {
 
     // the saved/loaded files and their format are arbitrary and may change across versions
     private static final String RTFX_FILE_EXTENSION = ".rtfx";
+
+    // *** LOG FUNCATIONALITY
     private final static Logger LOGGER = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
-
-    public static void main(String[] args) {
-        // The following properties are required on Linux for improved text rendering
-        //System.setProperty("prism.lcdtext", "false");
-        //System.setProperty("prism.text", "t2k");
-        //Tries to create a log file for data gathering if it fails it throws an IOException.
-        try {
-            MyLogger.setup();
-        } catch (IOException e) {
-            e.printStackTrace();
-            throw new RuntimeException("Problems with creating the log files");
-        }
-        launch(args);
-    }
-
+    // ################################################################
     PointerInfo startMouse, endMouse;
-
+    // moved outside of start()
     Button boldBtn, italicBtn, underlineBtn, strikeBtn, insertImageBtn;
+    // overlaypane that combines elements correctly
+    OverlayPane overlayPane = new OverlayPane();
     ToggleButton alignLeftBtn, alignCenterBtn, alignRightBtn, alignJustifyBtn;
+    // ################################################################
 
     private final TextOps<String, TextStyle> styledTextOps = SegmentOps.styledTextOps();
     private final LinkedImageOps<TextStyle> linkedImageOps = new LinkedImageOps<>();
@@ -100,7 +91,23 @@ public class RichTextDemo extends Application {
 
     private final SuspendableNo updatingToolbar = new SuspendableNo();
 
-    OverlayPane overlayPane = new OverlayPane();
+    // ################################################################
+    public static void main(String[] args) {
+        // The following properties are required on Linux for improved text rendering
+        //System.setProperty("prism.lcdtext", "false");
+        //System.setProperty("prism.text", "t2k");
+
+        // ################################################################
+        //Tries to create a log file for data gathering if it fails it throws an IOException.
+        try {
+            MyLogger.setup();
+        } catch (IOException e) {
+            e.printStackTrace();
+            throw new RuntimeException("Problems with creating the log files");
+        }
+        // ###############################################################
+        launch(args);
+    }
 
     @Override
     public void start(Stage primaryStage) {
@@ -122,7 +129,9 @@ public class RichTextDemo extends Application {
         Button cutBtn = createButton("cut", area::cut, "Cut");
         Button copyBtn = createButton("copy", area::copy, "Copy");
         Button pasteBtn = createButton("paste", area::paste, "Paste");
-
+// ################################################################
+// ################################################################
+// ################################################################
 
         // TOGGLE OUR SOLUTION VISIBILITY
         KeyCombination kcShow = new KeyCodeCombination(KeyCode.W, KeyCombination.SHORTCUT_DOWN);
@@ -231,10 +240,11 @@ public class RichTextDemo extends Application {
         Mnemonic mnAlignJustify = new Mnemonic(alignJustifyBtn, kcAlignJustify);
         Runnable rnAlignJustify = () -> ourAlignJustifyFunction();//this.alignJustify();
 
-
+// ################################################################
+// ################################################################
+// ################################################################
+// ################################################################
         ColorPicker paragraphBackgroundPicker = new ColorPicker();
-
-
         ComboBox<Integer> sizeCombo = new ComboBox<>(FXCollections.observableArrayList(5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 16, 18, 20, 22, 24, 28, 32, 36, 40, 48, 56, 64, 72));
         sizeCombo.getSelectionModel().select(Integer.valueOf(12));
         sizeCombo.setTooltip(new Tooltip("Font size"));
@@ -432,27 +442,33 @@ public class RichTextDemo extends Application {
         vsPane.getChildren().addAll(backgroundRect, paper, wrapperPane);
 
 
-
-
-
         VBox vbox = new VBox();
 
         vbox.setMaxSize(WINDOW_WIDTH, WINDOW_HEIGHT);
         VBox.setVgrow(vsPane, Priority.ALWAYS);
         vbox.getChildren().addAll(toolBar1, /*toolBar2,*/ vsPane);
 
-// *****************************
+// ################################################################
+// ################################################################
+// ################################################################
+//                                             _           _   _
+//   _ __ ___   ___  _   _ ___  ___   ___  ___| | ___  ___| |_(_) ___  _ __
+//  | '_ ` _ \ / _ \| | | / __|/ _ \ / __|/ _ \ |/ _ \/ __| __| |/ _ \| '_ \
+//  | | | | | | (_) | |_| \__ \  __/ \__ \  __/ |  __/ (__| |_| | (_) | | | |
+//  |_| |_| |_|\___/ \__,_|___/\___| |___/\___|_|\___|\___|\__|_|\___/|_| |_|
+//
+
         area.setOnMouseReleased((e -> {
             boolean textHighlighted = !selectionEmpty.get(); // get, since selectionEmpty is a BooleanBinding, get is used to get the boolean value;
             if (textHighlighted) {
 //                overlayPane.km.fade(1, 0.2);
 
                 overlayPane.km.mouseLock = true;
-                overlayPane.km.onSelect();
+                overlayPane.km.selectionOn();
 //                overlayPane.km.parseMouse(0,0);
 
             } else {
-                overlayPane.km.offSelect();
+                overlayPane.km.selectionOff();
 //                overlayPane.km.fade(0.2, 0.2);
                 overlayPane.km.klm.stopTimerForToolbar();
                 overlayPane.km.mouseLock = false;
@@ -462,7 +478,7 @@ public class RichTextDemo extends Application {
         }));
         area.setOnMouseMoved((e -> {
             startMouse = MouseInfo.getPointerInfo();
-            int threshold = 3;
+            int threshold = 0;
             if (overlayPane.km.klm.getTimerForToolbarAllowance() == true) {
                 double distance = startMouse.getLocation().getX() - endMouse.getLocation().getX();
                 if (distance > threshold || distance < -threshold) {
@@ -474,10 +490,16 @@ public class RichTextDemo extends Application {
         }));
 
 
-        area.setOnKeyReleased(e -> {
+//   _                         _           _   _
+//  | | _____ _   _   ___  ___| | ___  ___| |_(_) ___  _ __
+//  | |/ / _ \ | | | / __|/ _ \ |/ _ \/ __| __| |/ _ \| '_ \
+//  |   <  __/ |_| | \__ \  __/ |  __/ (__| |_| | (_) | | | |
+//  |_|\_\___|\__, | |___/\___|_|\___|\___|\__|_|\___/|_| |_|
+//            |___/
 
+        area.setOnKeyReleased(e -> {
             System.out.println(e);
-            if (e.isMetaDown() && e.getCode() == KeyCode.LEFT) {
+            if (e.isShortcutDown() && e.isShiftDown() && e.getCode() == KeyCode.LEFT) {
 //                overlayPane.km.fade(1, 0.2);
                 System.out.println("YESSS");
 
@@ -495,6 +517,15 @@ public class RichTextDemo extends Application {
 //                }
 //            }
 //        });
+
+
+//   _  ___     __  __
+//  | |/ / |   |  \/  |
+//  | ' /| |   | |\/| |
+//  | . \| |___| |  | |
+//  |_|\_\_____|_|  |_|
+//
+
         area.setOnKeyPressed(e -> {
             if (e.isShortcutDown() && this.overlayPane.km.klm.getTimerForShortcutAllowance() == true) {
                 //System.out.println("NOPE" + KeyCombination.SHORTCUT_DOWN);
@@ -518,8 +549,12 @@ public class RichTextDemo extends Application {
 //        DOING SOME ADDING WPA VBOX & KBMANAGER TO A GROUP
         Pane root = new Pane();
 
-        // ********************************************************************************************************************
-        //nielz work zone
+        //   _ __   __ _ _ __ ___  ___   _ __ ___   ___  _   _ ___  ___
+        //  | '_ \ / _` | '__/ __|/ _ \ | '_ ` _ \ / _ \| | | / __|/ _ \
+        //  | |_) | (_| | |  \__ \  __/ | | | | | | (_) | |_| \__ \  __/
+        //  | .__/ \__,_|_|  |___/\___| |_| |_| |_|\___/ \__,_|___/\___|
+        //  |_|
+
         for (Node n : toolBar1.getItems()) {
             n.setOnMouseMoved(event -> {
                 double mx = event.getSceneX();
@@ -542,18 +577,15 @@ public class RichTextDemo extends Application {
             double my = event.getSceneY();
             overlayPane.km.parseMouse(mx, my);
         });
-        // ********************************************************************************************************************
-//        *************************************************************************************************************************************************
+
+        // *************************************************************************************************************************************************
         root.setPrefSize(WINDOW_WIDTH, WINDOW_HEIGHT);
         overlayPane.setMaxSize(WINDOW_WIDTH, WINDOW_HEIGHT);
         root.getChildren().addAll(vbox, overlayPane);
-
         Scene scene = new Scene(root, WINDOW_WIDTH, WINDOW_HEIGHT);
         scene.getStylesheets().add(RichTextDemo.class.getResource("rich-text.css").toExternalForm());
-
-//
-
-//      ************************************************************************************
+        // ################################################################
+        // ################################################################
         scene.getAccelerators().put(kcShow, rnShow);
         scene.addMnemonic(mnBold);
         scene.getAccelerators().put(kcBold, rnBold);
@@ -571,15 +603,16 @@ public class RichTextDemo extends Application {
         scene.getAccelerators().put(kcAlignRight, rnAlignRight);
         scene.addMnemonic(mnAlignJustify);
         scene.getAccelerators().put(kcAlignJustify, rnAlignJustify);
+// ################################################################
+// ################################################################
 
 
-//      ************************************************************************************
-//        scene
         primaryStage.setScene(scene);
         area.requestFocus();
         primaryStage.setTitle("Rich Text Demo");
         primaryStage.show();
-//        this.initNielz();
+// ################################################################
+// ################################################################
         this.setUpGradualAttention("bold", boldBtn);
         this.setUpGradualAttention("italic", italicBtn);
         this.setUpGradualAttention("underline", underlineBtn);
@@ -589,90 +622,8 @@ public class RichTextDemo extends Application {
         this.setUpGradualAttention("align-center", alignCenterBtn);
         this.setUpGradualAttention("align-justify", alignJustifyBtn);
         overlayPane.km.animationFix();
-    }
-
-    void ourBoldFunction() {
-        //ystem.out.println("void ourBoldFunction() called");
-//        System.out.println(selectionEmpty);
-        this.overlayPane.km.klm.stopTimerForShortcut();
-        this.overlayPane.km.klm.setToolbarEstimate(boldBtn);
-        this.overlayPane.km.klm.setTimerForShortcutAllowance(false);
-        this.overlayPane.giveKM().getKBSbyFunction("bold").rewardOMeter.setSkillNr(overlayPane.km.klm.getTimesFaster());
-        this.overlayPane.giveKM().getKBSbyFunction("bold").shortcutUsed();
-        this.toggleBold();
-    }
-
-    void ourItalicFunction() {
-        this.overlayPane.km.klm.stopTimerForShortcut();
-        this.overlayPane.km.klm.setToolbarEstimate(italicBtn);
-        this.overlayPane.km.klm.setTimerForShortcutAllowance(false);
-        this.overlayPane.giveKM().getKBSbyFunction("italic").rewardOMeter.setSkillNr(overlayPane.km.klm.getTimesFaster());
-        this.overlayPane.giveKM().getKBSbyFunction("italic").shortcutUsed();
-        System.out.println(WINDOW_WIDTH);
-        this.toggleItalic();
-    }
-
-    void ourUnderlineFunction() {
-        this.overlayPane.km.klm.stopTimerForShortcut();
-        this.overlayPane.km.klm.setToolbarEstimate(underlineBtn);
-        this.overlayPane.km.klm.setTimerForShortcutAllowance(false);
-        this.overlayPane.giveKM().getKBSbyFunction("underline").rewardOMeter.setSkillNr(overlayPane.km.klm.getTimesFaster());
-        this.overlayPane.giveKM().getKBSbyFunction("underline").shortcutUsed();
-        this.toggleUnderline();
-    }
-
-    void ourStrikeFunction() {
-        this.overlayPane.km.klm.stopTimerForShortcut();
-        this.overlayPane.km.klm.setToolbarEstimate(strikeBtn);
-        this.overlayPane.km.klm.setTimerForShortcutAllowance(false);
-        this.overlayPane.giveKM().getKBSbyFunction("strikethrough").rewardOMeter.setSkillNr(overlayPane.km.klm.getTimesFaster());
-        this.overlayPane.giveKM().getKBSbyFunction("strikethrough").shortcutUsed();
-        this.toggleStrikethrough();
-    }
-
-    void ourInsertImageFunction() {
-        this.overlayPane.km.klm.stopTimerForShortcut();
-        this.overlayPane.km.klm.setToolbarEstimate(insertImageBtn);
-        this.overlayPane.km.klm.setTimerForShortcutAllowance(false);
-        this.overlayPane.giveKM().getKBSbyFunction("insertimage").rewardOMeter.setSkillNr(overlayPane.km.klm.getTimesFaster());
-        this.overlayPane.giveKM().getKBSbyFunction("insertimage").shortcutUsed();
-        this.insertImage();
-    }
-
-    void ourAlignLeftFunction() {
-        this.overlayPane.km.klm.stopTimerForShortcut();
-        this.overlayPane.km.klm.setToolbarEstimate(alignLeftBtn);
-        this.overlayPane.km.klm.setTimerForShortcutAllowance(false);
-        this.overlayPane.giveKM().getKBSbyFunction("align-left").rewardOMeter.setSkillNr(overlayPane.km.klm.getTimesFaster());
-        this.overlayPane.giveKM().getKBSbyFunction("align-left").shortcutUsed();
-        this.alignLeft();
-    }
-
-    void ourAlignCenterFunction() {
-        this.overlayPane.km.klm.stopTimerForShortcut();
-        this.overlayPane.km.klm.setToolbarEstimate(alignCenterBtn);
-        this.overlayPane.km.klm.setTimerForShortcutAllowance(false);
-        this.overlayPane.giveKM().getKBSbyFunction("align-center").rewardOMeter.setSkillNr(overlayPane.km.klm.getTimesFaster());
-        this.overlayPane.giveKM().getKBSbyFunction("align-center").shortcutUsed();
-        this.alignCenter();
-    }
-
-    void ourAlignRightFunction() {
-        this.overlayPane.km.klm.stopTimerForShortcut();
-        this.overlayPane.km.klm.setToolbarEstimate(alignRightBtn);
-        this.overlayPane.km.klm.setTimerForShortcutAllowance(false);
-        this.overlayPane.giveKM().getKBSbyFunction("align-right").rewardOMeter.setSkillNr(overlayPane.km.klm.getTimesFaster());
-        this.overlayPane.giveKM().getKBSbyFunction("align-right").shortcutUsed();
-        this.alignRight();
-    }
-
-    void ourAlignJustifyFunction() {
-        this.overlayPane.km.klm.stopTimerForShortcut();
-        this.overlayPane.km.klm.setToolbarEstimate(alignJustifyBtn);
-        this.overlayPane.km.klm.setTimerForShortcutAllowance(false);
-        this.overlayPane.giveKM().getKBSbyFunction("align-justify").rewardOMeter.setSkillNr(overlayPane.km.klm.getTimesFaster());
-        this.overlayPane.giveKM().getKBSbyFunction("align-justify").shortcutUsed();
-        this.alignJustify();
+        // ################################################################
+        // ################################################################
     }
 
     private Node createNode(StyledSegment<Either<String, LinkedImage>, TextStyle> seg,
@@ -720,21 +671,10 @@ public class RichTextDemo extends Application {
     }
 
     private void toggleBold() {
-
-
-        updateStyleInSelection(spans -> TextStyle.bold(!spans.styleStream().allMatch(style -> style.bold.orElse(true))));
-//        updateStyleInSelection("bold");
+        updateStyleInSelection(spans -> TextStyle.bold(!spans.styleStream().allMatch(style -> style.bold.orElse(false))));
     }
 
-    //********************
-    private void toggledBold2() {
-        updateStyleInSelection(spans -> TextStyle.bold(!spans.styleStream().noneMatch(style -> style.bold.orElse(true))));
-
-    }
-
-    //********************
     private void toggleItalic() {
-        updateStyleInSelection("italic");
         updateStyleInSelection(spans -> TextStyle.italic(!spans.styleStream().allMatch(style -> style.italic.orElse(false))));
     }
 
@@ -853,6 +793,7 @@ public class RichTextDemo extends Application {
     private void updateStyleInSelection(String style) {
         area.setStyle("-fx-font-weight:" + style + ";");
     }
+
     private void updateStyleInSelection(Function<StyleSpans<TextStyle>, TextStyle> mixinGetter) {
         IndexRange selection = area.getSelection();
 
@@ -863,6 +804,9 @@ public class RichTextDemo extends Application {
             StyleSpans<TextStyle> newStyles = styles.mapStyles(style -> style.updateWith(mixin));
             area.setStyleSpans(selection.getStart(), newStyles);
         }
+        // ################################################################
+        // ################################################################
+        // ################################################################
         if (selection.getLength() == 0) {
             area.appendText(" ");
             area.selectRange(area.getCaretPosition() - 1, area.getCaretPosition());
@@ -902,6 +846,9 @@ public class RichTextDemo extends Application {
 //            System.out.println("nibs");
 //            area.se
         }
+        // ################################################################
+        // ################################################################
+        // ################################################################
     }
 
     private void updateStyleInSelection(TextStyle mixin) {
@@ -909,9 +856,6 @@ public class RichTextDemo extends Application {
         StyleSpans<TextStyle> styles = area.getStyleSpans(selection);
         StyleSpans<TextStyle> newStyles = styles.mapStyles(style -> style.updateWith(mixin));
         area.setStyleSpans(selection.getStart(), newStyles);
-        if (selection.getLength() != 0) {
-
-        }
     }
 
     private void updateParagraphStyleInSelection(Function<ParStyle, ParStyle> updater) {
@@ -958,45 +902,32 @@ public class RichTextDemo extends Application {
         }
     }
 
-    public void initNielz() {
-        this.overlayPane.km.getKBSbyFunction("bold").buttonWidth = boldBtn.getWidth();
-        this.overlayPane.km.getKBSbyFunction("bold").setButtonCoordinates(boldBtn.getLayoutX(), boldBtn.getLayoutY(), boldBtn.getWidth());
-        this.boldBtn.setOnMouseEntered((e -> {
-            this.overlayPane.km.getKBSbyFunction("bold").hoverShake();
-            this.overlayPane.km.getKBSbyFunction("bold").didit = true;
-            this.overlayPane.km.disableColor();
-        }));
-        this.boldBtn.setOnMouseExited((e -> {
-            this.overlayPane.km.getKBSbyFunction("bold").didit = false;
-        }));
+    // ################################################################
+    // ################################################################
+    // ################################################################
 
 
-        this.overlayPane.km.getKBSbyFunction("italic").setButtonCoordinates(italicBtn.getLayoutX(), italicBtn.getLayoutY(), italicBtn.getWidth());
-        this.italicBtn.setOnMouseEntered((e -> {
-            this.overlayPane.km.getKBSbyFunction("italic").didit = true;
-            this.overlayPane.km.getKBSbyFunction("italic").hoverShake();
-            this.overlayPane.km.disableColor();
-        }));
-        this.italicBtn.setOnMouseExited((e -> {
-            this.overlayPane.km.getKBSbyFunction("italic").didit = false;
-        }));
+//                       _             _         _   _             _   _
+//    __ _ _ __ __ _  __| |_   _  __ _| |   __ _| |_| |_ ___ _ __ | |_(_) ___  _ __
+//   / _` | '__/ _` |/ _` | | | |/ _` | |  / _` | __| __/ _ \ '_ \| __| |/ _ \| '_ \
+//  | (_| | | | (_| | (_| | |_| | (_| | | | (_| | |_| |_  __/ | | | |_| | (_) | | | |
+//   \__, |_|  \__,_|\__,_|\__,_|\__,_|_|  \__,_|\__|\__\___|_| |_|\__|_|\___/|_| |_|
+//   |___/
 
-//        underlineBtn, strikeBtn, insertImageBtn;
-//        ToggleButton alignLeftBtn, alignCenterBtn, alignRightBtn, alignJustifyBtn;
-    }
+    // functions for setting up what happens when mouse hovers toolbar icons. what happens is shake animation
 
     void setUpGradualAttention(String functionality, Button button) {
         this.overlayPane.km.getKBSbyFunction(functionality).buttonWidth = button.getWidth();
         this.overlayPane.km.getKBSbyFunction(functionality).setButtonCoordinates(button.getLayoutX(), button.getLayoutY(), button.getWidth());
         button.setOnMouseEntered((e -> {
-            if (this.overlayPane.km.getKBSbyFunction(functionality).attentionable) {
+//            if (this.overlayPane.km.getKBSbyFunction(functionality).attentionable) {
                 this.overlayPane.km.getKBSbyFunction(functionality).hoverShake();
-                this.overlayPane.km.getKBSbyFunction(functionality).didit = true;
+            this.overlayPane.km.getKBSbyFunction(functionality).setHovered(true);
                 this.overlayPane.km.disableColor();
-            }
+//            }
         }));
         button.setOnMouseExited((e -> {
-            this.overlayPane.km.getKBSbyFunction(functionality).didit = false;
+            this.overlayPane.km.getKBSbyFunction(functionality).setHovered(false);
         }));
     }
 
@@ -1004,14 +935,107 @@ public class RichTextDemo extends Application {
         this.overlayPane.km.getKBSbyFunction(functionality).buttonWidth = button.getWidth();
         this.overlayPane.km.getKBSbyFunction(functionality).setButtonCoordinates(button.getLayoutX(), button.getLayoutY(), button.getWidth());
         button.setOnMouseEntered((e -> {
-            if (this.overlayPane.km.getKBSbyFunction(functionality).attentionable) {
+//            if (this.overlayPane.km.getKBSbyFunction(functionality).attentionable) {
                 this.overlayPane.km.getKBSbyFunction(functionality).hoverShake();
-                this.overlayPane.km.getKBSbyFunction(functionality).didit = true;
+            this.overlayPane.km.getKBSbyFunction(functionality).setHovered(true);
                 this.overlayPane.km.disableColor();
-            }
+//            }
         }));
         button.setOnMouseExited((e -> {
-            this.overlayPane.km.getKBSbyFunction(functionality).didit = false;
+            this.overlayPane.km.getKBSbyFunction(functionality).setHovered(false);
         }));
     }
+
+
+    // ################################################################
+    // ################################################################
+    // ################################################################
+    // ################################################################
+// ################################################################
+
+    void ourBoldFunction() {
+        //ystem.out.println("void ourBoldFunction() called");
+//        System.out.println(selectionEmpty);
+        this.overlayPane.km.klm.stopTimerForShortcut();
+        this.overlayPane.km.klm.setToolbarEstimate(boldBtn);
+        this.overlayPane.km.klm.setTimerForShortcutAllowance(false);
+        this.overlayPane.giveKM().getKBSbyFunction("bold").rewardOMeter.setSkillNr(overlayPane.km.klm.getTimesFaster());
+        this.overlayPane.giveKM().getKBSbyFunction("bold").shortcutUsed();
+        this.toggleBold();
+    }
+
+    void ourItalicFunction() {
+        this.overlayPane.km.klm.stopTimerForShortcut();
+        this.overlayPane.km.klm.setToolbarEstimate(italicBtn);
+        this.overlayPane.km.klm.setTimerForShortcutAllowance(false);
+        this.overlayPane.giveKM().getKBSbyFunction("italic").rewardOMeter.setSkillNr(overlayPane.km.klm.getTimesFaster());
+        this.overlayPane.giveKM().getKBSbyFunction("italic").shortcutUsed();
+        System.out.println(WINDOW_WIDTH);
+        this.toggleItalic();
+    }
+
+    void ourUnderlineFunction() {
+        this.overlayPane.km.klm.stopTimerForShortcut();
+        this.overlayPane.km.klm.setToolbarEstimate(underlineBtn);
+        this.overlayPane.km.klm.setTimerForShortcutAllowance(false);
+        this.overlayPane.giveKM().getKBSbyFunction("underline").rewardOMeter.setSkillNr(overlayPane.km.klm.getTimesFaster());
+        this.overlayPane.giveKM().getKBSbyFunction("underline").shortcutUsed();
+        this.toggleUnderline();
+    }
+
+    void ourStrikeFunction() {
+        this.overlayPane.km.klm.stopTimerForShortcut();
+        this.overlayPane.km.klm.setToolbarEstimate(strikeBtn);
+        this.overlayPane.km.klm.setTimerForShortcutAllowance(false);
+        this.overlayPane.giveKM().getKBSbyFunction("strikethrough").rewardOMeter.setSkillNr(overlayPane.km.klm.getTimesFaster());
+        this.overlayPane.giveKM().getKBSbyFunction("strikethrough").shortcutUsed();
+        this.toggleStrikethrough();
+    }
+
+    void ourInsertImageFunction() {
+        this.overlayPane.km.klm.stopTimerForShortcut();
+        this.overlayPane.km.klm.setToolbarEstimate(insertImageBtn);
+        this.overlayPane.km.klm.setTimerForShortcutAllowance(false);
+        this.overlayPane.giveKM().getKBSbyFunction("insertimage").rewardOMeter.setSkillNr(overlayPane.km.klm.getTimesFaster());
+        this.overlayPane.giveKM().getKBSbyFunction("insertimage").shortcutUsed();
+        this.insertImage();
+    }
+
+    void ourAlignLeftFunction() {
+        this.overlayPane.km.klm.stopTimerForShortcut();
+        this.overlayPane.km.klm.setToolbarEstimate(alignLeftBtn);
+        this.overlayPane.km.klm.setTimerForShortcutAllowance(false);
+        this.overlayPane.giveKM().getKBSbyFunction("align-left").rewardOMeter.setSkillNr(overlayPane.km.klm.getTimesFaster());
+        this.overlayPane.giveKM().getKBSbyFunction("align-left").shortcutUsed();
+        this.alignLeft();
+    }
+
+    void ourAlignCenterFunction() {
+        this.overlayPane.km.klm.stopTimerForShortcut();
+        this.overlayPane.km.klm.setToolbarEstimate(alignCenterBtn);
+        this.overlayPane.km.klm.setTimerForShortcutAllowance(false);
+        this.overlayPane.giveKM().getKBSbyFunction("align-center").rewardOMeter.setSkillNr(overlayPane.km.klm.getTimesFaster());
+        this.overlayPane.giveKM().getKBSbyFunction("align-center").shortcutUsed();
+        this.alignCenter();
+    }
+
+    void ourAlignRightFunction() {
+        this.overlayPane.km.klm.stopTimerForShortcut();
+        this.overlayPane.km.klm.setToolbarEstimate(alignRightBtn);
+        this.overlayPane.km.klm.setTimerForShortcutAllowance(false);
+        this.overlayPane.giveKM().getKBSbyFunction("align-right").rewardOMeter.setSkillNr(overlayPane.km.klm.getTimesFaster());
+        this.overlayPane.giveKM().getKBSbyFunction("align-right").shortcutUsed();
+        this.alignRight();
+    }
+
+    void ourAlignJustifyFunction() {
+        this.overlayPane.km.klm.stopTimerForShortcut();
+        this.overlayPane.km.klm.setToolbarEstimate(alignJustifyBtn);
+        this.overlayPane.km.klm.setTimerForShortcutAllowance(false);
+        this.overlayPane.giveKM().getKBSbyFunction("align-justify").rewardOMeter.setSkillNr(overlayPane.km.klm.getTimesFaster());
+        this.overlayPane.giveKM().getKBSbyFunction("align-justify").shortcutUsed();
+        this.alignJustify();
+    }
+// ################################################################
+// ################################################################
 }

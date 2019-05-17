@@ -1,10 +1,8 @@
 package org.fxmisc.richtext.demo.richtext;
 
-import javafx.animation.FadeTransition;
 import javafx.geometry.Insets;
 import javafx.scene.Node;
 import javafx.scene.layout.VBox;
-import javafx.util.Duration;
 
 import static com.sun.xml.internal.ws.spi.db.BindingContextFactory.LOGGER;
 import static javafx.geometry.Pos.BOTTOM_RIGHT;
@@ -22,16 +20,18 @@ import static javafx.geometry.Pos.BOTTOM_RIGHT;
 // change the shortcuts into single key KBS
 
 // make KBS list
-public class KBSManager extends VBox {
+public class KBSManager extends VBox implements Animations {
 
     KLM klm = new KLM();
     private String oprSystem = System.getProperty("os.name");
 
     boolean show = true;
+
     void show(boolean show) {
         this.setVisible(show);
         this.setManaged(show);
     }
+
     void toggleShow() {
         System.out.println("KBSMANAGER SHOW TOGGLED");
         if (show) {
@@ -58,25 +58,37 @@ public class KBSManager extends VBox {
         return null;
     }
 
+    //                       _                   _
+    //    ___ ___  _ __  ___| |_ _ __ _   _  ___| |_ ___  _ __
+    //   / __/ _ \| '_ \/ __| __| '__| | | |/ __| __/ _ \| '__|
+    //  | (__ (_) | | | \__ \ |_| |  | |_| | (__| |_ (_) | |
+    //   \___\___/|_| |_|___/\__|_|   \__,_|\___|\__\___/|_|
+    //
+
+    double fadeMax = 1.;
+    double fadeMin = 0.5;
+
     KBSManager() {
+
+        // SETUP
         this.setMouseTransparent(false);
-//        callingFunctionOnTimer();
         setMaxSize(Settings.WINDOW_WIDTH, Settings.WINDOW_HEIGHT);
+        //this.setOrientation(VERTICAL);
+        this.setPadding(new Insets(10));
+        this.setSpacing(5);
+        //this.setStyle("-fx-border-color: black");
+        this.setAlignment(BOTTOM_RIGHT);
+
+        // OS
         LOGGER.info("Operation system " + oprSystem); //Logs operation system
         String modifier; //Show shortcut, changes depending on operating system
-        //Changes the string "modifier" depending on the operating system.
-        if (oprSystem.contains("Windows")) {
+        if (oprSystem.contains("Windows")) {    //Changes the string "modifier" depending on the operating system.
             modifier = "Ctrl";
         } else {
             modifier = "⌘";
         }
 
-        //this.setOrientation(VERTICAL);
-        this.setPadding(new Insets(10));
-        this.setSpacing(5);
-
-        //this.setStyle("-fx-border-color: black");
-        this.setAlignment(BOTTOM_RIGHT);
+        // ADD
         this.getChildren().addAll(
                 new KBS(modifier + " + B", "bold", "org/fxmisc/richtext/demo/richtext/BiconHR.png"),
                 new KBS(modifier + " + I", "italic", "org/fxmisc/richtext/demo/richtext/IiconHR.png"),
@@ -89,89 +101,86 @@ public class KBSManager extends VBox {
                 new KBS(modifier + " + J", "align-justify", "org/fxmisc/richtext/demo/richtext/AJiconHR.png")
                 //new KBS("Ctrl + Fuck", "image", "asdfasfd")
         );
+
         this.setUpHovers();
     }
 
-    public FadeTransition fade(double opacityEnd, double time) {
-
-        double opacityStart = this.getOpacity();
-
-        FadeTransition fade = new FadeTransition(Duration.seconds(time), this);
-        fade.setFromValue(opacityStart);
-        fade.setToValue(opacityEnd);
-        //fade.setCycleCount(Timeline.INDEFINITE);
-        //fade.setAutoReverse(true);
-        fade.play(); //start animation
-
-        return fade; // TODO REASONS FOR THIS RETURNING FADE?
-
-        //this.setOnMousePressed(e -> System.out.println("adasfdf"));
+    public void animationFix() {
+        for (Node n : this.getChildren()) {
+            KBS k = ((KBS) n);
+            k.convinceOMeter.hide();
+            k.rewardOMeter.hide();
+            k.hide();
+        }
     }
 
-    public FadeTransition fade(double opacityEnd, double time, Node node) {
-
-        double opacityStart = this.getOpacity();
-
-        FadeTransition fade = new FadeTransition(Duration.seconds(time), node);
-        fade.setFromValue(opacityStart);
-        fade.setToValue(opacityEnd);
-        //fade.setCycleCount(Timeline.INDEFINITE);
-        //fade.setAutoReverse(true);
-        fade.play(); //start animation
-
-        return fade; // TODO REASONS FOR THIS RETURNING FADE?
-
-        //this.setOnMousePressed(e -> System.out.println("adasfdf"));
-    }
-
+    //   _
+    //  | |__   _____   _____ _ __
+    //  | '_ \ / _ \ \ / / _ \ '__|
+    //  | | | | (_) \ V /  __/ |
+    //  |_| |_|\___/ \_/ \___|_|
+    //
     public void setUpHovers() {
-//        this.setOnMouseMoved(event -> {
-//            System.out.println(event.getSceneX() + " " + event.getSceneY());
-////            System.out.println();
-//        });
         this.setOnKeyPressed((e -> {
             System.out.println("ENTER");
-//            this.mouseLock = true;
-//            this.fade(1, 0.2);
+            //  this.mouseLock = true;
+            this.fade(1, 0.2);
 
         }));
         this.setOnMouseEntered((e -> {
             this.mouseLock = true;
             System.out.println("ENTER");
-//            this.fade(1, 0.2);
-//            this.onSelect();
+            //            this.fade(1, 0.2);
+            //            this.selectionOn();
         }));
         this.setOnMouseExited((e -> {
             this.mouseLock = false;
             System.out.println("EXIT");
 //            this.fade(0.2, 0.2);
-//            this.offSelect();
+//            this.selectionOff();
         }));
     }
 
-    public void onSelect() {
+    //            _           _   _
+//   ___  ___| | ___  ___| |_(_) ___  _ __
+//  / __|/ _ \ |/ _ \/ __| __| |/ _ \| '_ \
+//  \__ \  __/ |  __/ (__| |_| | (_) | | | |
+//  |___/\___|_|\___|\___|\__|_|\___/|_| |_|
+//
+    public void selectionOn() {
+        System.out.println("SELECTION ON DETECTED");
         for (Node n : this.getChildren()) {
             if (n.getClass().equals(KBS.class)) {
                 KBS k = ((KBS) n);
                 if (k.isShown) {
-                    k.setOpacity(1.);
+                    Animations.fade(fadeMax, k);
                     k.colorRect.setOpacity(0);
                 }
             }
         }
     }
 
-    public void offSelect() {
+    public void selectionOff() {
+        System.out.println("SELECTION OFF DETECTED");
         for (Node n : this.getChildren()) {
             if (n.getClass().equals(KBS.class)) {
                 KBS k = ((KBS) n);
                 if (k.isShown) {
-                    k.setOpacity(.2);
+                    Animations.fade(fadeMin, k);
                     k.colorRect.setOpacity(0);
                 }
             }
         }
     }
+
+
+    //
+    //   _ __ ___   ___  _   _ ___  ___
+    //  | '_ ` _ \ / _ \| | | / __|/ _ \
+    //  | | | | | | (_) | |_| \__ \  __/
+    //  |_| |_| |_|\___/ \__,_|___/\___|
+    //
+
     public void parseMouse(double x, double y) {
 //        System.out.println("KM OPACITY: " + this.getOpacity() + "       MOUSELOCK: " + this.mouseLock);
         for (Node n : this.getChildren()) {
@@ -193,7 +202,7 @@ public class KBSManager extends VBox {
 
 
                     double scaled = this.scaleFunc(num, 0, 100, 1., 0);
-                    if (k.attentionable && !k.didit) {
+                    if (k.attentionable && !k.hovered) {
                         k.colorRect.setOpacity(scaled);
                     }
 
@@ -216,9 +225,8 @@ public class KBSManager extends VBox {
     public void disableColor() {
         for (Node n : this.getChildren()) {
             KBS k = ((KBS) n);
-            if (!k.didit && k.isShown) {
-                this.fade(0., 0.35, k.colorRect);
-//                k.colorRect.setOpacity(0.);
+            if (!k.hovered && k.isShown) {
+                Animations.fade(0., 0.35, k.colorRect);
             }
         }
     }
@@ -235,21 +243,4 @@ public class KBSManager extends VBox {
 
     }
 
-    public void animationFix() {
-        for (Node n : this.getChildren()) {
-            KBS k = ((KBS) n);
-            k.convinceOMeter.hide();
-            k.rewardOMeter.hide();
-            k.hide();
-        }
-    }
-
-    void fuck() {
-        for (Node n : this.getChildren()) {
-            if (n.getClass().equals(KBS.class)) {
-                KBS k = ((KBS) n);
-
-            }
-        }
-    }
 }

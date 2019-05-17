@@ -21,13 +21,7 @@ import java.util.logging.Logger;
 
 
 public class KBS extends HBox implements UIColors {
-    //                       _                   _
-    //    ___ ___  _ __  ___| |_ _ __ _   _  ___| |_ ___  _ __
-    //   / __/ _ \| '_ \/ __| __| '__| | | |/ __| __/ _ \| '__|
-    //  | (__ (_) | | | \__ \ |_| |  | |_| | (__| |_ (_) | |
-    //   \___\___/|_| |_|___/\__|_|   \__,_|\___|\__\___/|_|
-    //
-    public Rectangle backgroundRect, colorRect;
+    private final static Logger LOGGER = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME); //Allows access for the logger
     public boolean isShown = false;
     //
     //                         _
@@ -41,71 +35,23 @@ public class KBS extends HBox implements UIColors {
     protected int tbTimesClickedTotal = 0;
     protected int tbTimesClickedInstance = 0; //times clicked since last time shortcut were used
     SkillOMeter convinceOMeter;
-
-
-    private boolean isHidden = true;
-    private boolean isPinned = false;// todo, general thing: place properties above the function the relate to. if it's used a lot of places, i would place it up here
-
-
-    private final static Logger LOGGER = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME); //Allows access for the logger
     Text textStartConvince = new Text("When not using shortcuts, \n you are "); // this might be dumb way too do it
-    ImageView icon;
     Text textEndConvince = new Text(" times slower!");
-    Pane kbsPane = new Pane();
     SkillOMeter rewardOMeter;
-    HBox content;
-    Text textStartReward = new Text("When using the \n");
-    Text textMiddleReward = new Text(" shortcut, \n you are ");
-    Text textEndReward = new Text(" times faster!");
-    Text shortcutText;
-    String functionality;
-    //   _           _   _
-//  | |__  _   _| |_| |_ ___  _ __
-//  | '_ \| | | | __| __/ _ \| '_ \
-//  | |_) | |_| | |_| |_ (_) | | | |
-//  |_.__/ \__,_|\__|\__\___/|_| |_|
-//
-    double buttonX;
-    boolean didit;
 
 
-    //         _     _ _     _ _ _ _
-    //  __   ___)___(_) |__ (_) (_) |_ _   _
-    //  \ \ / / / __| | '_ \| | | | __| | | |
-    //   \ V /| \__ \ | |_) | | | | |_| |_| |
-    //    \_/ |_|___/_|_.__/|_|_|_|\__|\__, |
-    //                                 |___/
-    //              _   _            _   _
-    //    __ _  ___| |_(_)_   ____ _| |_(_) ___  _ __
-    //   / _` |/ __| __| \ \ / / _` | __| |/ _ \| '_ \
-    //  | (_| | (__| |_| |\ V / (_| | |_| | (_) | | | |
-    //   \__,_|\___|\__|_| \_/ \__,_|\__|_|\___/|_| |_|
+    //                       _                   _
+    //    ___ ___  _ __  ___| |_ _ __ _   _  ___| |_ ___  _ __
+    //   / __/ _ \| '_ \/ __| __| '__| | | |/ __| __/ _ \| '__|
+    //  | (__ (_) | | | \__ \ |_| |  | |_| | (__| |_ (_) | |
+    //   \___\___/|_| |_|___/\__|_|   \__,_|\___|\__\___/|_|
     //
-    private boolean ACTIVATED = true; // BOOLEAN USED FOR TOGGLING OUR SYSTEM
-
-    public void show() {
-        isShown = true;
-        FadeInUpTransition Anim = new FadeInUpTransition(this);
-        Anim.play();
-        this.setVisible(true);
-        this.setManaged(true);
-        this.initialClickGate();
-    }
-
-    public void hide() {
-        isShown = false;
-        this.attentionable = false;
-
-        System.out.println("Hi there! Now I'm hidden!");
-        BounceOutRightTransition Anim = new BounceOutRightTransition(this);
-        Anim.setOnFinished(event -> {
-            setVisible(false);
-            setManaged(false);
-//            resetGrow(); // reset size + translation
-        });
-        Anim.play();
-    }
-
+    public Rectangle backgroundRect, colorRect;
+    ImageView icon;
+    Text textStartReward = new Text("When using the \n");
+    Pane kbsPane = new Pane();
+    String functionality;
+    Text textMiddleReward = new Text(" shortcut, \n you are ");
 
     KBS(String shortcutText, String functionality, String iconPath) {
 
@@ -156,8 +102,16 @@ public class KBS extends HBox implements UIColors {
         this.setManaged(false);
     }
 
-    double buttonY;
-    double buttonWidth;
+    Text textEndReward = new Text(" times faster!");
+    Text shortcutText;
+    HBox content;
+    //   _           _   _
+//  | |__  _   _| |_| |_ ___  _ __
+//  | '_ \| | | | __| __/ _ \| '_ \
+//  | |_) | |_| | |_| |_ (_) | | | |
+//  |_.__/ \__,_|\__|\__\___/|_| |_|
+//
+    double buttonX;
 
     public void shortcutUsed() {
         if (ACTIVATED) {
@@ -199,6 +153,60 @@ public class KBS extends HBox implements UIColors {
         }
     }
 
+
+    //         _     _ _     _ _ _ _
+    //  __   ___)___(_) |__ (_) (_) |_ _   _
+    //  \ \ / / / __| | '_ \| | | | __| | | |
+    //   \ V /| \__ \ | |_) | | | | |_| |_| |
+    //    \_/ |_|___/_|_.__/|_|_|_|\__|\__, |
+    //                                 |___/
+    double buttonY;
+    double buttonWidth;
+    boolean hovered;
+    private boolean isHidden = true;
+    private boolean isPinned = false;// todo, general thing: place properties above the function the relate to. if it's used a lot of places, i would place it up here
+    //              _   _            _   _
+    //    __ _  ___| |_(_)_   ____ _| |_(_) ___  _ __
+    //   / _` |/ __| __| \ \ / / _` | __| |/ _ \| '_ \
+    //  | (_| | (__| |_| |\ V / (_| | |_| | (_) | | | |
+    //   \__,_|\___|\__|_| \_/ \__,_|\__|_|\___/|_| |_|
+    //
+    private boolean ACTIVATED = true; // BOOLEAN USED FOR TOGGLING OUR SYSTEM
+
+    public void show() {
+        isShown = true;
+        FadeInUpTransition Anim = new FadeInUpTransition(this);
+        Anim.play();
+        this.setVisible(true);
+        this.setManaged(true);
+        this.initialClickGate();
+    }
+
+    public void hide() {
+        isShown = false;
+        this.attentionable = false;
+
+        System.out.println("Hi there! Now I'm hidden!");
+        BounceOutRightTransition Anim = new BounceOutRightTransition(this);
+        Anim.setOnFinished(event -> {
+            setVisible(false);
+            setManaged(false);
+//            resetGrow(); // reset size + translation
+        });
+        Anim.play();
+    }
+
+    public void setButtonCoordinates(double buttonX, double buttonY, double buttonWidth) {
+//        System.out.println(this.functionality + " x:" + buttonX + " y: " + buttonY);
+        this.buttonX = buttonX + buttonWidth / 2;
+        this.buttonY = buttonY + buttonWidth / 2;
+        this.buttonWidth = buttonWidth;
+    }
+
+    public boolean isHovered() {
+        return hovered;
+    }
+
     public void hoverShake() {
         ShakeTransition shakeTransition = new ShakeTransition(kbsPane);
         shakeTransition.setRate(5);
@@ -221,11 +229,8 @@ public class KBS extends HBox implements UIColors {
         }, 2000);
     }
 
-    public void setButtonCoordinates(double buttonX, double buttonY, double buttonWidth) {
-//        System.out.println(this.functionality + " x:" + buttonX + " y: " + buttonY);
-        this.buttonX = buttonX + buttonWidth / 2;
-        this.buttonY = buttonY + buttonWidth / 2;
-        this.buttonWidth = buttonWidth;
+    public void setHovered(boolean hovered) {
+        this.hovered = hovered;
     }
 
     public boolean isACTIVATED() {
