@@ -942,11 +942,14 @@ public class RichTextDemo extends Application {
 //            if (this.overlayPane.km.getKBSbyFunction(functionality).canAnimate) {
                 this.overlayPane.km.getKBSbyFunction(functionality).hoverShake();
             this.overlayPane.km.getKBSbyFunction(functionality).setHovered(true);
-                this.overlayPane.km.disableColor();
+            this.overlayPane.km.disableColor();
+            this.overlayPane.km.anIconHovered = true;
 //            }
         }));
         button.setOnMouseExited((e -> {
             this.overlayPane.km.getKBSbyFunction(functionality).setHovered(false);
+            this.overlayPane.km.disableColor();
+            this.overlayPane.km.anIconHovered = false;
         }));
     }
 

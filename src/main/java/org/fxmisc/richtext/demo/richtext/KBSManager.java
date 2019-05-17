@@ -65,8 +65,6 @@ public class KBSManager extends VBox implements Animations {
     //   \___\___/|_| |_|___/\__|_|   \__,_|\___|\__\___/|_|
     //
 
-    double fadeMax = 1.;
-    double fadeMin = 0.5;
 
     KBSManager() {
 
@@ -121,26 +119,13 @@ public class KBSManager extends VBox implements Animations {
     //  |_| |_|\___/ \_/ \___|_|
     //
     boolean kmHovered, anIconHovered, textSelected;
-    public void setUpHovers() {
-        this.setOnKeyPressed((e -> {
-            System.out.println("ENTER");
-            //  this.mouseLock = true;
-            Animations.fade(1, this);
-
-        }));
-        this.setOnMouseEntered((e -> {
-            this.kmHovered = true;
-            System.out.println("ENTER");
-            //            this.fade(1, 0.2);
-            //            this.selectionOn();
-        }));
-        this.setOnMouseExited((e -> {
-            this.kmHovered = false;
-            System.out.println("EXIT");
-//            this.fade(0.2, 0.2);
-//            this.selectionOff();
-        }));
-    }
+    //
+    //   _ __ ___   ___  _   _ ___  ___
+    //  | '_ ` _ \ / _ \| | | / __|/ _ \
+    //  | | | | | | (_) | |_| \__ \  __/
+    //  |_| |_| |_|\___/ \__,_|___/\___|
+    //
+    double fadeMax = 1.;
 
     //            _           _   _
 //   ___  ___| | ___  ___| |_(_) ___  _ __
@@ -174,46 +159,65 @@ public class KBSManager extends VBox implements Animations {
         }
     }
 
+    double fadeMin = 0.5;
+    double colorDistance = 70;
+    double opacityDistance = 100;
 
-    //
-    //   _ __ ___   ___  _   _ ___  ___
-    //  | '_ ` _ \ / _ \| | | / __|/ _ \
-    //  | | | | | | (_) | |_| \__ \  __/
-    //  |_| |_| |_|\___/ \__,_|___/\___|
-    //
+    public void setUpHovers() {
+        this.setOnKeyPressed((e -> {
+            System.out.println("ENTER");
+            //  this.mouseLock = true;
+            Animations.fade(1, this);
+
+        }));
+        this.setOnMouseEntered((e -> {
+            this.kmHovered = true;
+            System.out.println("ENTER");
+//                        this.fade(1, 0.2);
+            this.selectionOn();
+        }));
+        this.setOnMouseExited((e -> {
+            this.kmHovered = false;
+            System.out.println("EXIT");
+//            this.fade(0.2, 0.2);
+            this.selectionOff();
+        }));
+    }
 
     public void parseMouse(double x, double y) {
 //        System.out.println("KM OPACITY: " + this.getOpacity() + "       MOUSELOCK: " + this.mouseLock);
 
         // opacity for all base on mouse to toolbar y axis
-        double mouseToolbarDistance = y - 12.5;
-        double mouseToolbarOpacity = this.scaleFunc(mouseToolbarDistance, 0, 100, fadeMax + .2, fadeMin);
+        double mouseIconDistanceY = y - 12.5;
+        double opacityY = this.scaleFunc(mouseIconDistanceY, 0, colorDistance, fadeMax + .2, fadeMin);
 
         for (Node n : this.getChildren()) {
             if (n.getClass().equals(KBS.class)) {
                 KBS k = ((KBS) n);
+                double mouseIconDistanceXY = Math.sqrt(Math.pow(x - k.buttonX, 2) + Math.pow(y - k.buttonY, 2));
+                double colorOpacityXY = this.scaleFunc(mouseIconDistanceXY, 0, 100, 1., 0);
+
+                double opacityXY = this.scaleFunc(mouseIconDistanceXY, 0, 100, fadeMax + .2, fadeMin);
+
+
                 if (k.isShown) {
                     // if NOT mouse locked (is not hovered on toolbaricon, etc)
-                    if (anIconHovered) {
+
+
+                    if (anIconHovered || kmHovered) {
                         k.setOpacity(1.);   // full opacity if any icon hovered
                     } else {
-                        k.setOpacity(mouseToolbarOpacity); // gradual opacity
+                        if (!textSelected) {
+                            k.setOpacity(opacityY); // gradual opacity
+                        }
                         double mouseIconDistance = Math.sqrt(Math.pow(x - k.buttonX, 2) + Math.pow(y - k.buttonY, 2));
-                        double colorOpacity = this.scaleFunc(mouseIconDistance, 0, 100, 1., 0);
+                        double colorOpacity = this.scaleFunc(mouseIconDistance, 0, opacityDistance, 1., 0);
                         k.colorRect.setOpacity(colorOpacity);
                     }
                     // if showing messages, don't be faded
                     if (k.convinceOMeter.isBeingAnimatedConvince) {
                         k.setOpacity(1);
                     }
-
-
-//                    if () {
-//                        k.colorRect.setOpacity(0);
-//                    }
-//                    System.out.println("scaled: " + scaled);
-//                    System.out.println("DISTANCE to " + k.functionality + ": " + num + " SCALED: " + scaled);
-//                    System.out.println("FUNC: " + k.functionality + "           COLORECTOPA: " + k.colorRect.getOpacity() + "           KOPA: " + k.getOpacity());
                 }
 
             }
@@ -225,7 +229,7 @@ public class KBSManager extends VBox implements Animations {
         for (Node n : this.getChildren()) {
             KBS k = ((KBS) n);
             if (!k.hovered && k.isShown) {
-                Animations.fade(0., k.colorRect);
+                Animations.fade(0., 0.3, k.colorRect);
             }
         }
     }
