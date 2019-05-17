@@ -463,7 +463,7 @@ public class RichTextDemo extends Application {
             if (textHighlighted) {
 //                overlayPane.km.fade(1, 0.2);
 
-                overlayPane.km.mouseLock = true;
+                overlayPane.km.textSelected = true;
                 overlayPane.km.selectionOn();
 //                overlayPane.km.parseMouse(0,0);
 
@@ -471,7 +471,7 @@ public class RichTextDemo extends Application {
                 overlayPane.km.selectionOff();
 //                overlayPane.km.fade(0.2, 0.2);
                 overlayPane.km.klm.stopTimerForToolbar();
-                overlayPane.km.mouseLock = false;
+                overlayPane.km.textSelected = false;
 //                overlayPane.km.parseMouse(0,0);
             }
             overlayPane.km.klm.setTimerForToolbarAllowance(true);
@@ -920,14 +920,18 @@ public class RichTextDemo extends Application {
         this.overlayPane.km.getKBSbyFunction(functionality).buttonWidth = button.getWidth();
         this.overlayPane.km.getKBSbyFunction(functionality).setButtonCoordinates(button.getLayoutX(), button.getLayoutY(), button.getWidth());
         button.setOnMouseEntered((e -> {
-//            if (this.overlayPane.km.getKBSbyFunction(functionality).attentionable) {
+//            if (this.overlayPane.km.getKBSbyFunction(functionality).canAnimate) {
                 this.overlayPane.km.getKBSbyFunction(functionality).hoverShake();
             this.overlayPane.km.getKBSbyFunction(functionality).setHovered(true);
                 this.overlayPane.km.disableColor();
+            this.overlayPane.km.anIconHovered = true;
+            System.out.println("this.overlayPane.km.anIconHovered: " + this.overlayPane.km.anIconHovered);
 //            }
         }));
         button.setOnMouseExited((e -> {
             this.overlayPane.km.getKBSbyFunction(functionality).setHovered(false);
+            this.overlayPane.km.anIconHovered = false;
+            System.out.println("this.overlayPane.km.anIconHovered: " + this.overlayPane.km.anIconHovered);
         }));
     }
 
@@ -935,7 +939,7 @@ public class RichTextDemo extends Application {
         this.overlayPane.km.getKBSbyFunction(functionality).buttonWidth = button.getWidth();
         this.overlayPane.km.getKBSbyFunction(functionality).setButtonCoordinates(button.getLayoutX(), button.getLayoutY(), button.getWidth());
         button.setOnMouseEntered((e -> {
-//            if (this.overlayPane.km.getKBSbyFunction(functionality).attentionable) {
+//            if (this.overlayPane.km.getKBSbyFunction(functionality).canAnimate) {
                 this.overlayPane.km.getKBSbyFunction(functionality).hoverShake();
             this.overlayPane.km.getKBSbyFunction(functionality).setHovered(true);
                 this.overlayPane.km.disableColor();

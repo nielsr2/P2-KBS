@@ -46,7 +46,7 @@ public class KBSManager extends VBox implements Animations {
     }
 
 
-    boolean mouseLock;
+
 
     // used to return KBSs by ID e.g. bold
     public KBS getKBSbyFunction(String data) {
@@ -120,21 +120,22 @@ public class KBSManager extends VBox implements Animations {
     //  | | | | (_) \ V /  __/ |
     //  |_| |_|\___/ \_/ \___|_|
     //
+    boolean kmHovered, anIconHovered, textSelected;
     public void setUpHovers() {
         this.setOnKeyPressed((e -> {
             System.out.println("ENTER");
             //  this.mouseLock = true;
-            this.fade(1, 0.2);
+            Animations.fade(1, this);
 
         }));
         this.setOnMouseEntered((e -> {
-            this.mouseLock = true;
+            this.kmHovered = true;
             System.out.println("ENTER");
             //            this.fade(1, 0.2);
             //            this.selectionOn();
         }));
         this.setOnMouseExited((e -> {
-            this.mouseLock = false;
+            this.kmHovered = false;
             System.out.println("EXIT");
 //            this.fade(0.2, 0.2);
 //            this.selectionOff();
@@ -183,36 +184,34 @@ public class KBSManager extends VBox implements Animations {
 
     public void parseMouse(double x, double y) {
 //        System.out.println("KM OPACITY: " + this.getOpacity() + "       MOUSELOCK: " + this.mouseLock);
+
+        // opacity for all base on mouse to toolbar y axis
+        double mouseToolbarDistance = y - 12.5;
+        double mouseToolbarOpacity = this.scaleFunc(mouseToolbarDistance, 0, 100, fadeMax + .2, fadeMin);
+
         for (Node n : this.getChildren()) {
             if (n.getClass().equals(KBS.class)) {
                 KBS k = ((KBS) n);
                 if (k.isShown) {
-                    double numMus = y - 12.5;
-                    double opaScaled = this.scaleFunc(numMus, 0, 100, 1., 0.2);
-                    if (!mouseLock) {
-                        k.setOpacity(opaScaled);
-
+                    // if NOT mouse locked (is not hovered on toolbaricon, etc)
+                    if (anIconHovered) {
+                        k.setOpacity(1.);   // full opacity if any icon hovered
                     } else {
-                        k.setOpacity(1.);
+                        k.setOpacity(mouseToolbarOpacity); // gradual opacity
+                        double mouseIconDistance = Math.sqrt(Math.pow(x - k.buttonX, 2) + Math.pow(y - k.buttonY, 2));
+                        double colorOpacity = this.scaleFunc(mouseIconDistance, 0, 100, 1., 0);
+                        k.colorRect.setOpacity(colorOpacity);
                     }
+                    // if showing messages, don't be faded
                     if (k.convinceOMeter.isBeingAnimatedConvince) {
                         k.setOpacity(1);
                     }
-                    double num = Math.sqrt(Math.pow(x - k.buttonX, 2) + Math.pow(y - k.buttonY, 2));
 
 
-                    double scaled = this.scaleFunc(num, 0, 100, 1., 0);
-                    if (k.attentionable && !k.hovered) {
-                        k.colorRect.setOpacity(scaled);
-                    }
-
-                    if (mouseLock) {
+//                    if () {
 //                        k.colorRect.setOpacity(0);
-                    }
-
+//                    }
 //                    System.out.println("scaled: " + scaled);
-
-
 //                    System.out.println("DISTANCE to " + k.functionality + ": " + num + " SCALED: " + scaled);
 //                    System.out.println("FUNC: " + k.functionality + "           COLORECTOPA: " + k.colorRect.getOpacity() + "           KOPA: " + k.getOpacity());
                 }
@@ -226,7 +225,7 @@ public class KBSManager extends VBox implements Animations {
         for (Node n : this.getChildren()) {
             KBS k = ((KBS) n);
             if (!k.hovered && k.isShown) {
-                Animations.fade(0., 0.35, k.colorRect);
+                Animations.fade(0., k.colorRect);
             }
         }
     }

@@ -182,19 +182,7 @@ public class KBS extends HBox implements UIColors {
         this.initialClickGate();
     }
 
-    public void hide() {
-        isShown = false;
-        this.attentionable = false;
-
-        System.out.println("Hi there! Now I'm hidden!");
-        BounceOutRightTransition Anim = new BounceOutRightTransition(this);
-        Anim.setOnFinished(event -> {
-            setVisible(false);
-            setManaged(false);
-//            resetGrow(); // reset size + translation
-        });
-        Anim.play();
-    }
+    boolean canAnimate = false;
 
     public void setButtonCoordinates(double buttonX, double buttonY, double buttonWidth) {
 //        System.out.println(this.functionality + " x:" + buttonX + " y: " + buttonY);
@@ -215,16 +203,27 @@ public class KBS extends HBox implements UIColors {
         this.colorRect.setOpacity(1.);
     }
 
+    public void hide() {
+        isShown = false;
+        this.canAnimate = false;
 
-    boolean attentionable = false;
+        System.out.println("Hi there! Now I'm hidden!");
+        BounceOutRightTransition Anim = new BounceOutRightTransition(this);
+        Anim.setOnFinished(event -> {
+            setVisible(false);
+            setManaged(false);
+//            resetGrow(); // reset size + translation
+        });
+        Anim.play();
+    }
 
     void initialClickGate() {
         Timer timer = new Timer();
         timer.schedule(new TimerTask() {
             @Override
             public void run() {
-                attentionable = true;
-//                System.out.println("attentionable:" + attentionable);
+                canAnimate = true;
+//                System.out.println("canAnimate:" + canAnimate);
             }
         }, 2000);
     }
