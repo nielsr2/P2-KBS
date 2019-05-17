@@ -6,8 +6,6 @@ import javafx.scene.Node;
 import javafx.scene.layout.VBox;
 import javafx.util.Duration;
 
-import java.awt.*;
-
 import static com.sun.xml.internal.ws.spi.db.BindingContextFactory.LOGGER;
 import static javafx.geometry.Pos.BOTTOM_RIGHT;
 
@@ -26,44 +24,14 @@ import static javafx.geometry.Pos.BOTTOM_RIGHT;
 // make KBS list
 public class KBSManager extends VBox {
 
-    boolean focus = true;
     KLM klm = new KLM();
-
-//    //TODO THIS DELIBLE?
-//    Timer timer = new Timer();
-//    boolean movement = false;
-//
-//    public void callingFunctionOnTimer() {
-//        int delay = 5000;
-//        int period = 5000;
-//        movement = false;
-//        timer.schedule(new TimerTask() {
-//            @Override
-//            public void run() {
-//                if (!movement) {
-//                    System.out.println("NO MOVEMENT DETECTED");
-//                }
-//                movement = false;
-//                //write what should happen here
-//                System.out.println("time had passed");
-//            }
-//        }, delay, period);
-//    }
-
-    void registerOnMovement() {
-
-    }
-
     private String oprSystem = System.getProperty("os.name");
 
-
     boolean show = true;
-
     void show(boolean show) {
         this.setVisible(show);
         this.setManaged(show);
     }
-
     void toggleShow() {
         System.out.println("KBSMANAGER SHOW TOGGLED");
         if (show) {
@@ -76,22 +44,14 @@ public class KBSManager extends VBox {
             this.show = true;
         }
     }
-    //public BooleanBinding test;
+
 
     boolean mouseLock;
 
-    KBSManager(String oprSystem) {
-        oprSystem = System.getProperty("os.name");
-    }
-
-    void AddButtonOrFunctionAsKBS(Button buttonObjectToMaybeReturn,
-                                  String Functionality,
-                                  String ToolbarImage) {
-    }
-
-    public KBS getKBSbyFunction(Object data) {
-        for (Node n : this.getChildren()) {
-            if (data.equals(n.getUserData())) {
+    // used to return KBSs by ID e.g. bold
+    public KBS getKBSbyFunction(String data) {
+        for (Node n : this.getChildren()) { // getChildren only return nodes,since all javafx elements extends note (kbs extends HBox, which extends note) , is ok
+            if (data.equals(n.getId())) { // compare input with id's of the KBS's ( which are set in constructor )
                 return (KBS) n;
             }
         }
@@ -213,7 +173,7 @@ public class KBSManager extends VBox {
         }
     }
     public void parseMouse(double x, double y) {
-        System.out.println("KM OPACITY: " + this.getOpacity() + "       MOUSELOCK: " + this.mouseLock);
+//        System.out.println("KM OPACITY: " + this.getOpacity() + "       MOUSELOCK: " + this.mouseLock);
         for (Node n : this.getChildren()) {
             if (n.getClass().equals(KBS.class)) {
                 KBS k = ((KBS) n);
@@ -245,7 +205,7 @@ public class KBSManager extends VBox {
 
 
 //                    System.out.println("DISTANCE to " + k.functionality + ": " + num + " SCALED: " + scaled);
-                    System.out.println("FUNC: " + k.functionality + "           COLORECTOPA: " + k.colorRect.getOpacity() + "           KOPA: " + k.getOpacity());
+//                    System.out.println("FUNC: " + k.functionality + "           COLORECTOPA: " + k.colorRect.getOpacity() + "           KOPA: " + k.getOpacity());
                 }
 
             }
