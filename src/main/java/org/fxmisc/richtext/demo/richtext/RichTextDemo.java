@@ -979,7 +979,6 @@ public class RichTextDemo extends Application {
         }));
         button.setOnMouseExited((e -> {
             this.overlayPane.km.getKBSbyFunction(functionality).setHovered(false);
-            this.overlayPane.km.disableColor();
             this.overlayPane.km.anIconHovered = false;
         }));
     }
