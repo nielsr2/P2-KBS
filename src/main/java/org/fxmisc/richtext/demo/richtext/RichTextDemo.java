@@ -459,6 +459,12 @@ public class RichTextDemo extends Application {
 //
 
         area.setOnMouseReleased((e -> {
+            int CurrentParagraph = area.getCurrentParagraph();
+            int CaretPosition = area.getCaretPosition();
+            int CaretColumn = area.getCaretColumn();
+            int anchor = area.getAnchor();
+            System.out.println("MOUSE RELEASED : CurrentParagraph: " + CurrentParagraph + " CaretPosition: " + CaretPosition + " CaretColumn: " + CaretColumn + " anchor: " + anchor);
+            System.out.println("Selection: " + area.getSelection());
             boolean textHighlighted = !selectionEmpty.get(); // get, since selectionEmpty is a BooleanBinding, get is used to get the boolean value;
             if (textHighlighted) {
 //                overlayPane.km.fade(1, 0.2);
@@ -808,30 +814,55 @@ public class RichTextDemo extends Application {
         // ################################################################
         // ################################################################
         if (selection.getLength() == 0) {
-            area.appendText(" ");
-            area.selectRange(area.getCaretPosition() - 1, area.getCaretPosition());
+//            area.deselect();
+
+//            System.out.println("area.getCaretPosition(): " + area.getCaretPosition());
+//            area.selectRange(area.getCaretPosition() - 1, area.getCaretPosition());
+            int CurrentParagraph = area.getCurrentParagraph();
+            int CaretPosition = area.getCaretPosition();
+            int CaretColumn = area.getCaretColumn();
+            int anchor = area.getAnchor();
+            System.out.println("CurrentParagraph: " + CurrentParagraph + " CaretPosition: " + CaretPosition + " CaretColumn: " + CaretColumn + " anchor: " + anchor);
+            System.out.println("Selection: " + area.getSelection());
+//            System.out.println("        P: " + p + "        COL: " + col + "       anchor: " + an);
+            area.insertText(CurrentParagraph, CaretColumn, "\u200B");
+//            System.out.println("        P: " + p + "        COL: " + col + "       anchor: " + an);
+//            area.selectionbou
             IndexRange sel = area.getSelection();
-            int p = area.getCurrentParagraph();
-            int col = area.getCaretColumn();
-            System.out.println("P: " + p + " COL: " + col);
-            StyleSpans<TextStyle> styles = area.getStyleSpans(p);
+            area.selectRange(sel.getStart() - 1, sel.getStart());
+            sel = area.getSelection();
+            StyleSpans<TextStyle> styles = area.getStyleSpans(CurrentParagraph);
             System.out.println("styles: " + styles);
 //            TextStyle style = area.getStyleAtPosition(p, col);
 //            System.out.println(style);
             TextStyle mixin = mixinGetter.apply(styles);
             System.out.println("mixin: " + mixin);
-
             StyleSpans<TextStyle> newStyles = styles.mapStyles(style -> style.updateWith(mixin));
-            System.out.println("newStyles: " + newStyles);
-            System.out.println("selection.getEnd()" + selection.getEnd());
-            System.out.println("area.getCaretPosition(): " + area.getCaretPosition());
-            System.out.println("selection.getLength(): " + selection.getLength());
             StyleSpans<TextStyle> styles2 = area.getStyleSpans(sel);
             TextStyle mixin2 = mixinGetter.apply(styles2);
             StyleSpans<TextStyle> newStyles2 = styles2.mapStyles(style -> style.updateWith(mixin2));
-            area.setStyleSpans(selection.getStart(), newStyles2);
+            area.setStyleSpans(sel.getStart(), newStyles2);
             area.deselect();
-            area.moveTo(area.getCaretPosition());
+//            area.moveTo(area.getCaretPosition());
+//            StyleSpans<TextStyle> styles = area.getStyleSpans(p);
+////            System.out.println("styles: " + styles);
+////            TextStyle style = area.getStyleAtPosition(p, col);
+////            System.out.println(style);
+//            TextStyle mixin = mixinGetter.apply(styles);
+////            System.out.println("mixin: " + mixin);
+//
+//            StyleSpans<TextStyle> newStyles = styles.mapStyles(style -> style.updateWith(mixin));
+////            System.out.println("newStyles: " + newStyles);
+//            System.out.println("selection.getEnd()" + sel.getEnd());
+//            System.out.println("area.getCaretPosition(): " + area.getCaretPosition());
+//            System.out.println("selection.getLength(): " + sel.getLength());
+//            StyleSpans<TextStyle> styles2 = area.getStyleSpans(sel);
+//            TextStyle mixin2 = mixinGetter.apply(styles2);
+//            StyleSpans<TextStyle> newStyles2 = styles2.mapStyles(style -> style.updateWith(mixin2));
+//            area.setStyleSpans(selection.getStart(), newStyles2);
+//
+//            area.moveTo(p,col);
+//            area.displaceCaret(col);
 //            area.deletePreviousChar();
 
 //            area.setStyleSpans(sel.getEnd(), newStyles);
@@ -921,9 +952,9 @@ public class RichTextDemo extends Application {
         this.overlayPane.km.getKBSbyFunction(functionality).setButtonCoordinates(button.getLayoutX(), button.getLayoutY(), button.getWidth());
         button.setOnMouseEntered((e -> {
 //            if (this.overlayPane.km.getKBSbyFunction(functionality).canAnimate) {
-                this.overlayPane.km.getKBSbyFunction(functionality).hoverShake();
+            this.overlayPane.km.getKBSbyFunction(functionality).hoverShake();
             this.overlayPane.km.getKBSbyFunction(functionality).setHovered(true);
-                this.overlayPane.km.disableColor();
+            this.overlayPane.km.disableColor();
             this.overlayPane.km.anIconHovered = true;
             System.out.println("this.overlayPane.km.anIconHovered: " + this.overlayPane.km.anIconHovered);
 //            }
@@ -940,7 +971,7 @@ public class RichTextDemo extends Application {
         this.overlayPane.km.getKBSbyFunction(functionality).setButtonCoordinates(button.getLayoutX(), button.getLayoutY(), button.getWidth());
         button.setOnMouseEntered((e -> {
 //            if (this.overlayPane.km.getKBSbyFunction(functionality).canAnimate) {
-                this.overlayPane.km.getKBSbyFunction(functionality).hoverShake();
+            this.overlayPane.km.getKBSbyFunction(functionality).hoverShake();
             this.overlayPane.km.getKBSbyFunction(functionality).setHovered(true);
             this.overlayPane.km.disableColor();
             this.overlayPane.km.anIconHovered = true;
