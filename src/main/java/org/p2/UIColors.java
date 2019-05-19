@@ -10,7 +10,7 @@ public interface UIColors {
     Color borderColor = Color.DARKGRAY;
     Color textAlertColor = Color.RED;
     Color textApprovalColor = Color.GREEN;
-    Color backgrondColor = Color.LIGHTGREY;
+    Color backgroundColor = Color.LIGHTGREY;
 
     static LinearGradient setKBSAlertColor() {
         Color colorLeft = Color.web("#FF5252");
