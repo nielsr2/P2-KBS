@@ -25,38 +25,8 @@ public class KBSManager extends VBox implements Animations {
     KLM klm = new KLM();
     private String oprSystem = System.getProperty("os.name");
 
-    boolean show = true;
-
-    void show(boolean show) {
-        this.setVisible(show);
-        this.setManaged(show);
-    }
-
-    void toggleShow() {
-        System.out.println("KBSMANAGER SHOW TOGGLED");
-        if (show) {
-            this.setVisible(false);
-            this.setManaged(false);
-            this.show = false;
-        } else {
-            this.setVisible(true);
-            this.setManaged(true);
-            this.show = true;
-        }
-    }
 
 
-
-
-    // used to return KBSs by ID e.g. bold
-    public KBS getKBSbyFunction(String data) {
-        for (Node n : this.getChildren()) { // getChildren only return nodes,since all javafx elements extends note (kbs extends HBox, which extends note) , is ok
-            if (data.equals(n.getId())) { // compare input with id's of the KBS's ( which are set in constructor )
-                return (KBS) n;
-            }
-        }
-        return null;
-    }
 
     //                       _                   _
     //    ___ ___  _ __  ___| |_ _ __ _   _  ___| |_ ___  _ __
@@ -234,6 +204,7 @@ public class KBSManager extends VBox implements Animations {
         }
     }
 
+    boolean show = true;
 
     double scaleFunc(double input, double in_min, double in_max, double out_min, double out_max) {
         double calc = out_min + ((input - in_min) / (in_max - in_min)) * (out_max - out_min);
@@ -244,6 +215,34 @@ public class KBSManager extends VBox implements Animations {
         else
             return calc;
 
+    }
+
+    // used to return KBSs by ID e.g. bold
+    public KBS getKBSbyFunction(String data) {
+        for (Node n : this.getChildren()) { // getChildren only return nodes,since all javafx elements extends note (kbs extends HBox, which extends note) , is ok
+            if (data.equals(n.getId())) { // compare input with id's of the KBS's ( which are set in constructor )
+                return (KBS) n;
+            }
+        }
+        return null;
+    }
+
+    void show(boolean show) {
+        this.setVisible(show);
+        this.setManaged(show);
+    }
+
+    void toggleShow() {
+        System.out.println("KBSMANAGER SHOW TOGGLED");
+        if (show) {
+            this.setVisible(false);
+            this.setManaged(false);
+            this.show = false;
+        } else {
+            this.setVisible(true);
+            this.setManaged(true);
+            this.show = true;
+        }
     }
 
 }

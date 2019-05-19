@@ -22,9 +22,6 @@ public class OverlayPane extends BorderPane {
         this.setRight(km);
         this.InitializeRewardOMeter();
     }
-    KBSManager giveKM(){
-        return this.km; // TODO i dont think this is neccessary anymore. check n delete?
-    }
 
     public void InitializeRewardOMeter(){
         VBox rewardOMeterManager = new VBox();
