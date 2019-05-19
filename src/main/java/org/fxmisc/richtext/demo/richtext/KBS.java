@@ -112,7 +112,8 @@ public class KBS extends HBox implements UIColors {
 //  |_.__/ \__,_|\__|\__\___/|_| |_|
 //
     double buttonX;
-
+    double buttonY;
+    double buttonWidth;
     public void shortcutUsed() {
         if (ACTIVATED) {
             this.kbsTimesUsedTotal++;
@@ -160,8 +161,7 @@ public class KBS extends HBox implements UIColors {
     //   \ V /| \__ \ | |_) | | | | |_| |_| |
     //    \_/ |_|___/_|_.__/|_|_|_|\__|\__, |
     //                                 |___/
-    double buttonY;
-    double buttonWidth;
+
     boolean hovered;
     private boolean isHidden = true;
     private boolean isPinned = false;// todo, general thing: place properties above the function the relate to. if it's used a lot of places, i would place it up here
@@ -240,8 +240,6 @@ public class KBS extends HBox implements UIColors {
         this.ACTIVATED = !this.ACTIVATED;
     }
 
-// SHUNNED
-// SHUNNED STUFF
 
 //    public void pin(boolean isPinned) {
 //        this.isPinned = isPinned;
@@ -252,12 +250,6 @@ public class KBS extends HBox implements UIColors {
 //        }
 //    }
 
-    //    public void seekAttention() {
-//        ShakeTransition shakeTransition = new ShakeTransition(kbsPane);
-//        shakeTransition.setRate(5);
-//        shakeTransition.setInterpolator(Interpolator.EASE_OUT);
-//        shakeTransition.play();
-//    }
 }
 
 

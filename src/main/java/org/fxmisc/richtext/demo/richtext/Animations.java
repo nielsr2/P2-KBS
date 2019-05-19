@@ -6,10 +6,9 @@ import javafx.util.Duration;
 
 public interface Animations {
 
-
     double standardTime = 0.2;
 
-    static FadeTransition fade(double opacityEnd, double time, Node node) {
+    static void fade(double opacityEnd, double time, Node node) {
 
         double opacityStart = node.getOpacity();
 
@@ -19,13 +18,9 @@ public interface Animations {
         //fade.setCycleCount(Timeline.INDEFINITE);
         //fade.setAutoReverse(true);
         fade.play(); //start animation
-
-        return fade; // TODO REASONS FOR THIS RETURNING FADE?
-
-        //this.setOnMousePressed(e -> System.out.println("adasfdf"));
     }
 
-    static FadeTransition fade(double opacityEnd, Node node) {
+    static void fade(double opacityEnd, Node node) {
 
         double opacityStart = node.getOpacity();
 
@@ -35,9 +30,5 @@ public interface Animations {
         //fade.setCycleCount(Timeline.INDEFINITE);
         //fade.setAutoReverse(true);
         fade.play(); //start animation
-
-        return fade; // TODO REASONS FOR THIS RETURNING FADE?
-
-        //this.setOnMousePressed(e -> System.out.println("adasfdf"));
     }
 }

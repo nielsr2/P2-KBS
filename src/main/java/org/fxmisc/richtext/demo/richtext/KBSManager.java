@@ -155,12 +155,9 @@ public class KBSManager extends VBox implements Animations {
     }
 
     public void parseMouse(double x, double y) {
-//        System.out.println("KM OPACITY: " + this.getOpacity() + "       MOUSELOCK: " + this.mouseLock);
-
         // opacity for all base on mouse to toolbar y axis
         double mouseIconDistanceY = y - 12.5;
         double opacityY = this.scaleFunc(mouseIconDistanceY, 0, colorDistance, fadeMax + .2, fadeMin);
-
         for (Node n : this.getChildren()) {
             if (n.getClass().equals(KBS.class)) {
                 KBS k = ((KBS) n);
@@ -170,11 +167,8 @@ public class KBSManager extends VBox implements Animations {
                 double opacityXY = this.scaleFunc(mouseIconDistanceXY, 0, 100, fadeMax + .2, fadeMin);
 
 
-                if (k.isShown) {
-                    // if NOT mouse locked (is not hovered on toolbaricon, etc)
-
-
-                    if (anIconHovered || kmHovered) {
+                if (k.isShown) { // only affect KBS's that are shown...
+                    if (anIconHovered || kmHovered) { // if any toolbaricon or KBS area hovered, full opacity
                         k.setOpacity(1.);   // full opacity if any icon hovered
                     } else {
                         if (!textSelected) {

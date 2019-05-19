@@ -530,7 +530,6 @@ public class RichTextDemo extends Application {
             this.overlayPane.km.klm.setTimerForShortcutAllowance(true);
         });
         // *****************************
-//        DOING SOME ADDING WPA VBOX & KBMANAGER TO A GROUP
         Pane root = new Pane();
 
         //   _ __   __ _ _ __ ___  ___   _ __ ___   ___  _   _ ___  ___
