@@ -1,4 +1,4 @@
-package org.fxmisc.richtext.demo.richtext;
+package org.p2;
 
 import com.fxexperience.javafx.animation.BounceOutRightTransition;
 import com.fxexperience.javafx.animation.FadeInLeftTransition;
@@ -19,10 +19,11 @@ import java.math.BigDecimal;
 import java.math.RoundingMode;
 
 import static javafx.scene.text.TextAlignment.CENTER;
-import static org.fxmisc.richtext.demo.richtext.UIColors.setNotificationsColor;
+import static org.p2.UIColors.borderColor;
+import static org.p2.UIColors.setNotificationsColor;
 
 
-public class Notifications extends StackPane implements UIColors {
+public class Notifications extends StackPane {
 
     Rectangle backgroundRect;
 

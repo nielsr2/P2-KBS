@@ -1,4 +1,4 @@
-package org.fxmisc.richtext.demo.richtext;
+package org.p2;
 
 import javafx.geometry.Insets;
 import javafx.scene.Node;
@@ -11,9 +11,9 @@ import static javafx.geometry.Pos.BOTTOM_RIGHT;
 // change the shortcuts into single key KBS
 
 // make KBS list
-public class KBSManager extends VBox implements Animations {
+public class KBSManager extends VBox {
 
-    KLM klm = new KLM();
+    public KLM klm = new KLM();
     private String oprSystem = System.getProperty("os.name");
 
 
@@ -68,7 +68,13 @@ public class KBSManager extends VBox implements Animations {
     //  | | | | (_) \ V /  __/ |
     //  |_| |_|\___/ \_/ \___|_|
     //
-    boolean kmHovered, anyIconHovered, textSelected;
+    boolean kmHovered;
+    boolean anyIconHovered;
+    boolean textSelected;
+
+    public void setAnyIconHovered(boolean anyIconHovered) {
+        this.anyIconHovered = anyIconHovered;
+    }
 
     // this ensures that animations starting with opacity 0 does not show with full opacity for a split second.
     // The function is and needs to be called after the scene has been created. Non-instantiated cannot be hidden.
@@ -76,7 +82,7 @@ public class KBSManager extends VBox implements Animations {
         for (Node n : this.getChildren()) {
             KBS k = ((KBS) n);
             k.notifications.hide();
-            k.rewardOMeter.hide();
+            k.notification.hide();
             k.hide();
         }
     }
@@ -217,7 +223,7 @@ public class KBSManager extends VBox implements Animations {
         this.setManaged(show);
     }
 
-    void toggleShow() {
+    public void toggleShow() {
         System.out.println("KBSMANAGER SHOW TOGGLED");
         if (show) {
             this.setVisible(false);
@@ -230,7 +236,7 @@ public class KBSManager extends VBox implements Animations {
         }
     }
 
-    void toggleActivation() {
+    public void toggleActivation() {
         for (Node n : this.getChildren()) {
             if (n.getClass().equals(KBS.class)) {
                 KBS k = ((KBS) n);

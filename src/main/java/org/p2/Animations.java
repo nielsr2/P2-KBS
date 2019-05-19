@@ -1,12 +1,12 @@
-package org.fxmisc.richtext.demo.richtext;
+package org.p2;
 
 import javafx.animation.FadeTransition;
 import javafx.scene.Node;
 import javafx.util.Duration;
 
-public interface Animations {
+abstract class Animations {
 
-    double standardTime = 0.2;
+//    double standardTime = 0.2;
 
     static void fade(double opacityEnd, double time, Node node) {
 
@@ -24,7 +24,7 @@ public interface Animations {
 
         double opacityStart = node.getOpacity();
 
-        FadeTransition fade = new FadeTransition(Duration.seconds(standardTime), node);
+        FadeTransition fade = new FadeTransition(Duration.seconds(0.2), node);
         fade.setFromValue(opacityStart);
         fade.setToValue(opacityEnd);
         //fade.setCycleCount(Timeline.INDEFINITE);

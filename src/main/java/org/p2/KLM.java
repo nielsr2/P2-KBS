@@ -1,9 +1,9 @@
-package org.fxmisc.richtext.demo.richtext;
-
-import java.awt.*;
+package org.p2;
 
 import javafx.scene.control.Button;
 import javafx.scene.control.ToggleButton;
+
+import java.awt.*;
 
 public class KLM {
 

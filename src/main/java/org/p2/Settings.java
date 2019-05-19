@@ -1,4 +1,4 @@
-package org.fxmisc.richtext.demo.richtext;
+package org.p2;
 
 
 import java.awt.*;

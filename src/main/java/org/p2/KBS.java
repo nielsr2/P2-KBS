@@ -1,4 +1,4 @@
-package org.fxmisc.richtext.demo.richtext;
+package org.p2;
 
 import com.fxexperience.javafx.animation.BounceOutRightTransition;
 import com.fxexperience.javafx.animation.FadeInUpTransition;
@@ -19,8 +19,10 @@ import java.util.Timer;
 import java.util.TimerTask;
 import java.util.logging.Logger;
 
+import static org.p2.UIColors.*;
 
-public class KBS extends HBox implements UIColors {
+
+public class KBS extends HBox {
     private final static Logger LOGGER = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME); //Allows access for the logger
     public boolean isShown = false;
     //
@@ -34,10 +36,10 @@ public class KBS extends HBox implements UIColors {
     protected int kbsTimesUsedInstance = 0;
     protected int tbTimesClickedTotal = 0;
     protected int tbTimesClickedInstance = 0; //times clicked since last time shortcut were used
-    Notifications notifications;
+    public Notifications notifications;
     Text textStartConvince = new Text("When not using shortcuts, \n you are "); // this might be dumb way too do it
     Text textEndConvince = new Text(" times slower!");
-    Notifications rewardOMeter;
+    public Notifications notification;
 
 
     //                       _                   _
@@ -65,31 +67,11 @@ public class KBS extends HBox implements UIColors {
 //
     double buttonX;
     double buttonY;
-    double buttonWidth;
-
-    public void shortcutUsed() {
-        if (ACTIVATED) {
-            this.kbsTimesUsedTotal++;
-            this.kbsTimesUsedInstance++;
-            rewardOMeter.setKbsTimesUsedInstance(this.kbsTimesUsedInstance);
-
-            this.tbTimesClickedInstance = 0;
-
-            String kbsLog = Integer.toString(kbsTimesUsedTotal);
-            LOGGER.info(functionality + " KBS executed " + kbsLog); //Logs what KBS was used and the amount.
-
-            if (!this.isHidden && !this.isPinned) {
-                this.hide();
-                this.isHidden = true;
-            }
-            rewardOMeter.manageRewardOMeter(0.05, 8);
-        }
-    }
 
     KBS(String shortcutText, String functionality, String iconPath) {
 
         notifications = new Notifications(textStartConvince, textEndConvince, textAlertColor);
-        rewardOMeter = new Notifications(textStartReward, textMiddleReward, textEndReward, new Text(functionality), textApprovalColor);
+        notification = new Notifications(textStartReward, textMiddleReward, textEndReward, new Text(functionality), textApprovalColor);
 
         this.setUserData(functionality);
         this.setId(functionality);
@@ -135,6 +117,31 @@ public class KBS extends HBox implements UIColors {
         this.setManaged(false);
     }
 
+    double buttonWidth;
+
+    public void setButtonWidth(double buttonWidth) {
+        this.buttonWidth = buttonWidth;
+    }
+
+    public void shortcutUsed() {
+        if (ACTIVATED) {
+            this.kbsTimesUsedTotal++;
+            this.kbsTimesUsedInstance++;
+            notification.setKbsTimesUsedInstance(this.kbsTimesUsedInstance);
+
+            this.tbTimesClickedInstance = 0;
+
+            String kbsLog = Integer.toString(kbsTimesUsedTotal);
+            LOGGER.info(functionality + " KBS executed " + kbsLog); //Logs what KBS was used and the amount.
+
+            if (!this.isHidden && !this.isPinned) {
+                this.hide();
+                this.isHidden = true;
+            }
+            notification.manageRewardOMeter(0.05, 8);
+        }
+    }
+
 
     //         _     _ _     _ _ _ _
     //  __   ___)___(_) |__ (_) (_) |_ _   _
@@ -153,7 +160,7 @@ public class KBS extends HBox implements UIColors {
             notifications.tbTimesClickedInstance(this.tbTimesClickedInstance);
 
             this.kbsTimesUsedInstance = 0;
-            rewardOMeter.rewardShown = false;
+            notification.rewardShown = false;
             String tbLog = Integer.toString(tbTimesClickedTotal);
             LOGGER.info(functionality + " Toolbar clicked " + tbLog); //Logs what toolbar was clicked and the amount
             LOGGER.info(this.functionality + " clicked " + this.tbTimesClickedInstance + " times since last time shortcut were used"); //Logs amount until KBS used.
