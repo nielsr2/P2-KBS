@@ -34,10 +34,10 @@ public class KBS extends HBox implements UIColors {
     protected int kbsTimesUsedInstance = 0;
     protected int tbTimesClickedTotal = 0;
     protected int tbTimesClickedInstance = 0; //times clicked since last time shortcut were used
-    SkillOMeter convinceOMeter;
+    ConvinceOMeter convinceOMeter;
     Text textStartConvince = new Text("When not using shortcuts, \n you are "); // this might be dumb way too do it
     Text textEndConvince = new Text(" times slower!");
-    SkillOMeter rewardOMeter;
+    RewardOMeter rewardOMeter;
 
 
     //                       _                   _
@@ -55,8 +55,8 @@ public class KBS extends HBox implements UIColors {
 
     KBS(String shortcutText, String functionality, String iconPath) {
 
-        convinceOMeter = new SkillOMeter(textStartConvince, textEndConvince, textAlertColor);
-        rewardOMeter = new SkillOMeter(textStartReward, textMiddleReward, textEndReward, new Text(functionality), textApprovalColor);
+        convinceOMeter = new ConvinceOMeter(textStartConvince, textEndConvince, textAlertColor);
+        rewardOMeter = new RewardOMeter(textStartReward, textMiddleReward, textEndReward, new Text(functionality), textApprovalColor);
 
         this.setUserData(functionality);
         this.setId(functionality);
@@ -137,7 +137,7 @@ public class KBS extends HBox implements UIColors {
         if (ACTIVATED) {
             this.tbTimesClickedTotal++;
             this.tbTimesClickedInstance++;
-            convinceOMeter.tbTimesClickedInstance(this.tbTimesClickedInstance);
+            convinceOMeter.SetTbTimesClickedInstance(this.tbTimesClickedInstance);
 
             this.kbsTimesUsedInstance = 0;
             rewardOMeter.rewardShown = false;
