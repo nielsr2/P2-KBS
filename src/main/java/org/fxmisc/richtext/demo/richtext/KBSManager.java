@@ -7,16 +7,7 @@ import javafx.scene.layout.VBox;
 import static com.sun.xml.internal.ws.spi.db.BindingContextFactory.LOGGER;
 import static javafx.geometry.Pos.BOTTOM_RIGHT;
 
-// TODO add 'previously used shortcuts' that appears when some thing in here is hovered?
-// TODO make a log of session? (KBSused,ToolbarPressed etc.) probably want a timelime + sum up statistic
-// TODO *GENERAL THING*Can we say "you'll be when working 500% more effienct" percentage efficiency ( if we think only of 'actions performed' when using software, then KBS are clearly many %'s faster.
-// TODO MAKE A SETTINGS WINDOW FOR STUFF LIKE THE ANIMATIONS, FOCUS OPACITY ETC
-// TODO CHECK USER TESTING SCREENCAPS, TO SEE FOR HOW LONGER THEIR CURSOR IS NEAR TOOLBAR ICON?
-// TODO MAKE SELECTION KNOW WHEN USING CMD + SHIFT + ARROW
-// TODO make KBS into a mananagable list
-// TODO make KBS shortcut fit into box
-// TODO remove justify button + unneeded color button
-// TODO MAKE THE WINDOW SCALABLE AND MAKE KBS' FIT
+// TODO CHECK IF STUFF SHOULD BE PRIVATE, PUBLIC ETC.
 // change the shortcuts into single key KBS
 
 // make KBS list
@@ -24,8 +15,6 @@ public class KBSManager extends VBox implements Animations {
 
     KLM klm = new KLM();
     private String oprSystem = System.getProperty("os.name");
-
-
 
 
     //                       _                   _
@@ -73,22 +62,24 @@ public class KBSManager extends VBox implements Animations {
         this.setUpHovers();
     }
 
-    public void animationFix() {
-        for (Node n : this.getChildren()) {
-            KBS k = ((KBS) n);
-            k.convinceOMeter.hide();
-            k.rewardOMeter.hide();
-            k.hide();
-        }
-    }
-
     //   _
     //  | |__   _____   _____ _ __
     //  | '_ \ / _ \ \ / / _ \ '__|
     //  | | | | (_) \ V /  __/ |
     //  |_| |_|\___/ \_/ \___|_|
     //
-    boolean kmHovered, anIconHovered, textSelected;
+    boolean kmHovered, anyIconHovered, textSelected;
+
+    // this ensures that animations starting with opacity 0 does not show with full opacity for a split second.
+    // The function is and needs to be called after the scene has been created. Non-instantiated cannot be hidden.
+    public void animationFix() {
+        for (Node n : this.getChildren()) {
+            KBS k = ((KBS) n);
+            k.notifications.hide();
+            k.rewardOMeter.hide();
+            k.hide();
+        }
+    }
     //
     //   _ __ ___   ___  _   _ ___  ___
     //  | '_ ` _ \ / _ \| | | / __|/ _ \
@@ -105,6 +96,8 @@ public class KBSManager extends VBox implements Animations {
 //
     public void selectionOn() {
         System.out.println("SELECTION ON DETECTED");
+
+        this.textSelected = true;
         for (Node n : this.getChildren()) {
             if (n.getClass().equals(KBS.class)) {
                 KBS k = ((KBS) n);
@@ -118,6 +111,7 @@ public class KBSManager extends VBox implements Animations {
 
     public void selectionOff() {
         System.out.println("SELECTION OFF DETECTED");
+        this.textSelected = false;
         for (Node n : this.getChildren()) {
             if (n.getClass().equals(KBS.class)) {
                 KBS k = ((KBS) n);
@@ -155,31 +149,28 @@ public class KBSManager extends VBox implements Animations {
     }
 
     public void parseMouse(double x, double y) {
-        // opacity for all base on mouse to toolbar y axis
+        // opacity for all based on mouse to toolbar distance, y axis
         double mouseIconDistanceY = y - 12.5;
-        double opacityY = this.scaleFunc(mouseIconDistanceY, 0, colorDistance, fadeMax + .2, fadeMin);
+        double opacityY = this.scaleAndClip(mouseIconDistanceY, 0, colorDistance, fadeMax + .2, fadeMin);
         for (Node n : this.getChildren()) {
             if (n.getClass().equals(KBS.class)) {
                 KBS k = ((KBS) n);
-                double mouseIconDistanceXY = Math.sqrt(Math.pow(x - k.buttonX, 2) + Math.pow(y - k.buttonY, 2));
-                double colorOpacityXY = this.scaleFunc(mouseIconDistanceXY, 0, 100, 1., 0);
-
-                double opacityXY = this.scaleFunc(mouseIconDistanceXY, 0, 100, fadeMax + .2, fadeMin);
-
-
+//                double mouseIconDistanceXY = Math.sqrt(Math.pow(x - k.buttonX, 2) + Math.pow(y - k.buttonY, 2));
+//                double colorOpacityXY = this.scaleAndClip(mouseIconDistanceXY, 0, 100, 1., 0);
+//                double opacityXY = this.scaleAndClip(mouseIconDistanceXY, 0, 100, fadeMax + .2, fadeMin);
                 if (k.isShown) { // only affect KBS's that are shown...
-                    if (anIconHovered || kmHovered) { // if any toolbaricon or KBS area hovered, full opacity
-                        k.setOpacity(1.);   // full opacity if any icon hovered
+                    if (anyIconHovered || kmHovered) { // if any toolbar icon or KBS area hovered, full opacity
+                        k.setOpacity(1.);
                     } else {
                         if (!textSelected) {
                             k.setOpacity(opacityY); // gradual opacity
                         }
                         double mouseIconDistance = Math.sqrt(Math.pow(x - k.buttonX, 2) + Math.pow(y - k.buttonY, 2));
-                        double colorOpacity = this.scaleFunc(mouseIconDistance, 0, opacityDistance, 1., 0);
+                        double colorOpacity = this.scaleAndClip(mouseIconDistance, 0, opacityDistance, 1., 0);
                         k.colorRect.setOpacity(colorOpacity);
                     }
                     // if showing messages, don't be faded
-                    if (k.convinceOMeter.isBeingAnimatedConvince) {
+                    if (k.notifications.isBeingAnimatedConvince) {
                         k.setOpacity(1);
                     }
                 }
@@ -200,7 +191,7 @@ public class KBSManager extends VBox implements Animations {
 
     boolean show = true;
 
-    double scaleFunc(double input, double in_min, double in_max, double out_min, double out_max) {
+    double scaleAndClip(double input, double in_min, double in_max, double out_min, double out_max) {
         double calc = out_min + ((input - in_min) / (in_max - in_min)) * (out_max - out_min);
         if (calc < out_max)
             return out_max;
@@ -239,4 +230,12 @@ public class KBSManager extends VBox implements Animations {
         }
     }
 
+    void toggleActivation() {
+        for (Node n : this.getChildren()) {
+            if (n.getClass().equals(KBS.class)) {
+                KBS k = ((KBS) n);
+                k.toggleActivation();
+            }
+        }
+    }
 }

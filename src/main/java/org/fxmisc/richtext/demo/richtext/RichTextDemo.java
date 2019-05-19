@@ -137,10 +137,10 @@ public class RichTextDemo extends Application {
         KeyCombination kcShow = new KeyCodeCombination(KeyCode.W, KeyCombination.SHORTCUT_DOWN);
         Runnable rnShow = () -> overlayPane.km.toggleShow(); //this.toggleBold();
 //     BOLD BUTTON  *********************************************************************************************************           BOLD BUTTON
-        boldBtn = createButton("bold", this::toggleBold, "Bold");
+        boldBtn = createButton("bold", this::toggleBold, "Bold (CMD/CTRL+B)");
         boldBtn.setOnMouseClicked((event) -> {
             overlayPane.km.klm.stopTimerForToolbar();
-            overlayPane.km.getKBSbyFunction("bold").convinceOMeter.setSkillNr(overlayPane.km.klm.getTimesSlower());
+            overlayPane.km.getKBSbyFunction("bold").notifications.setSkillNr(overlayPane.km.klm.getTimesSlower());
             overlayPane.km.getKBSbyFunction("bold").toolbarPressed();
         });
 //        boldBtn
@@ -150,10 +150,10 @@ public class RichTextDemo extends Application {
 //      *********************************************************************************************************
 
         ///////////////// ITALIC BUTTON /////////////////////////////
-        italicBtn = createButton("italic", this::toggleItalic, "Italic");
+        italicBtn = createButton("italic", this::toggleItalic, "Italic (CMD/CTRL+I)");
         italicBtn.setOnMouseClicked((event) -> {
             overlayPane.km.klm.stopTimerForToolbar();
-            overlayPane.km.getKBSbyFunction("italic").convinceOMeter.setSkillNr(overlayPane.km.klm.getTimesSlower());
+            overlayPane.km.getKBSbyFunction("italic").notifications.setSkillNr(overlayPane.km.klm.getTimesSlower());
             overlayPane.km.getKBSbyFunction("italic").toolbarPressed();
         });
         KeyCombination kcItalic = new KeyCodeCombination(KeyCode.I, KeyCombination.SHORTCUT_DOWN);
@@ -161,10 +161,10 @@ public class RichTextDemo extends Application {
         Runnable rnItalic = () -> ourItalicFunction(); //this.toggleItalic
 
         ////////////////// UNDERLINE BUTTON /////////////////////////
-        underlineBtn = createButton("underline", this::toggleUnderline, "Underline");
+        underlineBtn = createButton("underline", this::toggleUnderline, "Underline (CMD/CTRL+U)");
         underlineBtn.setOnMouseClicked((event) -> {
             overlayPane.km.klm.stopTimerForToolbar();
-            overlayPane.km.getKBSbyFunction("underline").convinceOMeter.setSkillNr(overlayPane.km.klm.getTimesSlower());
+            overlayPane.km.getKBSbyFunction("underline").notifications.setSkillNr(overlayPane.km.klm.getTimesSlower());
             overlayPane.km.getKBSbyFunction("underline").toolbarPressed();
         });
         KeyCombination kcUnderline = new KeyCodeCombination(KeyCode.U, KeyCombination.SHORTCUT_DOWN);
@@ -172,10 +172,10 @@ public class RichTextDemo extends Application {
         Runnable rnUnderline = () -> ourUnderlineFunction();//this.toggleUnderline();
 
         ///////////////// STRIKE THROUGH BUTTON ////////////////////
-        strikeBtn = createButton("strikethrough", this::toggleStrikethrough, "Strike Trough");
+        strikeBtn = createButton("strikethrough", this::toggleStrikethrough, "Strike Trough (CMD/CTRL+T)");
         strikeBtn.setOnMouseClicked((event) -> {
             overlayPane.km.klm.stopTimerForToolbar();
-            overlayPane.km.getKBSbyFunction("strikethrough").convinceOMeter.setSkillNr(overlayPane.km.klm.getTimesSlower());
+            overlayPane.km.getKBSbyFunction("strikethrough").notifications.setSkillNr(overlayPane.km.klm.getTimesSlower());
             overlayPane.km.getKBSbyFunction("strikethrough").toolbarPressed();
         });
         KeyCombination kcStrike = new KeyCodeCombination(KeyCode.T, KeyCombination.SHORTCUT_DOWN);
@@ -186,7 +186,7 @@ public class RichTextDemo extends Application {
         insertImageBtn = createButton("insertimage", this::insertImage, "Insert Image");
         insertImageBtn.setOnMouseClicked((event) -> {
             overlayPane.km.klm.stopTimerForToolbar();
-            overlayPane.km.getKBSbyFunction("insertimage").convinceOMeter.setSkillNr(overlayPane.km.klm.getTimesSlower());
+            overlayPane.km.getKBSbyFunction("insertimage").notifications.setSkillNr(overlayPane.km.klm.getTimesSlower());
             overlayPane.km.getKBSbyFunction("insertimage").toolbarPressed();
         });
         KeyCombination kcInsertImage = new KeyCodeCombination(KeyCode.P, KeyCombination.SHORTCUT_DOWN);
@@ -196,11 +196,11 @@ public class RichTextDemo extends Application {
         ToggleGroup alignmentGrp = new ToggleGroup();
 
         /////////////// ALIGN LEFT BUTTON ////////////////////////
-        alignLeftBtn = createToggleButton(alignmentGrp, "align-left", this::alignLeft, "Align left");
+        alignLeftBtn = createToggleButton(alignmentGrp, "align-left", this::alignLeft, "Align left (CMD/CTRL+L)");
 
         alignLeftBtn.setOnMouseClicked((event) -> {
             overlayPane.km.klm.stopTimerForToolbar();
-            overlayPane.km.getKBSbyFunction("align-left").convinceOMeter.setSkillNr(overlayPane.km.klm.getTimesSlower());
+            overlayPane.km.getKBSbyFunction("align-left").notifications.setSkillNr(overlayPane.km.klm.getTimesSlower());
             overlayPane.km.getKBSbyFunction("align-left").toolbarPressed();
         });
         KeyCombination kcAlignLeft = new KeyCodeCombination(KeyCode.L, KeyCombination.SHORTCUT_DOWN);
@@ -208,10 +208,10 @@ public class RichTextDemo extends Application {
         Runnable rnAlignLeft = () -> ourAlignLeftFunction();//this.alignLeft();
 
         ////////////// ALIGN CENTER BUTTON //////////////////////
-        alignCenterBtn = createToggleButton(alignmentGrp, "align-center", this::alignCenter, "Align center");
+        alignCenterBtn = createToggleButton(alignmentGrp, "align-center", this::alignCenter, "Align center (CMD/CTRL+E)");
         alignCenterBtn.setOnMouseClicked((event) -> {
             overlayPane.km.klm.stopTimerForToolbar();
-            overlayPane.km.getKBSbyFunction("align-center").convinceOMeter.setSkillNr(overlayPane.km.klm.getTimesSlower());
+            overlayPane.km.getKBSbyFunction("align-center").notifications.setSkillNr(overlayPane.km.klm.getTimesSlower());
             overlayPane.km.getKBSbyFunction("align-center").toolbarPressed();
         });
         KeyCombination kcAlignCenter = new KeyCodeCombination(KeyCode.E, KeyCombination.SHORTCUT_DOWN);
@@ -219,10 +219,10 @@ public class RichTextDemo extends Application {
         Runnable rnAlignCenter = () -> ourAlignCenterFunction();//this.alignCenter();
 
         ///////////// ALIGN RIGHT BUTTON ///////////////////////
-        alignRightBtn = createToggleButton(alignmentGrp, "align-right", this::alignRight, "Align right");
+        alignRightBtn = createToggleButton(alignmentGrp, "align-right", this::alignRight, "Align right (CMD/CTRL+R)");
         alignRightBtn.setOnMouseClicked((event) -> {
             overlayPane.km.klm.stopTimerForToolbar();
-            overlayPane.km.getKBSbyFunction("align-right").convinceOMeter.setSkillNr(overlayPane.km.klm.getTimesSlower());
+            overlayPane.km.getKBSbyFunction("align-right").notifications.setSkillNr(overlayPane.km.klm.getTimesSlower());
             overlayPane.km.getKBSbyFunction("align-right").toolbarPressed();
         });
         KeyCombination kcAlignRight = new KeyCodeCombination(KeyCode.R, KeyCombination.SHORTCUT_DOWN);
@@ -230,10 +230,10 @@ public class RichTextDemo extends Application {
         Runnable rnAlignRight = () -> ourAlignRightFunction();//this.alignRight();
 
         //////////// ALIGN JUSTIFY /////////////////////////
-        alignJustifyBtn = createToggleButton(alignmentGrp, "align-justify", this::alignJustify, "Justify");
+        alignJustifyBtn = createToggleButton(alignmentGrp, "align-justify", this::alignJustify, "Justify (CMD/CTRL+J)");
         alignJustifyBtn.setOnMouseClicked((event) -> {
             overlayPane.km.klm.stopTimerForToolbar();
-            overlayPane.km.getKBSbyFunction("align-justify").convinceOMeter.setSkillNr(overlayPane.km.klm.getTimesSlower());
+            overlayPane.km.getKBSbyFunction("align-justify").notifications.setSkillNr(overlayPane.km.klm.getTimesSlower());
             overlayPane.km.getKBSbyFunction("align-justify").toolbarPressed();
         });
         KeyCombination kcAlignJustify = new KeyCodeCombination(KeyCode.J, KeyCombination.SHORTCUT_DOWN);
@@ -469,7 +469,6 @@ public class RichTextDemo extends Application {
             if (textHighlighted) {
 //                overlayPane.km.fade(1, 0.2);
 
-                overlayPane.km.textSelected = true;
                 overlayPane.km.selectionOn();
 //                overlayPane.km.parseMouse(0,0);
 
@@ -477,7 +476,6 @@ public class RichTextDemo extends Application {
                 overlayPane.km.selectionOff();
 //                overlayPane.km.fade(0.2, 0.2);
                 overlayPane.km.klm.stopTimerForToolbar();
-                overlayPane.km.textSelected = false;
 //                overlayPane.km.parseMouse(0,0);
             }
             overlayPane.km.klm.setTimerForToolbarAllowance(true);
@@ -518,11 +516,7 @@ public class RichTextDemo extends Application {
 //                    overlayPane.km.fade(1, 0.2);
             }
             if (e.isShortcutDown() && e.isShiftDown() && e.getCode() == KeyCode.O) {
-                for (Node n : this.overlayPane.km.getChildren()) {
-                    KBS k = ((KBS) n);
-                    k.toggleActivation();
-//                    System.out.println("kACTIVITITY " + k.isACTIVATED());
-                }
+                this.overlayPane.km.toggleActivation();
             }
         });
         area.setOnKeyReleased(e -> {
@@ -792,30 +786,21 @@ public class RichTextDemo extends Application {
         // ################################################################
         // ################################################################
         if (selection.getLength() == 0) {
-//            area.deselect();
-
-//            System.out.println("area.getCaretPosition(): " + area.getCaretPosition());
-//            area.selectRange(area.getCaretPosition() - 1, area.getCaretPosition());
             int CurrentParagraph = area.getCurrentParagraph();
             int CaretPosition = area.getCaretPosition();
             int CaretColumn = area.getCaretColumn();
             int anchor = area.getAnchor();
-            System.out.println("CurrentParagraph: " + CurrentParagraph + " CaretPosition: " + CaretPosition + " CaretColumn: " + CaretColumn + " anchor: " + anchor);
-            System.out.println("Selection: " + area.getSelection());
-//            System.out.println("        P: " + p + "        COL: " + col + "       anchor: " + an);
-            area.insertText(CurrentParagraph, CaretColumn, "\u200B");
+//            System.out.println("CurrentParagraph: " + CurrentParagraph + " CaretPosition: " + CaretPosition + " CaretColumn: " + CaretColumn + " anchor: " + anchor);
+//            System.out.println("Selection: " + area.getSelection());
+            area.insertText(CurrentParagraph, CaretColumn, "\u200B"); // insert invisible zero-width space after caret
 
             IndexRange sel = area.getSelection();
-            area.selectRange(sel.getStart() - 1, sel.getStart());
+            area.selectRange(sel.getStart() - 1, sel.getStart()); // move caret after character added
             sel = area.getSelection();
-            StyleSpans<TextStyle> styles = area.getStyleSpans(CurrentParagraph);
-            System.out.println("styles: " + styles);
+            StyleSpans<TextStyle> styles = area.getStyleSpans(sel);
             TextStyle mixin = mixinGetter.apply(styles);
-            System.out.println("mixin: " + mixin);
-            StyleSpans<TextStyle> styles2 = area.getStyleSpans(sel);
-            TextStyle mixin2 = mixinGetter.apply(styles2);
-            StyleSpans<TextStyle> newStyles2 = styles2.mapStyles(style -> style.updateWith(mixin2));
-            area.setStyleSpans(sel.getStart(), newStyles2);
+            StyleSpans<TextStyle> newStyles = styles.mapStyles(style -> style.updateWith(mixin));
+            area.setStyleSpans(sel.getStart(), newStyles);
             area.deselect();
 
         }
@@ -897,14 +882,14 @@ public class RichTextDemo extends Application {
             this.overlayPane.km.getKBSbyFunction(functionality).hoverShake();
             this.overlayPane.km.getKBSbyFunction(functionality).setHovered(true);
             this.overlayPane.km.disableColor();
-            this.overlayPane.km.anIconHovered = true;
-//            System.out.println("this.overlayPane.km.anIconHovered: " + this.overlayPane.km.anIconHovered);
+            this.overlayPane.km.anyIconHovered = true;
+//            System.out.println("this.overlayPane.km.anyIconHovered: " + this.overlayPane.km.anyIconHovered);
 //            }
         }));
         button.setOnMouseExited((e -> {
             this.overlayPane.km.getKBSbyFunction(functionality).setHovered(false);
-            this.overlayPane.km.anIconHovered = false;
-//            System.out.println("this.overlayPane.km.anIconHovered: " + this.overlayPane.km.anIconHovered);
+            this.overlayPane.km.anyIconHovered = false;
+//            System.out.println("this.overlayPane.km.anyIconHovered: " + this.overlayPane.km.anyIconHovered);
         }));
     }
 
@@ -916,12 +901,12 @@ public class RichTextDemo extends Application {
             this.overlayPane.km.getKBSbyFunction(functionality).hoverShake();
             this.overlayPane.km.getKBSbyFunction(functionality).setHovered(true);
             this.overlayPane.km.disableColor();
-            this.overlayPane.km.anIconHovered = true;
+            this.overlayPane.km.anyIconHovered = true;
 //            }
         }));
         button.setOnMouseExited((e -> {
             this.overlayPane.km.getKBSbyFunction(functionality).setHovered(false);
-            this.overlayPane.km.anIconHovered = false;
+            this.overlayPane.km.anyIconHovered = false;
         }));
     }
 

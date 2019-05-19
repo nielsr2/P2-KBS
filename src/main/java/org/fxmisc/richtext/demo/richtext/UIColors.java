@@ -32,7 +32,7 @@ public interface UIColors {
         return linearGradient;
     }
 
-    static LinearGradient setSkillOMeterColor() {
+    static LinearGradient setNotificationsColor() {
         Color colorLeft = Color.web("#CCCCCF");
         Color colorRight = Color.web("#BBBBBC");
 

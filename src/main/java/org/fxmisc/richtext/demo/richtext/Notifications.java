@@ -19,10 +19,10 @@ import java.math.BigDecimal;
 import java.math.RoundingMode;
 
 import static javafx.scene.text.TextAlignment.CENTER;
-import static org.fxmisc.richtext.demo.richtext.UIColors.setSkillOMeterColor;
+import static org.fxmisc.richtext.demo.richtext.UIColors.setNotificationsColor;
 
 
-public class SkillOMeter extends StackPane implements UIColors {
+public class Notifications extends StackPane implements UIColors {
 
     Rectangle backgroundRect;
 
@@ -40,13 +40,13 @@ public class SkillOMeter extends StackPane implements UIColors {
     private Color skillNrColor;
     private double skillNr;
     private Text skillNrText = new Text();
-    private String skillNrString;
+    private String textNumber;
     public boolean rewardShown = false;
 
     private int tbTimesClickedInstance;
     private int kbsTimesUsedInstance;
 
-    SkillOMeter(Text textStart, Text textMiddle, Text textEnd, Text textFunctionality, Color skillNrColor) {
+    Notifications(Text textStart, Text textMiddle, Text textEnd, Text textFunctionality, Color skillNrColor) {
 
         this.textStart = textStart;
         this.textMiddle = textMiddle;
@@ -75,7 +75,7 @@ public class SkillOMeter extends StackPane implements UIColors {
         skillNrText.setFill(this.skillNrColor);
         textEnd.setFont(Font.font("San Fransisco", 12));
 
-        backgroundRect = new Rectangle(width, height, setSkillOMeterColor());
+        backgroundRect = new Rectangle(width, height, setNotificationsColor());
         backgroundRect.setArcHeight(100);
         backgroundRect.setArcWidth(40);
         backgroundRect.setStroke(borderColor);
@@ -86,7 +86,7 @@ public class SkillOMeter extends StackPane implements UIColors {
 
     }
 
-    SkillOMeter(Text textStart, Text textEnd, Color skillNrColor) {
+    Notifications(Text textStart, Text textEnd, Color skillNrColor) {
 
         this.textStart = textStart;
         this.textEnd = textEnd;
@@ -111,7 +111,7 @@ public class SkillOMeter extends StackPane implements UIColors {
         skillNrText.setFill(this.skillNrColor);
         textEnd.setFont(Font.font("San Fransisco", 12));
 
-        backgroundRect = new Rectangle(width, height, setSkillOMeterColor());
+        backgroundRect = new Rectangle(width, height, setNotificationsColor());
         backgroundRect.setArcHeight(100);
         backgroundRect.setArcWidth(40);
         backgroundRect.setStroke(borderColor);
@@ -131,8 +131,8 @@ public class SkillOMeter extends StackPane implements UIColors {
     }
 
     public void showText() {
-        skillNrString = Double.toString(this.skillNr);
-        skillNrText.setText(skillNrString);
+        textNumber = Double.toString(this.skillNr);
+        skillNrText.setText(textNumber);
     }
 
     public double getSkillNr() {
@@ -145,7 +145,7 @@ public class SkillOMeter extends StackPane implements UIColors {
         this.skillNr = newInput;
     }
 
-    public void manageConvinceOMeter(double lowerThreshold, double upperThreshold) {
+    public void manageNotifications(double lowerThreshold, double upperThreshold) {
 
         if (tbTimesClickedInstance > 1 && getSkillNr() < upperThreshold && getSkillNr() > lowerThreshold && !this.isBeingAnimatedConvince) {
             setVisible(true);

@@ -15,7 +15,7 @@
 //import static javafx.scene.text.TextAlignment.CENTER;
 //
 //
-//public class ConvinceOMeter extends StackPane implements UIColors {
+//public class Notifications extends StackPane implements UIColors {
 //
 //    Rectangle backgroundRect;
 //
@@ -36,7 +36,7 @@
 //    }
 //
 //
-//    ConvinceOMeter() {
+//    Notifications() {
 //
 //
 //        this.setVisible(false);
@@ -56,7 +56,7 @@
 //        timesSlowerText.setFill(textAlertColor);
 //        textEnd.setFont(Font.font("Sergoe UI", 12));
 //
-//        backgroundRect = new Rectangle(width, height, UIColors.setSkillOMeterColor());
+//        backgroundRect = new Rectangle(width, height, UIColors.setNotificationsColor());
 //        backgroundRect.setArcHeight(100);
 //        backgroundRect.setArcWidth(40);
 //        backgroundRect.setStroke(borderColor);
@@ -79,7 +79,7 @@
 //        this.timesSlower = newInput;
 //    }
 //
-//    public void manageConvinceOMeter() {
+//    public void manageNotifications() {
 //        int upperThreshold = 8;
 //        double lowerThreshold = 1.5;
 //        if (tbTimesClickedInstance > 1 && getTimesSlower() < upperThreshold && getTimesSlower() > lowerThreshold) {

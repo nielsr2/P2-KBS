@@ -34,10 +34,10 @@ public class KBS extends HBox implements UIColors {
     protected int kbsTimesUsedInstance = 0;
     protected int tbTimesClickedTotal = 0;
     protected int tbTimesClickedInstance = 0; //times clicked since last time shortcut were used
-    SkillOMeter convinceOMeter;
+    Notifications notifications;
     Text textStartConvince = new Text("When not using shortcuts, \n you are "); // this might be dumb way too do it
     Text textEndConvince = new Text(" times slower!");
-    SkillOMeter rewardOMeter;
+    Notifications rewardOMeter;
 
 
     //                       _                   _
@@ -52,11 +52,44 @@ public class KBS extends HBox implements UIColors {
     Pane kbsPane = new Pane();
     String functionality;
     Text textMiddleReward = new Text(" shortcut, \n you are ");
+    private boolean isPinned = false;
+
+    Text textEndReward = new Text(" times faster!");
+    Text shortcutText;
+    HBox content;
+    //   _           _   _
+//  | |__  _   _| |_| |_ ___  _ __
+//  | '_ \| | | | __| __/ _ \| '_ \
+//  | |_) | |_| | |_| |_ (_) | | | |
+//  |_.__/ \__,_|\__|\__\___/|_| |_|
+//
+    double buttonX;
+    double buttonY;
+    double buttonWidth;
+
+    public void shortcutUsed() {
+        if (ACTIVATED) {
+            this.kbsTimesUsedTotal++;
+            this.kbsTimesUsedInstance++;
+            rewardOMeter.setKbsTimesUsedInstance(this.kbsTimesUsedInstance);
+
+            this.tbTimesClickedInstance = 0;
+
+            String kbsLog = Integer.toString(kbsTimesUsedTotal);
+            LOGGER.info(functionality + " KBS executed " + kbsLog); //Logs what KBS was used and the amount.
+
+            if (!this.isHidden && !this.isPinned) {
+                this.hide();
+                this.isHidden = true;
+            }
+            rewardOMeter.manageRewardOMeter(0.05, 8);
+        }
+    }
 
     KBS(String shortcutText, String functionality, String iconPath) {
 
-        convinceOMeter = new SkillOMeter(textStartConvince, textEndConvince, textAlertColor);
-        rewardOMeter = new SkillOMeter(textStartReward, textMiddleReward, textEndReward, new Text(functionality), textApprovalColor);
+        notifications = new Notifications(textStartConvince, textEndConvince, textAlertColor);
+        rewardOMeter = new Notifications(textStartReward, textMiddleReward, textEndReward, new Text(functionality), textApprovalColor);
 
         this.setUserData(functionality);
         this.setId(functionality);
@@ -88,7 +121,7 @@ public class KBS extends HBox implements UIColors {
         // ADD
         content.getChildren().addAll(this.icon, this.shortcutText);
         kbsPane.getChildren().addAll(backgroundRect, colorRect, content);
-        this.getChildren().addAll(convinceOMeter, kbsPane);
+        this.getChildren().addAll(notifications, kbsPane);
 
 //        this.setOnMouseClicked(event -> {     // i dont understand the point of dis?
 //            this.ACTIVATED = false;
@@ -102,42 +135,22 @@ public class KBS extends HBox implements UIColors {
         this.setManaged(false);
     }
 
-    Text textEndReward = new Text(" times faster!");
-    Text shortcutText;
-    HBox content;
-    //   _           _   _
-//  | |__  _   _| |_| |_ ___  _ __
-//  | '_ \| | | | __| __/ _ \| '_ \
-//  | |_) | |_| | |_| |_ (_) | | | |
-//  |_.__/ \__,_|\__|\__\___/|_| |_|
-//
-    double buttonX;
-    double buttonY;
-    double buttonWidth;
-    public void shortcutUsed() {
-        if (ACTIVATED) {
-            this.kbsTimesUsedTotal++;
-            this.kbsTimesUsedInstance++;
-            rewardOMeter.setKbsTimesUsedInstance(this.kbsTimesUsedInstance);
 
-            this.tbTimesClickedInstance = 0;
+    //         _     _ _     _ _ _ _
+    //  __   ___)___(_) |__ (_) (_) |_ _   _
+    //  \ \ / / / __| | '_ \| | | | __| | | |
+    //   \ V /| \__ \ | |_) | | | | |_| |_| |
+    //    \_/ |_|___/_|_.__/|_|_|_|\__|\__, |
+    //                                 |___/
 
-            String kbsLog = Integer.toString(kbsTimesUsedTotal);
-            LOGGER.info(functionality + " KBS executed " + kbsLog); //Logs what KBS was used and the amount.
-
-            if (!this.isHidden && !this.isPinned) {
-                this.hide();
-                this.isHidden = true;
-            }
-            rewardOMeter.manageRewardOMeter(0.05, 8);
-        }
-    }
+    boolean hovered;
+    private boolean isHidden = true;
 
     public void toolbarPressed() {
         if (ACTIVATED) {
             this.tbTimesClickedTotal++;
             this.tbTimesClickedInstance++;
-            convinceOMeter.tbTimesClickedInstance(this.tbTimesClickedInstance);
+            notifications.tbTimesClickedInstance(this.tbTimesClickedInstance);
 
             this.kbsTimesUsedInstance = 0;
             rewardOMeter.rewardShown = false;
@@ -150,21 +163,9 @@ public class KBS extends HBox implements UIColors {
             } else {
 //            this.seekAttention();
             }
-            convinceOMeter.manageConvinceOMeter(1.5, 8);
+            notifications.manageNotifications(1.5, 8);
         }
     }
-
-
-    //         _     _ _     _ _ _ _
-    //  __   ___)___(_) |__ (_) (_) |_ _   _
-    //  \ \ / / / __| | '_ \| | | | __| | | |
-    //   \ V /| \__ \ | |_) | | | | |_| |_| |
-    //    \_/ |_|___/_|_.__/|_|_|_|\__|\__, |
-    //                                 |___/
-
-    boolean hovered;
-    private boolean isHidden = true;
-    private boolean isPinned = false;// todo, general thing: place properties above the function the relate to. if it's used a lot of places, i would place it up here
     //              _   _            _   _
     //    __ _  ___| |_(_)_   ____ _| |_(_) ___  _ __
     //   / _` |/ __| __| \ \ / / _` | __| |/ _ \| '_ \
