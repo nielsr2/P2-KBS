@@ -34,15 +34,15 @@ public class OverlayPane extends BorderPane {
         notificationManager.getChildren().add(notificationPane);
 
         notificationPane.getChildren().addAll(
-                km.getKBSbyFunction("bold").notification,
-                km.getKBSbyFunction("italic").notification,
-                km.getKBSbyFunction("underline").notification,
-                km.getKBSbyFunction("strikethrough").notification,
-                km.getKBSbyFunction("insertimage").notification,
-                km.getKBSbyFunction("align-right").notification,
-                km.getKBSbyFunction("align-center").notification,
-                km.getKBSbyFunction("align-left").notification,
-                km.getKBSbyFunction("align-justify").notification
+                km.getKBSbyFunction("bold").rewardNotification,
+                km.getKBSbyFunction("italic").rewardNotification,
+                km.getKBSbyFunction("underline").rewardNotification,
+                km.getKBSbyFunction("strikethrough").rewardNotification,
+                km.getKBSbyFunction("insertimage").rewardNotification,
+                km.getKBSbyFunction("align-right").rewardNotification,
+                km.getKBSbyFunction("align-center").rewardNotification,
+                km.getKBSbyFunction("align-left").rewardNotification,
+                km.getKBSbyFunction("align-justify").rewardNotification
         );
 
 
