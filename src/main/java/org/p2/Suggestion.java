@@ -22,7 +22,7 @@ import java.util.logging.Logger;
 import static org.p2.UIColors.*;
 
 
-public class KBS extends HBox {
+public class Suggestion extends HBox {
     private final static Logger LOGGER = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME); //Allows access for the logger
     public boolean isShown = false;
     //
@@ -51,7 +51,7 @@ public class KBS extends HBox {
     public Rectangle backgroundRect, colorRect;
     ImageView icon;
     Text textStartReward = new Text("When using the \n");
-    Pane kbsPane = new Pane();
+    Pane suggestionPane = new Pane();
     String functionality;
     Text textMiddleReward = new Text(" shortcut, \n you are ");
     private boolean isPinned = false;
@@ -61,7 +61,7 @@ public class KBS extends HBox {
     HBox content;
 
 
-    KBS(String shortcutText, String functionality, String iconPath) {
+    Suggestion(String shortcutText, String functionality, String iconPath) {
 
         convinceNotification = new ConvinceNotification(textStartConvince, textEndConvince, textAlertColor);
         rewardNotification = new RewardNotification(textStartReward, textMiddleReward, textEndReward, new Text(functionality), textApprovalColor);
@@ -76,10 +76,10 @@ public class KBS extends HBox {
         backgroundRect = new Rectangle(170, 50, Color.LIGHTGREY);
         backgroundRect.setStroke(borderColor);
         backgroundRect.setOpacity(0.8);
-        this.backgroundRect.setFill(UIColors.setKBSColor());
+        this.backgroundRect.setFill(UIColors.setSuggestionColor());
 
         // COLOR OVERLAY
-        colorRect = new Rectangle(170, 50, UIColors.setKBSAlertColor());
+        colorRect = new Rectangle(170, 50, UIColors.setSuggestionAlertColor());
         colorRect.setStroke(borderColor);
 
         // STYLING
@@ -95,8 +95,8 @@ public class KBS extends HBox {
 
         // ADD
         content.getChildren().addAll(this.icon, this.shortcutText);
-        kbsPane.getChildren().addAll(backgroundRect, colorRect, content);
-        this.getChildren().addAll(convinceNotification, kbsPane);
+        suggestionPane.getChildren().addAll(backgroundRect, colorRect, content);
+        this.getChildren().addAll(convinceNotification, suggestionPane);
 
 //        this.setOnMouseClicked(event -> {     // i dont understand the point of dis?
 //            this.ACTIVATED = false;
@@ -134,7 +134,7 @@ public class KBS extends HBox {
             this.tbTimesClickedInstance = 0;
 
             String kbsLog = Integer.toString(kbsTimesUsedTotal);
-            LOGGER.info(functionality + " KBS executed " + kbsLog); //Logs what KBS was used and the amount.
+            LOGGER.info(functionality + " Suggestion executed " + kbsLog); //Logs what KBS was used and the amount.
 
             if (!this.isHidden && !this.isPinned) {
                 this.hide();
@@ -206,7 +206,7 @@ public class KBS extends HBox {
     }
 
     public void hoverShake() {
-        ShakeTransition shakeTransition = new ShakeTransition(kbsPane);
+        ShakeTransition shakeTransition = new ShakeTransition(suggestionPane);
         shakeTransition.setRate(5);
         shakeTransition.setInterpolator(Interpolator.EASE_OUT);
         shakeTransition.play();
