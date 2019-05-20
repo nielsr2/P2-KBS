@@ -36,22 +36,6 @@ public class KLM {
         return this.k*2;
     }
 
-    public void setShortcutEstimate(int numberOfKeystrokes) {
-        this.shortcutEstimate = this.k*numberOfKeystrokes;
-    }
-
-    public double getShortcutEstimate() {
-        return this.shortcutEstimate;
-    }
-
-    public double getGeneralToolbarEstimate() {
-        return this.h + this.p + this.bb;
-    }
-
-    public double getToolbarEstimate() {
-        return this.toolbarEstimate;
-    }
-
     public void setToolbarEstimate(Button toolbarButton) {
 
         /*mouse position start*/
@@ -98,10 +82,6 @@ public class KLM {
         startTimerForToolbar();
     }
 
-    public double getTimeLost() {
-        return this.timeElapsedForToolbar-this.getShortcutEstimate();
-    }
-
     public double getTimesSlower() {
         return this.timeElapsedForToolbar/getGeneralShortcutEstimate();
     }
@@ -128,10 +108,6 @@ public class KLM {
 
     public double getTimeElapsedForShortcut() {
         return this.timeElapsedForShortcut;
-    }
-
-    public double getTimeSaved() {
-        return this.timeElapsedForShortcut-this.getToolbarEstimate();
     }
 
     public double getTimesFaster() {
