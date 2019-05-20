@@ -18,7 +18,7 @@ import static org.p2.UIColors.setNotificationsColor;
 
 public class ConvinceNotification extends Notifications implements UIColors {
 
-    protected boolean isBeingAnimatedConvince = false;
+    protected boolean isBeingAnimated = false;
     int width = 180;
     int height = 49;
 
@@ -40,8 +40,6 @@ public class ConvinceNotification extends Notifications implements UIColors {
         textFlow.setTextAlignment(CENTER);
         textFlow.setPadding(new Insets(7, 10, 7, 10));
 
-        //System.out.println(getFont)
-
         textStart.setFont(Font.font("San Fransisco", 12));
         skillNrText.setFont(Font.font("San Fransisco", FontWeight.BOLD, 12));
         skillNrText.setFill(this.skillNrColor);
@@ -56,27 +54,24 @@ public class ConvinceNotification extends Notifications implements UIColors {
         this.getChildren().addAll(backgroundRect, textFlow);
     }
 
-    public ConvinceNotification() {
-    }
-
     // Controls when object is shown and hidden
-    public void manageConvinceNotification(double lowerThreshold, double upperThreshold) {
+    public void manageNotification(double lowerThreshold, double upperThreshold) {
 
-        if (tbTimesClickedInstance > 1 && getSkillNr() < upperThreshold && getSkillNr() > lowerThreshold && !this.isBeingAnimatedConvince) {
+        if (tbTimesClickedInstance > 1 && getSkillNr() < upperThreshold && getSkillNr() > lowerThreshold && !this.isBeingAnimated) {
             setVisible(true);
             setManaged(true);
             showText();
-            animateConvince();
-        } else if (!this.isBeingAnimatedConvince) {
+            animate();
+        } else if (!this.isBeingAnimated) {
             setVisible(false);
             setManaged(false);
         }
     }
 
     //animates object
-    public void animateConvince() {
+    public void animate() {
 
-        this.isBeingAnimatedConvince = true;
+        this.isBeingAnimated = true;
         System.out.println("Hi there! Now I'm hidden!");
         FadeInRightTransition fadeInRightTransition = new FadeInRightTransition(this);
         FadeOutTransition fadeOutTransition = new FadeOutTransition(this);
@@ -93,7 +88,7 @@ public class ConvinceNotification extends Notifications implements UIColors {
         fadeOutTransition.setOnFinished(eventEnd -> {
             setVisible(false);
             setManaged(false);
-            this.isBeingAnimatedConvince = false;
+            this.isBeingAnimated = false;
         });
     }
 

@@ -15,12 +15,13 @@ import javafx.util.Duration;
 import static javafx.scene.text.TextAlignment.CENTER;
 import static org.p2.UIColors.setNotificationsColor;
 
-public class RewardNotification extends ConvinceNotification implements UIColors {
+public class RewardNotification extends Notifications implements UIColors {
 
     int width = 180;
     int height = 49;
 
-    private boolean isBeingAnimatedReward = false;
+    protected boolean shown;
+    private boolean isBeingAnimated = false;
 
     RewardNotification(Text textStart, Text textMiddle, Text textEnd, Text textFunctionality, Color skillNrColor) {
 
@@ -60,25 +61,25 @@ public class RewardNotification extends ConvinceNotification implements UIColors
     }
 
     // Controls when object is shown and hidden
-    public void manageRewardNotification(double lowerThreshold, double upperThreshold) {
+    public void manageNotification(double lowerThreshold, double upperThreshold) {
 
-        if (kbsTimesUsedInstance > 2 && getSkillNr() < upperThreshold && getSkillNr() > lowerThreshold && !this.isBeingAnimatedReward && rewardShown == false) {
+        if (kbsTimesUsedInstance > 2 && getSkillNr() < upperThreshold && getSkillNr() > lowerThreshold && !this.isBeingAnimated && shown == false) {
             setVisible(true);
             setManaged(true);
             showText();
 
-            animateReward();
-            rewardShown = true;
-        } else if (!this.isBeingAnimatedReward) {
+            animate();
+            shown = true;
+        } else if (!this.isBeingAnimated) {
             setVisible(false);
             setManaged(false);
         }
     }
 
     // Animates Object
-    public void animateReward() {
+    public void animate() {
 
-        this.isBeingAnimatedReward = true;
+        this.isBeingAnimated = true;
         System.out.println("Hi there! Now I'm hidden!");
         FadeInLeftTransition fadeInLeftTransition = new FadeInLeftTransition(this);
         FadeOutTransition fadeOutTransition = new FadeOutTransition(this);
@@ -95,7 +96,7 @@ public class RewardNotification extends ConvinceNotification implements UIColors
         fadeOutTransition.setOnFinished(eventEnd -> {
             setVisible(false);
             setManaged(false);
-            this.isBeingAnimatedReward = false;
+            this.isBeingAnimated = false;
         });
     }
 }

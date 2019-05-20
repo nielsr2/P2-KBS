@@ -140,7 +140,7 @@ public class Suggestion extends HBox {
                 this.hide();
                 this.isHidden = true;
             }
-            rewardNotification.manageRewardNotification(0.05, 8);
+            rewardNotification.manageNotification(0.05, 8);
         }
     }
 
@@ -162,7 +162,7 @@ public class Suggestion extends HBox {
             convinceNotification.setTbTimesClickedInstance(this.tbTimesClickedInstance);
 
             this.kbsTimesUsedInstance = 0;
-            rewardNotification.rewardShown = false;
+            rewardNotification.shown = false;
             String tbLog = Integer.toString(tbTimesClickedTotal);
             LOGGER.info(functionality + " Toolbar clicked " + tbLog); //Logs what toolbar was clicked and the amount
             LOGGER.info(this.functionality + " clicked " + this.tbTimesClickedInstance + " times since last time shortcut were used"); //Logs amount until KBS used.
@@ -172,7 +172,7 @@ public class Suggestion extends HBox {
             } else {
 //            this.seekAttention();
             }
-            convinceNotification.manageConvinceNotification(1.5, 8.0);
+            convinceNotification.manageNotification(1.5, 8.0);
         }
     }
     //              _   _            _   _

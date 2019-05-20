@@ -24,7 +24,7 @@ public abstract class Notifications extends StackPane {
     protected double skillNr;
     protected Text skillNrText = new Text();
     protected String skillNrString;
-    protected boolean rewardShown = false;
+
 
     protected int tbTimesClickedInstance;
     protected int kbsTimesUsedInstance;

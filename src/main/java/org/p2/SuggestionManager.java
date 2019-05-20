@@ -177,7 +177,7 @@ public class SuggestionManager extends VBox {
                             k.colorRect.setOpacity(colorOpacity);
                         }
                         // if showing messages, don't be faded
-                        if (k.convinceNotification.isBeingAnimatedConvince) {
+                        if (k.convinceNotification.isBeingAnimated) {
                             k.setOpacity(1);
                         }
                     }
