@@ -60,7 +60,6 @@ public class KBSManager extends VBox {
         );
 
         this.setUpHovers();
-        this.toggleActivation();
     }
 
     //   _
@@ -87,6 +86,7 @@ public class KBSManager extends VBox {
             k.hide();
         }
     }
+
     //
     //   _ __ ___   ___  _   _ ___  ___
     //  | '_ ` _ \ / _ \| | | / __|/ _ \
@@ -166,19 +166,21 @@ public class KBSManager extends VBox {
 //                double colorOpacityXY = this.scaleAndClip(mouseIconDistanceXY, 0, 100, 1., 0);
 //                double opacityXY = this.scaleAndClip(mouseIconDistanceXY, 0, 100, fadeMax + .2, fadeMin);
                 if (k.isShown) { // only affect KBS's that are shown...
-                    if (anyIconHovered || kmHovered) { // if any toolbar icon or KBS area hovered, full opacity
-                        k.setOpacity(1.);
-                    } else {
-                        if (!textSelected) {
-                            k.setOpacity(opacityY); // gradual opacity
+                    if (k.canAnimate) {
+                        if (anyIconHovered || kmHovered) { // if any toolbar icon or KBS area hovered, full opacity
+                            k.setOpacity(1.);
+                        } else {
+                            if (!textSelected) {
+                                k.setOpacity(opacityY); // gradual opacity
+                            }
+                            double mouseIconDistance = Math.sqrt(Math.pow(x - k.buttonX, 2) + Math.pow(y - k.buttonY, 2));
+                            double colorOpacity = this.scaleAndClip(mouseIconDistance, 0, opacityDistance, 1., 0);
+                            k.colorRect.setOpacity(colorOpacity);
                         }
-                        double mouseIconDistance = Math.sqrt(Math.pow(x - k.buttonX, 2) + Math.pow(y - k.buttonY, 2));
-                        double colorOpacity = this.scaleAndClip(mouseIconDistance, 0, opacityDistance, 1., 0);
-                        k.colorRect.setOpacity(colorOpacity);
-                    }
-                    // if showing messages, don't be faded
-                    if (k.convinceNotification.isBeingAnimatedConvince) {
-                        k.setOpacity(1);
+                        // if showing messages, don't be faded
+                        if (k.convinceNotification.isBeingAnimatedConvince) {
+                            k.setOpacity(1);
+                        }
                     }
                 }
 

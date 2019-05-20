@@ -59,14 +59,7 @@ public class KBS extends HBox {
     Text textEndReward = new Text(" times faster!");
     Text shortcutText;
     HBox content;
-    //   _           _   _
-//  | |__  _   _| |_| |_ ___  _ __
-//  | '_ \| | | | __| __/ _ \| '_ \
-//  | |_) | |_| | |_| |_ (_) | | | |
-//  |_.__/ \__,_|\__|\__\___/|_| |_|
-//
-    double buttonX;
-    double buttonY;
+
 
     KBS(String shortcutText, String functionality, String iconPath) {
 
@@ -117,7 +110,16 @@ public class KBS extends HBox {
         this.setManaged(false);
     }
 
+    //   _           _   _
+//  | |__  _   _| |_| |_ ___  _ __
+//  | '_ \| | | | __| __/ _ \| '_ \
+//  | |_) | |_| | |_| |_ (_) | | | |
+//  |_.__/ \__,_|\__|\__\___/|_| |_|
+//
+    double buttonX;
+    double buttonY;
     double buttonWidth;
+
 
     public void setButtonWidth(double buttonWidth) {
         this.buttonWidth = buttonWidth;

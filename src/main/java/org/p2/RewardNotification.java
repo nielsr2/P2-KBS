@@ -66,6 +66,7 @@ public class RewardNotification extends ConvinceNotification implements UIColors
             setVisible(true);
             setManaged(true);
             showText();
+
             animateReward();
             rewardShown = true;
         } else if (!this.isBeingAnimatedReward) {
