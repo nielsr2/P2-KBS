@@ -2,6 +2,7 @@ package org.p2;
 
 import javafx.scene.control.Button;
 import javafx.scene.control.ToggleButton;
+import javafx.scene.Node;
 
 import java.awt.*;
 
@@ -34,22 +35,6 @@ public class KLM {
 
     public double getGeneralShortcutEstimate() {
         return this.k*2;
-    }
-
-    public void setShortcutEstimate(int numberOfKeystrokes) {
-        this.shortcutEstimate = this.k*numberOfKeystrokes;
-    }
-
-    public double getShortcutEstimate() {
-        return this.shortcutEstimate;
-    }
-
-    public double getGeneralToolbarEstimate() {
-        return this.h + this.p + this.bb;
-    }
-
-    public double getToolbarEstimate() {
-        return this.toolbarEstimate;
     }
 
     public void setToolbarEstimate(Button toolbarButton) {
@@ -88,7 +73,6 @@ public class KLM {
 
     public void startTimerForToolbar() {
         startTimeToolbar = System.nanoTime();
-        //System.out.println("timer has started");
     }
 
     public void stopTimerForToolbar() {
@@ -98,46 +82,23 @@ public class KLM {
         startTimerForToolbar();
     }
 
-    public double getTimeLost() {
-        return this.timeElapsedForToolbar-this.getShortcutEstimate();
-    }
-
     public double getTimesSlower() {
         return this.timeElapsedForToolbar/getGeneralShortcutEstimate();
     }
 
     public void startTimerForShortcut() {
-        //if (this.timerForToolbarAllowedToStart) {
-        //System.out.println("Timer for shortcut has STARTED");
-            startTimeShortcut = System.nanoTime();
-        //System.out.println("start time is: " + startTimeShortcut/1_000_000_000);
-            this.timerForToolbarAllowedToStart = false;
-        //}
+        startTimeShortcut = System.nanoTime();
+        this.timerForToolbarAllowedToStart = false;
     }
 
     public void stopTimerForShortcut() {
         stopTimeShortcut = System.nanoTime();
         double time = stopTimeShortcut-startTimeShortcut;
         this.timeElapsedForShortcut = time/1_000_000_000 + this.k;
-        //System.out.println("Timer for shortcut has STOPPED" + "\n" + "Time is: " + timeElapsedForShortcut);
-        //System.out.println("start time is: " + startTimeShortcut/1_000_000_000);
-        //System.out.println("stop time is: " + stopTimeShortcut/1_000_000_000);
-
         startTimeShortcut = System.nanoTime();
     }
 
-    public double getTimeElapsedForShortcut() {
-        return this.timeElapsedForShortcut;
-    }
-
-    public double getTimeSaved() {
-        return this.timeElapsedForShortcut-this.getToolbarEstimate();
-    }
-
     public double getTimesFaster() {
-        //System.out.println("Shortcut real time: " + this.timeElapsedForShortcut);
-        //System.out.println("Toolbar estimated time: " + this.toolbarEstimate);
-        //System.out.println("Times faster: " + this.toolbarEstimate/this.timeElapsedForShortcut);
         return this.toolbarEstimate/this.timeElapsedForShortcut;
     }
 
