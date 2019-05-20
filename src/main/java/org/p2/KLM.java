@@ -2,6 +2,7 @@ package org.p2;
 
 import javafx.scene.control.Button;
 import javafx.scene.control.ToggleButton;
+import javafx.scene.Node;
 
 import java.awt.*;
 
@@ -104,10 +105,6 @@ public class KLM {
         //System.out.println("stop time is: " + stopTimeShortcut/1_000_000_000);
 
         startTimeShortcut = System.nanoTime();
-    }
-
-    public double getTimeElapsedForShortcut() {
-        return this.timeElapsedForShortcut;
     }
 
     public double getTimesFaster() {
