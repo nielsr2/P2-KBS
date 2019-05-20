@@ -6,12 +6,8 @@ import javafx.util.Duration;
 
 abstract class Animations {
 
-//    double standardTime = 0.2;
-
     static void fade(double opacityEnd, double time, Node node) {
-
         double opacityStart = node.getOpacity();
-
         FadeTransition fade = new FadeTransition(Duration.seconds(time), node);
         fade.setFromValue(opacityStart);
         fade.setToValue(opacityEnd);
@@ -21,9 +17,7 @@ abstract class Animations {
     }
 
     static void fade(double opacityEnd, Node node) {
-
         double opacityStart = node.getOpacity();
-
         FadeTransition fade = new FadeTransition(Duration.seconds(0.2), node);
         fade.setFromValue(opacityStart);
         fade.setToValue(opacityEnd);

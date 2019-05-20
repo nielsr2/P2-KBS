@@ -36,10 +36,10 @@ public class KBS extends HBox {
     protected int kbsTimesUsedInstance = 0;
     protected int tbTimesClickedTotal = 0;
     protected int tbTimesClickedInstance = 0; //times clicked since last time shortcut were used
-    public Notifications notifications;
+    public ConvinceNotification convinceNotification;
     Text textStartConvince = new Text("When not using shortcuts, \n you are "); // this might be dumb way too do it
     Text textEndConvince = new Text(" times slower!");
-    public Notifications notification;
+    public RewardNotification rewardNotification;
 
 
     //                       _                   _
@@ -63,8 +63,8 @@ public class KBS extends HBox {
 
     KBS(String shortcutText, String functionality, String iconPath) {
 
-        notifications = new Notifications(textStartConvince, textEndConvince, textAlertColor);
-        notification = new Notifications(textStartReward, textMiddleReward, textEndReward, new Text(functionality), textApprovalColor);
+        convinceNotification = new ConvinceNotification(textStartConvince, textEndConvince, textAlertColor);
+        rewardNotification = new RewardNotification(textStartReward, textMiddleReward, textEndReward, new Text(functionality), textApprovalColor);
 
         this.setUserData(functionality);
         this.setId(functionality);
@@ -96,7 +96,7 @@ public class KBS extends HBox {
         // ADD
         content.getChildren().addAll(this.icon, this.shortcutText);
         kbsPane.getChildren().addAll(backgroundRect, colorRect, content);
-        this.getChildren().addAll(notifications, kbsPane);
+        this.getChildren().addAll(convinceNotification, kbsPane);
 
 //        this.setOnMouseClicked(event -> {     // i dont understand the point of dis?
 //            this.ACTIVATED = false;
@@ -129,7 +129,7 @@ public class KBS extends HBox {
         if (ACTIVATED) {
             this.kbsTimesUsedTotal++;
             this.kbsTimesUsedInstance++;
-            notification.setKbsTimesUsedInstance(this.kbsTimesUsedInstance);
+            rewardNotification.setKbsTimesUsedInstance(this.kbsTimesUsedInstance);
 
             this.tbTimesClickedInstance = 0;
 
@@ -140,7 +140,7 @@ public class KBS extends HBox {
                 this.hide();
                 this.isHidden = true;
             }
-            notification.manageRewardOMeter(0.05, 8);
+            rewardNotification.manageRewardNotification(0.05, 8);
         }
     }
 
@@ -159,10 +159,10 @@ public class KBS extends HBox {
         if (ACTIVATED) {
             this.tbTimesClickedTotal++;
             this.tbTimesClickedInstance++;
-            notifications.tbTimesClickedInstance(this.tbTimesClickedInstance);
+            convinceNotification.setTbTimesClickedInstance(this.tbTimesClickedInstance);
 
             this.kbsTimesUsedInstance = 0;
-            notification.rewardShown = false;
+            rewardNotification.rewardShown = false;
             String tbLog = Integer.toString(tbTimesClickedTotal);
             LOGGER.info(functionality + " Toolbar clicked " + tbLog); //Logs what toolbar was clicked and the amount
             LOGGER.info(this.functionality + " clicked " + this.tbTimesClickedInstance + " times since last time shortcut were used"); //Logs amount until KBS used.
@@ -172,7 +172,7 @@ public class KBS extends HBox {
             } else {
 //            this.seekAttention();
             }
-            notifications.manageNotifications(1.5, 8);
+            convinceNotification.manageConvinceNotification(1.5, 8.0);
         }
     }
     //              _   _            _   _

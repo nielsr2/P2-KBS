@@ -81,8 +81,8 @@ public class KBSManager extends VBox {
     public void animationFix() {
         for (Node n : this.getChildren()) {
             KBS k = ((KBS) n);
-            k.notifications.hide();
-            k.notification.hide();
+            k.rewardNotification.hide();
+            k.convinceNotification.hide();
             k.hide();
         }
     }
@@ -178,7 +178,7 @@ public class KBSManager extends VBox {
                             k.colorRect.setOpacity(colorOpacity);
                         }
                         // if showing messages, don't be faded
-                        if (k.notifications.isBeingAnimatedConvince) {
+                        if (k.convinceNotification.isBeingAnimatedConvince) {
                             k.setOpacity(1);
                         }
                     }
