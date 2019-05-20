@@ -60,6 +60,7 @@ public class KBSManager extends VBox {
         );
 
         this.setUpHovers();
+        this.toggleActivation();
     }
 
     //   _
