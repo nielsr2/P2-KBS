@@ -2,7 +2,6 @@ package org.p2;
 
 import javafx.scene.control.Button;
 import javafx.scene.control.ToggleButton;
-import javafx.scene.Node;
 
 import java.awt.*;
 
@@ -38,11 +37,12 @@ public class KLM {
     }
 
     public void setToolbarEstimate(Button toolbarButton) {
-
         /*mouse position start*/
         PointerInfo startMouse = MouseInfo.getPointerInfo();
-        double endMouseX = toolbarButton.localToScreen(toolbarButton.getBoundsInLocal()).getMinX()+toolbarButton.getWidth()/2;
-        double endMouseY = toolbarButton.localToScreen(toolbarButton.getBoundsInLocal()).getMinY()+toolbarButton.getHeight()/2;
+        double endMouseX = toolbarButton.localToScreen(
+                toolbarButton.getBoundsInLocal()).getMinX() + toolbarButton.getWidth() / 2;
+        double endMouseY = toolbarButton.localToScreen(
+                toolbarButton.getBoundsInLocal()).getMinY() + toolbarButton.getHeight() / 2;
         double startMouseX = startMouse.getLocation().getX();
         double startMouseY = startMouse.getLocation().getY();
         double width = toolbarButton.getWidth();
@@ -51,15 +51,15 @@ public class KLM {
         double b = 0.5;
         double fittsLaw = a+b*log(2, distance/width + 1); // Fitt's Law
         this.toolbarEstimate = this.h + fittsLaw + this.bb;
-
     }
 
     public void setToolbarEstimate(ToggleButton toolbarButton) {
-
         /*mouse position start*/
         PointerInfo startMouse = MouseInfo.getPointerInfo();
-        double endMouseX = toolbarButton.localToScreen(toolbarButton.getBoundsInLocal()).getMinX()+toolbarButton.getWidth()/2;
-        double endMouseY = toolbarButton.localToScreen(toolbarButton.getBoundsInLocal()).getMinY()+toolbarButton.getHeight()/2;
+        double endMouseX = toolbarButton.localToScreen(
+                toolbarButton.getBoundsInLocal()).getMinX() + toolbarButton.getWidth() / 2;
+        double endMouseY = toolbarButton.localToScreen(
+                toolbarButton.getBoundsInLocal()).getMinY() + toolbarButton.getHeight() / 2;
         double startMouseX = startMouse.getLocation().getX();
         double startMouseY = startMouse.getLocation().getY();
         double width = toolbarButton.getWidth();
@@ -68,7 +68,6 @@ public class KLM {
         double b = 0.5;
         double fittsLaw = a+b*log(2, distance/width + 1); // Fitt's Law
         this.toolbarEstimate = this.h + fittsLaw + this.bb;
-
     }
 
     public void startTimer(String action) {
