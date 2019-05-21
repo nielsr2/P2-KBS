@@ -71,31 +71,31 @@ public class KLM {
 
     }
 
-    public void startTimerForToolbar() {
-        startTimeToolbar = System.nanoTime();
+    public void startTimer(String action) {
+        if (action == "toolbar") {
+            startTimeToolbar = System.nanoTime();
+        } else if (action == "shortcut") {
+            startTimeShortcut = System.nanoTime();
+            //this.timerForToolbarAllowedToStart = false;
+        }
     }
 
-    public void stopTimerForToolbar() {
-        stopTimeToolbar = System.nanoTime();
-        double time = stopTimeToolbar-startTimeToolbar;
-        this.timeElapsedForToolbar = time/1_000_000_000;
-        startTimerForToolbar();
+    public void stopTimer(String action) {
+        if (action == "toolbar") {
+            stopTimeToolbar = System.nanoTime();
+            double time = stopTimeToolbar - startTimeToolbar;
+            this.timeElapsedForToolbar = time / 1_000_000_000;
+        } else if (action == "shortcut") {
+            stopTimeShortcut = System.nanoTime();
+            double time = stopTimeShortcut-startTimeShortcut;
+            this.timeElapsedForShortcut = time/1_000_000_000 + this.k;
+            startTimeShortcut = System.nanoTime();
+        }
+        startTimer(action);
     }
 
     public double getTimesSlower() {
         return this.timeElapsedForToolbar/getGeneralShortcutEstimate();
-    }
-
-    public void startTimerForShortcut() {
-        startTimeShortcut = System.nanoTime();
-        this.timerForToolbarAllowedToStart = false;
-    }
-
-    public void stopTimerForShortcut() {
-        stopTimeShortcut = System.nanoTime();
-        double time = stopTimeShortcut-startTimeShortcut;
-        this.timeElapsedForShortcut = time/1_000_000_000 + this.k;
-        startTimeShortcut = System.nanoTime();
     }
 
     public double getTimesFaster() {
@@ -110,15 +110,15 @@ public class KLM {
         return this.timerForToolbarAllowedToStart;
     }
 
-    static double log(double base, double x) {
-        return Math.log10(x)/Math.log10(base);
+    public void setTimerForShortcutAllowance(boolean allowTimerForShortcutToStart) {
+        this.timerForShortcutAllowedToStart = allowTimerForShortcutToStart;
     }
 
     public boolean getTimerForShortcutAllowance() {
         return this.timerForShortcutAllowedToStart;
     }
 
-    public void setTimerForShortcutAllowance(boolean allowTimerForShortcutToStart) {
-        this.timerForShortcutAllowedToStart = allowTimerForShortcutToStart;
+    static double log(double base, double x) {
+        return Math.log10(x)/Math.log10(base);
     }
 }

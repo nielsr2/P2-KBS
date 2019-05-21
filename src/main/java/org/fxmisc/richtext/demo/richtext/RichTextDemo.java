@@ -143,7 +143,7 @@ public class RichTextDemo extends Application {
 //     BOLD BUTTON  *********************************************************************************************************           BOLD BUTTON
         boldBtn = createButton("bold", this::toggleBold, "Bold (CMD/CTRL+B)");
         boldBtn.setOnMouseClicked((event) -> {
-            overlayPane.suggestionManager.klm.stopTimerForToolbar();
+            overlayPane.suggestionManager.klm.stopTimer("toolbar");
             overlayPane.suggestionManager.getSuggestionbyFunction("bold").convinceNotification.setSkillNr(overlayPane.suggestionManager.klm.getTimesSlower());
             overlayPane.suggestionManager.getSuggestionbyFunction("bold").toolbarPressed();
         });
@@ -156,7 +156,7 @@ public class RichTextDemo extends Application {
         ///////////////// ITALIC BUTTON /////////////////////////////
         italicBtn = createButton("italic", this::toggleItalic, "Italic (CMD/CTRL+I)");
         italicBtn.setOnMouseClicked((event) -> {
-            overlayPane.suggestionManager.klm.stopTimerForToolbar();
+            overlayPane.suggestionManager.klm.stopTimer("toolbar");
             overlayPane.suggestionManager.getSuggestionbyFunction("italic").convinceNotification.setSkillNr(overlayPane.suggestionManager.klm.getTimesSlower());
             overlayPane.suggestionManager.getSuggestionbyFunction("italic").toolbarPressed();
         });
@@ -167,7 +167,7 @@ public class RichTextDemo extends Application {
         ////////////////// UNDERLINE BUTTON /////////////////////////
         underlineBtn = createButton("underline", this::toggleUnderline, "Underline (CMD/CTRL+U)");
         underlineBtn.setOnMouseClicked((event) -> {
-            overlayPane.suggestionManager.klm.stopTimerForToolbar();
+            overlayPane.suggestionManager.klm.stopTimer("toolbar");
             overlayPane.suggestionManager.getSuggestionbyFunction("underline").convinceNotification.setSkillNr(overlayPane.suggestionManager.klm.getTimesSlower());
             overlayPane.suggestionManager.getSuggestionbyFunction("underline").toolbarPressed();
         });
@@ -178,7 +178,7 @@ public class RichTextDemo extends Application {
         ///////////////// STRIKE THROUGH BUTTON ////////////////////
         strikeBtn = createButton("strikethrough", this::toggleStrikethrough, "Strike Trough (CMD/CTRL+T)");
         strikeBtn.setOnMouseClicked((event) -> {
-            overlayPane.suggestionManager.klm.stopTimerForToolbar();
+            overlayPane.suggestionManager.klm.stopTimer("toolbar");
             overlayPane.suggestionManager.getSuggestionbyFunction("strikethrough").convinceNotification.setSkillNr(overlayPane.suggestionManager.klm.getTimesSlower());
             overlayPane.suggestionManager.getSuggestionbyFunction("strikethrough").toolbarPressed();
         });
@@ -189,7 +189,7 @@ public class RichTextDemo extends Application {
         //////////////// INSERT IMAGE BUTTON //////////////////////
         insertImageBtn = createButton("insertimage", this::insertImage, "Insert Image");
         insertImageBtn.setOnMouseClicked((event) -> {
-            overlayPane.suggestionManager.klm.stopTimerForToolbar();
+            overlayPane.suggestionManager.klm.stopTimer("toolbar");
             overlayPane.suggestionManager.getSuggestionbyFunction("insertimage").convinceNotification.setSkillNr(overlayPane.suggestionManager.klm.getTimesSlower());
             overlayPane.suggestionManager.getSuggestionbyFunction("insertimage").toolbarPressed();
         });
@@ -203,7 +203,7 @@ public class RichTextDemo extends Application {
         alignLeftBtn = createToggleButton(alignmentGrp, "align-left", this::alignLeft, "Align left (CMD/CTRL+L)");
 
         alignLeftBtn.setOnMouseClicked((event) -> {
-            overlayPane.suggestionManager.klm.stopTimerForToolbar();
+            overlayPane.suggestionManager.klm.stopTimer("toolbar");
             overlayPane.suggestionManager.getSuggestionbyFunction("align-left").convinceNotification.setSkillNr(overlayPane.suggestionManager.klm.getTimesSlower());
             overlayPane.suggestionManager.getSuggestionbyFunction("align-left").toolbarPressed();
         });
@@ -214,7 +214,7 @@ public class RichTextDemo extends Application {
         ////////////// ALIGN CENTER BUTTON //////////////////////
         alignCenterBtn = createToggleButton(alignmentGrp, "align-center", this::alignCenter, "Align center (CMD/CTRL+E)");
         alignCenterBtn.setOnMouseClicked((event) -> {
-            overlayPane.suggestionManager.klm.stopTimerForToolbar();
+            overlayPane.suggestionManager.klm.stopTimer("toolbar");
             overlayPane.suggestionManager.getSuggestionbyFunction("align-center").convinceNotification.setSkillNr(overlayPane.suggestionManager.klm.getTimesSlower());
             overlayPane.suggestionManager.getSuggestionbyFunction("align-center").toolbarPressed();
         });
@@ -225,7 +225,7 @@ public class RichTextDemo extends Application {
         ///////////// ALIGN RIGHT BUTTON ///////////////////////
         alignRightBtn = createToggleButton(alignmentGrp, "align-right", this::alignRight, "Align right (CMD/CTRL+R)");
         alignRightBtn.setOnMouseClicked((event) -> {
-            overlayPane.suggestionManager.klm.stopTimerForToolbar();
+            overlayPane.suggestionManager.klm.stopTimer("toolbar");
             overlayPane.suggestionManager.getSuggestionbyFunction("align-right").convinceNotification.setSkillNr(overlayPane.suggestionManager.klm.getTimesSlower());
             overlayPane.suggestionManager.getSuggestionbyFunction("align-right").toolbarPressed();
         });
@@ -236,7 +236,7 @@ public class RichTextDemo extends Application {
         //////////// ALIGN JUSTIFY /////////////////////////
         alignJustifyBtn = createToggleButton(alignmentGrp, "align-justify", this::alignJustify, "Justify (CMD/CTRL+J)");
         alignJustifyBtn.setOnMouseClicked((event) -> {
-            overlayPane.suggestionManager.klm.stopTimerForToolbar();
+            overlayPane.suggestionManager.klm.stopTimer("toolbar");
             overlayPane.suggestionManager.getSuggestionbyFunction("align-justify").convinceNotification.setSkillNr(overlayPane.suggestionManager.klm.getTimesSlower());
             overlayPane.suggestionManager.getSuggestionbyFunction("align-justify").toolbarPressed();
         });
@@ -479,7 +479,7 @@ public class RichTextDemo extends Application {
             } else {
                 overlayPane.suggestionManager.selectionOff();
 //                overlayPane.suggestionManager.fade(0.2, 0.2);
-                overlayPane.suggestionManager.klm.stopTimerForToolbar();
+                overlayPane.suggestionManager.klm.stopTimer("toolbar");
 //                overlayPane.suggestionManager.parseMouse(0,0);
             }
             overlayPane.suggestionManager.klm.setTimerForToolbarAllowance(true);
@@ -491,7 +491,7 @@ public class RichTextDemo extends Application {
             if (overlayPane.suggestionManager.klm.getTimerForToolbarAllowance() == true) {
                 double distance = startMouse.getLocation().getX() - endMouse.getLocation().getX();
                 if (distance > threshold || distance < -threshold) {
-                    overlayPane.suggestionManager.klm.startTimerForToolbar();
+                    overlayPane.suggestionManager.klm.startTimer("toolbar");
                     overlayPane.suggestionManager.klm.setTimerForToolbarAllowance(false);
                 }
             }
@@ -515,7 +515,7 @@ public class RichTextDemo extends Application {
             }
             if (e.isShortcutDown() && this.overlayPane.suggestionManager.klm.getTimerForShortcutAllowance() == true) {
                 //System.out.println("NOPE" + KeyCombination.SHORTCUT_DOWN);
-                this.overlayPane.suggestionManager.klm.startTimerForShortcut();
+                this.overlayPane.suggestionManager.klm.startTimer("shortcut");
                 this.overlayPane.suggestionManager.klm.setTimerForShortcutAllowance(false);
 //                    overlayPane.suggestionManager.fade(1, 0.2);
             }
@@ -924,7 +924,7 @@ public class RichTextDemo extends Application {
     void ourBoldFunction() {
         //ystem.out.println("void ourBoldFunction() called");
 //        System.out.println(selectionEmpty);
-        this.overlayPane.suggestionManager.klm.stopTimerForShortcut();
+        this.overlayPane.suggestionManager.klm.stopTimer("shortcut");
         this.overlayPane.suggestionManager.klm.setToolbarEstimate(boldBtn);
         this.overlayPane.suggestionManager.klm.setTimerForShortcutAllowance(false);
         this.overlayPane.suggestionManager.getSuggestionbyFunction("bold").rewardNotification.setSkillNr(overlayPane.suggestionManager.klm.getTimesFaster());
@@ -933,7 +933,7 @@ public class RichTextDemo extends Application {
     }
 
     void ourItalicFunction() {
-        this.overlayPane.suggestionManager.klm.stopTimerForShortcut();
+        this.overlayPane.suggestionManager.klm.stopTimer("shortcut");
         this.overlayPane.suggestionManager.klm.setToolbarEstimate(italicBtn);
         this.overlayPane.suggestionManager.klm.setTimerForShortcutAllowance(false);
         this.overlayPane.suggestionManager.getSuggestionbyFunction("italic").rewardNotification.setSkillNr(overlayPane.suggestionManager.klm.getTimesFaster());
@@ -943,7 +943,7 @@ public class RichTextDemo extends Application {
     }
 
     void ourUnderlineFunction() {
-        this.overlayPane.suggestionManager.klm.stopTimerForShortcut();
+        this.overlayPane.suggestionManager.klm.stopTimer("shortcut");
         this.overlayPane.suggestionManager.klm.setToolbarEstimate(underlineBtn);
         this.overlayPane.suggestionManager.klm.setTimerForShortcutAllowance(false);
         this.overlayPane.suggestionManager.getSuggestionbyFunction("underline").rewardNotification.setSkillNr(overlayPane.suggestionManager.klm.getTimesFaster());
@@ -952,7 +952,7 @@ public class RichTextDemo extends Application {
     }
 
     void ourStrikeFunction() {
-        this.overlayPane.suggestionManager.klm.stopTimerForShortcut();
+        this.overlayPane.suggestionManager.klm.stopTimer("shortcut");
         this.overlayPane.suggestionManager.klm.setToolbarEstimate(strikeBtn);
         this.overlayPane.suggestionManager.klm.setTimerForShortcutAllowance(false);
         this.overlayPane.suggestionManager.getSuggestionbyFunction("strikethrough").rewardNotification.setSkillNr(overlayPane.suggestionManager.klm.getTimesFaster());
@@ -961,7 +961,7 @@ public class RichTextDemo extends Application {
     }
 
     void ourInsertImageFunction() {
-        this.overlayPane.suggestionManager.klm.stopTimerForShortcut();
+        this.overlayPane.suggestionManager.klm.stopTimer("shortcut");
         this.overlayPane.suggestionManager.klm.setToolbarEstimate(insertImageBtn);
         this.overlayPane.suggestionManager.klm.setTimerForShortcutAllowance(false);
         this.overlayPane.suggestionManager.getSuggestionbyFunction("insertimage").rewardNotification.setSkillNr(overlayPane.suggestionManager.klm.getTimesFaster());
@@ -970,7 +970,7 @@ public class RichTextDemo extends Application {
     }
 
     void ourAlignLeftFunction() {
-        this.overlayPane.suggestionManager.klm.stopTimerForShortcut();
+        this.overlayPane.suggestionManager.klm.stopTimer("shortcut");
         this.overlayPane.suggestionManager.klm.setToolbarEstimate(alignLeftBtn);
         this.overlayPane.suggestionManager.klm.setTimerForShortcutAllowance(false);
         this.overlayPane.suggestionManager.getSuggestionbyFunction("align-left").rewardNotification.setSkillNr(overlayPane.suggestionManager.klm.getTimesFaster());
@@ -979,7 +979,7 @@ public class RichTextDemo extends Application {
     }
 
     void ourAlignCenterFunction() {
-        this.overlayPane.suggestionManager.klm.stopTimerForShortcut();
+        this.overlayPane.suggestionManager.klm.stopTimer("shortcut");
         this.overlayPane.suggestionManager.klm.setToolbarEstimate(alignCenterBtn);
         this.overlayPane.suggestionManager.klm.setTimerForShortcutAllowance(false);
         this.overlayPane.suggestionManager.getSuggestionbyFunction("align-center").rewardNotification.setSkillNr(overlayPane.suggestionManager.klm.getTimesFaster());
@@ -988,7 +988,7 @@ public class RichTextDemo extends Application {
     }
 
     void ourAlignRightFunction() {
-        this.overlayPane.suggestionManager.klm.stopTimerForShortcut();
+        this.overlayPane.suggestionManager.klm.stopTimer("shortcut");
         this.overlayPane.suggestionManager.klm.setToolbarEstimate(alignRightBtn);
         this.overlayPane.suggestionManager.klm.setTimerForShortcutAllowance(false);
         this.overlayPane.suggestionManager.getSuggestionbyFunction("align-right").rewardNotification.setSkillNr(overlayPane.suggestionManager.klm.getTimesFaster());
@@ -997,7 +997,7 @@ public class RichTextDemo extends Application {
     }
 
     void ourAlignJustifyFunction() {
-        this.overlayPane.suggestionManager.klm.stopTimerForShortcut();
+        this.overlayPane.suggestionManager.klm.stopTimer("shortcut");
         this.overlayPane.suggestionManager.klm.setToolbarEstimate(alignJustifyBtn);
         this.overlayPane.suggestionManager.klm.setTimerForShortcutAllowance(false);
         this.overlayPane.suggestionManager.getSuggestionbyFunction("align-justify").rewardNotification.setSkillNr(overlayPane.suggestionManager.klm.getTimesFaster());
