@@ -79,10 +79,10 @@ public class SuggestionManager extends VBox {
     // The function is and needs to be called after the scene has been created. Non-instantiated cannot be hidden.
     public void animationFix() {
         for (Node n : this.getChildren()) {
-            Suggestion k = ((Suggestion) n);
-            k.rewardNotification.hide();
-            k.convinceNotification.hide();
-            k.hide();
+            Suggestion s = ((Suggestion) n);
+            s.rewardNotification.hide();
+            s.convinceNotification.hide();
+            s.hide();
         }
     }
 
@@ -106,10 +106,10 @@ public class SuggestionManager extends VBox {
         this.textSelected = true;
         for (Node n : this.getChildren()) {
             if (n.getClass().equals(Suggestion.class)) {
-                Suggestion k = ((Suggestion) n);
-                if (k.isShown) {
-                    Animations.fade(fadeMax, k);
-                    k.colorRect.setOpacity(0);
+                Suggestion s = ((Suggestion) n);
+                if (s.isShown) {
+                    Animations.fade(fadeMax, s);
+                    s.colorRect.setOpacity(0);
                 }
             }
         }
@@ -120,10 +120,10 @@ public class SuggestionManager extends VBox {
         this.textSelected = false;
         for (Node n : this.getChildren()) {
             if (n.getClass().equals(Suggestion.class)) {
-                Suggestion k = ((Suggestion) n);
-                if (k.isShown) {
-                    Animations.fade(fadeMin, k);
-                    k.colorRect.setOpacity(0);
+                Suggestion s = ((Suggestion) n);
+                if (s.isShown) {
+                    Animations.fade(fadeMin, s);
+                    s.colorRect.setOpacity(0);
                 }
             }
         }
@@ -157,42 +157,41 @@ public class SuggestionManager extends VBox {
     public void parseMouse(double x, double y) {
         // opacity for all based on mouse to toolbar distance, y axis
         double mouseIconDistanceY = y - 12.5;
-        double opacityY = this.scaleAndClip(mouseIconDistanceY, 0, colorDistance, fadeMax + .2, fadeMin);
+        double opacityY = this.scaleAndClip(
+                mouseIconDistanceY, 0, colorDistance, fadeMax + .2, fadeMin);
         for (Node n : this.getChildren()) {
             if (n.getClass().equals(Suggestion.class)) {
-                Suggestion k = ((Suggestion) n);
-//                double mouseIconDistanceXY = Math.sqrt(Math.pow(x - k.buttonX, 2) + Math.pow(y - k.buttonY, 2));
-//                double colorOpacityXY = this.scaleAndClip(mouseIconDistanceXY, 0, 100, 1., 0);
-//                double opacityXY = this.scaleAndClip(mouseIconDistanceXY, 0, 100, fadeMax + .2, fadeMin);
-                if (k.isShown) { // only affect Suggestion's that are shown...
-                    if (k.canAnimate) {
-                        if (anyIconHovered || suggestionManagerHovered) { // if any toolbar icon or Suggestion area hovered, full opacity
-                            k.setOpacity(1.);
+                Suggestion s = ((Suggestion) n);
+                if (s.isShown) { // only affect Suggestion's that are shown...
+                    if (s.canAnimate) {
+                        // if any toolbar icon or Suggestion area hovered, full opacity
+                        if (anyIconHovered || suggestionManagerHovered) {
+                            s.setOpacity(1.);
                         } else {
                             if (!textSelected) {
-                                k.setOpacity(opacityY); // gradual opacity
+                                s.setOpacity(opacityY); // gradual opacity
                             }
-                            double mouseIconDistance = Math.sqrt(Math.pow(x - k.buttonX, 2) + Math.pow(y - k.buttonY, 2));
-                            double colorOpacity = this.scaleAndClip(mouseIconDistance, 0, opacityDistance, 1., 0);
-                            k.colorRect.setOpacity(colorOpacity);
+                            double mouseIconDistance = Math.sqrt(
+                                    Math.pow(x - s.buttonX, 2) + Math.pow(y - s.buttonY, 2));
+                            double colorOpacity = this.scaleAndClip(
+                                    mouseIconDistance, 0, opacityDistance, 1., 0);
+                            s.colorRect.setOpacity(colorOpacity);
                         }
                         // if showing messages, don't be faded
-                        if (k.convinceNotification.isBeingAnimated) {
-                            k.setOpacity(1);
+                        if (s.convinceNotification.isBeingAnimated) {
+                            s.setOpacity(1);
                         }
                     }
                 }
-
             }
         }
-
     }
 
     public void disableColor() {
         for (Node n : this.getChildren()) {
-            Suggestion k = ((Suggestion) n);
-            if (!k.hovered && k.isShown) {
-                Animations.fade(0., 0.3, k.colorRect);
+            Suggestion s = ((Suggestion) n);
+            if (!s.hovered && s.isShown) {
+                Animations.fade(0., 0.3, s.colorRect);
             }
         }
     }
@@ -241,8 +240,8 @@ public class SuggestionManager extends VBox {
     public void toggleActivation() {
         for (Node n : this.getChildren()) {
             if (n.getClass().equals(Suggestion.class)) {
-                Suggestion k = ((Suggestion) n);
-                k.toggleActivation();
+                Suggestion s = ((Suggestion) n);
+                s.toggleActivation();
             }
         }
     }
