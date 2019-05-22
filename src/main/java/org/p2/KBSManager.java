@@ -183,10 +183,8 @@ public class KBSManager extends VBox {
                         }
                     }
                 }
-
             }
         }
-
     }
 
     public void disableColor() {
