@@ -8,10 +8,10 @@ import static com.sun.xml.internal.ws.spi.db.BindingContextFactory.LOGGER;
 import static javafx.geometry.Pos.BOTTOM_RIGHT;
 
 // TODO CHECK IF STUFF SHOULD BE PRIVATE, PUBLIC ETC.
-// change the shortcuts into single key KBS
+// change the shortcuts into single key Suggestion
 
-// make KBS list
-public class KBSManager extends VBox {
+// make Suggestion list
+public class SuggestionManager extends VBox {
 
     public KLM klm = new KLM();
     private String oprSystem = System.getProperty("os.name");
@@ -25,7 +25,15 @@ public class KBSManager extends VBox {
     //
 
 
-    KBSManager() {
+    //   _
+    //  | |__   _____   _____ _ __
+    //  | '_ \ / _ \ \ / / _ \ '__|
+    //  | | | | (_) \ V /  __/ |
+    //  |_| |_|\___/ \_/ \___|_|
+    //
+    boolean suggestionManagerHovered;
+
+    SuggestionManager() {
 
         // SETUP
         this.setMouseTransparent(false);
@@ -47,28 +55,19 @@ public class KBSManager extends VBox {
 
         // ADD
         this.getChildren().addAll(
-                new KBS(modifier + " + B", "bold", "org/fxmisc/richtext/demo/richtext/BiconHR.png"),
-                new KBS(modifier + " + I", "italic", "org/fxmisc/richtext/demo/richtext/IiconHR.png"),
-                new KBS(modifier + " + U", "underline", "org/fxmisc/richtext/demo/richtext/UiconHR.png"),
-                new KBS(modifier + " + T", "strikethrough", "org/fxmisc/richtext/demo/richtext/SiconHR.png"),
-                new KBS(modifier + " + P", "insertimage", "org/fxmisc/richtext/demo/richtext/AddImageIconHR.png"),
-                new KBS(modifier + " + L", "align-left", "org/fxmisc/richtext/demo/richtext/ALiconHR.png"),
-                new KBS(modifier + " + E", "align-center", "org/fxmisc/richtext/demo/richtext/ACiconHR.png"),
-                new KBS(modifier + " + R", "align-right", "org/fxmisc/richtext/demo/richtext/ARiconHR.png"),
-                new KBS(modifier + " + J", "align-justify", "org/fxmisc/richtext/demo/richtext/AJiconHR.png")
-                //new KBS("Ctrl + Fuck", "image", "asdfasfd")
+                new Suggestion(modifier + " + B", "bold", "org/fxmisc/richtext/demo/richtext/BiconHR.png"),
+                new Suggestion(modifier + " + I", "italic", "org/fxmisc/richtext/demo/richtext/IiconHR.png"),
+                new Suggestion(modifier + " + U", "underline", "org/fxmisc/richtext/demo/richtext/UiconHR.png"),
+                new Suggestion(modifier + " + T", "strikethrough", "org/fxmisc/richtext/demo/richtext/SiconHR.png"),
+                new Suggestion(modifier + " + P", "insertimage", "org/fxmisc/richtext/demo/richtext/AddImageIconHR.png"),
+                new Suggestion(modifier + " + L", "align-left", "org/fxmisc/richtext/demo/richtext/ALiconHR.png"),
+                new Suggestion(modifier + " + E", "align-center", "org/fxmisc/richtext/demo/richtext/ACiconHR.png"),
+                new Suggestion(modifier + " + R", "align-right", "org/fxmisc/richtext/demo/richtext/ARiconHR.png"),
+                new Suggestion(modifier + " + J", "align-justify", "org/fxmisc/richtext/demo/richtext/AJiconHR.png")
         );
 
         this.setUpHovers();
     }
-
-    //   _
-    //  | |__   _____   _____ _ __
-    //  | '_ \ / _ \ \ / / _ \ '__|
-    //  | | | | (_) \ V /  __/ |
-    //  |_| |_|\___/ \_/ \___|_|
-    //
-    boolean kmHovered;
     boolean anyIconHovered;
     boolean textSelected;
 
@@ -80,10 +79,10 @@ public class KBSManager extends VBox {
     // The function is and needs to be called after the scene has been created. Non-instantiated cannot be hidden.
     public void animationFix() {
         for (Node n : this.getChildren()) {
-            KBS k = ((KBS) n);
-            k.rewardNotification.hide();
-            k.convinceNotification.hide();
-            k.hide();
+            Suggestion s = ((Suggestion) n);
+            s.rewardNotification.hide();
+            s.convinceNotification.hide();
+            s.hide();
         }
     }
 
@@ -106,11 +105,11 @@ public class KBSManager extends VBox {
 
         this.textSelected = true;
         for (Node n : this.getChildren()) {
-            if (n.getClass().equals(KBS.class)) {
-                KBS k = ((KBS) n);
-                if (k.isShown) {
-                    Animations.fade(fadeMax, k);
-                    k.colorRect.setOpacity(0);
+            if (n.getClass().equals(Suggestion.class)) {
+                Suggestion s = ((Suggestion) n);
+                if (s.isShown) {
+                    Animations.fade(fadeMax, s);
+                    s.colorRect.setOpacity(0);
                 }
             }
         }
@@ -120,11 +119,11 @@ public class KBSManager extends VBox {
         System.out.println("SELECTION OFF DETECTED");
         this.textSelected = false;
         for (Node n : this.getChildren()) {
-            if (n.getClass().equals(KBS.class)) {
-                KBS k = ((KBS) n);
-                if (k.isShown) {
-                    Animations.fade(fadeMin, k);
-                    k.colorRect.setOpacity(0);
+            if (n.getClass().equals(Suggestion.class)) {
+                Suggestion s = ((Suggestion) n);
+                if (s.isShown) {
+                    Animations.fade(fadeMin, s);
+                    s.colorRect.setOpacity(0);
                 }
             }
         }
@@ -142,13 +141,13 @@ public class KBSManager extends VBox {
 
         }));
         this.setOnMouseEntered((e -> {
-            this.kmHovered = true;
+            this.suggestionManagerHovered = true;
             System.out.println("ENTER");
 //                        this.fade(1, 0.2);
             this.selectionOn();
         }));
         this.setOnMouseExited((e -> {
-            this.kmHovered = false;
+            this.suggestionManagerHovered = false;
             System.out.println("EXIT");
 //            this.fade(0.2, 0.2);
             this.selectionOff();
@@ -158,28 +157,29 @@ public class KBSManager extends VBox {
     public void parseMouse(double x, double y) {
         // opacity for all based on mouse to toolbar distance, y axis
         double mouseIconDistanceY = y - 12.5;
-        double opacityY = this.scaleAndClip(mouseIconDistanceY, 0, colorDistance, fadeMax + .2, fadeMin);
+        double opacityY = this.scaleAndClip(
+                mouseIconDistanceY, 0, colorDistance, fadeMax + .2, fadeMin);
         for (Node n : this.getChildren()) {
-            if (n.getClass().equals(KBS.class)) {
-                KBS k = ((KBS) n);
-//                double mouseIconDistanceXY = Math.sqrt(Math.pow(x - k.buttonX, 2) + Math.pow(y - k.buttonY, 2));
-//                double colorOpacityXY = this.scaleAndClip(mouseIconDistanceXY, 0, 100, 1., 0);
-//                double opacityXY = this.scaleAndClip(mouseIconDistanceXY, 0, 100, fadeMax + .2, fadeMin);
-                if (k.isShown) { // only affect KBS's that are shown...
-                    if (k.canAnimate) {
-                        if (anyIconHovered || kmHovered) { // if any toolbar icon or KBS area hovered, full opacity
-                            k.setOpacity(1.);
+            if (n.getClass().equals(Suggestion.class)) {
+                Suggestion s = ((Suggestion) n);
+                if (s.isShown) { // only affect Suggestion's that are shown...
+                    if (s.canAnimate) {
+                        // if any toolbar icon or Suggestion area hovered, full opacity
+                        if (anyIconHovered || suggestionManagerHovered) {
+                            s.setOpacity(1.);
                         } else {
                             if (!textSelected) {
-                                k.setOpacity(opacityY); // gradual opacity
+                                s.setOpacity(opacityY); // gradual opacity
                             }
-                            double mouseIconDistance = Math.sqrt(Math.pow(x - k.buttonX, 2) + Math.pow(y - k.buttonY, 2));
-                            double colorOpacity = this.scaleAndClip(mouseIconDistance, 0, opacityDistance, 1., 0);
-                            k.colorRect.setOpacity(colorOpacity);
+                            double mouseIconDistance = Math.sqrt(
+                                    Math.pow(x - s.buttonX, 2) + Math.pow(y - s.buttonY, 2));
+                            double colorOpacity = this.scaleAndClip(
+                                    mouseIconDistance, 0, opacityDistance, 1., 0);
+                            s.colorRect.setOpacity(colorOpacity);
                         }
                         // if showing messages, don't be faded
-                        if (k.convinceNotification.isBeingAnimatedConvince) {
-                            k.setOpacity(1);
+                        if (s.convinceNotification.isBeingAnimated) {
+                            s.setOpacity(1);
                         }
                     }
                 }
@@ -189,9 +189,9 @@ public class KBSManager extends VBox {
 
     public void disableColor() {
         for (Node n : this.getChildren()) {
-            KBS k = ((KBS) n);
-            if (!k.hovered && k.isShown) {
-                Animations.fade(0., 0.3, k.colorRect);
+            Suggestion s = ((Suggestion) n);
+            if (!s.hovered && s.isShown) {
+                Animations.fade(0., 0.3, s.colorRect);
             }
         }
     }
@@ -209,11 +209,11 @@ public class KBSManager extends VBox {
 
     }
 
-    // used to return KBSs by ID e.g. bold
-    public KBS getKBSbyFunction(String data) {
-        for (Node n : this.getChildren()) { // getChildren only return nodes,since all javafx elements extends note (kbs extends HBox, which extends note) , is ok
-            if (data.equals(n.getId())) { // compare input with id's of the KBS's ( which are set in constructor )
-                return (KBS) n;
+    // used to return Suggestions by ID e.g. bold
+    public Suggestion getSuggestionbyFunction(String data) {
+        for (Node n : this.getChildren()) { // getChildren only return nodes,since all javafx elements extends note (suggestion extends HBox, which extends note) , is ok
+            if (data.equals(n.getId())) { // compare input with id's of the Suggestion's ( which are set in constructor )
+                return (Suggestion) n;
             }
         }
         return null;
@@ -225,7 +225,7 @@ public class KBSManager extends VBox {
     }
 
     public void toggleShow() {
-        System.out.println("KBSMANAGER SHOW TOGGLED");
+        System.out.println("SuggestionMANAGER SHOW TOGGLED");
         if (show) {
             this.setVisible(false);
             this.setManaged(false);
@@ -239,9 +239,9 @@ public class KBSManager extends VBox {
 
     public void toggleActivation() {
         for (Node n : this.getChildren()) {
-            if (n.getClass().equals(KBS.class)) {
-                KBS k = ((KBS) n);
-                k.toggleActivation();
+            if (n.getClass().equals(Suggestion.class)) {
+                Suggestion s = ((Suggestion) n);
+                s.toggleActivation();
             }
         }
     }

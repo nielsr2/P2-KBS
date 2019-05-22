@@ -10,16 +10,16 @@ import static org.p2.Settings.WINDOW_WIDTH;
 
 public class OverlayPane extends BorderPane {
 
-    public KBSManager km;
+    public SuggestionManager suggestionManager;
 
     public OverlayPane() {
         this.setPrefSize(WINDOW_WIDTH, Settings.WINDOW_HEIGHT);
         this.setPadding(new Insets(80, 0, 0, 0));
         this.setPickOnBounds(false);
 //        this.setMouseTransparent(true);
-        km = new KBSManager();
+        suggestionManager = new SuggestionManager();
         this.setId("overlayPane");
-        this.setRight(km);
+        this.setRight(suggestionManager);
         this.InitializeRewardOMeter();
     }
 
@@ -34,15 +34,15 @@ public class OverlayPane extends BorderPane {
         notificationManager.getChildren().add(notificationPane);
 
         notificationPane.getChildren().addAll(
-                km.getKBSbyFunction("bold").rewardNotification,
-                km.getKBSbyFunction("italic").rewardNotification,
-                km.getKBSbyFunction("underline").rewardNotification,
-                km.getKBSbyFunction("strikethrough").rewardNotification,
-                km.getKBSbyFunction("insertimage").rewardNotification,
-                km.getKBSbyFunction("align-right").rewardNotification,
-                km.getKBSbyFunction("align-center").rewardNotification,
-                km.getKBSbyFunction("align-left").rewardNotification,
-                km.getKBSbyFunction("align-justify").rewardNotification
+                suggestionManager.getSuggestionbyFunction("bold").rewardNotification,
+                suggestionManager.getSuggestionbyFunction("italic").rewardNotification,
+                suggestionManager.getSuggestionbyFunction("underline").rewardNotification,
+                suggestionManager.getSuggestionbyFunction("strikethrough").rewardNotification,
+                suggestionManager.getSuggestionbyFunction("insertimage").rewardNotification,
+                suggestionManager.getSuggestionbyFunction("align-right").rewardNotification,
+                suggestionManager.getSuggestionbyFunction("align-center").rewardNotification,
+                suggestionManager.getSuggestionbyFunction("align-left").rewardNotification,
+                suggestionManager.getSuggestionbyFunction("align-justify").rewardNotification
         );
 
 

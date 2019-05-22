@@ -12,7 +12,7 @@ public interface UIColors {
     Color textApprovalColor = Color.GREEN;
     Color backgroundColor = Color.LIGHTGREY;
 
-    static LinearGradient setKBSAlertColor() {
+    static LinearGradient setSuggestionAlertColor() {
         Color colorLeft = Color.web("#FF5252");
         Color colorRight = Color.web("#C72020");
 
@@ -22,7 +22,7 @@ public interface UIColors {
         return linearGradient;
     }
 
-    static LinearGradient setKBSColor() {
+    static LinearGradient setSuggestionColor() {
         Color colorLeft = Color.web("#DDDDDD");
         Color colorRight = Color.web("#CCCCCC");
 

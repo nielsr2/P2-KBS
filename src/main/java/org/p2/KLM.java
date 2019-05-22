@@ -36,28 +36,13 @@ public class KLM {
         return this.k*2;
     }
 
-    public void setShortcutEstimate(int numberOfKeystrokes) {
-        this.shortcutEstimate = this.k*numberOfKeystrokes;
-    }
-
-    public double getShortcutEstimate() {
-        return this.shortcutEstimate;
-    }
-
-    public double getGeneralToolbarEstimate() {
-        return this.h + this.p + this.bb;
-    }
-
-    public double getToolbarEstimate() {
-        return this.toolbarEstimate;
-    }
-
     public void setToolbarEstimate(Button toolbarButton) {
-
         /*mouse position start*/
         PointerInfo startMouse = MouseInfo.getPointerInfo();
-        double endMouseX = toolbarButton.localToScreen(toolbarButton.getBoundsInLocal()).getMinX()+toolbarButton.getWidth()/2;
-        double endMouseY = toolbarButton.localToScreen(toolbarButton.getBoundsInLocal()).getMinY()+toolbarButton.getHeight()/2;
+        double endMouseX = toolbarButton.localToScreen(
+                toolbarButton.getBoundsInLocal()).getMinX() + toolbarButton.getWidth() / 2;
+        double endMouseY = toolbarButton.localToScreen(
+                toolbarButton.getBoundsInLocal()).getMinY() + toolbarButton.getHeight() / 2;
         double startMouseX = startMouse.getLocation().getX();
         double startMouseY = startMouse.getLocation().getY();
         double width = toolbarButton.getWidth();
@@ -66,15 +51,15 @@ public class KLM {
         double b = 0.5;
         double fittsLaw = a+b*log(2, distance/width + 1); // Fitt's Law
         this.toolbarEstimate = this.h + fittsLaw + this.bb;
-
     }
 
     public void setToolbarEstimate(ToggleButton toolbarButton) {
-
         /*mouse position start*/
         PointerInfo startMouse = MouseInfo.getPointerInfo();
-        double endMouseX = toolbarButton.localToScreen(toolbarButton.getBoundsInLocal()).getMinX()+toolbarButton.getWidth()/2;
-        double endMouseY = toolbarButton.localToScreen(toolbarButton.getBoundsInLocal()).getMinY()+toolbarButton.getHeight()/2;
+        double endMouseX = toolbarButton.localToScreen(
+                toolbarButton.getBoundsInLocal()).getMinX() + toolbarButton.getWidth() / 2;
+        double endMouseY = toolbarButton.localToScreen(
+                toolbarButton.getBoundsInLocal()).getMinY() + toolbarButton.getHeight() / 2;
         double startMouseX = startMouse.getLocation().getX();
         double startMouseY = startMouse.getLocation().getY();
         double width = toolbarButton.getWidth();
@@ -83,61 +68,36 @@ public class KLM {
         double b = 0.5;
         double fittsLaw = a+b*log(2, distance/width + 1); // Fitt's Law
         this.toolbarEstimate = this.h + fittsLaw + this.bb;
-
     }
 
-    public void startTimerForToolbar() {
-        startTimeToolbar = System.nanoTime();
-        //System.out.println("timer has started");
+    public void startTimer(String action) {
+        if (action == "toolbar") {
+            startTimeToolbar = System.nanoTime();
+        } else if (action == "shortcut") {
+            startTimeShortcut = System.nanoTime();
+            //this.timerForToolbarAllowedToStart = false;
+        }
     }
 
-    public void stopTimerForToolbar() {
-        stopTimeToolbar = System.nanoTime();
-        double time = stopTimeToolbar-startTimeToolbar;
-        this.timeElapsedForToolbar = time/1_000_000_000;
-        startTimerForToolbar();
-    }
-
-    public double getTimeLost() {
-        return this.timeElapsedForToolbar-this.getShortcutEstimate();
+    public void stopTimer(String action) {
+        if (action == "toolbar") {
+            stopTimeToolbar = System.nanoTime();
+            double time = stopTimeToolbar - startTimeToolbar;
+            this.timeElapsedForToolbar = time / 1_000_000_000;
+        } else if (action == "shortcut") {
+            stopTimeShortcut = System.nanoTime();
+            double time = stopTimeShortcut-startTimeShortcut;
+            this.timeElapsedForShortcut = time/1_000_000_000 + this.k;
+            startTimeShortcut = System.nanoTime();
+        }
+        startTimer(action);
     }
 
     public double getTimesSlower() {
         return this.timeElapsedForToolbar/getGeneralShortcutEstimate();
     }
 
-    public void startTimerForShortcut() {
-        //if (this.timerForToolbarAllowedToStart) {
-        //System.out.println("Timer for shortcut has STARTED");
-            startTimeShortcut = System.nanoTime();
-        //System.out.println("start time is: " + startTimeShortcut/1_000_000_000);
-            this.timerForToolbarAllowedToStart = false;
-        //}
-    }
-
-    public void stopTimerForShortcut() {
-        stopTimeShortcut = System.nanoTime();
-        double time = stopTimeShortcut-startTimeShortcut;
-        this.timeElapsedForShortcut = time/1_000_000_000 + this.k;
-        //System.out.println("Timer for shortcut has STOPPED" + "\n" + "Time is: " + timeElapsedForShortcut);
-        //System.out.println("start time is: " + startTimeShortcut/1_000_000_000);
-        //System.out.println("stop time is: " + stopTimeShortcut/1_000_000_000);
-
-        startTimeShortcut = System.nanoTime();
-    }
-
-    public double getTimeElapsedForShortcut() {
-        return this.timeElapsedForShortcut;
-    }
-
-    public double getTimeSaved() {
-        return this.timeElapsedForShortcut-this.getToolbarEstimate();
-    }
-
     public double getTimesFaster() {
-        //System.out.println("Shortcut real time: " + this.timeElapsedForShortcut);
-        //System.out.println("Toolbar estimated time: " + this.toolbarEstimate);
-        //System.out.println("Times faster: " + this.toolbarEstimate/this.timeElapsedForShortcut);
         return this.toolbarEstimate/this.timeElapsedForShortcut;
     }
 
@@ -149,15 +109,15 @@ public class KLM {
         return this.timerForToolbarAllowedToStart;
     }
 
-    static double log(double base, double x) {
-        return Math.log10(x)/Math.log10(base);
+    public void setTimerForShortcutAllowance(boolean allowTimerForShortcutToStart) {
+        this.timerForShortcutAllowedToStart = allowTimerForShortcutToStart;
     }
 
     public boolean getTimerForShortcutAllowance() {
         return this.timerForShortcutAllowedToStart;
     }
 
-    public void setTimerForShortcutAllowance(boolean allowTimerForShortcutToStart) {
-        this.timerForShortcutAllowedToStart = allowTimerForShortcutToStart;
+    static double log(double base, double x) {
+        return Math.log10(x)/Math.log10(base);
     }
 }
