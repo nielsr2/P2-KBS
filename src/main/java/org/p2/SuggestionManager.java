@@ -33,11 +33,11 @@ public class SuggestionManager extends VBox {
     //
     boolean suggestionManagerHovered;
 
-    SuggestionManager() {
+    SuggestionManager(double width, double height) {
 
         // SETUP
         this.setMouseTransparent(false);
-        setMaxSize(Settings.WINDOW_WIDTH, Settings.WINDOW_HEIGHT);
+        setMaxSize(width, height);
         //this.setOrientation(VERTICAL);
         this.setPadding(new Insets(10));
         this.setSpacing(5);

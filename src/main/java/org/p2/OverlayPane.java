@@ -6,18 +6,18 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 
-import static org.p2.Settings.WINDOW_WIDTH;
+
 
 public class OverlayPane extends BorderPane {
 
     public SuggestionManager suggestionManager;
 
-    public OverlayPane() {
-        this.setPrefSize(WINDOW_WIDTH, Settings.WINDOW_HEIGHT);
+    public OverlayPane(double width, double height) {
+        this.setPrefSize(width, height);
         this.setPadding(new Insets(80, 0, 0, 0));
         this.setPickOnBounds(false);
 //        this.setMouseTransparent(true);
-        suggestionManager = new SuggestionManager();
+        suggestionManager = new SuggestionManager(width, height);
         this.setId("overlayPane");
         this.setRight(suggestionManager);
         this.InitializeRewardOMeter();

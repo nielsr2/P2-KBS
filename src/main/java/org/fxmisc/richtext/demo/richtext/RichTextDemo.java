@@ -51,7 +51,6 @@ import java.util.logging.Logger;
 
 import static org.fxmisc.richtext.model.TwoDimensional.Bias.Backward;
 import static org.fxmisc.richtext.model.TwoDimensional.Bias.Forward;
-import static org.p2.Settings.*;
 import static org.p2.UIColors.setBackgroundColor;
 
 //import static org.p2.UIColors.setBackgroundColor;
@@ -61,6 +60,18 @@ public class RichTextDemo extends Application {
     // the saved/loaded files and their format are arbitrary and may change across versions
     private static final String RTFX_FILE_EXTENSION = ".rtfx";
 
+
+    // ################################################################
+    Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+    double WINDOW_WIDTH = screenSize.getWidth() / 3 * 2;
+
+    double WINDOW_HEIGHT = screenSize.getHeight() / 3 * 2 - 25;
+    double PAPER_WIDTH = 600;
+    double PAPER_HEIGHT = PAPER_WIDTH * 1.4;
+    // ################################################################
+
+
+
     // *** LOG FUNCATIONALITY
     private final static Logger LOGGER = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
     // ################################################################
@@ -68,7 +79,7 @@ public class RichTextDemo extends Application {
     // moved outside of start()
     Button boldBtn, italicBtn, underlineBtn, strikeBtn, insertImageBtn;
     // overlaypane that combines elements correctly
-    OverlayPane overlayPane = new OverlayPane();
+    OverlayPane overlayPane = new OverlayPane(WINDOW_WIDTH, WINDOW_HEIGHT);
     ToggleButton alignLeftBtn, alignCenterBtn, alignRightBtn, alignJustifyBtn;
     // ################################################################
 

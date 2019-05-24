@@ -35,9 +35,9 @@ public class Suggestion extends HBox {
     protected int kbsTimesUsedTotal = 0;
     protected int kbsTimesUsedInstance = 0;
     protected int tbTimesClickedTotal = 0;
-    protected int tbTimesClickedInstance = 0; //times clicked since last time shortcut were used
+    protected int tbTimesClickedInstance = 0;
     public ConvinceNotification convinceNotification;
-    Text textStartConvince = new Text("When not using shortcuts, \n you are "); // this might be dumb way too do it
+    Text textStartConvince = new Text("When not using shortcuts, \n you are "); //
     Text textEndConvince = new Text(" times slower!");
     public RewardNotification rewardNotification;
 
