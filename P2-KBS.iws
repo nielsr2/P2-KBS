@@ -2,9 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5bd1bdc2-647e-4fd3-b621-35a1c82e4a4d" name="Default Changelist" comment="Cleaned up code and fix rewardOMeter">
+      <change beforePath="$PROJECT_DIR$/P2-KBS.iml" beforeDir="false" afterPath="$PROJECT_DIR$/P2-KBS.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/P2-KBS.ipr" beforeDir="false" afterPath="$PROJECT_DIR$/P2-KBS.ipr" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/P2-KBS.iws" beforeDir="false" afterPath="$PROJECT_DIR$/P2-KBS.iws" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/fxmisc/richtext/demo/richtext/KBS.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/fxmisc/richtext/demo/richtext/KBS.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/fxmisc/richtext/demo/richtext/SkillOMeter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/fxmisc/richtext/demo/richtext/SkillOMeter.java" afterDir="false" />
     </list>
     <list id="dce1eb78-d154-406a-95db-062b407bb3b7" name="nono" comment="nono" />
     <ignored path="$PROJECT_DIR$/out/" />
@@ -18,137 +18,209 @@
   <component name="DefaultGradleProjectSettings">
     <option name="isMigrated" value="true" />
   </component>
+  <component name="FavoritesManager">
+    <favorites_list name="P2-KBS" />
+  </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/org/fxmisc/richtext/demo/richtext/OverlayPane.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="92">
-              <caret line="39" column="59" selection-start-line="39" selection-start-column="59" selection-end-line="39" selection-end-column="59" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/org/fxmisc/richtext/demo/richtext/RichTextDemo.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="221">
-              <caret line="154" lean-forward="true" selection-start-line="154" selection-end-line="154" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/org/fxmisc/richtext/demo/richtext/KBS.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="85">
-              <caret line="47" column="44" selection-start-line="47" selection-start-column="44" selection-end-line="47" selection-end-column="44" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#9326#9531#0" expanded="true" />
-                <element signature="e#9530#9531#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/org/fxmisc/richtext/demo/richtext/UIColors.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="170">
-              <caret line="10" column="24" selection-start-line="10" selection-start-column="10" selection-end-line="10" selection-end-column="24" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/org/fxmisc/richtext/demo/richtext/KBSManager.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="391">
-              <caret line="215" column="1" selection-start-line="215" selection-start-column="1" selection-end-line="215" selection-end-column="1" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/org/fxmisc/richtext/demo/richtext/SkillOMeter.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="333">
-              <caret line="117" selection-start-line="117" selection-end-line="117" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/org/fxmisc/richtext/demo/richtext/LinkedImage.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="68">
-              <caret line="9" column="28" selection-start-line="9" selection-start-column="17" selection-end-line="9" selection-end-column="28" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/org/fxmisc/richtext/demo/richtext/Settings.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="51">
-              <caret line="3" selection-start-line="3" selection-end-line="3" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <splitter split-orientation="horizontal" split-proportion="0.5">
+      <split-first>
+        <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/main/java/org/p2/MyLogger.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="300">
+                  <caret line="23" column="29" selection-start-line="23" selection-start-column="29" selection-end-line="23" selection-end-column="29" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/main/java/org/p2/UIColors.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="915">
+                  <caret line="61" column="17" selection-start-line="61" selection-start-column="17" selection-end-line="61" selection-end-column="17" />
+                  <folding>
+                    <element signature="imports" expanded="true" />
+                    <element signature="e#232#233#0" expanded="true" />
+                    <element signature="e#266#267#0" expanded="true" />
+                    <element signature="e#306#307#0" expanded="true" />
+                    <element signature="e#343#344#0" expanded="true" />
+                    <element signature="e#386#387#0" expanded="true" />
+                    <element signature="e#426#427#0" expanded="true" />
+                    <element signature="e#487#488#0" expanded="true" />
+                    <element signature="e#525#526#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/main/java/org/p2/SuggestionManager.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="-816">
+                  <caret line="34" column="4" selection-start-line="34" selection-start-column="4" selection-end-line="34" selection-end-column="4" />
+                  <folding>
+                    <element signature="e#2947#2948#0" expanded="true" />
+                    <element signature="e#2999#3000#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/pom.xml">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="344">
+                  <caret line="39" selection-start-line="39" selection-end-line="39" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/main/java/org/p2/ConvinceNotification.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="528">
+                  <caret line="50" selection-start-line="50" selection-end-line="50" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/main/java/org/p2/RewardNotification.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="138">
+                  <caret line="36" column="39" selection-start-line="36" selection-start-column="39" selection-end-line="36" selection-end-column="39" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/main/java/org/p2/Settings.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="105">
+                  <caret line="7" selection-start-line="7" selection-end-line="7" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/main/java/org/p2/KLM.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="450">
+                  <caret line="33" selection-start-line="33" selection-end-line="33" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/main/java/org/p2/OverlayPane.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="135">
+                  <caret line="13" selection-start-line="13" selection-end-line="13" />
+                  <folding>
+                    <element signature="imports" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/main/java/org/p2/Suggestion.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="124">
+                  <caret line="73" column="39" selection-start-line="73" selection-start-column="39" selection-end-line="73" selection-end-column="39" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+        </leaf>
+      </split-first>
+      <split-second>
+        <leaf>
+          <file pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/src/main/java/org/p2/Suggestion.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="1013">
+                  <caret line="94" column="72" selection-start-line="94" selection-start-column="72" selection-end-line="94" selection-end-column="72" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+        </leaf>
+      </split-second>
+    </splitter>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Interface" />
         <option value="Class" />
+        <option value="Interface" />
       </list>
     </option>
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>textFlow1</find>
-      <find>showText1</find>
-      <find>textFlow</find>
-      <find>showText</find>
-      <find>Slower</find>
-      <find>kbsTimesUsedInstance</find>
-      <find>shortcut</find>
-      <find>getGradient</find>
-      <find>linea</find>
-      <find>LinkedImage</find>
-      <find>DARKGRAY</find>
-      <find>timesSlower</find>
-      <find>ConvinceOMeter</find>
-      <find>getTimesFaster</find>
-      <find>Linea</find>
-      <find>timesFaster</find>
-      <find>TimesSlower</find>
-      <find>setTimesFaster</find>
-      <find>setTimesSlower</find>
-      <find>setskillNr</find>
-      <find>rewardometer</find>
-      <find>rewardOMeter</find>
-      <find>setKbsTimesUsedInstance</find>
+      <find>ani</find>
+      <find>stopTimerForToolbar()</find>
+      <find>icon</find>
+      <find>noti</find>
+      <find>mouse</find>
+      <find>with</find>
+      <find>.O</find>
+      <find>rewar</find>
+      <find>manageKBS</find>
+      <find>canAnimate</find>
+      <find>.o</find>
+      <find>Notification(</find>
+      <find>notificatio</find>
+      <find>overlayP</find>
+      <find>new Overl</find>
+      <find>over</find>
       <find>new</find>
-      <find>tbTimesClickedInstance</find>
-      <find>setStyle</find>
-      <find>convinceOMeter</find>
-      <find>Trans</find>
-      <find>Color</find>
-      <find>Tran</find>
+      <find>setBackgroundCo</find>
+      <find>sug</find>
+      <find>paper</find>
+      <find>web</find>
+      <find>initialclick</find>
+      <find>colorre</find>
+      <find>setSuggestionAlertColor</find>
+      <find>setSuggestionColor</find>
+      <find>setNotificationsColor</find>
+      <find>setBackgroundColor</find>
+      <find>()</find>
+      <find>getBackgroundColor()</find>
+      <find>getBackgroundColor</find>
     </findStrings>
+    <replaceStrings>
+      <replace>ACTIVATED</replace>
+      <replace>shortcutText</replace>
+      <replace>hovered</replace>
+      <replace>selectionOn(</replace>
+      <replace>selectionOff(</replace>
+      <replace>mouseToolbarDistance</replace>
+      <replace>canAnimate</replace>
+      <replace>mouseIconDistanceXY</replace>
+      <replace>mouseIconDistanceY</replace>
+      <replace>mouseYOpacity</replace>
+      <replace>opacityY</replace>
+      <replace>colorOpacityXY</replace>
+      <replace />
+      <replace>km</replace>
+      <replace>scaleAndClip</replace>
+      <replace>anyIconHovered</replace>
+      <replace>notifications</replace>
+      <replace>Notifications</replace>
+      <replace>textNumber</replace>
+      <replace>notification</replace>
+      <replace>getSuggestionAlertColor</replace>
+      <replace>getSuggestionColor</replace>
+      <replace>getNotificationsColor</replace>
+      <replace>getBackgroundColor</replace>
+      <replace>getBackgroundGradient</replace>
+    </replaceStrings>
+    <dirStrings>
+      <dir>/</dir>
+    </dirStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -162,17 +234,34 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/org/fxmisc/richtext/demo/richtext/Settings.java" />
-        <option value="$PROJECT_DIR$/src/main/java/org/fxmisc/richtext/demo/richtext/KLM.java" />
-        <option value="$PROJECT_DIR$/src/main/java/org/fxmisc/richtext/demo/richtext/OverlayPane.java" />
-        <option value="$PROJECT_DIR$/src/main/java/org/fxmisc/richtext/demo/richtext/UIColors.java" />
-        <option value="$PROJECT_DIR$/src/main/java/org/fxmisc/richtext/demo/richtext/RichTextDemo.java" />
         <option value="$PROJECT_DIR$/src/main/java/org/fxmisc/richtext/demo/richtext/RewardOMeter.java" />
         <option value="$PROJECT_DIR$/src/main/java/org/fxmisc/richtext/demo/richtext/ConvinceOMeter.java" />
+        <option value="$PROJECT_DIR$/src/main/java/org/fxmisc/richtext/demo/richtext/MyLogger.java" />
+        <option value="$PROJECT_DIR$/src/main/java/org/fxmisc/richtext/demo/richtext/animations.java" />
+        <option value="$PROJECT_DIR$/src/main/java/org/fxmisc/richtext/demo/richtext/SkillOMeter.java" />
+        <option value="$PROJECT_DIR$/src/main/java/org/fxmisc/richtext/demo/richtext/KLM.java" />
+        <option value="$PROJECT_DIR$/src/main/java/org/fxmisc/richtext/demo/richtext/KBS.java" />
+        <option value="$PROJECT_DIR$/src/main/java/org/fxmisc/richtext/demo/richtext/UIColors.java" />
         <option value="$PROJECT_DIR$/src/main/java/org/fxmisc/richtext/demo/richtext/KBSManager.java" />
         <option value="$PROJECT_DIR$/src/main/java/org/fxmisc/richtext/demo/richtext/Animations.java" />
-        <option value="$PROJECT_DIR$/src/main/java/org/fxmisc/richtext/demo/richtext/SkillOMeter.java" />
-        <option value="$PROJECT_DIR$/src/main/java/org/fxmisc/richtext/demo/richtext/KBS.java" />
+        <option value="$PROJECT_DIR$/src/main/java/org/fxmisc/richtext/demo/richtext/Notifications.java" />
+        <option value="$PROJECT_DIR$/src/main/java/org/fxmisc/richtext/demo/richtext/OverlayPane.java" />
+        <option value="$PROJECT_DIR$/src/main/java/org/OverlayPane.java" />
+        <option value="$PROJECT_DIR$/src/main/java/org/Notifications.java" />
+        <option value="$PROJECT_DIR$/src/main/java/org/fxmisc/richtext/demo/richtext/Settings.java" />
+        <option value="$PROJECT_DIR$/src/main/java/org/p2/Notifications.java" />
+        <option value="$PROJECT_DIR$/src/main/java/org/p2/Animations.java" />
+        <option value="$PROJECT_DIR$/src/main/java/org/p2/KBS.java" />
+        <option value="$PROJECT_DIR$/src/main/java/org/p2/KBSManager.java" />
+        <option value="$PROJECT_DIR$/src/main/java/org/p2/Settings.java" />
+        <option value="$PROJECT_DIR$/src/main/java/org/p2/SuggestionManager.java" />
+        <option value="$PROJECT_DIR$/src/main/java/org/p2/OverlayPane.java" />
+        <option value="$PROJECT_DIR$/src/main/java/org/fxmisc/richtext/demo/richtext/RichTextDemo.java" />
+        <option value="$PROJECT_DIR$/src/main/java/org/p2/ConvinceNotification.java" />
+        <option value="$PROJECT_DIR$/src/main/java/org/p2/RewardNotification.java" />
+        <option value="$PROJECT_DIR$/src/main/java/org/p2/UIColors.java" />
+        <option value="$PROJECT_DIR$/src/main/java/org/p2/Suggestion.java" />
+        <option value="$PROJECT_DIR$/pom.xml" />
       </list>
     </option>
   </component>
@@ -195,22 +284,25 @@
           <item name="P2-KBS" type="9519ce18:MavenProjectsStructure$ProjectNode" />
           <item name="Lifecycle" type="58874e2:MavenProjectsStructure$LifecycleNode" />
         </path>
+        <path>
+          <item name="" type="16c1761:MavenProjectsStructure$RootNode" />
+          <item name="P2-KBS" type="9519ce18:MavenProjectsStructure$ProjectNode" />
+          <item name="Dependencies" type="f4be9f2a:MavenProjectsStructure$DependenciesNode" />
+        </path>
       </expand>
       <select />
     </treeState>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="y" value="21" />
-    <option name="width" value="840" />
-    <option name="height" value="1029" />
+  <component name="ProjectFrameBounds">
+    <option name="y" value="22" />
+    <option name="width" value="1680" />
+    <option name="height" value="1028" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -218,55 +310,32 @@
               <item name="P2-KBS" type="b2602c69:ProjectViewProjectNode" />
               <item name="P2-KBS" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="P2-KBS" type="b2602c69:ProjectViewProjectNode" />
-              <item name="P2-KBS" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="P2-KBS" type="b2602c69:ProjectViewProjectNode" />
-              <item name="P2-KBS" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="P2-KBS" type="b2602c69:ProjectViewProjectNode" />
-              <item name="P2-KBS" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="P2-KBS" type="b2602c69:ProjectViewProjectNode" />
-              <item name="P2-KBS" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="demo" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="P2-KBS" type="b2602c69:ProjectViewProjectNode" />
-              <item name="P2-KBS" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="demo" type="462c0819:PsiDirectoryNode" />
-              <item name="richtext" type="462c0819:PsiDirectoryNode" />
-            </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="last_opened_file_path" value="$USER_HOME$/Downloads/FXExperience.jar!/" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/P2-KBS.ipr" />
     <property name="project.structure.last.edited" value="Libraries" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="restartRequiresConfirmation" value="false" />
-    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="org.p2" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/main/java/org/p2" />
+      <recent name="$PROJECT_DIR$/src/main/java/org/" />
+      <recent name="$PROJECT_DIR$/src/main/java/org/fxmisc/richtext/demo/richtext" />
+    </key>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -363,20 +432,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1556802925134</updated>
-    </task>
-    <task id="LOCAL-00001" summary="made animations work">
-      <created>1556875721339</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1556875721339</updated>
-    </task>
-    <task id="LOCAL-00002" summary="made fade in fade out on mouse enter/exit">
-      <created>1556876010164</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1556876010164</updated>
     </task>
     <task id="LOCAL-00003" summary="made mikkels overlaypane actually">
       <created>1556877347260</created>
@@ -560,7 +615,168 @@
       <option name="project" value="LOCAL" />
       <updated>1557744651928</updated>
     </task>
-    <option name="localTasksCounter" value="29" />
+    <task id="LOCAL-00029" summary="made shortcut for toggling solution">
+      <created>1557826901163</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1557826901163</updated>
+    </task>
+    <task id="LOCAL-00030" summary="made togglin' bold etc. sorta working, adds space thooo">
+      <created>1557932404840</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1557932404840</updated>
+    </task>
+    <task id="LOCAL-00031" summary="fixed the fades">
+      <created>1557996617388</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1557996617388</updated>
+    </task>
+    <task id="LOCAL-00032" summary="removed test button">
+      <created>1557996747339</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1557996747339</updated>
+    </task>
+    <task id="LOCAL-00033" summary="made timestamp on logs + fixed colorrect opacity">
+      <created>1557999752068</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1557999752068</updated>
+    </task>
+    <task id="LOCAL-00034" summary="opacity fiddlin'">
+      <created>1558005198842</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1558005198842</updated>
+    </task>
+    <task id="LOCAL-00035" summary="save before big clean">
+      <created>1558079345842</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1558079345842</updated>
+    </task>
+    <task id="LOCAL-00036" summary="clean up in kbs">
+      <created>1558082698835</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1558082698836</updated>
+    </task>
+    <task id="LOCAL-00037" summary="cleanin' n' fixing">
+      <created>1558089164124</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1558089164124</updated>
+    </task>
+    <task id="LOCAL-00038" summary="wohoooo">
+      <created>1558091664010</created>
+      <option name="number" value="00038" />
+      <option name="presentableId" value="LOCAL-00038" />
+      <option name="project" value="LOCAL" />
+      <updated>1558091664010</updated>
+    </task>
+    <task id="LOCAL-00039" summary="slightly different ambience">
+      <created>1558093601163</created>
+      <option name="number" value="00039" />
+      <option name="presentableId" value="LOCAL-00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1558093601164</updated>
+    </task>
+    <task id="LOCAL-00040" summary="fixed toggling buttonz">
+      <created>1558172718662</created>
+      <option name="number" value="00040" />
+      <option name="presentableId" value="LOCAL-00040" />
+      <option name="project" value="LOCAL" />
+      <updated>1558172718663</updated>
+    </task>
+    <task id="LOCAL-00041" summary="fixed small error concerning ambience">
+      <created>1558172876224</created>
+      <option name="number" value="00041" />
+      <option name="presentableId" value="LOCAL-00041" />
+      <option name="project" value="LOCAL" />
+      <updated>1558172876224</updated>
+    </task>
+    <task id="LOCAL-00042" summary="fixed on key selection hightlight">
+      <created>1558261205771</created>
+      <option name="number" value="00042" />
+      <option name="presentableId" value="LOCAL-00042" />
+      <option name="project" value="LOCAL" />
+      <updated>1558261205771</updated>
+    </task>
+    <task id="LOCAL-00043" summary="Cleaned">
+      <created>1558264977019</created>
+      <option name="number" value="00043" />
+      <option name="presentableId" value="LOCAL-00043" />
+      <option name="project" value="LOCAL" />
+      <updated>1558264977019</updated>
+    </task>
+    <task id="LOCAL-00044" summary="renaming + cleaning etc.">
+      <created>1558276626152</created>
+      <option name="number" value="00044" />
+      <option name="presentableId" value="LOCAL-00044" />
+      <option name="project" value="LOCAL" />
+      <updated>1558276626152</updated>
+    </task>
+    <task id="LOCAL-00045" summary="refactored into own package">
+      <created>1558281696667</created>
+      <option name="number" value="00045" />
+      <option name="presentableId" value="LOCAL-00045" />
+      <option name="project" value="LOCAL" />
+      <updated>1558281696667</updated>
+    </task>
+    <task id="LOCAL-00046" summary="fixed canAnimate + cleaning">
+      <created>1558288076102</created>
+      <option name="number" value="00046" />
+      <option name="presentableId" value="LOCAL-00046" />
+      <option name="project" value="LOCAL" />
+      <updated>1558288076103</updated>
+    </task>
+    <task id="LOCAL-00047" summary="clean up + making stuff clearer">
+      <created>1558348633108</created>
+      <option name="number" value="00047" />
+      <option name="presentableId" value="LOCAL-00047" />
+      <option name="project" value="LOCAL" />
+      <updated>1558348633108</updated>
+    </task>
+    <task id="LOCAL-00048" summary="small clean">
+      <created>1558543517883</created>
+      <option name="number" value="00048" />
+      <option name="presentableId" value="LOCAL-00048" />
+      <option name="project" value="LOCAL" />
+      <updated>1558543517884</updated>
+    </task>
+    <task id="LOCAL-00049" summary="deleted SETTINGS interface - shouldn't be interface, properties moved to richtextfxDemo, and added width/height to overlaypane and sgstmanager constructors">
+      <created>1558704631938</created>
+      <option name="number" value="00049" />
+      <option name="presentableId" value="LOCAL-00049" />
+      <option name="project" value="LOCAL" />
+      <updated>1558704631938</updated>
+    </task>
+    <task id="LOCAL-00050" summary="final big clean">
+      <created>1558885149475</created>
+      <option name="number" value="00050" />
+      <option name="presentableId" value="LOCAL-00050" />
+      <option name="project" value="LOCAL" />
+      <updated>1558885149477</updated>
+    </task>
+    <task id="LOCAL-00051" summary="updated pom file">
+      <created>1558885263022</created>
+      <option name="number" value="00051" />
+      <option name="presentableId" value="LOCAL-00051" />
+      <option name="project" value="LOCAL" />
+      <updated>1558885263022</updated>
+    </task>
+    <option name="localTasksCounter" value="52" />
     <servers />
   </component>
   <component name="TodoView">
@@ -573,67 +789,70 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-7" y="-7" width="1295" height="735" extended-state="6" />
-    <editor active="true" />
+    <frame x="0" y="22" width="1680" height="1028" extended-state="6" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2769231" />
-      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info id="Capture Tool" order="2" />
-      <window_info id="Image Layers" order="3" />
-      <window_info id="Designer" order="4" />
-      <window_info id="UI Designer" order="5" />
-      <window_info id="Favorites" order="6" side_tool="true" />
-      <window_info id="simpleUML" order="7" weight="0.32967034" />
-      <window_info id="Repositories" order="8" weight="0.32955465" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.2894309" visible="true" weight="0.31929183" />
+      <window_info id="Capture Tool" order="1" />
+      <window_info id="Image Layers" order="2" />
+      <window_info id="Designer" order="3" />
+      <window_info id="UI Designer" order="4" />
+      <window_info id="Favorites" order="5" sideWeight="0.500813" side_tool="true" weight="0.2789988" />
+      <window_info id="simpleUML" order="6" weight="0.32967034" />
+      <window_info id="Repositories" order="7" weight="0.32955465" />
+      <window_info id="Structure" order="8" sideWeight="0.7105691" weight="0.2771673" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49635628" visible="true" weight="0.11940298" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.39966834" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49635628" visible="true" weight="0.3429487" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.39957264" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="6" weight="0.3283582" />
+      <window_info anchor="bottom" id="TODO" order="6" weight="0.032051284" />
       <window_info anchor="bottom" id="Terminal" order="7" weight="0.3283582" />
       <window_info anchor="bottom" id="Event Log" order="8" sideWeight="0.50364375" side_tool="true" weight="0.50248754" />
-      <window_info anchor="bottom" id="Version Control" order="9" sideWeight="0.49635628" weight="0.32669982" />
-      <window_info anchor="bottom" id="Messages" order="10" sideWeight="0.49959514" weight="0.32669982" />
+      <window_info anchor="bottom" id="Version Control" order="9" sideWeight="0.49635628" weight="0.32478634" />
+      <window_info anchor="bottom" id="Messages" order="10" sideWeight="0.49959514" weight="0.3258547" />
+      <window_info anchor="bottom" id="Inspection Results" order="11" weight="0.32905984" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="right" id="Palette" order="3" />
-      <window_info anchor="right" id="Maven" order="4" weight="0.13846155" />
+      <window_info anchor="right" id="Maven" order="4" visible="true" weight="0.13797314" />
       <window_info anchor="right" id="Theme Preview" order="5" />
       <window_info anchor="right" id="Capture Analysis" order="6" />
       <window_info anchor="right" id="Palette&#9;" order="7" />
+      <window_info anchor="right" x="764" y="45" width="1018" height="1006" id="UML design tool window" order="8" type="WINDOWED" weight="0.6245421" />
     </layout>
     <layout-to-restore>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.15951417" />
-      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info id="Capture Tool" order="2" />
-      <window_info id="Image Layers" order="3" />
-      <window_info id="Designer" order="4" />
-      <window_info id="UI Designer" order="5" />
-      <window_info id="Favorites" order="6" side_tool="true" />
-      <window_info id="simpleUML" order="7" weight="0.32967034" />
-      <window_info id="Repositories" order="8" weight="0.32955465" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.2894309" weight="0.2820513" />
+      <window_info id="Capture Tool" order="1" />
+      <window_info id="Image Layers" order="2" />
+      <window_info id="Designer" order="3" />
+      <window_info id="UI Designer" order="4" />
+      <window_info id="Favorites" order="5" sideWeight="0.500813" side_tool="true" weight="0.2789988" />
+      <window_info id="simpleUML" order="6" weight="0.32967034" />
+      <window_info id="Repositories" order="7" weight="0.32955465" />
+      <window_info id="Structure" order="8" sideWeight="0.7105691" weight="0.34065935" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49635628" visible="true" weight="0.5339967" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.39966834" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49635628" weight="0.3429487" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.39957264" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="6" weight="0.3283582" />
+      <window_info anchor="bottom" id="TODO" order="6" weight="0.032051284" />
       <window_info anchor="bottom" id="Terminal" order="7" weight="0.3283582" />
       <window_info anchor="bottom" id="Event Log" order="8" sideWeight="0.50364375" side_tool="true" weight="0.50248754" />
-      <window_info anchor="bottom" id="Version Control" order="9" sideWeight="0.49635628" weight="0.32669982" />
-      <window_info anchor="bottom" id="Messages" order="10" sideWeight="0.49959514" weight="0.32669982" />
-      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
-      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="right" id="Palette" order="3" />
-      <window_info anchor="right" id="Maven" order="4" weight="0.13846155" />
-      <window_info anchor="right" id="Theme Preview" order="5" />
-      <window_info anchor="right" id="Capture Analysis" order="6" />
-      <window_info anchor="right" id="Palette&#9;" order="7" />
+      <window_info anchor="bottom" id="Version Control" order="9" sideWeight="0.49635628" weight="0.32478634" />
+      <window_info active="true" anchor="bottom" id="Messages" order="10" sideWeight="0.49959514" visible="true" weight="0.3258547" />
+      <window_info anchor="bottom" id="Inspection Results" order="11" weight="0.32905984" />
+      <window_info anchor="right" x="2555" y="772" width="1018" height="724" id="UML design tool window" order="0" type="WINDOWED" visible="true" weight="0.6245421" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="1" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="2" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="3" weight="0.25" />
+      <window_info anchor="right" id="Palette" order="4" />
+      <window_info anchor="right" id="Maven" order="5" weight="0.13797314" />
+      <window_info anchor="right" id="Theme Preview" order="6" />
+      <window_info anchor="right" id="Capture Analysis" order="7" />
+      <window_info anchor="right" id="Palette&#9;" order="8" />
     </layout-to-restore>
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -680,41 +899,37 @@
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_CODE_CLEANUP_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="CHECK_NEW_TODO" value="false" />
-    <MESSAGE value="Put image and shortcut inside box" />
-    <MESSAGE value="made animations work" />
-    <MESSAGE value="made fade in fade out on mouse enter/exit" />
-    <MESSAGE value="made mikkels overlaypane actually" />
-    <MESSAGE value="todo for dear old mikz" />
-    <MESSAGE value="nielz fixed mikkels overlaypane mouse issues" />
-    <MESSAGE value="made selection function + todo" />
-    <MESSAGE value="tasks" />
-    <MESSAGE value="todos" />
-    <MESSAGE value="ConvinceOMeter" />
-    <MESSAGE value="ConvinceOMeter fixed alignment" />
-    <MESSAGE value="distance stuff from mouse to toolbar" />
-    <MESSAGE value="Somewhat made RewardOMeter Again" />
-    <MESSAGE value="MouseTransparency" />
-    <MESSAGE value="Removed pin and X" />
-    <MESSAGE value="decimal fix" />
-    <MESSAGE value="omg it finally works" />
-    <MESSAGE value="Stuff ConvinceOMeter" />
-    <MESSAGE value="Cleaned up code and fix rewardOMeter" />
-    <MESSAGE value="Color interface" />
     <MESSAGE value="made one SkillOmeterClass" />
     <MESSAGE value="Cleanup" />
-    <option name="LAST_COMMIT_MESSAGE" value="Cleanup" />
+    <MESSAGE value="made shortcut for toggling solution" />
+    <MESSAGE value="made togglin' bold etc. sorta working, adds space thooo" />
+    <MESSAGE value="fixed the fades" />
+    <MESSAGE value="removed test button" />
+    <MESSAGE value="made timestamp on logs + fixed colorrect opacity" />
+    <MESSAGE value="opacity fiddlin'" />
+    <MESSAGE value="save before big clean" />
+    <MESSAGE value="clean up in kbs" />
+    <MESSAGE value="cleanin' n' fixing" />
+    <MESSAGE value="wohoooo" />
+    <MESSAGE value="slightly different ambience" />
+    <MESSAGE value="fixed toggling buttonz" />
+    <MESSAGE value="fixed small error concerning ambience" />
+    <MESSAGE value="fixed on key selection hightlight" />
+    <MESSAGE value="Cleaned" />
+    <MESSAGE value="renaming + cleaning etc." />
+    <MESSAGE value="refactored into own package" />
+    <MESSAGE value="fixed canAnimate + cleaning" />
+    <MESSAGE value="clean up + making stuff clearer" />
+    <MESSAGE value="small clean" />
+    <MESSAGE value="deleted SETTINGS interface - shouldn't be interface, properties moved to richtextfxDemo, and added width/height to overlaypane and sgstmanager constructors" />
+    <MESSAGE value="final big clean" />
+    <MESSAGE value="updated pom file" />
+    <option name="LAST_COMMIT_MESSAGE" value="updated pom file" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="11" column="9" selection-start-line="11" selection-start-column="9" selection-end-line="11" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/org/fxmisc/richtext/demo/richtext/NewIcons/ARiconHR.png">
       <provider selected="true" editor-type-id="images" />
     </entry>
@@ -769,17 +984,8 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/fxmisc/richtext/demo/richtext/KLM.java" />
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_211/javafx-src.zip!/javafx/scene/image/Image.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="9027">
-          <caret line="658" column="13" selection-start-line="658" selection-start-column="13" selection-end-line="658" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Logging.txt.1">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_211/javafx-src.zip!/javafx/scene/image/Image.java" />
+    <entry file="file://$PROJECT_DIR$/Logging.txt.1" />
     <entry file="file://$PROJECT_DIR$/src/main/java/org/fxmisc/richtext/demo/richtext/RealLinkedImage.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="170">
@@ -787,97 +993,156 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/fxmisc/richtext/demo/richtext/RewardOMeter.java">
+    <entry file="file://$PROJECT_DIR$/Logging20190516_113140.txt" />
+    <entry file="file://$PROJECT_DIR$/Logging20190516_113110.txt" />
+    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_171.jdk/Contents/Home/javafx-src.zip!/javafx/event/Event.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="236">
-          <caret line="30" column="39" lean-forward="true" selection-start-line="30" selection-start-column="39" selection-end-line="30" selection-end-column="39" />
+        <state relative-caret-position="873">
+          <caret line="197" column="18" selection-start-line="197" selection-start-column="18" selection-end-line="197" selection-end-column="18" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/fxmisc/richtext/demo/richtext/ConvinceOMeter.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/fxmisc/richtext/demo/richtext/ParStyle.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="24" column="33" selection-start-line="24" selection-start-column="33" selection-end-line="24" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/fxmisc/richtext/demo/richtext/UIColors.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="10" column="24" selection-start-line="10" selection-start-column="10" selection-end-line="10" selection-end-column="24" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/fxmisc/richtext/demo/richtext/OverlayPane.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="92">
-          <caret line="39" column="59" selection-start-line="39" selection-start-column="59" selection-end-line="39" selection-end-column="59" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/fxmisc/richtext/demo/richtext/KBSManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
-          <caret line="215" column="1" selection-start-line="215" selection-start-column="1" selection-end-line="215" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/fxmisc/richtext/demo/richtext/Settings.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="3" selection-start-line="3" selection-end-line="3" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/fxmisc/richtext/demo/richtext/RichTextDemo.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="154" lean-forward="true" selection-start-line="154" selection-end-line="154" />
+        <state relative-caret-position="450">
+          <caret line="43" column="29" selection-start-line="43" selection-start-column="24" selection-end-line="43" selection-end-column="29" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/org/fxmisc/richtext/demo/richtext/LinkedImage.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="9" column="28" selection-start-line="9" selection-start-column="17" selection-end-line="9" selection-end-column="28" />
+        <state relative-caret-position="60">
+          <caret line="9" column="17" selection-start-line="9" selection-start-column="17" selection-end-line="9" selection-end-column="17" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/fxmisc/richtext/demo/richtext/Animations.java">
+    <entry file="file://$PROJECT_DIR$/example rtfx file.rtfx">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="11" column="38" selection-start-line="11" selection-start-column="38" selection-end-line="11" selection-end-column="38" />
+        <state>
+          <caret column="597" selection-start-column="595" selection-end-column="597" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/fxmisc/richtext/demo/richtext/RewardOMeter.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/fxmisc/richtext/demo/richtext/ConvinceOMeter.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/p2/KBS.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/fxmisc/richtext/demo/richtext/MyLogger.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/p2/KBSManager.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/p2/Animations.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="390">
+          <caret line="28" selection-start-line="28" selection-end-line="28" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/fxmisc/richtext/demo/richtext/SkillOMeter.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/p2/Notifications.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="333">
-          <caret line="117" selection-start-line="117" selection-end-line="117" />
+        <state relative-caret-position="195">
+          <caret line="21" column="32" selection-start-line="21" selection-start-column="32" selection-end-line="21" selection-end-column="32" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/fxmisc/richtext/demo/richtext/KBS.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/fxmisc/richtext/demo/richtext/RichTextDemo.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="47" column="44" selection-start-line="47" selection-start-column="44" selection-end-line="47" selection-end-column="44" />
+        <state relative-caret-position="6195">
+          <caret line="464" selection-start-line="464" selection-end-line="464" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#9326#9531#0" expanded="true" />
-            <element signature="e#9530#9531#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/p2/Settings.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="7" selection-start-line="7" selection-end-line="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/p2/KLM.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="450">
+          <caret line="33" selection-start-line="33" selection-end-line="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/p2/RewardNotification.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="138">
+          <caret line="36" column="39" selection-start-line="36" selection-start-column="39" selection-end-line="36" selection-end-column="39" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/p2/MyLogger.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="23" column="29" selection-start-line="23" selection-start-column="29" selection-end-line="23" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/p2/OverlayPane.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="13" selection-start-line="13" selection-end-line="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/p2/ConvinceNotification.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="528">
+          <caret line="50" selection-start-line="50" selection-end-line="50" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/p2/Suggestion.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="124">
+          <caret line="73" column="39" selection-start-line="73" selection-start-column="39" selection-end-line="73" selection-end-column="39" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/p2/UIColors.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="915">
+          <caret line="61" column="17" selection-start-line="61" selection-start-column="17" selection-end-line="61" selection-end-column="17" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#232#233#0" expanded="true" />
+            <element signature="e#266#267#0" expanded="true" />
+            <element signature="e#306#307#0" expanded="true" />
+            <element signature="e#343#344#0" expanded="true" />
+            <element signature="e#386#387#0" expanded="true" />
+            <element signature="e#426#427#0" expanded="true" />
+            <element signature="e#487#488#0" expanded="true" />
+            <element signature="e#525#526#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/p2/SuggestionManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-816">
+          <caret line="34" column="4" selection-start-line="34" selection-start-column="4" selection-end-line="34" selection-end-column="4" />
+          <folding>
+            <element signature="e#2947#2948#0" expanded="true" />
+            <element signature="e#2999#3000#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="344">
+          <caret line="39" selection-start-line="39" selection-end-line="39" />
         </state>
       </provider>
     </entry>
@@ -898,6 +1163,7 @@
       </state>
       <state key="FacetStructureConfigurable.UI">
         <settings>
+          <last-edited>No facets are configured</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
