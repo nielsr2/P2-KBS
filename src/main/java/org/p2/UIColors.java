@@ -5,14 +5,26 @@ import javafx.scene.paint.CycleMethod;
 import javafx.scene.paint.LinearGradient;
 import javafx.scene.paint.Stop;
 
-public interface UIColors {
+public abstract class UIColors {
 
-    Color borderColor = Color.DARKGRAY;
-    Color textAlertColor = Color.RED;
-    Color textApprovalColor = Color.GREEN;
-    Color backgroundColor = Color.LIGHTGREY;
+    public static Color getBorderColor() {
+        return Color.DARKGRAY;
+    }
 
-    static LinearGradient setSuggestionAlertColor() {
+    public static Color getTextAlertColor() {
+        return Color.RED;
+    }
+
+    public static Color getTextApprovalColor() {
+        return Color.GREEN;
+    }
+
+    public static Color getBackgroundColor() {
+        return Color.LIGHTGREY;
+    }
+
+
+    static LinearGradient getSuggestionAlertColor() {
         Color colorLeft = Color.web("#FF5252");
         Color colorRight = Color.web("#C72020");
 
@@ -22,7 +34,7 @@ public interface UIColors {
         return linearGradient;
     }
 
-    static LinearGradient setSuggestionColor() {
+    static LinearGradient getSuggestionColor() {
         Color colorLeft = Color.web("#DDDDDD");
         Color colorRight = Color.web("#CCCCCC");
 
@@ -32,7 +44,7 @@ public interface UIColors {
         return linearGradient;
     }
 
-    static LinearGradient setNotificationsColor() {
+    static LinearGradient getNotificationsColor() {
         Color colorLeft = Color.web("#CCCCCF");
         Color colorRight = Color.web("#BBBBBC");
 
@@ -42,7 +54,7 @@ public interface UIColors {
         return linearGradient;
     }
 
-    static LinearGradient setBackgroundColor() {
+    public static LinearGradient getBackgroundGradient() {
         Color colorLeft = Color.web("#EEEFFF");
         Color colorRight = Color.web("#405087");
 

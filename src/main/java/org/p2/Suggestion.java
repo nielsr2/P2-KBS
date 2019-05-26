@@ -10,7 +10,6 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
-import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
@@ -18,8 +17,6 @@ import javafx.scene.text.Text;
 import java.util.Timer;
 import java.util.TimerTask;
 import java.util.logging.Logger;
-
-import static org.p2.UIColors.*;
 
 
 public class Suggestion extends HBox {
@@ -62,24 +59,24 @@ public class Suggestion extends HBox {
     //
     Suggestion(String shortcutText, String functionality, String iconPath) {
 
-        convinceNotification = new ConvinceNotification(textStartConvince, textEndConvince, textAlertColor);
-        rewardNotification = new RewardNotification(textStartReward, textMiddleReward, textEndReward, new Text(functionality), textApprovalColor);
+        convinceNotification = new ConvinceNotification(textStartConvince, textEndConvince, UIColors.getTextAlertColor());
+        rewardNotification = new RewardNotification(textStartReward, textMiddleReward, textEndReward, new Text(functionality), UIColors.getTextApprovalColor());
 
         this.setUserData(functionality);
         this.setId(functionality);
-        this.functionality = functionality; // consider deletion, not really needed?
+        this.functionality = functionality;
 
         icon = new ImageView(new Image(iconPath, 40, 40, true, true));
 
         // BACKGROUND RECTANGLE
-        backgroundRect = new Rectangle(170, 50, Color.LIGHTGREY);
-        backgroundRect.setStroke(borderColor);
+        backgroundRect = new Rectangle(170, 50, UIColors.getBackgroundColor());
+        backgroundRect.setStroke(UIColors.getBorderColor());
         backgroundRect.setOpacity(0.8);
-        this.backgroundRect.setFill(UIColors.setSuggestionColor());
+        this.backgroundRect.setFill(UIColors.getSuggestionColor());
 
         // COLOR OVERLAY
-        colorRect = new Rectangle(170, 50, UIColors.setSuggestionAlertColor());
-        colorRect.setStroke(borderColor);
+        colorRect = new Rectangle(170, 50, UIColors.getSuggestionAlertColor());
+        colorRect.setStroke(UIColors.getBorderColor());
 
         // STYLING
         this.content = new HBox(5);
@@ -96,15 +93,6 @@ public class Suggestion extends HBox {
         content.getChildren().addAll(this.icon, this.shortcutText);
         suggestionPane.getChildren().addAll(backgroundRect, colorRect, content);
         this.getChildren().addAll(convinceNotification, suggestionPane);
-
-//        this.setOnMouseClicked(event -> {     // i dont understand the point of dis?
-//            this.ACTIVATED = false;
-//            System.out.println(ACTIVATED);
-//        });
-//        this.setOnKeyPressed(event -> {
-//            this.ACTIVATED = true;
-//            System.out.println(ACTIVATED);
-//        });
         this.setVisible(false);
         this.setManaged(false);
     }

@@ -37,6 +37,7 @@ import org.fxmisc.richtext.TextExt;
 import org.fxmisc.richtext.model.*;
 import org.p2.MyLogger;
 import org.p2.OverlayPane;
+import org.p2.UIColors;
 import org.reactfx.SuspendableNo;
 import org.reactfx.util.Either;
 import org.reactfx.util.Tuple2;
@@ -51,9 +52,8 @@ import java.util.logging.Logger;
 
 import static org.fxmisc.richtext.model.TwoDimensional.Bias.Backward;
 import static org.fxmisc.richtext.model.TwoDimensional.Bias.Forward;
-import static org.p2.UIColors.setBackgroundColor;
 
-//import static org.p2.UIColors.setBackgroundColor;
+//import static org.p2.UIColors.getBackgroundGradient;
 
 public class RichTextDemo extends Application {
 
@@ -450,7 +450,7 @@ public class RichTextDemo extends Application {
 
         StackPane vsPane = new StackPane();
         Rectangle backgroundRect = new Rectangle(WINDOW_WIDTH, WINDOW_HEIGHT - toolBar1.getHeight());
-        backgroundRect.setFill(setBackgroundColor());
+        backgroundRect.setFill(UIColors.getBackgroundGradient());
         vsPane.setAlignment(Pos.TOP_CENTER);
 
         vsPane.setMaxHeight(WINDOW_HEIGHT - 200);

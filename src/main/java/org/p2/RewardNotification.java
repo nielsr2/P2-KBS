@@ -13,9 +13,9 @@ import javafx.scene.text.TextFlow;
 import javafx.util.Duration;
 
 import static javafx.scene.text.TextAlignment.CENTER;
-import static org.p2.UIColors.setNotificationsColor;
+import static org.p2.UIColors.getNotificationsColor;
 
-public class RewardNotification extends Notifications implements UIColors {
+public class RewardNotification extends Notifications {
 
     int width = 180;
     int height = 49;
@@ -49,10 +49,10 @@ public class RewardNotification extends Notifications implements UIColors {
         skillNrText.setFill(this.skillNrColor);
         textEnd.setFont(Font.font("San Fransisco", 12));
 
-        backgroundRect = new Rectangle(width, height, setNotificationsColor());
+        backgroundRect = new Rectangle(width, height, getNotificationsColor());
         backgroundRect.setArcHeight(100);
         backgroundRect.setArcWidth(40);
-        backgroundRect.setStroke(borderColor);
+        backgroundRect.setStroke(UIColors.getBorderColor());
         backgroundRect.setOpacity(0.8);
 
         this.getChildren().addAll(backgroundRect, textFlow);
