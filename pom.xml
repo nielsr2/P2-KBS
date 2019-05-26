@@ -37,12 +37,7 @@
             <version>RELEASE</version>
             <scope>compile</scope>
         </dependency>
-        <!-- https://mvnrepository.com/artifact/com.gluonhq/charm-glisten -->
-        <dependency>
-            <groupId>com.gluonhq</groupId>
-            <artifactId>charm-glisten</artifactId>
-            <version>5.0.x</version>
-        </dependency>
+
 
     </dependencies>
 
