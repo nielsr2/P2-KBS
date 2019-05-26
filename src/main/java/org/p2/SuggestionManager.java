@@ -7,7 +7,6 @@ import javafx.scene.layout.VBox;
 import static com.sun.xml.internal.ws.spi.db.BindingContextFactory.LOGGER;
 import static javafx.geometry.Pos.BOTTOM_RIGHT;
 
-// TODO CHECK IF STUFF SHOULD BE PRIVATE, PUBLIC ETC.
 // change the shortcuts into single key Suggestion
 
 // make Suggestion list
@@ -31,7 +30,7 @@ public class SuggestionManager extends VBox {
     //  | | | | (_) \ V /  __/ |
     //  |_| |_|\___/ \_/ \___|_|
     //
-    boolean suggestionManagerHovered;
+    private boolean suggestionManagerHovered;
 
     SuggestionManager(double width, double height) {
 
@@ -68,8 +67,8 @@ public class SuggestionManager extends VBox {
 
         this.setUpHovers();
     }
-    boolean anyIconHovered;
-    boolean textSelected;
+    private boolean anyIconHovered;
+    private boolean textSelected;
 
     public void setAnyIconHovered(boolean anyIconHovered) {
         this.anyIconHovered = anyIconHovered;
@@ -92,7 +91,7 @@ public class SuggestionManager extends VBox {
     //  | | | | | | (_) | |_| \__ \  __/
     //  |_| |_| |_|\___/ \__,_|___/\___|
     //
-    double fadeMax = 1.;
+    private double fadeMax = 1.;
 
     //            _           _   _
 //   ___  ___| | ___  ___| |_(_) ___  _ __
@@ -129,9 +128,9 @@ public class SuggestionManager extends VBox {
         }
     }
 
-    double fadeMin = 0.5;
-    double colorDistance = 70;
-    double opacityDistance = 100;
+    private double fadeMin = 0.5;
+    private double colorDistance = 70;
+    private double opacityDistance = 100;
 
     public void setUpHovers() {
         this.setOnKeyPressed((e -> {
@@ -196,9 +195,9 @@ public class SuggestionManager extends VBox {
         }
     }
 
-    boolean show = true;
+    private boolean show = true;
 
-    double scaleAndClip(double input, double in_min, double in_max, double out_min, double out_max) {
+    private double scaleAndClip(double input, double in_min, double in_max, double out_min, double out_max) {
         double calc = out_min + ((input - in_min) / (in_max - in_min)) * (out_max - out_min);
         if (calc < out_max)
             return out_max;
@@ -217,11 +216,6 @@ public class SuggestionManager extends VBox {
             }
         }
         return null;
-    }
-
-    void show(boolean show) {
-        this.setVisible(show);
-        this.setManaged(show);
     }
 
     public void toggleShow() {
