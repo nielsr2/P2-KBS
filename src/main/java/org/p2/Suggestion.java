@@ -115,7 +115,7 @@ public class Suggestion extends HBox {
     public void shortcutUsed() {
         if (ACTIVATED) {
             this.kbsTimesUsedTotal++;
-            this.kbsTimesUsedInstance++;
+//removed for presentation            this.kbsTimesUsedInstance++;
             rewardNotification.setKbsTimesUsedInstance(this.kbsTimesUsedInstance);
 
             this.tbTimesClickedInstance = 0;
@@ -145,7 +145,7 @@ public class Suggestion extends HBox {
     public void toolbarPressed() {
         if (ACTIVATED) {
             this.tbTimesClickedTotal++;
-            this.tbTimesClickedInstance++;
+//removed for presentation            this.tbTimesClickedInstance++;
             convinceNotification.setTbTimesClickedInstance(this.tbTimesClickedInstance);
 
             this.kbsTimesUsedInstance = 0;

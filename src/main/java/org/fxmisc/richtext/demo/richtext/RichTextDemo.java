@@ -571,6 +571,7 @@ public class RichTextDemo extends Application {
         });
 
         // *************************************************************************************************************************************************
+
         root.setPrefSize(WINDOW_WIDTH, WINDOW_HEIGHT);
         overlayPane.setMaxSize(WINDOW_WIDTH, WINDOW_HEIGHT);
         root.getChildren().addAll(vbox, overlayPane);
